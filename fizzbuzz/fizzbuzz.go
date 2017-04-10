@@ -7,6 +7,14 @@ const FIZZ_BUZZ string  = "FizzBuzz"
 const FIZZ string = "FIZZ"
 const BUZZ string = "BUZZ"
 
+type MyInt struct {
+    data int
+}
+
+func (myInt MyInt) String() string {
+	return strconv.Itoa(myInt.data)
+}
+
 func logic(i int) string {
     if (i % 3 ) == 0 && (i % 5) == 0 {
         return FIZZ_BUZZ
@@ -15,7 +23,7 @@ func logic(i int) string {
     } else if (i % 5) == 0 {
         return BUZZ
     } else {
-        return strconv.Itoa(i)
+        return MyInt{data:i}.String()
     }
 }
 
