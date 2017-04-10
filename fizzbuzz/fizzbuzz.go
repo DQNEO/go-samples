@@ -24,15 +24,19 @@ func (myString MyString) String() string {
 	return myString.data;
 }
 
-func logic(i int) string {
+type Stringable interface {
+	String() string
+}
+
+func logic(i int) Stringable {
     if (i % 3 ) == 0 && (i % 5) == 0 {
-        return MyString{data:FIZZ_BUZZ}.String()
+        return MyString{data:FIZZ_BUZZ}
     } else if (i % 3 ) == 0 {
-        return MyString{data:FIZZ}.String()
+        return MyString{data:FIZZ}
     } else if (i % 5) == 0 {
-        return MyString{data:BUZZ}.String()
+        return MyString{data:BUZZ}
     } else {
-        return MyInt{data:i}.String()
+        return MyInt{data:i}
     }
 }
 
@@ -40,6 +44,6 @@ func main() {
     var start,end int = 1,15
     for i := start; i <= end ; i++ {
         s := logic(i)
-        fmt.Println(s)
+        fmt.Println(s.String())
     }
 }
