@@ -15,13 +15,22 @@ func (myInt MyInt) String() string {
 	return strconv.Itoa(myInt.data)
 }
 
+
+type MyString struct {
+	data string
+}
+
+func (myString MyString) String() string {
+	return myString.data;
+}
+
 func logic(i int) string {
     if (i % 3 ) == 0 && (i % 5) == 0 {
-        return FIZZ_BUZZ
+        return MyString{data:FIZZ_BUZZ}.String()
     } else if (i % 3 ) == 0 {
-        return FIZZ
+        return MyString{data:FIZZ}.String()
     } else if (i % 5) == 0 {
-        return BUZZ
+        return MyString{data:BUZZ}.String()
     } else {
         return MyInt{data:i}.String()
     }
