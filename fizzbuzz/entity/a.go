@@ -23,3 +23,9 @@ type Stringable interface {
 	String() string
 }
 
+const FIZZ string = "FIZZ"
+const BUZZ string = "BUZZ"
+
+var FIZZ_ENTITY MyString = MyString{Data: FIZZ}
+
+var BUZZ_ENTITY MyString = MyString{Data:BUZZ}

@@ -5,8 +5,6 @@ import "github.com/DQNEO/go-samples/fizzbuzz/entity"
 import "fmt"
 
 const FIZZ_BUZZ string  = "FizzBuzz"
-const FIZZ string = "FIZZ"
-const BUZZ string = "BUZZ"
 
 func fizzable(i int) bool {
 	return (i % 3) == 0
@@ -21,9 +19,9 @@ func logic(i int) entity.Stringable {
     if (fizzable(i) && buzzable(i)) {
         return entity.MyString{Data:FIZZ_BUZZ}
     } else if fizzable(i) {
-        return entity.MyString{Data:FIZZ}
+        return entity.FIZZ_ENTITY
     } else if buzzable(i) {
-        return entity.MyString{Data:BUZZ}
+        return entity.BUZZ_ENTITY
     } else {
         return entity.MyInt{Data:i}
     }
