@@ -3,7 +3,7 @@ package main
 import "fmt"
 import "strconv"
 
-func logick(i int) string {
+func logic(i int) string {
     if (i % 3 ) == 0 && (i % 5) == 0 {
         return "fizz buzz"
     } else if (i % 3 ) == 0 {
@@ -18,7 +18,7 @@ func logick(i int) string {
 func main() {
     var start,end int = 1,15
     for i := start; i <= end ; i++ {
-        s := logick(i)
+        s := logic(i)
         fmt.Println(s)
     }
 }
