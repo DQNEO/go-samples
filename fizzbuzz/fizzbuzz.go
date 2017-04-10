@@ -1,32 +1,12 @@
 package main
 
+import "github.com/DQNEO/go-samples/fizzbuzz/entity"
+
 import "fmt"
-import "strconv"
 
 const FIZZ_BUZZ string  = "FizzBuzz"
 const FIZZ string = "FIZZ"
 const BUZZ string = "BUZZ"
-
-type MyInt struct {
-    data int
-}
-
-func (myInt MyInt) String() string {
-	return strconv.Itoa(myInt.data)
-}
-
-
-type MyString struct {
-	data string
-}
-
-func (myString MyString) String() string {
-	return myString.data;
-}
-
-type Stringable interface {
-	String() string
-}
 
 func fizzable(i int) bool {
 	return (i % 3) == 0
@@ -36,15 +16,16 @@ func buzzable(i int) bool {
 	return (i % 5) == 0
 }
 
-func logic(i int) Stringable {
+
+func logic(i int) entity.Stringable {
     if (fizzable(i) && buzzable(i)) {
-        return MyString{data:FIZZ_BUZZ}
+        return entity.MyString{Data:FIZZ_BUZZ}
     } else if fizzable(i) {
-        return MyString{data:FIZZ}
+        return entity.MyString{Data:FIZZ}
     } else if buzzable(i) {
-        return MyString{data:BUZZ}
+        return entity.MyString{Data:BUZZ}
     } else {
-        return MyInt{data:i}
+        return entity.MyInt{Data:i}
     }
 }
 
@@ -55,3 +36,5 @@ func main() {
         fmt.Println(s.String())
     }
 }
+
+
