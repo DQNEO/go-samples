@@ -37,7 +37,7 @@ func buzzable(i int) bool {
 }
 
 func logic(i int) Stringable {
-    if (i % 3 ) == 0 && (i % 5) == 0 {
+    if (fizzable(i) && buzzable(i)) {
         return MyString{data:FIZZ_BUZZ}
     } else if fizzable(i) {
         return MyString{data:FIZZ}
