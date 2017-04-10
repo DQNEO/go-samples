@@ -28,10 +28,15 @@ type Stringable interface {
 	String() string
 }
 
+func fizzable(i int) bool {
+	return (i % 3) == 0
+}
+
+
 func logic(i int) Stringable {
     if (i % 3 ) == 0 && (i % 5) == 0 {
         return MyString{data:FIZZ_BUZZ}
-    } else if (i % 3 ) == 0 {
+    } else if fizzable(i) {
         return MyString{data:FIZZ}
     } else if (i % 5) == 0 {
         return MyString{data:BUZZ}
