@@ -2,6 +2,10 @@ package entity
 
 import "strconv"
 
+const FIZZ string = "FIZZ"
+const BUZZ string = "BUZZ"
+const FIZZ_BUZZ string  = "FizzBuzz"
+
 type MyInt struct {
 	Data int
 }
@@ -23,9 +27,9 @@ type Stringable interface {
 	String() string
 }
 
-const FIZZ string = "FIZZ"
-const BUZZ string = "BUZZ"
 
 var FIZZ_ENTITY MyString = MyString{Data: FIZZ}
 
 var BUZZ_ENTITY MyString = MyString{Data:BUZZ}
+
+var FIZZ_BUZZ_ENTITY MyString = MyString{Data:FIZZ_BUZZ}
