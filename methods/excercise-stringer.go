@@ -15,7 +15,7 @@ func main() {
 	}
 
 	for k,v := range(ipmap) {
-		fmt.Printf("%s => %d.%d.%d.%d\n", k, v[0], v[1], v[2], v[3])
+		fmt.Printf("%v => %v\n", k, v)
 	}
 
 	fmt.Println("=====")
