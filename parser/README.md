@@ -2,7 +2,7 @@
 
 ## Characteristics
 * Make the most use of go/* pakcages
-* Emit x86-64 assembly
+* Emit x86-64 assembly code
 * No dependency to libc
 
 ## Usage
