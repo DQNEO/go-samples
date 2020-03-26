@@ -91,12 +91,12 @@ func emitFuncall(fcall *Funcall) {
 	fmt.Printf(".text\n")
 	fmt.Printf("main.main:\n")
 	fmt.Printf("  leaq .S1, %%rdi # arg1 \n")
-	fmt.Printf("  movq $%d, %%rsi # arg2 \n", len(fcall.arg) -  2)
+	fmt.Printf("  movq $%d, %%rsi # arg2 \n", len(fcall.arg)-2)
 	fmt.Printf("  call %s\n", fcall.symbol)
 	fmt.Printf("  ret\n")
 }
 
 type Funcall struct {
 	symbol string
-	arg string
+	arg    string
 }
