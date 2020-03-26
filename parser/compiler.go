@@ -1,11 +1,3 @@
-// a minimal go compiler.
-// Usage:
-//
-// $ go run parser.go  | as -o a.o  -
-// $ ld a.o
-// $ ./a.out
-// hello world
-//
 package main
 
 import (
