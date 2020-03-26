@@ -1,4 +1,9 @@
-# a minimal go compiler making the most use of go/parser
+# a minimal go compiler for hello world
+
+## Characteristics
+* Make the most use of go/* pakcages
+* Emit x86-64 assembly
+* No dependency to libc
 
 ## Usage
 
