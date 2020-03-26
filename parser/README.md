@@ -1,4 +1,4 @@
-# a minimal go compiler for hello world
+# a minimal go compiler to do "hello world"
 
 ## Characteristics
 * Make the most use of go/* pakcages
