@@ -23,40 +23,7 @@ func main() {
 		case *ast.FuncDecl:
 			funcDecl := decl.(*ast.FuncDecl)
 			fmt.Printf("# func %s\n", funcDecl.Name)
-			for _, stmt := range funcDecl.Body.List {
-				switch stmt.(type) {
-				case *ast.ExprStmt:
-					expr := stmt.(*ast.ExprStmt).X
-					switch expr.(type) {
-					case *ast.CallExpr:
-						call := expr.(*ast.CallExpr)
-						fn := call.Fun
-						var fcall *Funcall = &Funcall{}
-						switch fn.(type) {
-						case *ast.SelectorExpr:
-							selector := fn.(*ast.SelectorExpr)
-							symbol := fmt.Sprintf("%s.%s", selector.X, selector.Sel) // fmt.Print
-							fmt.Printf("# symbol=%s\n", symbol)
-							fcall.symbol = symbol
-						default:
-							panic("Unexpected fun type")
-						}
-						arg := call.Args[0] // assume args have only one element
-						switch arg.(type) {
-						case *ast.BasicLit:
-							fcall.arg = arg.(*ast.BasicLit).Value
-							fmt.Printf("# arg=%s\n", fcall.arg) // "hello world"
-						default:
-							panic("Unexpected type")
-						}
-						emitFuncall(fcall)
-					default:
-						panic("Unexpected expr type")
-					}
-				default:
-					panic("Unexpected stmt type")
-				}
-			}
+			emitFuncDecl(funcDecl)
 		default:
 			panic("unexpected decl type")
 		}
@@ -84,19 +51,81 @@ func emitRuntime() {
 	fmt.Printf("  \n")
 }
 
-func emitFuncall(fcall *Funcall) {
+
+func emitFuncDecl(funcDecl *ast.FuncDecl) {
+	var strings []string
+	var stmts []*Stmt
+	for _, stmt := range funcDecl.Body.List {
+		switch stmt.(type) {
+		case *ast.ExprStmt:
+			expr := stmt.(*ast.ExprStmt).X
+			switch expr.(type) {
+			case *ast.CallExpr:
+				call := expr.(*ast.CallExpr)
+				fn := call.Fun
+				var fcall *Funcall = &Funcall{}
+				switch fn.(type) {
+				case *ast.SelectorExpr:
+					selector := fn.(*ast.SelectorExpr)
+					symbol := fmt.Sprintf("%s.%s", selector.X, selector.Sel) // fmt.Print
+					fmt.Printf("# symbol=%s\n", symbol)
+					fcall.symbol = symbol
+				default:
+					panic("Unexpected fun type")
+				}
+				arg := call.Args[0] // assume args have only one element
+				switch arg.(type) {
+				case *ast.BasicLit:
+					s := arg.(*ast.BasicLit).Value
+					strings = append(strings, s)
+					fcall.arg = &StringLiteral{
+						index: 0,
+						val:   s,
+					}
+					fmt.Printf("# arg=%s\n", fcall.arg) // "hello world"
+					stmts = append(stmts, &Stmt{
+						funcall:fcall,
+					})
+				default:
+					panic("Unexpected type")
+				}
+			default:
+				panic("Unexpected expr type")
+			}
+		default:
+			panic("Unexpected stmt type")
+		}
+	}
+
 	fmt.Printf(".data\n")
-	fmt.Printf(".S1:\n")
-	fmt.Printf("  .string %s\n", fcall.arg)
+	for i, s := range strings {
+		fmt.Printf(".S%d:\n", i)
+		fmt.Printf("  .string %s\n", s)
+	}
+
 	fmt.Printf(".text\n")
-	fmt.Printf("main.main:\n")
-	fmt.Printf("  leaq .S1, %%rdi # arg1 \n")
-	fmt.Printf("  movq $%d, %%rsi # arg2 \n", len(fcall.arg)-2)
-	fmt.Printf("  call %s\n", fcall.symbol)
+	fmt.Printf("main.%s:\n", funcDecl.Name)
+
+	for _, stmt := range stmts {
+		fcall := stmt.funcall
+		fmt.Printf("  leaq .S%d, %%rdi # arg1 \n", fcall.arg.index)
+		fmt.Printf("  movq $%d, %%rsi # arg2 \n", len(fcall.arg.val)-2)
+		fmt.Printf("  call %s\n", fcall.symbol)
+	}
+
 	fmt.Printf("  ret\n")
+}
+
+type Stmt struct {
+	funcall *Funcall
+}
+
+type StringLiteral struct {
+	index int
+	val string
 }
 
 type Funcall struct {
 	symbol string
-	arg    string
+	arg    *StringLiteral
 }
