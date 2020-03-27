@@ -35,7 +35,7 @@ func main() {
 						switch fn.(type) {
 						case *ast.SelectorExpr:
 							selector := fn.(*ast.SelectorExpr)
-							symbol := fmt.Sprintf("%s.%s", selector.X, selector.Sel)
+							symbol := fmt.Sprintf("%s.%s", selector.X, selector.Sel) // fmt.Print
 							fmt.Printf("# symbol=%s\n", symbol)
 							fcall.symbol = symbol
 						default:
@@ -45,7 +45,7 @@ func main() {
 						switch arg.(type) {
 						case *ast.BasicLit:
 							fcall.arg = arg.(*ast.BasicLit).Value
-							fmt.Printf("# arg=%s\n", fcall.arg)
+							fmt.Printf("# arg=%s\n", fcall.arg) // "hello world"
 						default:
 							panic("Unexpected type")
 						}
