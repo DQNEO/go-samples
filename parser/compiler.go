@@ -9,7 +9,7 @@ import (
 
 func main() {
 	ts := token.FileSet{}
-	astFile, err := parser.ParseFile(&ts, "./hello.go", nil, parser.AllErrors)
+	astFile, err := parser.ParseFile(&ts, "./source.go", nil, parser.AllErrors)
 	if err != nil {
 		panic(err)
 	}
