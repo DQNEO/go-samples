@@ -32,7 +32,7 @@ func main() {
 
 func emitRuntime() {
 	fmt.Printf(".text\n")
-	fmt.Printf("fmt.Print:\n")
+	fmt.Printf("fmt.PrintString:\n")
 	fmt.Printf("  movq %%rdi, %%rax # arg1:buf\n")
 	fmt.Printf("  movq %%rsi, %%rcx # arg2:len\n")
 	fmt.Printf("  movq $1, %%rdi # stdout\n")
@@ -63,13 +63,13 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 			case *ast.CallExpr:
 				call := expr.(*ast.CallExpr)
 				fn := call.Fun
+				var symbol string
 				var fcall *Funcall = &Funcall{}
 				switch fn.(type) {
 				case *ast.SelectorExpr:
 					selector := fn.(*ast.SelectorExpr)
-					symbol := fmt.Sprintf("%s.%s", selector.X, selector.Sel) // fmt.Print
+					symbol = fmt.Sprintf("%s.%s", selector.X, selector.Sel) // fmt.Print
 					fmt.Printf("# symbol=%s\n", symbol)
-					fcall.symbol = symbol
 				default:
 					panic("Unexpected fun type")
 				}
@@ -77,6 +77,7 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 				switch arg.(type) {
 				case *ast.BasicLit:
 					s := arg.(*ast.BasicLit).Value
+					fcall.symbol = symbol + "String"
 					strings = append(strings, s)
 					fcall.arg = &StringLiteral{
 						index: len(strings) - 1,
