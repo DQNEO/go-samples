@@ -5,6 +5,7 @@ import (
 	"go/ast"
 	"go/parser"
 	"go/token"
+	"strconv"
 )
 
 func main() {
@@ -33,6 +34,15 @@ func main() {
 func emitRuntime() {
 	fmt.Printf(".text\n")
 	fmt.Printf("fmt.PrintString:\n")
+	fmt.Printf("  movq %%rdi, %%rax # arg1:buf\n")
+	fmt.Printf("  movq %%rsi, %%rcx # arg2:len\n")
+	fmt.Printf("  movq $1, %%rdi # stdout\n")
+	fmt.Printf("  movq %%rax, %%rsi # buf\n")
+	fmt.Printf("  movq %%rcx, %%rdx # len\n")
+	fmt.Printf("  movq $1, %%rax # sys_write\n")
+	fmt.Printf("  syscall\n")
+	fmt.Printf("  ret\n")
+	fmt.Printf("fmt.PrintInt:\n")
 	fmt.Printf("  movq %%rdi, %%rax # arg1:buf\n")
 	fmt.Printf("  movq %%rsi, %%rcx # arg2:len\n")
 	fmt.Printf("  movq $1, %%rdi # stdout\n")
@@ -77,13 +87,27 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 				switch arg.(type) {
 				case *ast.BasicLit:
 					s := arg.(*ast.BasicLit).Value
-					fcall.symbol = symbol + "String"
-					strings = append(strings, s)
-					fcall.arg = &StringLiteral{
-						index: len(strings) - 1,
-						val:   s,
+					if s[0] == '"' {
+						// string literal
+						fcall.symbol = symbol + "String"
+						strings = append(strings, s)
+						fcall.arg = &Expr{
+							stringLiteral:&StringLiteral{
+								index: len(strings) - 1,
+								val:   s,
+							},
+						}
+						fmt.Printf("# arg=%s\n", fcall.arg) // "hello world"
+					} else if '0' <= s[0] && s[0] <= '9' {
+						// number literal
+						fcall.symbol = symbol + "Int"
+						i, _ := strconv.Atoi(s)
+						fcall.arg = &Expr{
+							numberLiteral:&NumberLiteral{
+								val:   i,
+							},
+						}
 					}
-					fmt.Printf("# arg=%s\n", fcall.arg) // "hello world"
 					stmts = append(stmts, &Stmt{
 						funcall:fcall,
 					})
@@ -109,8 +133,12 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 
 	for _, stmt := range stmts {
 		fcall := stmt.funcall
-		fmt.Printf("  leaq .S%d, %%rdi # arg1 \n", fcall.arg.index)
-		fmt.Printf("  movq $%d, %%rsi # arg2 \n", len(fcall.arg.val)-2)
+		if fcall.arg.stringLiteral != nil {
+			fmt.Printf("  leaq .S%d, %%rdi # arg1 \n", fcall.arg.stringLiteral.index)
+			fmt.Printf("  movq $%d, %%rsi # arg2 \n", len(fcall.arg.stringLiteral.val)-2)
+		} else if fcall.arg.numberLiteral != nil {
+			fmt.Printf("  movq $%d, %%rdi # arg1 \n", fcall.arg.numberLiteral.val)
+		}
 		fmt.Printf("  call %s\n", fcall.symbol)
 	}
 
@@ -126,7 +154,15 @@ type StringLiteral struct {
 	val string
 }
 
+type NumberLiteral struct {
+	val int
+}
+
+type Expr struct {
+	stringLiteral *StringLiteral
+	numberLiteral *NumberLiteral
+}
 type Funcall struct {
 	symbol string
-	arg    *StringLiteral
+	arg    *Expr
 }
