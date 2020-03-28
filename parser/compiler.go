@@ -79,7 +79,7 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 					s := arg.(*ast.BasicLit).Value
 					strings = append(strings, s)
 					fcall.arg = &StringLiteral{
-						index: 0,
+						index: len(strings) - 1,
 						val:   s,
 					}
 					fmt.Printf("# arg=%s\n", fcall.arg) // "hello world"
