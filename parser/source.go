@@ -5,6 +5,6 @@ import "os"
 
 func main() {
 	fmt.Print("hello world\n")
-	fmt.Print("This program exits with status code 42\n")
+	// This program exits with status code 42
 	os.Exit(42)
 }

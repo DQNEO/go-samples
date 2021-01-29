@@ -14,16 +14,15 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("# ---------")
 	emitRuntime()
 
+	fmt.Printf("# package main\n")
 	for _, decl := range astFile.Decls {
 		switch decl.(type) {
 		case *ast.GenDecl:
 			continue
 		case *ast.FuncDecl:
 			funcDecl := decl.(*ast.FuncDecl)
-			fmt.Printf("# func %s\n", funcDecl.Name)
 			emitFuncDecl(funcDecl)
 		default:
 			panic("unexpected decl type")
@@ -32,6 +31,16 @@ func main() {
 }
 
 func emitRuntime() {
+	fmt.Printf("# runtime\n")
+	fmt.Printf(".text\n")
+	fmt.Printf("  .global _start\n")
+	fmt.Printf("_start:\n")
+	fmt.Printf("  call main.main\n")
+	fmt.Printf("  movq $60, %%rax # sys_exit\n")
+	fmt.Printf("  movq $0, %%rdi\n")
+	fmt.Printf("  syscall\n")
+	fmt.Printf(" \n")
+	fmt.Printf("# package fmt\n")
 	fmt.Printf(".text\n")
 	fmt.Printf("fmt.Print:\n")
 	fmt.Printf("  movq %%rdi, %%rax # arg1:buf\n")
@@ -42,17 +51,12 @@ func emitRuntime() {
 	fmt.Printf("  movq $1, %%rax # sys_write\n")
 	fmt.Printf("  syscall\n")
 	fmt.Printf("  ret\n")
-	fmt.Printf(".text\n")
+	fmt.Printf(" \n")
+	fmt.Printf("# package os\n")
 	fmt.Printf("os.Exit:\n")
 	fmt.Printf("  movq $60, %%rax # sys_exit\n")
 	fmt.Printf("  syscall\n")
-	fmt.Printf("  .global _start\n")
-	fmt.Printf("_start:\n")
-	fmt.Printf("  call main.main\n")
-	fmt.Printf("  movq $60, %%rax # sys_exit\n")
-	fmt.Printf("  movq $0, %%rdi\n")
-	fmt.Printf("  syscall\n")
-	fmt.Printf("  \n")
+	fmt.Printf(" \n")
 }
 
 
@@ -120,6 +124,7 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 		fmt.Printf("  .string %s\n", s)
 	}
 
+	fmt.Printf("\n")
 	fmt.Printf(".text\n")
 	fmt.Printf("main.%s:\n", funcDecl.Name)
 
