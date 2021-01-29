@@ -73,7 +73,6 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 				case *ast.SelectorExpr:
 					selector := fn.(*ast.SelectorExpr)
 					symbol = fmt.Sprintf("%s.%s", selector.X, selector.Sel) // fmt.Print
-					fmt.Printf("# symbol=%s\n", symbol)
 				default:
 					panic("Unexpected fun type")
 				}
@@ -91,7 +90,6 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 								val:   s,
 							},
 						}
-						fmt.Printf("# arg=%s\n", fcall.arg) // "hello world"
 					} else if '0' <= s[0] && s[0] <= '9' {
 						// number literal
 						fcall.symbol = symbol
