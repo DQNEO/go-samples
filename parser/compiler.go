@@ -33,16 +33,7 @@ func main() {
 
 func emitRuntime() {
 	fmt.Printf(".text\n")
-	fmt.Printf("fmt.PrintString:\n")
-	fmt.Printf("  movq %%rdi, %%rax # arg1:buf\n")
-	fmt.Printf("  movq %%rsi, %%rcx # arg2:len\n")
-	fmt.Printf("  movq $1, %%rdi # stdout\n")
-	fmt.Printf("  movq %%rax, %%rsi # buf\n")
-	fmt.Printf("  movq %%rcx, %%rdx # len\n")
-	fmt.Printf("  movq $1, %%rax # sys_write\n")
-	fmt.Printf("  syscall\n")
-	fmt.Printf("  ret\n")
-	fmt.Printf("fmt.PrintInt:\n")
+	fmt.Printf("fmt.Print:\n")
 	fmt.Printf("  movq %%rdi, %%rax # arg1:buf\n")
 	fmt.Printf("  movq %%rsi, %%rcx # arg2:len\n")
 	fmt.Printf("  movq $1, %%rdi # stdout\n")
@@ -52,6 +43,9 @@ func emitRuntime() {
 	fmt.Printf("  syscall\n")
 	fmt.Printf("  ret\n")
 	fmt.Printf(".text\n")
+	fmt.Printf("os.Exit:\n")
+	fmt.Printf("  movq $60, %%rax # sys_exit\n")
+	fmt.Printf("  syscall\n")
 	fmt.Printf("  .global _start\n")
 	fmt.Printf("_start:\n")
 	fmt.Printf("  call main.main\n")
@@ -89,7 +83,7 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 					s := arg.(*ast.BasicLit).Value
 					if s[0] == '"' {
 						// string literal
-						fcall.symbol = symbol + "String"
+						fcall.symbol = symbol
 						strings = append(strings, s)
 						fcall.arg = &Expr{
 							stringLiteral:&StringLiteral{
@@ -100,7 +94,7 @@ func emitFuncDecl(funcDecl *ast.FuncDecl) {
 						fmt.Printf("# arg=%s\n", fcall.arg) // "hello world"
 					} else if '0' <= s[0] && s[0] <= '9' {
 						// number literal
-						fcall.symbol = symbol + "Int"
+						fcall.symbol = symbol
 						i, _ := strconv.Atoi(s)
 						fcall.arg = &Expr{
 							numberLiteral:&NumberLiteral{

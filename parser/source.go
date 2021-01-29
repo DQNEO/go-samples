@@ -1,14 +1,10 @@
 package main
 
 import "fmt"
-//import "os"
+import "os"
 
 func main() {
 	fmt.Print("hello world\n")
-	fmt.Print("foo bar\n")
-	fmt.Print(42)
-}
-
-func exit() {
-//	os.Exit(42)
+	fmt.Print("This program exits with status code 42\n")
+	os.Exit(42)
 }
