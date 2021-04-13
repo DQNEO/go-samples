@@ -1,4 +1,12 @@
-# Go Conference Tokyo 2021
+# Learn how Hello-world works in low level. (Go Conference Tokyo 2021)
+
+Get the docker image
+
+```
+docker pull dqneo/ubuntu-build-essential:go
+```
+
+Run a docker container
 
 ```
 $ ./docker-run
