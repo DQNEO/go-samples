@@ -6,8 +6,8 @@ $ ./docker-run
 
 In the docker container, 
 ```
-$ docker build -o min min.go
-$ docker build -o hello hello.go
+$ go build -o min min.go
+$ go build -o hello hello.go
 ```
 
 Use strace
