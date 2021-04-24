@@ -12,20 +12,31 @@ Run a docker container
 $ ./docker-run
 ```
 
-In the docker container, 
+In the docker container, build the "hello" binary
+
 ```
-$ go build -o min min.go
-$ go build -o hello hello.go
+# cat hello.go
+package main
+
+import "fmt"
+
+func main() {
+        fmt.Print("Hello world\n")
+}
+
+# go build -o hello hello.go
+# ./hello
+Hello world
 ```
 
 Use strace
 ```
-$ strace ./hello >/dev/null
+# strace ./hello >/dev/null
 ```
 
 Use gdb
 ```
-$ gdb ./hello
+# gdb ./hello
 
 > catch syscall write
 > run
