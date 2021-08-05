@@ -17,12 +17,13 @@ const port = "8080"
 const addr = ":" + port
 
 func main() {
-	mux := http.DefaultServeMux
+	mux := &http.ServeMux{}
 	mux.Handle("/", handler)
 	mux.Handle("/hello", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("[hanler] path=%s\n", r.RequestURI)
 		w.Write([]byte("This is a static 'hello' page\n"))
 	}))
+	http.DefaultServeMux = mux
 	log.Printf("access http://localhost:%s/ from any client", port)
 	server := http.Server{
 		Addr: addr,
