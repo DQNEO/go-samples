@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net"
@@ -25,10 +26,13 @@ func main() {
 	server := http.Server{
 		Addr: addr,
 	}
-	listener, err := net.Listen("tcp", addr)
+	lc := net.ListenConfig{}
+	ctx := context.Background()
+	listener, err := lc.Listen(ctx,"tcp", addr)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("listener is created %v\n", listener)
 	err = server.Serve(listener)
 	log.Fatal(err)
 }
