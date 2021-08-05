@@ -16,7 +16,7 @@ const addr = ":" + port
 func main() {
 	http.DefaultServeMux.HandleFunc("/", handler)
 	http.DefaultServeMux.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello\n"))
+		w.Write([]byte("This is a static 'hello' page\n"))
 	})
 	log.Printf("access http://localhost:%s/ from any client", port)
 	server := http.Server{
