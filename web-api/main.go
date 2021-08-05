@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"net"
 	"net/http"
 )
 
@@ -22,6 +23,10 @@ func main() {
 	server := http.Server{
 		Addr: addr,
 	}
-	err := server.ListenAndServe()
+	listener, err := net.Listen("tcp", addr)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = server.Serve(listener)
 	log.Fatal(err)
 }
