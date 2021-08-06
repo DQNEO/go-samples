@@ -14,7 +14,7 @@ import (
 )
 
 var handler http.HandlerFunc = func(w http.ResponseWriter, r *http.Request) {
-	log.Printf("[hanler] path=%s\n", r.RequestURI)
+	log.Printf("[hanler] path=%s\n", r.URL.Path)
 	time.Sleep(time.Second * 3)
 	w.Write([]byte("Hi there, Now it's  " + time.Now().String() + "!\n"))
 }
@@ -50,7 +50,7 @@ func main() {
 	mux := &http.ServeMux{}
 	mux.Handle("/", handler)
 	mux.Handle("/hello", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("[hanler] path=%s\n", r.RequestURI)
+		log.Printf("[hanler] path=%s\n", r.URL.Path)
 		w.WriteHeader(200)
 		w.Write([]byte("This is a static 'hello' page\n"))
 	}))
