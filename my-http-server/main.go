@@ -20,7 +20,7 @@ var handler http.HandlerFunc = func(w http.ResponseWriter, r *http.Request) {
 }
 
 const port = "8080"
-const addr = ":" + port
+const addr = "127.0.0.1:" + port
 
 var _ http.ResponseWriter = &responseWriter{}
 type responseWriter struct {
@@ -55,7 +55,7 @@ func main() {
 	log.Printf("access http://localhost:%s/ from any client", port)
 	lc := net.ListenConfig{}
 	ctx := context.Background()
-	listener, err := lc.Listen(ctx,"tcp", addr)
+	listener, err := lc.Listen(ctx,"tcp4", addr)
 	if err != nil {
 		log.Fatal(err)
 	}
