@@ -28,6 +28,7 @@ type serverResponse struct {
 
 var _ http.ResponseWriter = &responseWriter{}
 type responseWriter struct {
+	statusCode int
 	buf []byte
 	w io.Writer
 }
@@ -42,7 +43,7 @@ func (rw *responseWriter) Write(b []byte) (int, error) {
 }
 
 func (rw *responseWriter) WriteHeader(statusCode int) {
-	panic("implement me")
+	rw.statusCode = statusCode
 }
 
 func main() {
@@ -50,6 +51,7 @@ func main() {
 	mux.Handle("/", handler)
 	mux.Handle("/hello", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("[hanler] path=%s\n", r.RequestURI)
+		w.WriteHeader(200)
 		w.Write([]byte("This is a static 'hello' page\n"))
 	}))
 
@@ -98,7 +100,7 @@ func connServe(c net.Conn, mux *http.ServeMux) {
 	w := &responseWriter{w: c}
 	h, _ := mux.Handler(&req)
 	h.ServeHTTP(w, &req)
-	w.w.Write([]byte("HTTP/1.1 200 OK\n"))
+	w.w.Write([]byte(fmt.Sprintf("HTTP/1.1 %d OK\n", w.statusCode)))
 	w.w.Write([]byte("Content-Type: text/plain\n"))
 	w.w.Write([]byte(fmt.Sprintf("Content-Length: %d\n", len(w.buf))))
 	w.w.Write([]byte("\n"))
