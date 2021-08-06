@@ -60,7 +60,6 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Printf("listener is created %v\n", listener)
-	//err = server.Serve(listener)
 	for {
 		log.Printf("Accepting...\n")
 		rwc, err := listener.Accept()
