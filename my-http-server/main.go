@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"context"
 	"fmt"
 	"io"
@@ -16,21 +15,18 @@ import (
 var handler http.HandlerFunc = func(w http.ResponseWriter, r *http.Request) {
 	log.Printf("[hanler] path=%s\n", r.URL.Path)
 	time.Sleep(time.Second * 3)
-	w.Write([]byte("Hi there, Now it's  " + time.Now().String() + "!\n"))
+	w.Write([]byte("Hi there, "))
+	w.Write([]byte("Now it's  " + time.Now().String() + "!\n"))
 }
 
 const port = "8080"
 const addr = ":" + port
 
-type serverResponse struct {
-	w *bufio.Writer
-}
-
 var _ http.ResponseWriter = &responseWriter{}
 type responseWriter struct {
 	statusCode int
-	buf []byte
-	w io.Writer
+	buf        []byte
+	conn       io.WriteCloser
 }
 
 func (rw *responseWriter) Header() http.Header {
@@ -38,13 +34,14 @@ func (rw *responseWriter) Header() http.Header {
 }
 
 func (rw *responseWriter) Write(b []byte) (int, error) {
-	rw.buf = b
+	rw.buf = append(rw.buf, b...)
 	return len(b), nil
 }
 
 func (rw *responseWriter) WriteHeader(statusCode int) {
 	rw.statusCode = statusCode
 }
+
 
 func main() {
 	mux := &http.ServeMux{}
@@ -97,13 +94,17 @@ func connServe(c net.Conn, mux *http.ServeMux) {
 	req := http.Request{
 		URL: &url.URL{Path: path},
 	}
-	w := &responseWriter{w: c}
+	w := &responseWriter{conn: c}
 	h, _ := mux.Handler(&req)
 	h.ServeHTTP(w, &req)
-	w.w.Write([]byte(fmt.Sprintf("HTTP/1.1 %d OK\n", w.statusCode)))
-	w.w.Write([]byte("Content-Type: text/plain\n"))
-	w.w.Write([]byte(fmt.Sprintf("Content-Length: %d\n", len(w.buf))))
-	w.w.Write([]byte("\n"))
-	w.w.Write(w.buf)
-	c.Close()
+	w.finishRequest()
+}
+
+func (w *responseWriter) finishRequest() {
+	w.conn.Write([]byte(fmt.Sprintf("HTTP/1.1 %d OK\n", w.statusCode)))
+	w.conn.Write([]byte("Content-Type: text/plain\n"))
+	w.conn.Write([]byte(fmt.Sprintf("Content-Length: %d\n", len(w.buf))))
+	w.conn.Write([]byte("\n"))
+	w.conn.Write(w.buf)
+	w.conn.Close()
 }
