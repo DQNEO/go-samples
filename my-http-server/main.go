@@ -60,9 +60,10 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Printf("listener is created %v\n", listener)
+	tcpListener := listener.(*net.TCPListener)
 	for {
 		log.Printf("Accepting...\n")
-		rwc, err := listener.Accept()
+		rwc, err := tcpListener.Accept()
 		if err != nil {
 			panic(err)
 		}
