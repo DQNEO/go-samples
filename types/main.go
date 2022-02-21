@@ -12,11 +12,16 @@ import (
 
 const hello = `package main
 
+import "fmt"
+
 type MyInt int
 type MyMyInt MyInt
 var i MyMyInt = 1
+var x = 123
+var s = "abc"
+
 func main() {
-        println(i)
+        fmt.Println(i)
 }`
 
 func main() {
@@ -42,18 +47,17 @@ func main() {
 		log.Fatal(err) // type error
 	}
 
-	fmt.Printf("Package  %q\n", pkg.Path())
-	fmt.Printf("Name:    %s\n", pkg.Name())
-	fmt.Printf("Imports: %s\n", pkg.Imports())
-	fmt.Printf("Scope:   %s\n", pkg.Scope())
+	fmt.Printf("Package.Path()  %q\n", pkg.Path())
+	fmt.Printf("Package.Name():    %s\n", pkg.Name())
+	fmt.Printf("Package.Imports(): %s\n", pkg.Imports())
+	fmt.Printf("Package,Scope():   %s\n", pkg.Scope())
 
-	scope := pkg.Scope()
-	for _, name := range scope.Names() {
-		fmt.Printf("  name=%s\n", name)
+	fmt.Println("[Iterating Names]")
+	for i, name := range pkg.Scope().Names() {
+		fmt.Printf("  %d:  name=%s\n", i, name)
+		obj := pkg.Scope().Lookup(name)
+		objType := obj.Type()
+		fmt.Printf("    obj: kind=%T, name=%s, String()='%s' type=%s, Underlying=%s\n",
+			obj, obj.Name(), obj.String(), objType.String(), objType.Underlying().String())
 	}
-
-	obj := pkg.Scope().Lookup("i")
-	fmt.Printf("i: name=%s, type=%s\n", obj.Name(), obj.Type())
-	typeOfI := obj.Type()
-	fmt.Printf("type=%s, Underlying=%s\n", typeOfI.String(), typeOfI.Underlying().String())
 }
