@@ -2,9 +2,12 @@ package main
 
 import "fmt"
 
-func main() {
+var MyFlag bool = true
 
+func main() {
 mylabel:
 	fmt.Print("hello\n")
-	goto mylabel
+	if MyFlag {
+		goto mylabel
+	}
 }
