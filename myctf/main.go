@@ -4,10 +4,19 @@ import "fmt"
 
 var MyFlag bool = true
 
+func fail() {
+	panic("FAIL")
+}
+
+func ok() {
+	fmt.Print("OK\n")
+}
+
 func main() {
-mylabel:
 	fmt.Print("hello\n")
 	if MyFlag {
-		goto mylabel
+		fail()
+	} else {
+		ok()
 	}
 }
