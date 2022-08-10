@@ -21,19 +21,20 @@ const htmlTemplateItems = `
 	<div>
 	<h1>Listening English All The Time</h1>
 	</div>
-	<ul>
+
+	<div id="items">
 	{{range .Items}}
-		<li>
+		<div>
 		<img src="{{.ChannelImageURL}}" width=64 height=64> 
  		{{.Published}} 
 		<audio id="{{.Id}}" controls src="{{.AudioURL}}">Your browser does not support the audio element.</audio>
 		- {{ .Title }} - {{ .ChannelTitle }}
 		[{{.Duration}}]
-		</li>
+		</div>
 	{{else}}
 		<div><strong>no rows</strong></div>
 	{{end}}
-	<ul>
+	</div>
 	</body>
 </html>
 `
