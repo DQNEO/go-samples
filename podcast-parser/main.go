@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
+import "github.com/mmcdole/gofeed"
 
 func main() {
-	fmt.Println("hello")
+	fp := gofeed.NewParser()
+	feed, _ := fp.Parse(os.Stdin)
+	fmt.Printf("%#v\n", feed)
 }
