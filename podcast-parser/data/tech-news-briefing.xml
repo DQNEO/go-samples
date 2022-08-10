@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <atom:link href="https://feeds.megaphone.fm/WSJ8523681216?limit=20" rel="self" type="application/rss+xml"/>
+    <title>WSJ Tech News Briefing</title>
+    <link>https://www.wsj.com/podcasts/tech-news-briefing</link>
+    <language>en-us</language>
+    <copyright>Copyright © Dow Jones &amp; Company, Inc. All Rights Reserved.</copyright>
+    <description>Tech News Briefing is your guide to what people in tech are talking about. Every weekday, we’ll bring you breaking tech news and scoops from the pros at the Wall Street Journal, insight into new innovations and policy debates, tips from our personal tech team, and exclusive interviews with movers and shakers in the industry. Hosted by Zoe Thomas</description>
+    <image>
+      <url>https://megaphone.imgix.net/podcasts/786a40de-9f81-11e5-8c1b-9792cea21589/image/tech-news-v3.jpg?ixlib=rails-2.1.2&amp;max-w=3000&amp;max-h=3000&amp;fit=crop&amp;auto=format,compress</url>
+      <title>WSJ Tech News Briefing</title>
+      <link>https://www.wsj.com/podcasts/tech-news-briefing</link>
+    </image>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <itunes:subtitle></itunes:subtitle>
+    <itunes:author>The Wall Street Journal</itunes:author>
+    <itunes:summary>Tech News Briefing is your guide to what people in tech are talking about. Every weekday, we’ll bring you breaking tech news and scoops from the pros at the Wall Street Journal, insight into new innovations and policy debates, tips from our personal tech team, and exclusive interviews with movers and shakers in the industry. Hosted by Zoe Thomas</itunes:summary>
+    <content:encoded>
+      <![CDATA[<p><em>Tech News Briefing</em> is your guide to what people in tech are talking about. Every weekday, we’ll bring you breaking tech news and scoops from the pros at the Wall Street Journal, insight into new innovations and policy debates, tips from our personal tech team, and exclusive interviews with movers and shakers in the industry. Hosted by Zoe Thomas</p>]]>
+    </content:encoded>
+    <itunes:owner>
+      <itunes:name>The Wall Street Journal</itunes:name>
+      <itunes:email>podcasts@dowjones.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://megaphone.imgix.net/podcasts/786a40de-9f81-11e5-8c1b-9792cea21589/image/tech-news-v3.jpg?ixlib=rails-2.1.2&amp;max-w=3000&amp;max-h=3000&amp;fit=crop&amp;auto=format,compress"/>
+    <itunes:category text="News">
+      <itunes:category text="Tech News"/>
+    </itunes:category>
+    <item>
+      <title>Tech Hiring Slowdown: What’s Different This Time?</title>
+      <description>The tech sector’s hiring spree seems to be coming to a close. Rising inflation and slowing demand for tech products are leading some companies to announce layoffs or pauses in hiring. But is this a sign of impending doom or just a rebalancing? Saydeah Howard, partner and chief talent officer for venture-capital firm IVP, joins host Zoe Thomas to discuss.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Wed, 10 Aug 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>The tech sector’s hiring spree seems to be coming to a close. Rising inflation and slowing demand for tech products are leading some companies to announce layoffs or pauses in hiring. But is this a sign of impending doom or just a rebalancing? Saydeah Howard, partner and chief talent officer for venture-capital firm IVP, joins host Zoe Thomas to discuss.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>The tech sector’s hiring spree seems to be coming to a close. Rising inflation and slowing demand for tech products are leading some companies to announce layoffs or pauses in hiring. But is this a sign of impending doom or just a rebalancing? Saydeah Howard, partner and chief talent officer for venture-capital firm IVP, joins host Zoe Thomas to discuss.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>897</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[13d439da-187a-11ed-b8b8-c7c9b68c89eb]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ1832513199.mp3?updated=1660115112" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Celsius Founder Left a Trail of Unhappy Colleagues and Investors</title>
+      <description>Celsius founder Alex Mashinsky grew his company to be one of the biggest crypto lenders. Now the company has filed for bankruptcy protection, and investors and clients are asking how this could have happened. This isn't the first time Mashinsky has taken a moonshot idea and ended up creating a trail of unhappy friends, colleagues and investors. WSJ reporter Vicky Ge Huang joins host Zoe Thomas to discuss Mashinsky’s past and the possible future for Celsius’ customers.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Tue, 09 Aug 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Celsius founder Alex Mashinsky grew his company to be one of the biggest crypto lenders. Now the company has filed for bankruptcy protection, and investors and clients are asking how this could have happened. This isn't the first time Mashinsky has taken a moonshot idea and ended up creating a trail of unhappy friends, colleagues and investors. WSJ reporter Vicky Ge Huang joins host Zoe Thomas to discuss Mashinsky’s past and the possible future for Celsius’ customers.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Celsius founder Alex Mashinsky grew his company to be one of the biggest crypto lenders. Now the company has filed for bankruptcy protection, and investors and clients are asking how this could have happened. <a href="https://www.wsj.com/articles/before-crypto-lender-celsius-crashed-ceo-alex-mashinsky-was-known-for-big-ideas-and-battles-11659787202?st=66tmbvyy32fowrs&amp;reflink=desktopwebshare_permalink">This isn't the first time Mashinsky has taken a moonshot idea and ended up creating a trail of unhappy friends, colleagues and investors</a>. WSJ reporter Vicky Ge Huang joins host Zoe Thomas to discuss Mashinsky’s past and the possible future for Celsius’ customers.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>850</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[e9a35e12-17b0-11ed-9f54-531fbb8e0467]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ3946753986.mp3?updated=1660028712" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>More of China’s Social-Media Users Head to Under-the-Radar Platforms</title>
+      <description>To avoid harassment and greater oversight on social-media platforms, some users in China are leaving the country's dominant sites for under-the-radar options. WSJ China technology reporter Shen Lu joins host Zoe Thomas to discuss what led them to this point and where they are moving.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Mon, 08 Aug 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>To avoid harassment and greater oversight on social-media platforms, some users in China are leaving the country's dominant sites for under-the-radar options. WSJ China technology reporter Shen Lu joins host Zoe Thomas to discuss what led them to this point and where they are moving.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>To avoid harassment and greater oversight on social-media platforms, <a href="https://www.wsj.com/articles/as-china-tightens-controls-on-social-media-some-users-seek-refuge-under-the-radar-11659551841?st=oerr5821c5t5sx1&amp;reflink=desktopwebshare_permalink">some users in China are leaving the country's dominant sites for under-the-radar options</a>. WSJ China technology reporter Shen Lu joins host Zoe Thomas to discuss what led them to this point and where they are moving.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>803</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[beb0047c-16e7-11ed-956a-0b40c63b25f3]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ9648723766.mp3?updated=1659942311" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Big Tech’s Western Values Help It Find Allies Abroad</title>
+      <description>Often short on friends at home, big U.S. tech companies are finding their size and commitment to openness are viewed favorably in other parts of the world. WSJ Chief Economics Commentator Greg Ip joins host Zoe Thomas to discuss how this dichotomy arose and what it could mean for combating the influence of China and Russia.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Fri, 05 Aug 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Often short on friends at home, big U.S. tech companies are finding their size and commitment to openness are viewed favorably in other parts of the world. WSJ Chief Economics Commentator Greg Ip joins host Zoe Thomas to discuss how this dichotomy arose and what it could mean for combating the influence of China and Russia.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Often short on friends at home, big U.S. tech companies are finding their size and commitment to openness are <a href="https://www.wsj.com/articles/big-tech-is-the-wests-surprise-weapon-in-competition-with-russia-china-11659535233?st=q2limqdpuipaflf&amp;reflink=desktopwebshare_permalink">viewed favorably in other parts of the world</a>. WSJ Chief Economics Commentator Greg Ip joins host Zoe Thomas to discuss how this dichotomy arose and what it could mean for combating the influence of China and Russia.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>801</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[44021114-148c-11ed-ad10-97375e991ea0]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ1566573928.mp3?updated=1659683119" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Protecting Your Privacy With (and From) Home Security Cameras</title>
+      <description>Home surveillance cameras, like those made by Ring, Nest and others, can protect your property or alert you when visitors or packages arrive. But police or hackers also could be interested in the data they gather. WSJ personal tech columnist Nicole Nguyen joins host Zoe Thomas to discuss how to protect your privacy when using one of these devices.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Thu, 04 Aug 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Home surveillance cameras, like those made by Ring, Nest and others, can protect your property or alert you when visitors or packages arrive. But police or hackers also could be interested in the data they gather. WSJ personal tech columnist Nicole Nguyen joins host Zoe Thomas to discuss how to protect your privacy when using one of these devices.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Home surveillance cameras, like those made by Ring, Nest and others, can protect your property or alert you when visitors or packages arrive. But police or hackers also could be interested in the data they gather. WSJ personal tech columnist Nicole Nguyen joins host Zoe Thomas to discuss <a href="https://www.wsj.com/articles/why-you-shouldor-shouldntbuy-a-home-security-camera-11659239201?st=wnpassnyp18nqfw&amp;reflink=desktopwebshare_permalink">how to protect your privacy when using one of these devices</a>.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>742</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[1423d618-13c3-11ed-8932-5fe5d793b7ed]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ8930400227.mp3?updated=1659596710" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>SoftBank’s Losses Mount as History Repeats Itself</title>
+      <description>The CEO of SoftBank, Masayoshi Son, promised to be more disciplined with his investing after billion-dollar losses piled up in the firm’s first Vision Fund. But as the market for tech stocks and startups turns downward, the firm is now finding itself in a similar position. WSJ reporter Eliot Brown joins host Zoe Thomas to discuss why SoftBank may emerge as one of the biggest losers in the tech downturn, again.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Wed, 03 Aug 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>The CEO of SoftBank, Masayoshi Son, promised to be more disciplined with his investing after billion-dollar losses piled up in the firm’s first Vision Fund. But as the market for tech stocks and startups turns downward, the firm is now finding itself in a similar position. WSJ reporter Eliot Brown joins host Zoe Thomas to discuss why SoftBank may emerge as one of the biggest losers in the tech downturn, again.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>The CEO of SoftBank, Masayoshi Son, promised to be more disciplined with his investing after billion-dollar losses piled up in the firm’s first Vision Fund. But as the market for tech stocks and startups turns downward, <a href="https://www.wsj.com/articles/softbank-tech-downturn-startups-losses-vision-fund-masayoshi-son-11659456842?st=zvwtjlj44nmmpzg&amp;reflink=desktopwebshare_permalink">the firm is now finding itself in a similar position</a>. WSJ reporter Eliot Brown joins host Zoe Thomas to discuss why SoftBank may emerge as one of the biggest losers in the tech downturn, again.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>865</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[eea89a78-12f9-11ed-9e1a-effdf747f665]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ2688116254.mp3?updated=1659510318" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Hacked Crypto Platforms Try New Strategy for Recovering Stolen Funds</title>
+      <description>The targets of crypto hacks are making an offer to the thieves: Keep some and give back the rest. The strategy is raising concerns among ethical hackers and authorities trying to catch cybercriminals. But what impact is it having? WSJ Pro Cybersecurity reporter David Uberti joins host Zoe Thomas to discuss.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Tue, 02 Aug 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>The targets of crypto hacks are making an offer to the thieves: Keep some and give back the rest. The strategy is raising concerns among ethical hackers and authorities trying to catch cybercriminals. But what impact is it having? WSJ Pro Cybersecurity reporter David Uberti joins host Zoe Thomas to discuss.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>The targets of crypto hacks are making an offer to the thieves: <a href="https://www.wsj.com/articles/crypto-firms-make-thieving-hackers-an-offer-keep-a-little-give-back-the-rest-11658741404?mod=rss_Technology">Keep some and give back the rest</a>. The strategy is raising concerns among ethical hackers and authorities trying to catch cybercriminals. But what impact is it having? WSJ Pro Cybersecurity reporter David Uberti joins host Zoe Thomas to discuss.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>788</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[c7c06aa4-1230-11ed-a991-83c6204bbb39]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ8596861329.mp3?updated=1659423925" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Microsoft Rallies Rivals to Crimp Amazon’s Government Cloud Dominance</title>
+      <description>Microsoft is rallying support from other cloud providers to take aim at Amazon’s dominance in government cloud contracts. It wants Alphabet’s Google, Oracle and others to press Washington into adopting a multicloud approach, and spread contracts across providers. WSJ reporter Aaron Tilley joins host Zoe Thomas to discuss Microsoft’s reasoning and how Amazon is reacting.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Mon, 01 Aug 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Microsoft is rallying support from other cloud providers to take aim at Amazon’s dominance in government cloud contracts. It wants Alphabet’s Google, Oracle and others to press Washington into adopting a multicloud approach, and spread contracts across providers. WSJ reporter Aaron Tilley joins host Zoe Thomas to discuss Microsoft’s reasoning and how Amazon is reacting.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Microsoft is <a href="https://www.wsj.com/articles/microsoft-asks-google-oracle-to-help-crimp-amazons-u-s-government-cloud-leadership-11658926801?st=x6v7fdrekyklr61&amp;reflink=desktopwebshare_permalink">rallying support from other cloud providers</a> to take aim at Amazon’s dominance in government cloud contracts. It wants Alphabet’s Google, Oracle and others to press Washington into adopting a multicloud approach, and spread contracts across providers. WSJ reporter Aaron Tilley joins host Zoe Thomas to discuss Microsoft’s reasoning and how Amazon is reacting.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>756</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[9c81d234-1167-11ed-8fb6-43ddf19e725e]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ3788238443.mp3?updated=1659337523" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Facing Competition, Instagram and Facebook Revamp Hits Snags</title>
+      <description>Facebook parent Meta has been revamping its platforms to make them more competitive with rivals like TikTok, and to keep advertisers. But users are expressing dissatisfaction with the changes on Facebook and Instagram, and advertising revenue is slipping amid rising inflation. WSJ reporter Salvador Rodriguez joins host Zoe Thomas to discuss how Meta, and CEO Mark Zuckerberg, are handling the headwinds.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Fri, 29 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Facebook parent Meta has been revamping its platforms to make them more competitive with rivals like TikTok, and to keep advertisers. But users are expressing dissatisfaction with the changes on Facebook and Instagram, and advertising revenue is slipping amid rising inflation. WSJ reporter Salvador Rodriguez joins host Zoe Thomas to discuss how Meta, and CEO Mark Zuckerberg, are handling the headwinds.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Facebook parent Meta has been <a href="https://www.wsj.com/articles/facebook-parent-metas-revamp-gains-urgency-amid-sales-retreat-11659013229?st=5t5undo3xgt3nts&amp;reflink=desktopwebshare_permalink">revamping its platforms to make them more competitive</a> with rivals like TikTok, and to keep advertisers. But users are expressing dissatisfaction with the changes on Facebook and Instagram, and advertising revenue is slipping amid rising inflation. WSJ reporter Salvador Rodriguez joins host Zoe Thomas to discuss how Meta, and CEO Mark Zuckerberg, are handling the headwinds.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>860</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[157f3bd0-0f0c-11ed-b975-5f3cc5fc3ba9]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ5783927252.mp3?updated=1659078310" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Early-Stage Startups Face Investment Slowdown</title>
+      <description>For years, competition and cheap money led venture-capital firms to invest heavily in early-stage startups. But now, as VCs tighten their belts amid economic worries, some of those startups are facing a slowdown in funding and may have to show a clear path to profits. WSJ reporter Berber Jin joins host Zoe Thomas to discuss what’s behind the shift in Silicon Valley and what these young companies are doing to survive.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Thu, 28 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>For years, competition and cheap money led venture-capital firms to invest heavily in early-stage startups. But now, as VCs tighten their belts amid economic worries, some of those startups are facing a slowdown in funding and may have to show a clear path to profits. WSJ reporter Berber Jin joins host Zoe Thomas to discuss what’s behind the shift in Silicon Valley and what these young companies are doing to survive.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>For years, competition and cheap money led venture-capital firms to invest heavily in early-stage startups. But now, as VCs tighten their belts amid economic worries, some of those startups are <a href="https://www.wsj.com/articles/tech-downturn-slows-early-stage-startup-funding-11658333146?st=b1udos37bduuiv2&amp;reflink=desktopwebshare_permalink">facing a slowdown in funding</a> and may have to show a clear path to profits. WSJ reporter Berber Jin joins host Zoe Thomas to discuss what’s behind the shift in Silicon Valley and what these young companies are doing to survive.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>829</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[eb6f4a98-0e42-11ed-81bd-0fa3ef229bba]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ7731321655.mp3?updated=1658991910" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Tesla Looks to Open Its Charging Network to Competitors</title>
+      <description>Tesla is looking to take advantage of state and federal money aimed at expanding the nation's network of electric vehicle chargers, according to regulatory filings. The move would mean Tesla would need to open up its supercharging network to competitors. WSJ reporter Jennifer Hiller joins host Zoe Thomas to discuss what this move could mean for the landscape and demand for EVs.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Wed, 27 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Tesla is looking to take advantage of state and federal money aimed at expanding the nation's network of electric vehicle chargers, according to regulatory filings. The move would mean Tesla would need to open up its supercharging network to competitors. WSJ reporter Jennifer Hiller joins host Zoe Thomas to discuss what this move could mean for the landscape and demand for EVs.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Tesla is looking to take advantage of state and federal money aimed at expanding the nation's network of electric vehicle chargers, according to regulatory filings. The move would mean <a href="https://www.wsj.com/articles/tesla-looks-to-open-its-ev-charging-network-11658656802?st=9js65lowknf2unx&amp;reflink=desktopwebshare_permalink">Tesla would need to open up its supercharging network to competitors</a>. WSJ reporter Jennifer Hiller joins host Zoe Thomas to discuss what this move could mean for the landscape and demand for EVs.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>880</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[c13fb02e-0d79-11ed-b85e-83d169bf6d4f]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ5094188773.mp3?updated=1658905511" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>New SIM Cards Could Make Your Phone Slimmer and More Flexible</title>
+      <description>U.S. cell phone carriers have long required SIM cards to let you use devices on their networks. Now, the traditional plastic SIM cards are being phased out in favor of embedded versions called eSIMs. The change could make switching carriers easier, and open up new possibilities for how phones are designed. WSJ personal tech reporter Dalvin Brown joins host Zoe Thomas to discuss the change and why it’s taken so long for eSIMs to be embraced in the U.S.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Tue, 26 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>U.S. cell phone carriers have long required SIM cards to let you use devices on their networks. Now, the traditional plastic SIM cards are being phased out in favor of embedded versions called eSIMs. The change could make switching carriers easier, and open up new possibilities for how phones are designed. WSJ personal tech reporter Dalvin Brown joins host Zoe Thomas to discuss the change and why it’s taken so long for eSIMs to be embraced in the U.S.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>U.S. cell phone carriers have long required SIM cards to let you use devices on their networks. Now, the traditional plastic SIM cards are being phased out <a href="https://www.wsj.com/articles/sim-cards-esim-replace-iphone-android-11657999211?st=3n2qyvsxf8bnv5d&amp;reflink=desktopwebshare_permalink">in favor of embedded versions called eSIMs</a>. The change could make switching carriers easier, and open up new possibilities for how phones are designed. WSJ personal tech reporter Dalvin Brown joins host Zoe Thomas to discuss the change and why it’s taken so long for eSIMs to be embraced in the U.S.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>767</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[98a5d202-0cb0-11ed-b678-67864bee2dec]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ4372251737.mp3?updated=1658819113" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>To Disrupt Hacking, U.S. Officials Turn to New Techniques</title>
+      <description>U.S. officials say they were able to disrupt a ransomware campaign from North Korean state sponsored hackers that targeted hospitals - and were even able to claw back some of the ransom that had already been paid in cryptocurrency. WSJ reporter Dustin Volz joins host Zoe Thomas to discuss the strategy U.S. law enforcement used and why they say the new approach could better protect Americans.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Mon, 25 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>U.S. officials say they were able to disrupt a ransomware campaign from North Korean state sponsored hackers that targeted hospitals - and were even able to claw back some of the ransom that had already been paid in cryptocurrency. WSJ reporter Dustin Volz joins host Zoe Thomas to discuss the strategy U.S. law enforcement used and why they say the new approach could better protect Americans.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>U.S. officials say they were able to <a href="https://www.wsj.com/articles/u-s-disrupts-north-korean-ransomware-campaign-against-hospitals-11658245206?st=ij3ien82mafe3e4&amp;reflink=desktopwebshare_permalink">disrupt a ransomware campaign from North Korean state sponsored hackers that targeted hospitals</a> - and were even able to claw back some of the ransom that had already been paid in cryptocurrency. WSJ reporter Dustin Volz joins host Zoe Thomas to discuss the strategy U.S. law enforcement used and why they say the new approach could better protect Americans.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>857</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[6cb0e3cc-0be7-11ed-a628-9fbc7f0f16be]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ8434752836.mp3?updated=1658732711" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Amazon Makes Bigger Push Into Healthcare by Buying One Medical</title>
+      <description>Amazon is making a renewed push into the healthcare space with a $3.9 billion deal to buy the company behind One Medical. Purchasing the operator of primary care clinics across the country could strengthen the e-commerce giant's footprint in the medical sector, but Amazon has stumbled in this space before. WSJ reporter Sebastian Herrera joins host Zoe Thomas to discuss the deal and why Amazon is spending big to get further into healthcare. 
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Fri, 22 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Amazon is making a renewed push into the healthcare space with a $3.9 billion deal to buy the company behind One Medical. Purchasing the operator of primary care clinics across the country could strengthen the e-commerce giant's footprint in the medical sector, but Amazon has stumbled in this space before. WSJ reporter Sebastian Herrera joins host Zoe Thomas to discuss the deal and why Amazon is spending big to get further into healthcare. 
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Amazon is making a <a href="https://www.wsj.com/articles/amazon-to-buy-one-medical-for-3-9-billion-11658408934?st=4ooj8i0w9vuk5ch&amp;reflink=desktopwebshare_permalink">renewed push into the healthcare space with a $3.9 billion deal to buy the company behind One Medical</a>. Purchasing the operator of primary care clinics across the country could strengthen the e-commerce giant's footprint in the medical sector, but Amazon has stumbled in this space before. WSJ reporter Sebastian Herrera joins host Zoe Thomas to discuss the deal and why Amazon is spending big to get further into healthcare. </p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>827</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[eed2fc72-098b-11ed-9920-df391b334839]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ8021929603.mp3?updated=1658473513" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>DoorDash, Uber Eats, GrubHub Change Tactics as Growth Slows</title>
+      <description>After years of rapid expansion, and a big boost from people staying home during the pandemic, food delivery giants in the U.S., like DoorDash and Uber Eats, are seeing their growth slow. WSJ reporter Preetika Rana joins host Zoe Thomas to discuss how food delivery companies are adapting as they confront high inflation and a potential economic downturn.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Thu, 21 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>After years of rapid expansion, and a big boost from people staying home during the pandemic, food delivery giants in the U.S., like DoorDash and Uber Eats, are seeing their growth slow. WSJ reporter Preetika Rana joins host Zoe Thomas to discuss how food delivery companies are adapting as they confront high inflation and a potential economic downturn.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>After years of rapid expansion, and a big boost from people staying home during the pandemic, food delivery giants in the U.S., like DoorDash and Uber Eats, <a href="https://www.wsj.com/articles/growth-cools-at-once-hot-food-delivery-apps-uber-eats-and-doordash-11658340167?st=yxh2121l9rk3n6c&amp;reflink=desktopwebshare_permalink">are seeing their growth slow</a>. WSJ reporter Preetika Rana joins host Zoe Thomas to discuss how food delivery companies are adapting as they confront high inflation and a potential economic downturn.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>778</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[c333d45c-08c2-11ed-8bf0-6fa30fe2efe1]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ1314151095.mp3?updated=1658387111" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Major Cyber Bug Poses ‘Endemic’ Risk, Despite Patch</title>
+      <description>A flaw discovered in a widely used piece of software, called Log4J, poses an “endemic” risk, according to a new government panel. In its inaugural report, the Cyber Safety Review Board said that, despite an available patch, the flaw in the software could expose computer systems to hackers for years to come. WSJ reporter Dustin Volz joins host Zoe Thomas to discuss why the risk remains and the goals of the new board behind the warning.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Wed, 20 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>A flaw discovered in a widely used piece of software, called Log4J, poses an “endemic” risk, according to a new government panel. In its inaugural report, the Cyber Safety Review Board said that, despite an available patch, the flaw in the software could expose computer systems to hackers for years to come. WSJ reporter Dustin Volz joins host Zoe Thomas to discuss why the risk remains and the goals of the new board behind the warning.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>A flaw discovered in a widely used piece of software, called Log4J, <a href="https://www.wsj.com/articles/major-cyber-bug-in-log4j-to-persist-as-endemic-risk-for-years-to-come-u-s-government-board-finds-11657796400?st=zz5jw7qmgrd8ph1&amp;reflink=desktopwebshare_permalink">poses an “endemic” risk</a>, according to a new government panel. In its inaugural report, the Cyber Safety Review Board said that, despite an available patch, the flaw in the software could expose computer systems to hackers for years to come. WSJ reporter Dustin Volz joins host Zoe Thomas to discuss why the risk remains and the goals of the new board behind the warning.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>870</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[9eeb63ea-07f9-11ed-aa33-f7b4bae5162e]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ2428014339.mp3?updated=1658300722" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Christie’s Bets on Future of Art and Tech as Crypto Market Stumbles</title>
+      <description>Christie's, the world’s largest auction house, has announced a new venture capital arm to invest in tech that helps art collectors. The move comes at a time when more people are questioning the value of art connected to the blockchain, like nonfungible tokens - NFTs. WSJ reporter Kelly Crow joins host Zoe Thomas to discuss why Christie’s is making this move now and what it means for the marriage of art and tech.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Tue, 19 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Christie's, the world’s largest auction house, has announced a new venture capital arm to invest in tech that helps art collectors. The move comes at a time when more people are questioning the value of art connected to the blockchain, like nonfungible tokens - NFTs. WSJ reporter Kelly Crow joins host Zoe Thomas to discuss why Christie’s is making this move now and what it means for the marriage of art and tech.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Christie's, the world’s largest auction house, <a href="https://www.wsj.com/articles/christies-venture-capital-nft-11657916141?st=aauxixqa8eesin7&amp;reflink=desktopwebshare_permalink">has announced a new venture capital arm to invest in tech that helps art collectors</a>. The move comes at a time when more people are questioning the value of art connected to the blockchain, like nonfungible tokens - NFTs. WSJ reporter Kelly Crow joins host Zoe Thomas to discuss why Christie’s is making this move now and what it means for the marriage of art and tech.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>839</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[6e3200de-0730-11ed-811a-3f35477459d6]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ5054439552.mp3?updated=1658214311" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>How to Keep Your Phone From Sharing Too Much Personal Data</title>
+      <description>We have a lot of personal information on our phones. And many apps may be collecting more information than you realize, all of which could be used by advertisers, law enforcement or hackers. WSJ personal tech columnist Nicole Nguyen joins host Zoe Thomas to discuss how to keep all that personal data safe.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Mon, 18 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>We have a lot of personal information on our phones. And many apps may be collecting more information than you realize, all of which could be used by advertisers, law enforcement or hackers. WSJ personal tech columnist Nicole Nguyen joins host Zoe Thomas to discuss how to keep all that personal data safe.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>We have a lot of personal information on our phones. And <a href="https://www.wsj.com/articles/worried-about-personal-data-leaks-heres-how-to-lock-down-your-phone-11656799748?st=mg0unk8mzxdd6l5&amp;reflink=desktopwebshare_permalink">many apps may be collecting more information than you realize</a>, all of which could be used by advertisers, law enforcement or hackers. WSJ personal tech columnist Nicole Nguyen joins host Zoe Thomas to discuss how to keep all that personal data safe.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>750</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[44d56858-0667-11ed-96e4-1b51414a26c1]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ3196425830.mp3?updated=1658127913" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Ukrainian Tech Bosses on the Sector’s Future</title>
+      <description>Ukraine’s tech sector was growing rapidly before Russia invaded earlier this year. How has Russia’s invasion changed the outlook? Two tech CEOs with Ukrainian workforces join host Zoe Thomas to discuss how they are coping and what they think the future of the sector could be after the fighting ends.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Fri, 15 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Ukraine’s tech sector was growing rapidly before Russia invaded earlier this year. How has Russia’s invasion changed the outlook? Two tech CEOs with Ukrainian workforces join host Zoe Thomas to discuss how they are coping and what they think the future of the sector could be after the fighting ends.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Ukraine’s tech sector was growing rapidly before Russia invaded earlier this year. How has Russia’s invasion changed the outlook? Two tech CEOs with Ukrainian workforces join host Zoe Thomas to discuss how they are coping and what they think the future of the sector could be after the fighting ends.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>1122</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[c7fceeda-040b-11ed-8927-ff3c0994b484]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ2989306439.mp3?updated=1657868717" length="0" type="audio/mpeg"/>
+    </item>
+    <item>
+      <title>Crypto Downturn Spells Trouble for Web3 Startups</title>
+      <description>Businesses that staked their value on digital tokens and the future of Web3 technology are struggling with the downturn in crypto. WSJ startups and venture-capital reporter Berber Jin joins host Zoe Thomas to discuss how investors are re-evaluating their faith in startups that promised to be the future of the internet.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</description>
+      <pubDate>Thu, 14 Jul 2022 07:00:00 -0000</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>The Wall Street Journal</itunes:author>
+      <itunes:subtitle/>
+      <itunes:summary>Businesses that staked their value on digital tokens and the future of Web3 technology are struggling with the downturn in crypto. WSJ startups and venture-capital reporter Berber Jin joins host Zoe Thomas to discuss how investors are re-evaluating their faith in startups that promised to be the future of the internet.
+
+Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
+      <content:encoded>
+        <![CDATA[<p>Businesses that staked their value on digital tokens and the future of Web3 technology are <a href="https://www.wsj.com/articles/crypto-rout-deflates-some-web3-startups-buoyed-by-push-into-digital-tokens-11657359180?st=3if84ggpi99kxsc&amp;reflink=desktopwebshare_permalink">struggling with the downturn in crypto</a>. WSJ startups and venture-capital reporter Berber Jin joins host Zoe Thomas to discuss how investors are re-evaluating their faith in startups that promised to be the future of the internet.</p>
+<p> </p><p>Learn more about your ad choices. Visit <a href="https://megaphone.fm/adchoices">megaphone.fm/adchoices</a></p>]]>
+      </content:encoded>
+      <itunes:duration>861</itunes:duration>
+      <guid isPermaLink="false"><![CDATA[9c23c5aa-0342-11ed-8f5c-8b13b476a065]]></guid>
+      <enclosure url="https://chrt.fm/track/1F1B1F/traffic.megaphone.fm/WSJ1191338341.mp3?updated=1657782315" length="0" type="audio/mpeg"/>
+    </item>
+  </channel>
+</rss>

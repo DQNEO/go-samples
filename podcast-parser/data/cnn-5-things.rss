@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:psc="https://podlove.org/simple-chapters/" xmlns:omny="https://omny.fm/rss-extensions" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:acast="https://schema.acast.com/1.0/" xmlns:podcast="https://podcastindex.org/namespace/1.0" version="2.0">
+  <channel>
+    <omny:organizationId>d83f52e4-2455-47f4-982e-ab790120b954</omny:organizationId>
+    <omny:programId>c60c7fde-12c3-42c0-b017-ab8601030664</omny:programId>
+    <omny:networkId>6c3f6632-9c03-4145-a56c-ab7a015ef6d0</omny:networkId>
+    <language>en-US</language>
+    <atom:link rel="self" type="application/rss+xml" href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/podcast.rss" />
+    <atom:link rel="next" type="application/rss+xml" href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/podcast.rss?page=2" />
+    <atom:link rel="first" type="application/rss+xml" href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/podcast.rss?page=1" />
+    <atom:link rel="last" type="application/rss+xml" href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/podcast.rss?page=3" />
+    <itunes:new-feed-url>https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/podcast.rss</itunes:new-feed-url>
+    <title>CNN 5 Things</title>
+    <link>https://cnn.com/audio/podcasts/5-things</link>
+    <description><![CDATA[<p>We bring you 5 stories that will get you up to speed and on with your day. Updates at 6am, 9am, 12pm, 5pm and 10pm Eastern, every weekday.</p>]]></description>
+    <itunes:type>episodic</itunes:type>
+    <itunes:summary>We bring you 5 stories that will get you up to speed and on with your day. Updates at 6am, 9am, 12pm, 5pm and 10pm Eastern, every weekday.</itunes:summary>
+    <itunes:owner>
+      <itunes:name>CNN</itunes:name>
+      <itunes:email>podcasts@cnn.com</itunes:email>
+    </itunes:owner>
+    <itunes:author>CNN</itunes:author>
+    <copyright>2022 CNN</copyright>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:category text="News">
+      <itunes:category text="Daily News" />
+    </itunes:category>
+    <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+    <image>
+      <url>https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large</url>
+      <title>CNN 5 Things</title>
+      <link>https://cnn.com/audio/podcasts/5-things</link>
+    </image>
+    <item>
+      <title>10 PM ET: Albuquerque killings, primary elections, Lyme disease vaccine &amp; more</title>
+      <itunes:title>10 PM ET: Albuquerque killings, primary elections, Lyme disease vaccine &amp; more</itunes:title>
+      <description><![CDATA[<p>Tonight, a suspect has been charged in connection to the recent killings of two Muslim men in Albuquerque, New Mexico. A series of large explosions rocked an area of a Russian airbase in Crimea. Four states held primary elections today – we have a look at some key races.  A Mississippi grand jury has declined to indict the White woman whose accusations led to the death of Emmett Till nearly 70 years ago. Lastly, Pfizer is developing the first potential vaccine against Lyme disease in the US in two decades.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>Tonight, a suspect has been charged in connection to the recent killings of two Muslim men in Albuquerque, New Mexico. A series of large explosions rocked an area of a Russian airbase in Crimea. Four states held primary elections today – we have a look at some key races.  A Mississippi grand jury has declined to indict the White woman whose accusations led to the death of Emmett Till nearly 70 years ago. Lastly, Pfizer is developing the first potential vaccine against Lyme disease in the US in two decades.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/ba5e78dd-79c0-41d6-b376-aeed001a4221/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/10-pm-et-albuquerque-killings-primary-elections-ly/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">ba5e78dd-79c0-41d6-b376-aeed001a4221</guid>
+      <omny:clipId>ba5e78dd-79c0-41d6-b376-aeed001a4221</omny:clipId>
+      <pubDate>Wed, 10 Aug 2022 01:46:08 +0000</pubDate>
+      <itunes:duration>266</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/ba5e78dd-79c0-41d6-b376-aeed001a4221/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="6449330" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/10-pm-et-albuquerque-killings-primary-elections-ly</link>
+    </item>
+    <item>
+      <title>5 PM ET: Semiconductor chips legislation, NATO membership measure, Gabby Petito’s case &amp; more</title>
+      <itunes:title>5 PM ET: Semiconductor chips legislation, NATO membership measure, Gabby Petito’s case &amp; more</itunes:title>
+      <description><![CDATA[<p>A bill that would help produce semiconductor chips in the US is now law. President Joe Biden has signed off on documents supporting Finland and Sweden’s bids to join NATO. A federal appeals court ruled that a House of Representatives committee can obtain former President Donald Trump’s tax returns. Gabby Petito's family is seeking tens of millions in damages from police in Utah - we'll tell you why. Lastly, the fashion designer Issey Miyake has died.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>A bill that would help produce semiconductor chips in the US is now law. President Joe Biden has signed off on documents supporting Finland and Sweden’s bids to join NATO. A federal appeals court ruled that a House of Representatives committee can obtain former President Donald Trump’s tax returns. Gabby Petito's family is seeking tens of millions in damages from police in Utah - we'll tell you why. Lastly, the fashion designer Issey Miyake has died.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/48bcfc9c-5752-4c36-826f-aeec01560792/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/5-pm-et-semiconductor-chips-legislation-nato-membe/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">48bcfc9c-5752-4c36-826f-aeec01560792</guid>
+      <omny:clipId>48bcfc9c-5752-4c36-826f-aeec01560792</omny:clipId>
+      <pubDate>Tue, 09 Aug 2022 20:56:00 +0000</pubDate>
+      <itunes:duration>251</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/48bcfc9c-5752-4c36-826f-aeec01560792/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="6099515" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/5-pm-et-semiconductor-chips-legislation-nato-membe</link>
+    </item>
+    <item>
+      <title>12 PM ET: Trump teases 2024, Serena Williams retiring, good inflation news &amp; more</title>
+      <itunes:title>12 PM ET: Trump teases 2024, Serena Williams retiring, good inflation news &amp; more</itunes:title>
+      <description><![CDATA[<p>The FBI executed a search warrant at former President Donald Trump’s resort in Florida and he’s expected to announce his 2024 run for president soon. The January 6 committee’s work continues – we’ll tell you who they’re talking to and what it has their hands on now. A tennis legend says she’s "evolving" away from the sport. The Biden administration is expected to announce a monkeypox plan. Plus, a new report shows online prices are falling fast.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>The FBI executed a search warrant at former President Donald Trump’s resort in Florida and he’s expected to announce his 2024 run for president soon. The January 6 committee’s work continues – we’ll tell you who they’re talking to and what it has their hands on now. A tennis legend says she’s "evolving" away from the sport. The Biden administration is expected to announce a monkeypox plan. Plus, a new report shows online prices are falling fast.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/02a07f51-e404-471e-a964-aeec0100fe47/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/12-pm-et-trump-teases-2024-serena-williams-retirin/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">02a07f51-e404-471e-a964-aeec0100fe47</guid>
+      <omny:clipId>02a07f51-e404-471e-a964-aeec0100fe47</omny:clipId>
+      <pubDate>Tue, 09 Aug 2022 15:45:00 +0000</pubDate>
+      <itunes:duration>268</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/02a07f51-e404-471e-a964-aeec0100fe47/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="6517042" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/12-pm-et-trump-teases-2024-serena-williams-retirin</link>
+    </item>
+    <item>
+      <title>9 AM ET: FBI search Mar-a-Lago, Wisconsin primary, Seoul flooding &amp; more</title>
+      <itunes:title>9 AM ET: FBI search Mar-a-Lago, Wisconsin primary, Seoul flooding &amp; more</itunes:title>
+      <description><![CDATA[<p>The fallout continues after the FBI executed a search warrant at former President Donald Trump's Florida resort. It's another primary day, and former Vice President Mike Pence is once again backing a different candidate to Trump. Russia says it won't fulfil part of a nuclear treaty with the US - we'll bring you the details. Three Palestinians have been killed in the West Bank. And record downpours in South Korea have killed several people.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>The fallout continues after the FBI executed a search warrant at former President Donald Trump's Florida resort. It's another primary day, and former Vice President Mike Pence is once again backing a different candidate to Trump. Russia says it won't fulfil part of a nuclear treaty with the US - we'll bring you the details. Three Palestinians have been killed in the West Bank. And record downpours in South Korea have killed several people.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/ca9fcb47-d9bd-4c80-b5a7-aeec00c64b67/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/9-am-et-fbi-search-mar-a-lago-wisconsin-primary-se/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">ca9fcb47-d9bd-4c80-b5a7-aeec00c64b67</guid>
+      <omny:clipId>ca9fcb47-d9bd-4c80-b5a7-aeec00c64b67</omny:clipId>
+      <pubDate>Tue, 09 Aug 2022 12:45:00 +0000</pubDate>
+      <itunes:duration>258</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/ca9fcb47-d9bd-4c80-b5a7-aeec00c64b67/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="6260615" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/9-am-et-fbi-search-mar-a-lago-wisconsin-primary-se</link>
+    </item>
+    <item>
+      <title>6 AM ET: Mar-a-Lago searched, 'Chernobyl-style' disaster warning, Albuquerque latest &amp; more</title>
+      <itunes:title>6 AM ET: Mar-a-Lago searched, 'Chernobyl-style' disaster warning, Albuquerque latest &amp; more</itunes:title>
+      <description><![CDATA[<p>The FBI has searched former President Donald Trump's Mar-a-Lago resort as part of an investigation into how he handled presidential documents. Ukrainian officials are warning of dire consequences after a weekend of shelling at Europe's largest power plant. In Albuquerque, police have released new information in connection with the killings of 4 South Asian, Muslim men. The fallout from House Speaker Nancy Pelosi's trip to Taiwan continues - now the island is doing its own military drills. Plus, Hollywood says goodbye to Olivia Newton-John.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>The FBI has searched former President Donald Trump's Mar-a-Lago resort as part of an investigation into how he handled presidential documents. Ukrainian officials are warning of dire consequences after a weekend of shelling at Europe's largest power plant. In Albuquerque, police have released new information in connection with the killings of 4 South Asian, Muslim men. The fallout from House Speaker Nancy Pelosi's trip to Taiwan continues - now the island is doing its own military drills. Plus, Hollywood says goodbye to Olivia Newton-John.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/897b1668-222b-4c18-8197-aeec00988284/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/6-am-et-mar-a-lago-searched-chernobyl-style-disast/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">897b1668-222b-4c18-8197-aeec00988284</guid>
+      <omny:clipId>897b1668-222b-4c18-8197-aeec00988284</omny:clipId>
+      <pubDate>Tue, 09 Aug 2022 09:45:00 +0000</pubDate>
+      <itunes:duration>260</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/897b1668-222b-4c18-8197-aeec00988284/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="6315805" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/6-am-et-mar-a-lago-searched-chernobyl-style-disast</link>
+    </item>
+    <item>
+      <title>10 PM ET: Mar-a-Lago raid, Muslim men killed, billionaire treasure hunt &amp; more</title>
+      <itunes:title>10 PM ET: Mar-a-Lago raid, Muslim men killed, billionaire treasure hunt &amp; more</itunes:title>
+      <description><![CDATA[<p>We begin with details on an FBI raid at former President Donald Trump’s Mar-a-lago resort in Florida. Police are trying to track down a vehicle that may be linked to the deaths of four Muslim men. We have new information on actress Anne Heche’s condition following a fiery car crash in California. “Grease” co-star, John Travolta, pays tribute to singer and actress Olivia Newton-John who died today. Lastly, the world’s richest men are on a treasure hunt.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>We begin with details on an FBI raid at former President Donald Trump’s Mar-a-lago resort in Florida. Police are trying to track down a vehicle that may be linked to the deaths of four Muslim men. We have new information on actress Anne Heche’s condition following a fiery car crash in California. “Grease” co-star, John Travolta, pays tribute to singer and actress Olivia Newton-John who died today. Lastly, the world’s richest men are on a treasure hunt.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/76cba59e-6082-4997-ab17-aeec0021d441/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/10-pm-et-mar-a-lago-raid-muslim-men-killed-billion/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">76cba59e-6082-4997-ab17-aeec0021d441</guid>
+      <omny:clipId>76cba59e-6082-4997-ab17-aeec0021d441</omny:clipId>
+      <pubDate>Tue, 09 Aug 2022 02:06:20 +0000</pubDate>
+      <itunes:duration>268</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/76cba59e-6082-4997-ab17-aeec0021d441/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="6514532" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/10-pm-et-mar-a-lago-raid-muslim-men-killed-billion</link>
+    </item>
+    <item>
+      <title>5 PM ET: Olivia Newton-John dies, Biden in Kentucky, Lake Mead remains &amp; more</title>
+      <itunes:title>5 PM ET: Olivia Newton-John dies, Biden in Kentucky, Lake Mead remains &amp; more</itunes:title>
+      <description><![CDATA[<p>We begin this evening with President Joe Biden and First Lady Jill Biden in Kentucky, where deadly flooding has killed dozens and displaced thousands. Ukraine and Russia are accusing one another of shelling around Europe's largest nuclear power plant. Ahmaud Arbery's killers have been sentenced for federal hate crimes charges -- we have the latest details. Officials have found a fourth set of human remains in Lake Mead, as persistent drought causes the water levels to recede. Plus, iconic actress and singer Olivia Newton-John has died at the age of 73.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>We begin this evening with President Joe Biden and First Lady Jill Biden in Kentucky, where deadly flooding has killed dozens and displaced thousands. Ukraine and Russia are accusing one another of shelling around Europe's largest nuclear power plant. Ahmaud Arbery's killers have been sentenced for federal hate crimes charges -- we have the latest details. Officials have found a fourth set of human remains in Lake Mead, as persistent drought causes the water levels to recede. Plus, iconic actress and singer Olivia Newton-John has died at the age of 73.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/96067aeb-1f18-49d1-9f71-aeeb015fa1dd/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/5-pm-et-olivia-newton-john-dies-biden-in-kentucky/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">96067aeb-1f18-49d1-9f71-aeeb015fa1dd</guid>
+      <omny:clipId>96067aeb-1f18-49d1-9f71-aeeb015fa1dd</omny:clipId>
+      <pubDate>Mon, 08 Aug 2022 21:25:07 +0000</pubDate>
+      <itunes:duration>260</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/96067aeb-1f18-49d1-9f71-aeeb015fa1dd/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="6314537" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/5-pm-et-olivia-newton-john-dies-biden-in-kentucky</link>
+    </item>
+    <item>
+      <title>12 PM ET: Limited insulin relief, abortion ban fight, Ahmaud Arbery's killer sentenced &amp; more</title>
+      <itunes:title>12 PM ET: Limited insulin relief, abortion ban fight, Ahmaud Arbery's killer sentenced &amp; more</itunes:title>
+      <description><![CDATA[<p>Senate democrats have finally passed a huge healthcare and climate spending bill, but there will be no cap on insulin prices for people with private healthcare. Taiwan's foreign minister has been speaking to CNN – we'll tell you what he thinks about China's military drills. Legal challenges are underway in Louisiana and Georgia to try to fight abortion bans. One of Ahmaud Arbery's killers has been sentenced again, this time for federal hate crimes. Plus, one airline is asking its senior staff to get their hands dirty. </p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>Senate democrats have finally passed a huge healthcare and climate spending bill, but there will be no cap on insulin prices for people with private healthcare. Taiwan's foreign minister has been speaking to CNN – we'll tell you what he thinks about China's military drills. Legal challenges are underway in Louisiana and Georgia to try to fight abortion bans. One of Ahmaud Arbery's killers has been sentenced again, this time for federal hate crimes. Plus, one airline is asking its senior staff to get their hands dirty. </p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/a4a7bce2-ce0a-4989-a60b-aeeb01051edb/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/12-pm-et-limited-insulin-relief-abortion-ban-fight/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">a4a7bce2-ce0a-4989-a60b-aeeb01051edb</guid>
+      <omny:clipId>a4a7bce2-ce0a-4989-a60b-aeeb01051edb</omny:clipId>
+      <pubDate>Mon, 08 Aug 2022 15:53:21 +0000</pubDate>
+      <itunes:duration>270</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/a4a7bce2-ce0a-4989-a60b-aeeb01051edb/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="6547147" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/12-pm-et-limited-insulin-relief-abortion-ban-fight</link>
+    </item>
+    <item>
+      <title>9 AM ET: Climate bill passes, another hot week, Albuquerque killings &amp; more</title>
+      <itunes:title>9 AM ET: Climate bill passes, another hot week, Albuquerque killings &amp; more</itunes:title>
+      <description><![CDATA[<p>Democrats have finally passed their $369 billion climate bill - we'll tell you why some climate activists don't think it goes far enough. President Joe Biden is visiting Kentucky today, in his first trip since recovering from Covid-19. Millions of Americans are under heat alerts today, with some expecting triple digits. In Albuquerque, investigators are looking into the killings of 4 Muslim men. Plus, NYC mayor Eric Adams says migrants are being forced to come to the city.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>Democrats have finally passed their $369 billion climate bill - we'll tell you why some climate activists don't think it goes far enough. President Joe Biden is visiting Kentucky today, in his first trip since recovering from Covid-19. Millions of Americans are under heat alerts today, with some expecting triple digits. In Albuquerque, investigators are looking into the killings of 4 Muslim men. Plus, NYC mayor Eric Adams says migrants are being forced to come to the city.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/9256db35-a7c2-4cea-85ee-aeeb00c72bbd/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/9-am-et-climate-bill-passes-another-hot-week-albuq/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">9256db35-a7c2-4cea-85ee-aeeb00c72bbd</guid>
+      <omny:clipId>9256db35-a7c2-4cea-85ee-aeeb00c72bbd</omny:clipId>
+      <pubDate>Mon, 08 Aug 2022 12:46:47 +0000</pubDate>
+      <itunes:duration>229</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/9256db35-a7c2-4cea-85ee-aeeb00c72bbd/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="5564716" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/9-am-et-climate-bill-passes-another-hot-week-albuq</link>
+    </item>
+    <item>
+      <title>6 AM ET: A win for Democrats, more flight delays, nuclear warnings &amp; more</title>
+      <itunes:title>6 AM ET: A win for Democrats, more flight delays, nuclear warnings &amp; more</itunes:title>
+      <description><![CDATA[<p>The Democrats have finally passed their climate, healthcare and tax package - but it wasn't easy. Thousands of flights were delayed and cancelled over the weekend. President Joe Biden has welcomed a ceasefire in Gaza, after strikes from Israeli forces and militants. Ukraine is accusing Russia of launching rockets at Europe's largest nuclear power plant. Plus, tributes are paid to an 80s TV actor.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>The Democrats have finally passed their climate, healthcare and tax package - but it wasn't easy. Thousands of flights were delayed and cancelled over the weekend. President Joe Biden has welcomed a ceasefire in Gaza, after strikes from Israeli forces and militants. Ukraine is accusing Russia of launching rockets at Europe's largest nuclear power plant. Plus, tributes are paid to an 80s TV actor.</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/fc1d231a-c941-407a-b003-aeeb0096e2ca/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/6-am-et-a-win-for-democrats-more-flight-delays-nuc/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">fc1d231a-c941-407a-b003-aeeb0096e2ca</guid>
+      <omny:clipId>fc1d231a-c941-407a-b003-aeeb0096e2ca</omny:clipId>
+      <pubDate>Mon, 08 Aug 2022 09:45:00 +0000</pubDate>
+      <itunes:duration>266</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/fc1d231a-c941-407a-b003-aeeb0096e2ca/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="6455594" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/6-am-et-a-win-for-democrats-more-flight-delays-nuc</link>
+    </item>
+    <item>
+      <title>Sunday Edition: Pelosi Visits Taiwan. China Fires Back.</title>
+      <itunes:title>Sunday Edition: Pelosi Visits Taiwan. China Fires Back.</itunes:title>
+      <description><![CDATA[<p>US House Speaker Nancy Pelosi touched down in Taiwan last week, ignoring warnings from both the Chinese government and the Biden administration. We examine the response from China's military, how the visit could further worsen US-China relations, and what it means for the millions of Taiwanese people caught in the middle.</p>
+<p>Guest: Will Ripley, CNN Senior International Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>US House Speaker Nancy Pelosi touched down in Taiwan last week, ignoring warnings from both the Chinese government and the Biden administration. We examine the response from China's military, how the visit could further worsen US-China relations, and what it means for the millions of Taiwanese people caught in the middle.</p>
+<p>Guest: Will Ripley, CNN Senior International Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/9af3c367-7d5c-49e6-82aa-aee80133ab01/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-pelosi-visits-taiwan-china-fires-ba/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">9af3c367-7d5c-49e6-82aa-aee80133ab01</guid>
+      <omny:clipId>9af3c367-7d5c-49e6-82aa-aee80133ab01</omny:clipId>
+      <pubDate>Sun, 07 Aug 2022 08:30:00 +0000</pubDate>
+      <itunes:duration>851</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/9af3c367-7d5c-49e6-82aa-aee80133ab01/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="20490630" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-pelosi-visits-taiwan-china-fires-ba</link>
+    </item>
+    <item>
+      <title>Sunday Edition: How Election Lies Are Fueling GOP Primaries</title>
+      <itunes:title>Sunday Edition: How Election Lies Are Fueling GOP Primaries</itunes:title>
+      <description><![CDATA[<p>Former President Donald Trump’s election lies are shaping Republican primary races across the country. Ahead of voting on Tuesday in Arizona, CNN traveled to the state to hear from Republican voters on who they’re backing, if the January 6th hearings are swaying their opinions, and who they want to lead the Republican party going forward.</p>
+<p>Guest: Donie O’Sullivan, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>Former President Donald Trump’s election lies are shaping Republican primary races across the country. Ahead of voting on Tuesday in Arizona, CNN traveled to the state to hear from Republican voters on who they’re backing, if the January 6th hearings are swaying their opinions, and who they want to lead the Republican party going forward.</p>
+<p>Guest: Donie O’Sullivan, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/4d7d6ba9-126d-4c96-bc4e-aee1013d450e/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-how-election-lies-are-fueling-gop-p/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">4d7d6ba9-126d-4c96-bc4e-aee1013d450e</guid>
+      <omny:clipId>4d7d6ba9-126d-4c96-bc4e-aee1013d450e</omny:clipId>
+      <pubDate>Sun, 31 Jul 2022 08:30:00 +0000</pubDate>
+      <itunes:duration>784</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/4d7d6ba9-126d-4c96-bc4e-aee1013d450e/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="18893821" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-how-election-lies-are-fueling-gop-p</link>
+    </item>
+    <item>
+      <title>Sunday Edition: What Really Happened in Uvalde?</title>
+      <itunes:title>Sunday Edition: What Really Happened in Uvalde?</itunes:title>
+      <description><![CDATA[<p>After months of waiting, families in Uvalde, Texas are finally getting answers about the law enforcement response to the mass shooting at Robb Elementary School. We examine the findings of a Texas House committee report, whether any officers will be held accountable for their inaction, and what Uvalde residents are demanding before the new school year.</p>
+<p>Guest<strong>:</strong> Rosa Flores, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>After months of waiting, families in Uvalde, Texas are finally getting answers about the law enforcement response to the mass shooting at Robb Elementary School. We examine the findings of a Texas House committee report, whether any officers will be held accountable for their inaction, and what Uvalde residents are demanding before the new school year.</p>
+<p>Guest<strong>:</strong> Rosa Flores, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/e5c12b51-31e0-4b43-9ef5-aeda014c270f/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-what-really-happened-in-uvalde/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">e5c12b51-31e0-4b43-9ef5-aeda014c270f</guid>
+      <omny:clipId>e5c12b51-31e0-4b43-9ef5-aeda014c270f</omny:clipId>
+      <pubDate>Sun, 24 Jul 2022 08:30:00 +0000</pubDate>
+      <itunes:duration>735</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/e5c12b51-31e0-4b43-9ef5-aeda014c270f/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="17703879" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-what-really-happened-in-uvalde</link>
+    </item>
+    <item>
+      <title>Sunday Edition: A Look Inside NASA’s ‘Cosmic Time Machine’</title>
+      <itunes:title>Sunday Edition: A Look Inside NASA’s ‘Cosmic Time Machine’</itunes:title>
+      <description><![CDATA[<p>Scientists were captivated when NASA released the first images taken by the James Webb Space Telescope, which included images of distant galaxies billions of light years away. We examine what they could tell us about the universe and what else the telescope will be looking for in the years to come.</p>
+<p>Guest: Ashley Strickland, CNN Space and Science Writer</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>Scientists were captivated when NASA released the first images taken by the James Webb Space Telescope, which included images of distant galaxies billions of light years away. We examine what they could tell us about the universe and what else the telescope will be looking for in the years to come.</p>
+<p>Guest: Ashley Strickland, CNN Space and Science Writer</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/89bb6389-1dca-44b4-b861-aed3014cc7cd/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-a-look-inside-nasa-s-cosmic-time-ma/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">89bb6389-1dca-44b4-b861-aed3014cc7cd</guid>
+      <omny:clipId>89bb6389-1dca-44b4-b861-aed3014cc7cd</omny:clipId>
+      <pubDate>Sun, 17 Jul 2022 08:30:00 +0000</pubDate>
+      <itunes:duration>704</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/89bb6389-1dca-44b4-b861-aed3014cc7cd/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="16972258" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-a-look-inside-nasa-s-cosmic-time-ma</link>
+    </item>
+    <item>
+      <title>Sunday Edition: What’s Behind Biden’s Saudi Shift?</title>
+      <itunes:title>Sunday Edition: What’s Behind Biden’s Saudi Shift?</itunes:title>
+      <description><![CDATA[<p>President Biden is scheduled to set out this week on an international trip which includes a stop in Saudi Arabia. We examine why Biden is re-engaging with the kingdom after vowing to make it a ‘pariah,’ and how the reset could have wide-ranging impacts from the Middle East to US gas pumps.</p>
+<p>Guest: Natasha Bertrand, CNN White House Reporter</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>President Biden is scheduled to set out this week on an international trip which includes a stop in Saudi Arabia. We examine why Biden is re-engaging with the kingdom after vowing to make it a ‘pariah,’ and how the reset could have wide-ranging impacts from the Middle East to US gas pumps.</p>
+<p>Guest: Natasha Bertrand, CNN White House Reporter</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/2104d9fe-315d-4390-b82d-aecc01363b5b/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-what-s-behind-biden-s-saudi-shift/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">2104d9fe-315d-4390-b82d-aecc01363b5b</guid>
+      <omny:clipId>2104d9fe-315d-4390-b82d-aecc01363b5b</omny:clipId>
+      <pubDate>Sun, 10 Jul 2022 08:30:00 +0000</pubDate>
+      <itunes:duration>831</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/2104d9fe-315d-4390-b82d-aecc01363b5b/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="20016663" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-what-s-behind-biden-s-saudi-shift</link>
+    </item>
+    <item>
+      <title>Sunday Edition: The State(s) of Abortion in America</title>
+      <itunes:title>Sunday Edition: The State(s) of Abortion in America</itunes:title>
+      <description><![CDATA[<p>In the days following the Supreme Court opinion which overturned Roe v. Wade,<strong> </strong>states have been left to decide how to regulate abortion. We examine the fallout in Missouri, where an abortion ban is forcing patients to travel across state lines for care and pushing local prosecutors to consider whether or not they’ll enforce it.</p>
+<p>Guest: Alexandra Field, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>In the days following the Supreme Court opinion which overturned Roe v. Wade,<strong> </strong>states have been left to decide how to regulate abortion. We examine the fallout in Missouri, where an abortion ban is forcing patients to travel across state lines for care and pushing local prosecutors to consider whether or not they’ll enforce it.</p>
+<p>Guest: Alexandra Field, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/ad863d64-ed90-431c-9da9-aec5015095cd/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-the-state-s-of-abortion-in-america/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">ad863d64-ed90-431c-9da9-aec5015095cd</guid>
+      <omny:clipId>ad863d64-ed90-431c-9da9-aec5015095cd</omny:clipId>
+      <pubDate>Sun, 03 Jul 2022 08:30:00 +0000</pubDate>
+      <itunes:duration>852</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/ad863d64-ed90-431c-9da9-aec5015095cd/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="20521346" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-the-state-s-of-abortion-in-america</link>
+    </item>
+    <item>
+      <title>Sunday Edition: How SCOTUS is Reshaping America</title>
+      <itunes:title>Sunday Edition: How SCOTUS is Reshaping America</itunes:title>
+      <description><![CDATA[<p>In a special extended Sunday edition of the 5 Things podcast, we take a look at a momentous week at the Supreme Court and the far-reaching impacts of two major rulings. First, we examine why the court’s conservative majority overturned Roe v. Wade, and what it means for women across the country. Then, in the wake of a major ruling on gun rights, we hear the story of an Oklahoma group that is actively trying to loosen weapon laws in the state, despite a spate of recent mass shootings and the passage of new federal gun legislation.</p>
+<p>Guest: Ariane de Vogue, CNN Supreme Court Reporter &amp; Elle Reeve, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>In a special extended Sunday edition of the 5 Things podcast, we take a look at a momentous week at the Supreme Court and the far-reaching impacts of two major rulings. First, we examine why the court’s conservative majority overturned Roe v. Wade, and what it means for women across the country. Then, in the wake of a major ruling on gun rights, we hear the story of an Oklahoma group that is actively trying to loosen weapon laws in the state, despite a spate of recent mass shootings and the passage of new federal gun legislation.</p>
+<p>Guest: Ariane de Vogue, CNN Supreme Court Reporter &amp; Elle Reeve, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/3e696852-b170-4c3b-9f59-aebf010597d3/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-how-scotus-is-reshaping-america/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">3e696852-b170-4c3b-9f59-aebf010597d3</guid>
+      <omny:clipId>3e696852-b170-4c3b-9f59-aebf010597d3</omny:clipId>
+      <pubDate>Sun, 26 Jun 2022 08:30:00 +0000</pubDate>
+      <itunes:duration>1400</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/3e696852-b170-4c3b-9f59-aebf010597d3/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="33683921" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-how-scotus-is-reshaping-america</link>
+    </item>
+    <item>
+      <title>Sunday Edition: Why Juneteenth is More Than a Day Off</title>
+      <itunes:title>Sunday Edition: Why Juneteenth is More Than a Day Off</itunes:title>
+      <description><![CDATA[<p>Today is Juneteenth, which marks the day in 1865 when slaves in Galveston, Texas learned of their freedom more than two years after the Emancipation Proclamation. We examine the its origins, how it became a federal holiday, and what happens when corporations try to commercialize a holiday Black Americans have been celebrating for over a century.</p>
+<p>Guest: Don Lemon, CNN Anchor</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>Today is Juneteenth, which marks the day in 1865 when slaves in Galveston, Texas learned of their freedom more than two years after the Emancipation Proclamation. We examine the its origins, how it became a federal holiday, and what happens when corporations try to commercialize a holiday Black Americans have been celebrating for over a century.</p>
+<p>Guest: Don Lemon, CNN Anchor</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/5a5b616f-2eb2-4b62-9228-aeb701155fc8/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-why-juneteenth-is-more-than-a-day-o/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">5a5b616f-2eb2-4b62-9228-aeb701155fc8</guid>
+      <omny:clipId>5a5b616f-2eb2-4b62-9228-aeb701155fc8</omny:clipId>
+      <pubDate>Sun, 19 Jun 2022 08:30:00 +0000</pubDate>
+      <itunes:duration>713</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/5a5b616f-2eb2-4b62-9228-aeb701155fc8/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="17179137" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-why-juneteenth-is-more-than-a-day-o</link>
+    </item>
+    <item>
+      <title>Sunday Edition: America and the AR-15</title>
+      <itunes:title>Sunday Edition: America and the AR-15</itunes:title>
+      <description><![CDATA[<p>After massacres in Uvalde and Buffalo, calls have grown louder to ban or restrict access to AR-15 style rifles. We examine what makes this weapon so lethal, how law enforcement has adjusted its tactics in response, and what Congress may be willing to do to further regulate it.</p>
+<p>Guest: Josh Campbell, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>After massacres in Uvalde and Buffalo, calls have grown louder to ban or restrict access to AR-15 style rifles. We examine what makes this weapon so lethal, how law enforcement has adjusted its tactics in response, and what Congress may be willing to do to further regulate it.</p>
+<p>Guest: Josh Campbell, CNN Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/6926dd94-bacd-4768-8802-aeb0012b6529/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-america-and-the-ar-15/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">6926dd94-bacd-4768-8802-aeb0012b6529</guid>
+      <omny:clipId>6926dd94-bacd-4768-8802-aeb0012b6529</omny:clipId>
+      <pubDate>Sun, 12 Jun 2022 08:30:00 +0000</pubDate>
+      <itunes:duration>738</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/6926dd94-bacd-4768-8802-aeb0012b6529/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="17777848" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-america-and-the-ar-15</link>
+    </item>
+    <item>
+      <title>Sunday Edition: The 1/6 Investigation Goes Primetime</title>
+      <itunes:title>Sunday Edition: The 1/6 Investigation Goes Primetime</itunes:title>
+      <description><![CDATA[<p>This week, the House select committee investigating the January 6 attack on the Capitol is set to kick off a series of high-profile public hearings. We examine what new ground these hearings will cover and look at what remains unanswered about what former President Donald Trump and his allies were doing before and during the riot.&nbsp;</p>
+<p>Guest:&nbsp;Ryan Nobles, CNN Congressional Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></description>
+      <content:encoded><![CDATA[<p>This week, the House select committee investigating the January 6 attack on the Capitol is set to kick off a series of high-profile public hearings. We examine what new ground these hearings will cover and look at what remains unanswered about what former President Donald Trump and his allies were doing before and during the riot.&nbsp;</p>
+<p>Guest:&nbsp;Ryan Nobles, CNN Congressional Correspondent</p><p>To learn more about how CNN protects listener privacy, visit <a href="https://cnn.com/privacy">cnn.com/privacy</a></p>]]></content:encoded>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:author>CNN</itunes:author>
+      <itunes:image href="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" />
+      <media:content url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/5be373f3-7b2c-448d-a0b6-aea90125465b/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" type="audio/mpeg">
+        <media:player url="https://omny.fm/shows/cnn-news-briefing/sunday-edition-the-1-6-investigation-goes-primetim/embed" />
+      </media:content>
+      <media:content url="https://www.omnycontent.com/d/playlist/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/d9d8c960-d59c-41c7-86a3-ab8601030664/image.jpg?t=1615226618&amp;size=Large" type="image/jpeg" />
+      <guid isPermaLink="false">5be373f3-7b2c-448d-a0b6-aea90125465b</guid>
+      <omny:clipId>5be373f3-7b2c-448d-a0b6-aea90125465b</omny:clipId>
+      <pubDate>Sun, 05 Jun 2022 08:00:00 +0000</pubDate>
+      <itunes:duration>701</itunes:duration>
+      <enclosure url="https://dts.podtrac.com/redirect.mp3/chtbl.com/track/E31CC9/traffic.omny.fm/d/clips/d83f52e4-2455-47f4-982e-ab790120b954/c60c7fde-12c3-42c0-b017-ab8601030664/5be373f3-7b2c-448d-a0b6-aea90125465b/audio.mp3?utm_source=Podcast&amp;in_playlist=d9d8c960-d59c-41c7-86a3-ab8601030664" length="16891371" type="audio/mpeg" />
+      <link>https://omny.fm/shows/cnn-news-briefing/sunday-edition-the-1-6-investigation-goes-primetim</link>
+    </item>
+  </channel>
+</rss>
