@@ -2,7 +2,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"os"
 	"time"
@@ -52,21 +51,8 @@ func main() {
 func renderHTML(cast *Podcast) {
 	t, err := template.New("webpage").Parse(tpl)
 	check(err)
-
 	err = t.Execute(os.Stdout, cast)
 	check(err)
-	return
-	fmt.Printf("Title=%s\n", cast.Title)
-	fmt.Printf("Image=%s\n", cast.ImageURL)
-	fmt.Printf("ItemsCount=%d\n", len(cast.Items))
-	cast.Items = cast.Items[0:3]
-	for i, item := range cast.Items {
-		fmt.Printf("======== Items.[%03d]============\n", i)
-		fmt.Printf("  Title=%s\n", item.Title)
-		fmt.Printf("  Published=%s\n", item.Published)
-		fmt.Printf("  Audio:%s\n", item.AudioURL)
-		fmt.Printf("  Duration:%s\n", item.Duration)
-	}
 }
 
 const tpl = `
