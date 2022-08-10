@@ -113,7 +113,7 @@ func main() {
 }
 
 func renderItems(items []*LineItem) {
-	t, err := template.New("webpage").Parse(htmlTemplateItems)
+	t, err := template.ParseFiles("tpl/index.html")
 	check(err)
 	type data struct {
 		Items []*LineItem
