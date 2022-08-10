@@ -2,12 +2,13 @@
 package main
 
 import (
+	"github.com/mmcdole/gofeed"
+	"gopkg.in/yaml.v3"
 	"html/template"
+	"io"
 	"os"
 	"sort"
 	"time"
-
-	"github.com/mmcdole/gofeed"
 )
 
 type Podcast struct {
@@ -53,25 +54,33 @@ func convPostcast(feed *gofeed.Feed) *Podcast {
 	return p
 }
 
+type FeedURL struct {
+	Name string
+	URL  string
+}
+
 func getPodcasts() []*Podcast {
-	d, err := os.Open("./data")
+	y, err := os.Open("./data/feeds.yaml")
+	if err != nil {
+		panic(err)
+	}
+	binYaml, err := io.ReadAll(y)
+	if err != nil {
+		panic(err)
+	}
+	var feeds []FeedURL
+	err = yaml.Unmarshal(binYaml, &feeds)
 	if err != nil {
 		panic(err)
 	}
 
-	rssFiles, err := d.Readdirnames(0)
-	if err != nil {
-		panic(err)
-	}
 	var casts []*Podcast
-	for _, r := range rssFiles {
-		fpath := "./data/" + r
-		f, err := os.Open(fpath)
+	for _, fd := range feeds {
+		fp := gofeed.NewParser()
+		feed, err := fp.ParseURL(fd.URL)
 		if err != nil {
 			panic(err)
 		}
-		fp := gofeed.NewParser()
-		feed, _ := fp.Parse(f)
 		cast := convPostcast(feed)
 		casts = append(casts, cast)
 	}
