@@ -29,7 +29,7 @@ func convPostcast(feed *gofeed.Feed) *Podcast {
 		ImageURL: feed.Image.URL,
 	}
 	var items []*Item
-	for _, item := range feed.Items {
+	for _, item := range feed.Items[0:5] {
 		items = append(items, &Item{
 			Title:     item.Title,
 			Published: item.PublishedParsed,
