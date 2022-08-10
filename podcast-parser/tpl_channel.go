@@ -1,6 +1,6 @@
 package main
 
-const htmlTemplateItems = `
+const htmlTemplate = `
 <!DOCTYPE html>
 <html>
 
@@ -19,16 +19,14 @@ const htmlTemplateItems = `
 
 	<body>
 	<div>
-	<h1>Listening English All The Time</h1>
+	<h1><img src="{{.ImageURL}}" width=64 height=64> {{.Title}}</h1>
+	
 	</div>
 	<ul>
 	{{range .Items}}
 		<li>
-		<img src="{{.ChannelImageURL}}" width=64 height=64> 
- 		{{.Published}} 
+ 		{{.Published}} - {{ .Title }} [{{.Duration}}]
 		<audio id="{{.Id}}" controls src="{{.AudioURL}}">Your browser does not support the audio element.</audio>
-		- {{ .Title }} - {{ .ChannelTitle }}
-		[{{.Duration}}]
 		</li>
 	{{else}}
 		<div><strong>no rows</strong></div>
