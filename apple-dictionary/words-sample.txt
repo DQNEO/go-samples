@@ -1,4 +1,5 @@
-go
-come
 wake
 sleep
+eat
+walk
+run
