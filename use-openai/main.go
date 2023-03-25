@@ -10,8 +10,9 @@ import (
 
 func main() {
 	client := openai.NewClient(os.Getenv("OPENAI_API_KEY"))
+	ctx := context.Background()
 	resp, err := client.CreateChatCompletion(
-		context.Background(),
+		ctx,
 		openai.ChatCompletionRequest{
 			Model: openai.GPT3Dot5Turbo,
 			Messages: []openai.ChatCompletionMessage{
