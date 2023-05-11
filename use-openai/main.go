@@ -11,9 +11,29 @@ import (
 func main() {
 	CreateChatCompletion()
 	CreateCompletion()
+	CreateTranscription()
 }
 
 var client = openai.NewClient(os.Getenv("OPENAI_API_KEY"))
+
+func CreateTranscription() {
+	ctx := context.Background()
+	if len(os.Args) < 2 {
+		panic("Please specify an audio file")
+	}
+	audioFilePath := os.Args[1]
+
+	req := openai.AudioRequest{
+		Model:    openai.Whisper1,
+		FilePath: audioFilePath,
+	}
+	resp, err := client.CreateTranscription(ctx, req)
+	if err != nil {
+		fmt.Printf("Transcription error: %v\n", err)
+		return
+	}
+	fmt.Println(resp.Text)
+}
 
 func CreateCompletion() {
 	fmt.Printf("CreateCompletion: ")
