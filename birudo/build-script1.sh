@@ -53,6 +53,11 @@ declare -A PKGS=(
 [unicode]="b029"
 )
 
+declare -A DEPENDS=(
+[fmt]="errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 "
+)
+
+
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 git status --porcelain
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
@@ -566,19 +571,13 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 function build_fmt() {
 wdir=$WORK/$1
 mkdir -p $wdir/
-cat >$wdir/importcfg << EOF # internal
-# import config
-packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile internal/fmtsort=$WORK/${PKGS[internal/fmtsort]}/_pkg_.a
-packagefile io=$WORK/${PKGS[io]}/_pkg_.a
-packagefile math=$WORK/${PKGS[math]}/_pkg_.a
-packagefile os=$WORK/${PKGS[os]}/_pkg_.a
-packagefile reflect=$WORK/${PKGS[reflect]}/_pkg_.a
-packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
-packagefile strconv=$WORK/${PKGS[strconv]}/_pkg_.a
-packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
-packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
-EOF
+(
+echo '# import config'
+for i in  ${DEPENDS[fmt]}
+do
+  echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
+done
+) >$wdir/importcfg
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p fmt -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $GORT/src/fmt/doc.go $GORT/src/fmt/errors.go $GORT/src/fmt/format.go $GORT/src/fmt/print.go $GORT/src/fmt/scan.go
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
