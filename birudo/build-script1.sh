@@ -547,52 +547,31 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/poll]}/_pkg_.a # internal
 
 
-function build_os() {
+function make_importcfg() {
 pkgname=$1
-bdir=${PKGS[$pkgname]}
-wdir=$WORK/$bdir
-mkdir -p $wdir/
-(
 echo '# import config'
 for i in  ${DEPENDS[$pkgname]}
 do
   echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
 done
-) >$wdir/importcfg
-
-files=""
-for i in ${FILES[$pkgname]}
-do
-  files="$files $GORT/src/$pkgname/$i"
-done
-
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std -buildid abcdefghijklmnopqrst/abcdefghijklmnopqrst -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
-$TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 }
 
-function build_fmt() {
+function build_pkg() {
 pkgname=$1
+complete=$2
 bdir=${PKGS[$pkgname]}
 wdir=$WORK/$bdir
 mkdir -p $wdir/
-(
-echo '# import config'
-for i in  ${DEPENDS[$pkgname]}
-do
-  echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
-done
-) >$wdir/importcfg
+make_importcfg $pkgname >$wdir/importcfg
 
 files=""
 for i in ${FILES[$pkgname]}
 do
   files="$files $GORT/src/$pkgname/$i"
 done
-
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std -complete -buildid abcdefghijklmnopqrst/abcdefghijklmnopqrst -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete -buildid abcdefghijklmnopqrst/abcdefghijklmnopqrst -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
-
 }
 
 
@@ -661,6 +640,6 @@ rm -r $wdir/
 }
 
 build_internal_fmtsort ${PKGS[internal/fmtsort]}
-build_os os
-build_fmt fmt
+build_pkg os ""
+build_pkg fmt -complete
 doLink
