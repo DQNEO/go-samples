@@ -59,6 +59,7 @@ declare -A DEPENDS=(
 [os]="errors internal/itoa internal/poll internal/safefilepath internal/syscall/execenv internal/syscall/unix internal/testlog io io/fs runtime sort sync sync/atomic syscall time"
 [internal/fmtsort]="reflect sort"
 [internal/coverage/rtcov]=""
+[internal/unsafeheader]=""
 )
 
 declare -A FILES=(
@@ -74,7 +75,7 @@ bdir=${PKGS[$pkgname]}
 wdir=$WORK/$bdir
 
 mkdir -p $wdir/
-make_importcfg $pkgname >$wdir/importcfg
+make_importcfg $pkgname
 
 files=""
 for i in ${FILES[$pkgname]}
@@ -88,12 +89,15 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 function make_importcfg() {
 pkgname=$1
+bdir=${PKGS[$pkgname]}
+wdir=$WORK/$bdir
+(
 echo '# import config'
 for i in  ${DEPENDS[$pkgname]}
 do
   echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
 done
-
+) >$wdir/importcfg
 }
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
@@ -101,7 +105,7 @@ cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 mkdir -p $WORK/${PKGS[internal/coverage/rtcov]}/
 mkdir -p $WORK/${PKGS[internal/unsafeheader]}/
 mkdir -p $WORK/${PKGS[internal/goarch]}/
-make_importcfg internal/coverage/rtcov >$WORK/${PKGS[internal/coverage/rtcov]}/importcfg
+make_importcfg internal/coverage/rtcov
 
 mkdir -p $WORK/${PKGS[internal/goos]}/
 cat >$WORK/${PKGS[internal/unsafeheader]}/importcfg << EOF # internal
@@ -566,7 +570,7 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/poll]}/_pkg_.a # internal
 function doLink() {
 wdir=$WORK/${PKGS[main]}
 mkdir -p $wdir/
-make_importcfg main >$wdir/importcfg
+make_importcfg main
 
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack ./main.go ./sum.go
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
