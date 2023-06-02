@@ -4,6 +4,7 @@ rm -f birudo
 export GOOS=linux
 export GOARCH=amd64
 WORK=/tmp/go-build1234567
+SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 TOOL_DIR=/usr/local/opt/go/libexec/pkg/tool/darwin_amd64
 CACHE_DIR=/Users/DQNEO/Library/Caches/go-build
 
@@ -21,7 +22,7 @@ mkdir -p $WORK/b014/
 cat >$WORK/b006/importcfg << EOF # internal
 # import config
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b006/_pkg_.a -trimpath "$WORK/b006=>" -p internal/unsafeheader -std -complete -buildid P7qFpguryEe_9bufASvc/P7qFpguryEe_9bufASvc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b006/importcfg -pack /usr/local/opt/go/libexec/src/internal/unsafeheader/unsafeheader.go
 $TOOL_DIR/compile -o $WORK/b012/_pkg_.a -trimpath "$WORK/b012=>" -p internal/coverage/rtcov -std -+ -complete -buildid Gk43QGhY-y2T4KaecSdc/Gk43QGhY-y2T4KaecSdc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b012/importcfg -pack /usr/local/opt/go/libexec/src/internal/coverage/rtcov/rtcov.go
 cat >$WORK/b005/importcfg << EOF # internal
@@ -69,7 +70,7 @@ cat >$WORK/b025/importcfg << EOF # internal
 # import config
 EOF
 mkdir -p $WORK/b023/
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b025/_pkg_.a -trimpath "$WORK/b025=>" -p unicode/utf8 -std -complete -buildid cSCUZ94vs3WynnuPq7bO/cSCUZ94vs3WynnuPq7bO -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b025/importcfg -pack /usr/local/opt/go/libexec/src/unicode/utf8/utf8.go
 $TOOL_DIR/compile -o $WORK/b021/_pkg_.a -trimpath "$WORK/b021=>" -p internal/itoa -std -complete -buildid KywV8ckBASs47DioyK2u/KywV8ckBASs47DioyK2u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b021/importcfg -pack /usr/local/opt/go/libexec/src/internal/itoa/itoa.go
 mkdir -p $WORK/b009/
@@ -87,7 +88,7 @@ EOF
 cat >$WORK/b018/importcfg << EOF # internal
 # import config
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b011/_pkg_.a -trimpath "$WORK/b011=>" -p internal/cpu -std -+ -buildid j9mgjw9q7aHUtebwQoGa/j9mgjw9q7aHUtebwQoGa -goversion go1.20.4 -symabis $WORK/b011/symabis -c=4 -nolocalimports -importcfg $WORK/b011/importcfg -pack -asmhdr $WORK/b011/go_asm.h /usr/local/opt/go/libexec/src/internal/cpu/cpu.go /usr/local/opt/go/libexec/src/internal/cpu/cpu_x86.go
 $TOOL_DIR/compile -o $WORK/b018/_pkg_.a -trimpath "$WORK/b018=>" -p runtime/internal/syscall -std -+ -buildid gZLMb57b8-GCtAQAQvdR/gZLMb57b8-GCtAQAQvdR -goversion go1.20.4 -symabis $WORK/b018/symabis -c=4 -nolocalimports -importcfg $WORK/b018/importcfg -pack -asmhdr $WORK/b018/go_asm.h /usr/local/opt/go/libexec/src/runtime/internal/syscall/defs_linux.go /usr/local/opt/go/libexec/src/runtime/internal/syscall/defs_linux_amd64.go /usr/local/opt/go/libexec/src/runtime/internal/syscall/syscall_linux.go
 cat >$WORK/b015/importcfg << EOF # internal
@@ -117,7 +118,7 @@ cat >$WORK/b017/importcfg << EOF # internal
 packagefile internal/goarch=$WORK/b005/_pkg_.a
 packagefile internal/goos=$WORK/b014/_pkg_.a
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b017/_pkg_.a -trimpath "$WORK/b017=>" -p runtime/internal/sys -std -+ -complete -buildid p57uPEDCp39nHZBklMoj/p57uPEDCp39nHZBklMoj -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b017/importcfg -pack /usr/local/opt/go/libexec/src/runtime/internal/sys/consts.go /usr/local/opt/go/libexec/src/runtime/internal/sys/consts_norace.go /usr/local/opt/go/libexec/src/runtime/internal/sys/intrinsics.go /usr/local/opt/go/libexec/src/runtime/internal/sys/intrinsics_common.go /usr/local/opt/go/libexec/src/runtime/internal/sys/nih.go /usr/local/opt/go/libexec/src/runtime/internal/sys/sys.go /usr/local/opt/go/libexec/src/runtime/internal/sys/zversion.go
 $TOOL_DIR/buildid -w $WORK/b023/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b025/_pkg_.a # internal
@@ -130,7 +131,7 @@ mkdir -p $WORK/b027/
 cat >$WORK/b027/importcfg << EOF # internal
 # import config
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b027/_pkg_.a -trimpath "$WORK/b027=>" -p internal/race -std -complete -buildid 6k_7JN4Ro6ano3CJO236/6k_7JN4Ro6ano3CJO236 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b027/importcfg -pack /usr/local/opt/go/libexec/src/internal/race/doc.go /usr/local/opt/go/libexec/src/internal/race/norace.go
 mkdir -p $WORK/b028/
 cp $WORK/b023/_pkg_.a $CACHE_DIR/8a/8a8af225f53e3267a0e84e9236afd493febe04b00f6a1ebca9a385425ec5eb8b-d # internal
@@ -149,7 +150,7 @@ cat >$WORK/b029/importcfg << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/runtime/internal/atomic
 $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/b015=>" -I $WORK/b015/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b015/atomic_amd64.o ./atomic_amd64.s
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b029/_pkg_.a -trimpath "$WORK/b029=>" -p unicode -std -complete -buildid H5EVtAclvmQgmtO5OIl1/H5EVtAclvmQgmtO5OIl1 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b029/importcfg -pack /usr/local/opt/go/libexec/src/unicode/casetables.go /usr/local/opt/go/libexec/src/unicode/digit.go /usr/local/opt/go/libexec/src/unicode/graphic.go /usr/local/opt/go/libexec/src/unicode/letter.go /usr/local/opt/go/libexec/src/unicode/tables.go
 cd /usr/local/opt/go/libexec/src/internal/abi
 $TOOL_DIR/pack r $WORK/b009/_pkg_.a $WORK/b009/abi_test.o # internal
@@ -163,7 +164,7 @@ cat >$WORK/b028/importcfg << EOF # internal
 # import config
 EOF
 $TOOL_DIR/buildid -w $WORK/b027/_pkg_.a # internal
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b028/_pkg_.a -trimpath "$WORK/b028=>" -p sync/atomic -std -buildid 8sTHEv3qeP6epKjkp86J/8sTHEv3qeP6epKjkp86J -goversion go1.20.4 -symabis $WORK/b028/symabis -c=4 -nolocalimports -importcfg $WORK/b028/importcfg -pack -asmhdr $WORK/b028/go_asm.h /usr/local/opt/go/libexec/src/sync/atomic/doc.go /usr/local/opt/go/libexec/src/sync/atomic/type.go /usr/local/opt/go/libexec/src/sync/atomic/value.go
 cp $WORK/b027/_pkg_.a $CACHE_DIR/8d/8d8748d628c00b0e17ec37c3b489e3f71aa648f54ebd42850107185a25c9c5d0-d # internal
 cp $WORK/b017/_pkg_.a $CACHE_DIR/89/894fd9e5b3ec676bfc6db7792d9a73a660cab83b1469ee8b0ec1c7ab471453f3-d # internal
@@ -185,7 +186,7 @@ cat >$WORK/b010/importcfg << EOF # internal
 packagefile internal/cpu=$WORK/b011/_pkg_.a
 EOF
 mkdir -p $WORK/b022/
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b010/_pkg_.a -trimpath "$WORK/b010=>" -p internal/bytealg -std -+ -buildid OWPwmEGblMug2ig95x_j/OWPwmEGblMug2ig95x_j -goversion go1.20.4 -symabis $WORK/b010/symabis -c=4 -nolocalimports -importcfg $WORK/b010/importcfg -pack -asmhdr $WORK/b010/go_asm.h /usr/local/opt/go/libexec/src/internal/bytealg/bytealg.go /usr/local/opt/go/libexec/src/internal/bytealg/compare_native.go /usr/local/opt/go/libexec/src/internal/bytealg/count_native.go /usr/local/opt/go/libexec/src/internal/bytealg/equal_generic.go /usr/local/opt/go/libexec/src/internal/bytealg/equal_native.go /usr/local/opt/go/libexec/src/internal/bytealg/index_amd64.go /usr/local/opt/go/libexec/src/internal/bytealg/index_native.go /usr/local/opt/go/libexec/src/internal/bytealg/indexbyte_native.go
 cat >$WORK/b022/go_asm.h << EOF # internal
 EOF
@@ -198,7 +199,7 @@ cat >$WORK/b022/importcfg << EOF # internal
 packagefile internal/cpu=$WORK/b011/_pkg_.a
 packagefile math/bits=$WORK/b023/_pkg_.a
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b022/_pkg_.a -trimpath "$WORK/b022=>" -p math -std -buildid M2k9bU3HlBq2CeX7eecL/M2k9bU3HlBq2CeX7eecL -goversion go1.20.4 -symabis $WORK/b022/symabis -c=4 -nolocalimports -importcfg $WORK/b022/importcfg -pack -asmhdr $WORK/b022/go_asm.h /usr/local/opt/go/libexec/src/math/abs.go /usr/local/opt/go/libexec/src/math/acosh.go /usr/local/opt/go/libexec/src/math/asin.go /usr/local/opt/go/libexec/src/math/asinh.go /usr/local/opt/go/libexec/src/math/atan.go /usr/local/opt/go/libexec/src/math/atan2.go /usr/local/opt/go/libexec/src/math/atanh.go /usr/local/opt/go/libexec/src/math/bits.go /usr/local/opt/go/libexec/src/math/cbrt.go /usr/local/opt/go/libexec/src/math/const.go /usr/local/opt/go/libexec/src/math/copysign.go /usr/local/opt/go/libexec/src/math/dim.go /usr/local/opt/go/libexec/src/math/dim_asm.go /usr/local/opt/go/libexec/src/math/erf.go /usr/local/opt/go/libexec/src/math/erfinv.go /usr/local/opt/go/libexec/src/math/exp.go /usr/local/opt/go/libexec/src/math/exp2_noasm.go /usr/local/opt/go/libexec/src/math/exp_amd64.go /usr/local/opt/go/libexec/src/math/exp_asm.go /usr/local/opt/go/libexec/src/math/expm1.go /usr/local/opt/go/libexec/src/math/floor.go /usr/local/opt/go/libexec/src/math/floor_asm.go /usr/local/opt/go/libexec/src/math/fma.go /usr/local/opt/go/libexec/src/math/frexp.go /usr/local/opt/go/libexec/src/math/gamma.go /usr/local/opt/go/libexec/src/math/hypot.go /usr/local/opt/go/libexec/src/math/hypot_asm.go /usr/local/opt/go/libexec/src/math/j0.go /usr/local/opt/go/libexec/src/math/j1.go /usr/local/opt/go/libexec/src/math/jn.go /usr/local/opt/go/libexec/src/math/ldexp.go /usr/local/opt/go/libexec/src/math/lgamma.go /usr/local/opt/go/libexec/src/math/log.go /usr/local/opt/go/libexec/src/math/log10.go /usr/local/opt/go/libexec/src/math/log1p.go /usr/local/opt/go/libexec/src/math/log_asm.go /usr/local/opt/go/libexec/src/math/logb.go /usr/local/opt/go/libexec/src/math/mod.go /usr/local/opt/go/libexec/src/math/modf.go /usr/local/opt/go/libexec/src/math/modf_noasm.go /usr/local/opt/go/libexec/src/math/nextafter.go /usr/local/opt/go/libexec/src/math/pow.go /usr/local/opt/go/libexec/src/math/pow10.go /usr/local/opt/go/libexec/src/math/remainder.go /usr/local/opt/go/libexec/src/math/signbit.go /usr/local/opt/go/libexec/src/math/sin.go /usr/local/opt/go/libexec/src/math/sincos.go /usr/local/opt/go/libexec/src/math/sinh.go /usr/local/opt/go/libexec/src/math/sqrt.go /usr/local/opt/go/libexec/src/math/stubs.go /usr/local/opt/go/libexec/src/math/tan.go /usr/local/opt/go/libexec/src/math/tanh.go /usr/local/opt/go/libexec/src/math/trig_reduce.go /usr/local/opt/go/libexec/src/math/unsafe.go
 cd /usr/local/opt/go/libexec/src/sync/atomic
 $TOOL_DIR/pack r $WORK/b028/_pkg_.a $WORK/b028/asm.o # internal
@@ -235,7 +236,7 @@ packagefile runtime/internal/sys=$WORK/b017/_pkg_.a
 packagefile runtime/internal/syscall=$WORK/b018/_pkg_.a
 EOF
 $TOOL_DIR/buildid -w $WORK/b029/_pkg_.a # internal
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b008/_pkg_.a -trimpath "$WORK/b008=>" -p runtime -std -+ -buildid Njl5lkeGSG8PAp_cny9y/Njl5lkeGSG8PAp_cny9y -goversion go1.20.4 -symabis $WORK/b008/symabis -c=4 -nolocalimports -importcfg $WORK/b008/importcfg -pack -asmhdr $WORK/b008/go_asm.h /usr/local/opt/go/libexec/src/runtime/alg.go /usr/local/opt/go/libexec/src/runtime/arena.go /usr/local/opt/go/libexec/src/runtime/asan0.go /usr/local/opt/go/libexec/src/runtime/atomic_pointer.go /usr/local/opt/go/libexec/src/runtime/cgo.go /usr/local/opt/go/libexec/src/runtime/cgo_mmap.go /usr/local/opt/go/libexec/src/runtime/cgo_sigaction.go /usr/local/opt/go/libexec/src/runtime/cgocall.go /usr/local/opt/go/libexec/src/runtime/cgocallback.go /usr/local/opt/go/libexec/src/runtime/cgocheck.go /usr/local/opt/go/libexec/src/runtime/chan.go /usr/local/opt/go/libexec/src/runtime/checkptr.go /usr/local/opt/go/libexec/src/runtime/compiler.go /usr/local/opt/go/libexec/src/runtime/complex.go /usr/local/opt/go/libexec/src/runtime/covercounter.go /usr/local/opt/go/libexec/src/runtime/covermeta.go /usr/local/opt/go/libexec/src/runtime/cpuflags.go /usr/local/opt/go/libexec/src/runtime/cpuflags_amd64.go /usr/local/opt/go/libexec/src/runtime/cpuprof.go /usr/local/opt/go/libexec/src/runtime/cputicks.go /usr/local/opt/go/libexec/src/runtime/create_file_unix.go /usr/local/opt/go/libexec/src/runtime/debug.go /usr/local/opt/go/libexec/src/runtime/debugcall.go /usr/local/opt/go/libexec/src/runtime/debuglog.go /usr/local/opt/go/libexec/src/runtime/debuglog_off.go /usr/local/opt/go/libexec/src/runtime/defs_linux_amd64.go /usr/local/opt/go/libexec/src/runtime/env_posix.go /usr/local/opt/go/libexec/src/runtime/error.go /usr/local/opt/go/libexec/src/runtime/exithook.go /usr/local/opt/go/libexec/src/runtime/extern.go /usr/local/opt/go/libexec/src/runtime/fastlog2.go /usr/local/opt/go/libexec/src/runtime/fastlog2table.go /usr/local/opt/go/libexec/src/runtime/float.go /usr/local/opt/go/libexec/src/runtime/hash64.go /usr/local/opt/go/libexec/src/runtime/heapdump.go /usr/local/opt/go/libexec/src/runtime/histogram.go /usr/local/opt/go/libexec/src/runtime/iface.go /usr/local/opt/go/libexec/src/runtime/lfstack.go /usr/local/opt/go/libexec/src/runtime/lfstack_64bit.go /usr/local/opt/go/libexec/src/runtime/lock_futex.go /usr/local/opt/go/libexec/src/runtime/lockrank.go /usr/local/opt/go/libexec/src/runtime/lockrank_off.go /usr/local/opt/go/libexec/src/runtime/malloc.go /usr/local/opt/go/libexec/src/runtime/map.go /usr/local/opt/go/libexec/src/runtime/map_fast32.go /usr/local/opt/go/libexec/src/runtime/map_fast64.go /usr/local/opt/go/libexec/src/runtime/map_faststr.go /usr/local/opt/go/libexec/src/runtime/mbarrier.go /usr/local/opt/go/libexec/src/runtime/mbitmap.go /usr/local/opt/go/libexec/src/runtime/mcache.go /usr/local/opt/go/libexec/src/runtime/mcentral.go /usr/local/opt/go/libexec/src/runtime/mcheckmark.go /usr/local/opt/go/libexec/src/runtime/mem.go /usr/local/opt/go/libexec/src/runtime/mem_linux.go /usr/local/opt/go/libexec/src/runtime/metrics.go /usr/local/opt/go/libexec/src/runtime/mfinal.go /usr/local/opt/go/libexec/src/runtime/mfixalloc.go /usr/local/opt/go/libexec/src/runtime/mgc.go /usr/local/opt/go/libexec/src/runtime/mgclimit.go /usr/local/opt/go/libexec/src/runtime/mgcmark.go /usr/local/opt/go/libexec/src/runtime/mgcpacer.go /usr/local/opt/go/libexec/src/runtime/mgcscavenge.go /usr/local/opt/go/libexec/src/runtime/mgcstack.go /usr/local/opt/go/libexec/src/runtime/mgcsweep.go /usr/local/opt/go/libexec/src/runtime/mgcwork.go /usr/local/opt/go/libexec/src/runtime/mheap.go /usr/local/opt/go/libexec/src/runtime/mpagealloc.go /usr/local/opt/go/libexec/src/runtime/mpagealloc_64bit.go /usr/local/opt/go/libexec/src/runtime/mpagecache.go /usr/local/opt/go/libexec/src/runtime/mpallocbits.go /usr/local/opt/go/libexec/src/runtime/mprof.go /usr/local/opt/go/libexec/src/runtime/mranges.go /usr/local/opt/go/libexec/src/runtime/msan0.go /usr/local/opt/go/libexec/src/runtime/msize.go /usr/local/opt/go/libexec/src/runtime/mspanset.go /usr/local/opt/go/libexec/src/runtime/mstats.go /usr/local/opt/go/libexec/src/runtime/mwbbuf.go /usr/local/opt/go/libexec/src/runtime/nbpipe_pipe2.go /usr/local/opt/go/libexec/src/runtime/netpoll.go /usr/local/opt/go/libexec/src/runtime/netpoll_epoll.go /usr/local/opt/go/libexec/src/runtime/os_linux.go /usr/local/opt/go/libexec/src/runtime/os_linux_generic.go /usr/local/opt/go/libexec/src/runtime/os_linux_noauxv.go /usr/local/opt/go/libexec/src/runtime/os_linux_x86.go /usr/local/opt/go/libexec/src/runtime/os_nonopenbsd.go /usr/local/opt/go/libexec/src/runtime/pagetrace_off.go /usr/local/opt/go/libexec/src/runtime/panic.go /usr/local/opt/go/libexec/src/runtime/plugin.go /usr/local/opt/go/libexec/src/runtime/preempt.go /usr/local/opt/go/libexec/src/runtime/preempt_nonwindows.go /usr/local/opt/go/libexec/src/runtime/print.go /usr/local/opt/go/libexec/src/runtime/proc.go /usr/local/opt/go/libexec/src/runtime/profbuf.go /usr/local/opt/go/libexec/src/runtime/proflabel.go /usr/local/opt/go/libexec/src/runtime/race0.go /usr/local/opt/go/libexec/src/runtime/rdebug.go /usr/local/opt/go/libexec/src/runtime/relax_stub.go /usr/local/opt/go/libexec/src/runtime/retry.go /usr/local/opt/go/libexec/src/runtime/runtime.go /usr/local/opt/go/libexec/src/runtime/runtime1.go /usr/local/opt/go/libexec/src/runtime/runtime2.go /usr/local/opt/go/libexec/src/runtime/runtime_boring.go /usr/local/opt/go/libexec/src/runtime/rwmutex.go /usr/local/opt/go/libexec/src/runtime/select.go /usr/local/opt/go/libexec/src/runtime/sema.go /usr/local/opt/go/libexec/src/runtime/signal_amd64.go /usr/local/opt/go/libexec/src/runtime/signal_linux_amd64.go /usr/local/opt/go/libexec/src/runtime/signal_unix.go /usr/local/opt/go/libexec/src/runtime/sigqueue.go /usr/local/opt/go/libexec/src/runtime/sigqueue_note.go /usr/local/opt/go/libexec/src/runtime/sigtab_linux_generic.go /usr/local/opt/go/libexec/src/runtime/sizeclasses.go /usr/local/opt/go/libexec/src/runtime/slice.go /usr/local/opt/go/libexec/src/runtime/softfloat64.go /usr/local/opt/go/libexec/src/runtime/stack.go /usr/local/opt/go/libexec/src/runtime/stkframe.go /usr/local/opt/go/libexec/src/runtime/string.go /usr/local/opt/go/libexec/src/runtime/stubs.go /usr/local/opt/go/libexec/src/runtime/stubs2.go /usr/local/opt/go/libexec/src/runtime/stubs3.go /usr/local/opt/go/libexec/src/runtime/stubs_amd64.go /usr/local/opt/go/libexec/src/runtime/stubs_linux.go /usr/local/opt/go/libexec/src/runtime/symtab.go /usr/local/opt/go/libexec/src/runtime/sys_nonppc64x.go /usr/local/opt/go/libexec/src/runtime/sys_x86.go /usr/local/opt/go/libexec/src/runtime/time.go /usr/local/opt/go/libexec/src/runtime/time_nofake.go /usr/local/opt/go/libexec/src/runtime/timeasm.go /usr/local/opt/go/libexec/src/runtime/tls_stub.go /usr/local/opt/go/libexec/src/runtime/trace.go /usr/local/opt/go/libexec/src/runtime/traceback.go /usr/local/opt/go/libexec/src/runtime/type.go /usr/local/opt/go/libexec/src/runtime/typekind.go /usr/local/opt/go/libexec/src/runtime/unsafe.go /usr/local/opt/go/libexec/src/runtime/utf8.go /usr/local/opt/go/libexec/src/runtime/vdso_elf64.go /usr/local/opt/go/libexec/src/runtime/vdso_linux.go /usr/local/opt/go/libexec/src/runtime/vdso_linux_amd64.go /usr/local/opt/go/libexec/src/runtime/write_err.go
 cd /usr/local/opt/go/libexec/src/math
 $TOOL_DIR/asm -p math -trimpath "$WORK/b022=>" -I $WORK/b022/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b022/exp_amd64.o ./exp_amd64.s
@@ -272,7 +273,7 @@ packagefile internal/race=$WORK/b027/_pkg_.a
 packagefile runtime=$WORK/b008/_pkg_.a
 packagefile sync/atomic=$WORK/b028/_pkg_.a
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b026/_pkg_.a -trimpath "$WORK/b026=>" -p sync -std -buildid awcGvD6YFJooe2gt9uJS/awcGvD6YFJooe2gt9uJS -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b026/importcfg -pack /usr/local/opt/go/libexec/src/sync/cond.go /usr/local/opt/go/libexec/src/sync/map.go /usr/local/opt/go/libexec/src/sync/mutex.go /usr/local/opt/go/libexec/src/sync/once.go /usr/local/opt/go/libexec/src/sync/pool.go /usr/local/opt/go/libexec/src/sync/poolqueue.go /usr/local/opt/go/libexec/src/sync/runtime.go /usr/local/opt/go/libexec/src/sync/runtime2.go /usr/local/opt/go/libexec/src/sync/rwmutex.go /usr/local/opt/go/libexec/src/sync/waitgroup.go
 cat >$WORK/b004/importcfg << EOF # internal
 # import config
@@ -303,7 +304,7 @@ cat >$WORK/b003/importcfg << EOF # internal
 # import config
 packagefile internal/reflectlite=$WORK/b004/_pkg_.a
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b003/_pkg_.a -trimpath "$WORK/b003=>" -p errors -std -complete -buildid F_mcCqBziAv01tav5M2I/F_mcCqBziAv01tav5M2I -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b003/importcfg -pack /usr/local/opt/go/libexec/src/errors/errors.go /usr/local/opt/go/libexec/src/errors/join.go /usr/local/opt/go/libexec/src/errors/wrap.go
 cat >$WORK/b030/importcfg << EOF # internal
 # import config
@@ -377,7 +378,7 @@ packagefile runtime=$WORK/b008/_pkg_.a
 packagefile sync=$WORK/b026/_pkg_.a
 packagefile sync/atomic=$WORK/b028/_pkg_.a
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b035/_pkg_.a -trimpath "$WORK/b035=>" -p syscall -std -buildid Gf1emYuyeATzm8AHyHFR/Gf1emYuyeATzm8AHyHFR -goversion go1.20.4 -symabis $WORK/b035/symabis -c=4 -nolocalimports -importcfg $WORK/b035/importcfg -pack -asmhdr $WORK/b035/go_asm.h /usr/local/opt/go/libexec/src/syscall/asan0.go /usr/local/opt/go/libexec/src/syscall/dirent.go /usr/local/opt/go/libexec/src/syscall/endian_little.go /usr/local/opt/go/libexec/src/syscall/env_unix.go /usr/local/opt/go/libexec/src/syscall/exec_linux.go /usr/local/opt/go/libexec/src/syscall/exec_unix.go /usr/local/opt/go/libexec/src/syscall/flock.go /usr/local/opt/go/libexec/src/syscall/lsf_linux.go /usr/local/opt/go/libexec/src/syscall/msan0.go /usr/local/opt/go/libexec/src/syscall/net.go /usr/local/opt/go/libexec/src/syscall/netlink_linux.go /usr/local/opt/go/libexec/src/syscall/rlimit.go /usr/local/opt/go/libexec/src/syscall/rlimit_stub.go /usr/local/opt/go/libexec/src/syscall/setuidgid_linux.go /usr/local/opt/go/libexec/src/syscall/sockcmsg_linux.go /usr/local/opt/go/libexec/src/syscall/sockcmsg_unix.go /usr/local/opt/go/libexec/src/syscall/sockcmsg_unix_other.go /usr/local/opt/go/libexec/src/syscall/syscall.go /usr/local/opt/go/libexec/src/syscall/syscall_linux.go /usr/local/opt/go/libexec/src/syscall/syscall_linux_accept4.go /usr/local/opt/go/libexec/src/syscall/syscall_linux_amd64.go /usr/local/opt/go/libexec/src/syscall/syscall_unix.go /usr/local/opt/go/libexec/src/syscall/time_nofake.go /usr/local/opt/go/libexec/src/syscall/timestruct.go /usr/local/opt/go/libexec/src/syscall/zerrors_linux_amd64.go /usr/local/opt/go/libexec/src/syscall/zsyscall_linux_amd64.go /usr/local/opt/go/libexec/src/syscall/zsysnum_linux_amd64.go /usr/local/opt/go/libexec/src/syscall/ztypes_linux_amd64.go
 $TOOL_DIR/buildid -w $WORK/b024/_pkg_.a # internal
 cp $WORK/b024/_pkg_.a $CACHE_DIR/1a/1ad0a4bf26d6a401443abecef2c0d58a39aa53cee9a04b799ed3b380005d7b6a-d # internal
@@ -401,7 +402,7 @@ packagefile sync=$WORK/b026/_pkg_.a
 packagefile unicode=$WORK/b029/_pkg_.a
 packagefile unicode/utf8=$WORK/b025/_pkg_.a
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b020/_pkg_.a -trimpath "$WORK/b020=>" -p reflect -std -buildid nIapndKG10ZTabsNBtM3/nIapndKG10ZTabsNBtM3 -goversion go1.20.4 -symabis $WORK/b020/symabis -c=4 -nolocalimports -importcfg $WORK/b020/importcfg -pack -asmhdr $WORK/b020/go_asm.h /usr/local/opt/go/libexec/src/reflect/abi.go /usr/local/opt/go/libexec/src/reflect/deepequal.go /usr/local/opt/go/libexec/src/reflect/float32reg_generic.go /usr/local/opt/go/libexec/src/reflect/makefunc.go /usr/local/opt/go/libexec/src/reflect/swapper.go /usr/local/opt/go/libexec/src/reflect/type.go /usr/local/opt/go/libexec/src/reflect/value.go /usr/local/opt/go/libexec/src/reflect/visiblefields.go
 cd /usr/local/opt/go/libexec/src/syscall
 $TOOL_DIR/asm -p syscall -trimpath "$WORK/b035=>" -I $WORK/b035/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b035/asm_linux_amd64.o ./asm_linux_amd64.s
@@ -413,7 +414,7 @@ cat >$WORK/b039/importcfg << EOF # internal
 # import config
 packagefile syscall=$WORK/b035/_pkg_.a
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b039/_pkg_.a -trimpath "$WORK/b039=>" -p internal/syscall/execenv -std -complete -buildid 9v4cH9-eclFZmCPdzfl0/9v4cH9-eclFZmCPdzfl0 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b039/importcfg -pack /usr/local/opt/go/libexec/src/internal/syscall/execenv/execenv_default.go
 mkdir -p $WORK/b034/
 mkdir -p $WORK/b037/
@@ -463,7 +464,7 @@ packagefile sync/atomic=$WORK/b028/_pkg_.a
 packagefile syscall=$WORK/b035/_pkg_.a
 packagefile time=$WORK/b037/_pkg_.a
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b033/_pkg_.a -trimpath "$WORK/b033=>" -p internal/poll -std -buildid z1T_88ivNUFrGnA9-Iwx/z1T_88ivNUFrGnA9-Iwx -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b033/importcfg -pack /usr/local/opt/go/libexec/src/internal/poll/copy_file_range_linux.go /usr/local/opt/go/libexec/src/internal/poll/errno_unix.go /usr/local/opt/go/libexec/src/internal/poll/fcntl_syscall.go /usr/local/opt/go/libexec/src/internal/poll/fd.go /usr/local/opt/go/libexec/src/internal/poll/fd_fsync_posix.go /usr/local/opt/go/libexec/src/internal/poll/fd_mutex.go /usr/local/opt/go/libexec/src/internal/poll/fd_poll_runtime.go /usr/local/opt/go/libexec/src/internal/poll/fd_posix.go /usr/local/opt/go/libexec/src/internal/poll/fd_unix.go /usr/local/opt/go/libexec/src/internal/poll/fd_writev_unix.go /usr/local/opt/go/libexec/src/internal/poll/hook_cloexec.go /usr/local/opt/go/libexec/src/internal/poll/hook_unix.go /usr/local/opt/go/libexec/src/internal/poll/iovec_unix.go /usr/local/opt/go/libexec/src/internal/poll/sendfile_linux.go /usr/local/opt/go/libexec/src/internal/poll/sock_cloexec.go /usr/local/opt/go/libexec/src/internal/poll/sockopt.go /usr/local/opt/go/libexec/src/internal/poll/sockopt_linux.go /usr/local/opt/go/libexec/src/internal/poll/sockopt_unix.go /usr/local/opt/go/libexec/src/internal/poll/sockoptip.go /usr/local/opt/go/libexec/src/internal/poll/splice_linux.go /usr/local/opt/go/libexec/src/internal/poll/writev.go
 cd /usr/local/opt/go/libexec/src/reflect
 $TOOL_DIR/pack r $WORK/b020/_pkg_.a $WORK/b020/asm_amd64.o # internal
@@ -476,7 +477,7 @@ cat >$WORK/b019/importcfg << EOF # internal
 packagefile reflect=$WORK/b020/_pkg_.a
 packagefile sort=$WORK/b030/_pkg_.a
 EOF
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
+cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b019/_pkg_.a -trimpath "$WORK/b019=>" -p internal/fmtsort -std -complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b019/importcfg -pack /usr/local/opt/go/libexec/src/internal/fmtsort/sort.go
 cp $WORK/b041/_pkg_.a $CACHE_DIR/2c/2c2609c66a19a399f3dab8b33bd4da54655aefd1e62414acfe3fe7ffda6e7770-d # internal
 $TOOL_DIR/buildid -w $WORK/b019/_pkg_.a # internal
