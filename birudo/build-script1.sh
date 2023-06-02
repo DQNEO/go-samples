@@ -545,7 +545,6 @@ do
   files="$files $GORT/src/$pkgname/$i"
 done
 
-cd $SRC_DIR
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 }
@@ -591,6 +590,8 @@ cat >$wdir/importcfg << EOF # internal
 packagefile fmt=$WORK/${PKGS[fmt]}/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
 EOF
+
+
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack ./main.go ./sum.go
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
@@ -647,6 +648,7 @@ rm -r $wdir/
 }
 
 build_internal_fmtsort internal/fmtsort -complete
+cd $SRC_DIR
 build_pkg os ""
 build_pkg fmt -complete
 doLink
