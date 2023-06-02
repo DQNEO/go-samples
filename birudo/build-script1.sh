@@ -65,6 +65,35 @@ declare -A FILES=(
 [internal/fmtsort]="sort.go"
 )
 
+function build_pkg() {
+pkgname=$1
+complete=$2
+bdir=${PKGS[$pkgname]}
+wdir=$WORK/$bdir
+
+mkdir -p $wdir/
+make_importcfg $pkgname >$wdir/importcfg
+
+files=""
+for i in ${FILES[$pkgname]}
+do
+  files="$files $GORT/src/$pkgname/$i"
+done
+local buildid=abcdefghijklmnopqrst/abcdefghijklmnopqrst
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete -buildid $buildid -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
+$TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
+}
+
+function make_importcfg() {
+pkgname=$1
+echo '# import config'
+for i in  ${DEPENDS[$pkgname]}
+do
+  echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
+done
+
+}
+
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 
 mkdir -p $WORK/${PKGS[internal/coverage/rtcov]}/
@@ -530,34 +559,6 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/poll]}/_pkg_.a # internal
 
 
 
-function build_pkg() {
-pkgname=$1
-complete=$2
-bdir=${PKGS[$pkgname]}
-wdir=$WORK/$bdir
-
-mkdir -p $wdir/
-make_importcfg $pkgname >$wdir/importcfg
-
-files=""
-for i in ${FILES[$pkgname]}
-do
-  files="$files $GORT/src/$pkgname/$i"
-done
-local buildid=abcdefghijklmnopqrst/abcdefghijklmnopqrst
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete -buildid $buildid -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
-$TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
-}
-
-function make_importcfg() {
-pkgname=$1
-echo '# import config'
-for i in  ${DEPENDS[$pkgname]}
-do
-  echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
-done
-
-}
 
 
 ## Final output
