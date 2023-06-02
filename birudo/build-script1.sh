@@ -192,14 +192,14 @@ $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK
 cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a # internal
-mkdir -p $WORK/b029/
-cat >$WORK/b029/importcfg << EOF # internal
+mkdir -p $WORK/${PKGS[unicode]}/
+cat >$WORK/${PKGS[unicode]}/importcfg << EOF # internal
 # import config
 EOF
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -I $WORK/${PKGS[runtime/internal/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o ./atomic_amd64.s
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/b029/_pkg_.a -trimpath "$WORK/b029=>" -p unicode -std -complete -buildid H5EVtAclvmQgmtO5OIl1/H5EVtAclvmQgmtO5OIl1 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b029/importcfg -pack $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
+$TOOL_DIR/compile -o $WORK/${PKGS[unicode]}/_pkg_.a -trimpath "$WORK/${PKGS[unicode]}=>" -p unicode -std -complete -buildid H5EVtAclvmQgmtO5OIl1/H5EVtAclvmQgmtO5OIl1 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[unicode]}/importcfg -pack $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
 cd $GORT/src/internal/abi
 $TOOL_DIR/pack r $WORK/${PKGS[internal/abi]}/_pkg_.a $WORK/${PKGS[internal/abi]}/abi_test.o # internal
 
@@ -283,7 +283,7 @@ packagefile runtime/internal/math=$WORK/${PKGS[runtime/internal/math]}/_pkg_.a
 packagefile runtime/internal/sys=$WORK/${PKGS[runtime/internal/sys]}/_pkg_.a
 packagefile runtime/internal/syscall=$WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a
 EOF
-$TOOL_DIR/buildid -w $WORK/b029/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[unicode]}/_pkg_.a # internal
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[runtime]}/_pkg_.a -trimpath "$WORK/${PKGS[runtime]}=>" -p runtime -std -+ -buildid Njl5lkeGSG8PAp_cny9y/Njl5lkeGSG8PAp_cny9y -goversion go1.20.4 -symabis $WORK/${PKGS[runtime]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[runtime]}/importcfg -pack -asmhdr $WORK/${PKGS[runtime]}/go_asm.h $GORT/src/runtime/alg.go $GORT/src/runtime/arena.go $GORT/src/runtime/asan0.go $GORT/src/runtime/atomic_pointer.go $GORT/src/runtime/cgo.go $GORT/src/runtime/cgo_mmap.go $GORT/src/runtime/cgo_sigaction.go $GORT/src/runtime/cgocall.go $GORT/src/runtime/cgocallback.go $GORT/src/runtime/cgocheck.go $GORT/src/runtime/chan.go $GORT/src/runtime/checkptr.go $GORT/src/runtime/compiler.go $GORT/src/runtime/complex.go $GORT/src/runtime/covercounter.go $GORT/src/runtime/covermeta.go $GORT/src/runtime/cpuflags.go $GORT/src/runtime/cpuflags_amd64.go $GORT/src/runtime/cpuprof.go $GORT/src/runtime/cputicks.go $GORT/src/runtime/create_file_unix.go $GORT/src/runtime/debug.go $GORT/src/runtime/debugcall.go $GORT/src/runtime/debuglog.go $GORT/src/runtime/debuglog_off.go $GORT/src/runtime/defs_linux_amd64.go $GORT/src/runtime/env_posix.go $GORT/src/runtime/error.go $GORT/src/runtime/exithook.go $GORT/src/runtime/extern.go $GORT/src/runtime/fastlog2.go $GORT/src/runtime/fastlog2table.go $GORT/src/runtime/float.go $GORT/src/runtime/hash64.go $GORT/src/runtime/heapdump.go $GORT/src/runtime/histogram.go $GORT/src/runtime/iface.go $GORT/src/runtime/lfstack.go $GORT/src/runtime/lfstack_64bit.go $GORT/src/runtime/lock_futex.go $GORT/src/runtime/lockrank.go $GORT/src/runtime/lockrank_off.go $GORT/src/runtime/malloc.go $GORT/src/runtime/map.go $GORT/src/runtime/map_fast32.go $GORT/src/runtime/map_fast64.go $GORT/src/runtime/map_faststr.go $GORT/src/runtime/mbarrier.go $GORT/src/runtime/mbitmap.go $GORT/src/runtime/mcache.go $GORT/src/runtime/mcentral.go $GORT/src/runtime/mcheckmark.go $GORT/src/runtime/mem.go $GORT/src/runtime/mem_linux.go $GORT/src/runtime/metrics.go $GORT/src/runtime/mfinal.go $GORT/src/runtime/mfixalloc.go $GORT/src/runtime/mgc.go $GORT/src/runtime/mgclimit.go $GORT/src/runtime/mgcmark.go $GORT/src/runtime/mgcpacer.go $GORT/src/runtime/mgcscavenge.go $GORT/src/runtime/mgcstack.go $GORT/src/runtime/mgcsweep.go $GORT/src/runtime/mgcwork.go $GORT/src/runtime/mheap.go $GORT/src/runtime/mpagealloc.go $GORT/src/runtime/mpagealloc_64bit.go $GORT/src/runtime/mpagecache.go $GORT/src/runtime/mpallocbits.go $GORT/src/runtime/mprof.go $GORT/src/runtime/mranges.go $GORT/src/runtime/msan0.go $GORT/src/runtime/msize.go $GORT/src/runtime/mspanset.go $GORT/src/runtime/mstats.go $GORT/src/runtime/mwbbuf.go $GORT/src/runtime/nbpipe_pipe2.go $GORT/src/runtime/netpoll.go $GORT/src/runtime/netpoll_epoll.go $GORT/src/runtime/os_linux.go $GORT/src/runtime/os_linux_generic.go $GORT/src/runtime/os_linux_noauxv.go $GORT/src/runtime/os_linux_x86.go $GORT/src/runtime/os_nonopenbsd.go $GORT/src/runtime/pagetrace_off.go $GORT/src/runtime/panic.go $GORT/src/runtime/plugin.go $GORT/src/runtime/preempt.go $GORT/src/runtime/preempt_nonwindows.go $GORT/src/runtime/print.go $GORT/src/runtime/proc.go $GORT/src/runtime/profbuf.go $GORT/src/runtime/proflabel.go $GORT/src/runtime/race0.go $GORT/src/runtime/rdebug.go $GORT/src/runtime/relax_stub.go $GORT/src/runtime/retry.go $GORT/src/runtime/runtime.go $GORT/src/runtime/runtime1.go $GORT/src/runtime/runtime2.go $GORT/src/runtime/runtime_boring.go $GORT/src/runtime/rwmutex.go $GORT/src/runtime/select.go $GORT/src/runtime/sema.go $GORT/src/runtime/signal_amd64.go $GORT/src/runtime/signal_linux_amd64.go $GORT/src/runtime/signal_unix.go $GORT/src/runtime/sigqueue.go $GORT/src/runtime/sigqueue_note.go $GORT/src/runtime/sigtab_linux_generic.go $GORT/src/runtime/sizeclasses.go $GORT/src/runtime/slice.go $GORT/src/runtime/softfloat64.go $GORT/src/runtime/stack.go $GORT/src/runtime/stkframe.go $GORT/src/runtime/string.go $GORT/src/runtime/stubs.go $GORT/src/runtime/stubs2.go $GORT/src/runtime/stubs3.go $GORT/src/runtime/stubs_amd64.go $GORT/src/runtime/stubs_linux.go $GORT/src/runtime/symtab.go $GORT/src/runtime/sys_nonppc64x.go $GORT/src/runtime/sys_x86.go $GORT/src/runtime/time.go $GORT/src/runtime/time_nofake.go $GORT/src/runtime/timeasm.go $GORT/src/runtime/tls_stub.go $GORT/src/runtime/trace.go $GORT/src/runtime/traceback.go $GORT/src/runtime/type.go $GORT/src/runtime/typekind.go $GORT/src/runtime/unsafe.go $GORT/src/runtime/utf8.go $GORT/src/runtime/vdso_elf64.go $GORT/src/runtime/vdso_linux.go $GORT/src/runtime/vdso_linux_amd64.go $GORT/src/runtime/write_err.go
 cd $GORT/src/math
@@ -347,19 +347,19 @@ $TOOL_DIR/pack r $WORK/${PKGS[internal/reflectlite]}/_pkg_.a $WORK/${PKGS[intern
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/reflectlite]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[errors]}/
-mkdir -p $WORK/b030/
+mkdir -p $WORK/${PKGS[sort]}/
 cat >$WORK/${PKGS[errors]}/importcfg << EOF # internal
 # import config
 packagefile internal/reflectlite=$WORK/${PKGS[internal/reflectlite]}/_pkg_.a
 EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[errors]}/_pkg_.a -trimpath "$WORK/${PKGS[errors]}=>" -p errors -std -complete -buildid F_mcCqBziAv01tav5M2I/F_mcCqBziAv01tav5M2I -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[errors]}/importcfg -pack $GORT/src/errors/errors.go $GORT/src/errors/join.go $GORT/src/errors/wrap.go
-cat >$WORK/b030/importcfg << EOF # internal
+cat >$WORK/${PKGS[sort]}/importcfg << EOF # internal
 # import config
 packagefile internal/reflectlite=$WORK/${PKGS[internal/reflectlite]}/_pkg_.a
 packagefile math/bits=$WORK/${PKGS[math/bits]}/_pkg_.a
 EOF
-$TOOL_DIR/compile -o $WORK/b030/_pkg_.a -trimpath "$WORK/b030=>" -p sort -std -complete -buildid RPytz-InhRnbWmq4E73g/RPytz-InhRnbWmq4E73g -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b030/importcfg -pack $GORT/src/sort/search.go $GORT/src/sort/slice.go $GORT/src/sort/sort.go $GORT/src/sort/zsortfunc.go $GORT/src/sort/zsortinterface.go
+$TOOL_DIR/compile -o $WORK/${PKGS[sort]}/_pkg_.a -trimpath "$WORK/${PKGS[sort]}=>" -p sort -std -complete -buildid RPytz-InhRnbWmq4E73g/RPytz-InhRnbWmq4E73g -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[sort]}/importcfg -pack $GORT/src/sort/search.go $GORT/src/sort/slice.go $GORT/src/sort/sort.go $GORT/src/sort/zsortfunc.go $GORT/src/sort/zsortinterface.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[errors]}/_pkg_.a # internal
 
 mkdir -p $WORK/b038/
@@ -406,7 +406,7 @@ $TOOL_DIR/buildid -w $WORK/b036/_pkg_.a # internal
 
 $TOOL_DIR/buildid -w $WORK/b042/_pkg_.a # internal
 
-$TOOL_DIR/buildid -w $WORK/b030/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[sort]}/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b031/_pkg_.a # internal
 
 mkdir -p $WORK/b035/
@@ -447,7 +447,7 @@ packagefile math=$WORK/${PKGS[math]}/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
 packagefile strconv=$WORK/b024/_pkg_.a
 packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
-packagefile unicode=$WORK/b029/_pkg_.a
+packagefile unicode=$WORK/${PKGS[unicode]}/_pkg_.a
 packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
 EOF
 cd $SRC_DIR
@@ -493,7 +493,7 @@ packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
 packagefile internal/oserror=$WORK/b036/_pkg_.a
 packagefile io=$WORK/b031/_pkg_.a
 packagefile path=$WORK/b042/_pkg_.a
-packagefile sort=$WORK/b030/_pkg_.a
+packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
 packagefile time=$WORK/b037/_pkg_.a
 packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
 EOF
@@ -525,7 +525,7 @@ mkdir -p $wdir/
 cat >$wdir/importcfg << EOF # internal
 # import config
 packagefile reflect=$WORK/b020/_pkg_.a
-packagefile sort=$WORK/b030/_pkg_.a
+packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
 EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p internal/fmtsort -std -complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $GORT/src/internal/fmtsort/sort.go
@@ -551,7 +551,7 @@ packagefile internal/testlog=$WORK/${PKGS[internal/testlog]}/_pkg_.a
 packagefile io=$WORK/b031/_pkg_.a
 packagefile io/fs=$WORK/b041/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-packagefile sort=$WORK/b030/_pkg_.a
+packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
 packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
 packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
 packagefile syscall=$WORK/b035/_pkg_.a
@@ -573,7 +573,7 @@ packagefile io=$WORK/b031/_pkg_.a
 packagefile math=$WORK/${PKGS[math]}/_pkg_.a
 packagefile os=$WORK/${PKGS[os]}/_pkg_.a
 packagefile reflect=$WORK/b020/_pkg_.a
-packagefile sort=$WORK/b030/_pkg_.a
+packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
 packagefile strconv=$WORK/b024/_pkg_.a
 packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
 packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
@@ -606,7 +606,7 @@ packagefile io=$WORK/b031/_pkg_.a
 packagefile math=$WORK/${PKGS[math]}/_pkg_.a
 packagefile os=$WORK/${PKGS[os]}/_pkg_.a
 packagefile reflect=$WORK/b020/_pkg_.a
-packagefile sort=$WORK/b030/_pkg_.a
+packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
 packagefile strconv=$WORK/b024/_pkg_.a
 packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
 packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
@@ -634,7 +634,7 @@ packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
 packagefile syscall=$WORK/b035/_pkg_.a
 packagefile time=$WORK/b037/_pkg_.a
 packagefile internal/unsafeheader=$WORK/${PKGS[internal/unsafeheader]}/_pkg_.a
-packagefile unicode=$WORK/b029/_pkg_.a
+packagefile unicode=$WORK/${PKGS[unicode]}/_pkg_.a
 packagefile internal/race=$WORK/${PKGS[internal/race]}/_pkg_.a
 packagefile internal/oserror=$WORK/b036/_pkg_.a
 packagefile path=$WORK/b042/_pkg_.a
