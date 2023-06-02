@@ -54,6 +54,7 @@ declare -A PKGS=(
 )
 
 declare -A DEPENDS=(
+[main]="fmt runtime"
 [fmt]="errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 "
 [os]="errors internal/itoa internal/poll internal/safefilepath internal/syscall/execenv internal/syscall/unix internal/testlog io io/fs runtime sort sync sync/atomic syscall time"
 [internal/fmtsort]="reflect sort"
@@ -565,12 +566,7 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/poll]}/_pkg_.a # internal
 function doLink() {
 wdir=$WORK/${PKGS[main]}
 mkdir -p $wdir/
-cat >$wdir/importcfg << EOF # internal
-# import config
-packagefile fmt=$WORK/${PKGS[fmt]}/_pkg_.a
-packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-EOF
-
+make_importcfg main >$wdir/importcfg
 
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack ./main.go ./sum.go
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
