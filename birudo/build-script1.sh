@@ -175,18 +175,18 @@ $TOOL_DIR/buildid -w $WORK/b016/_pkg_.a # internal
 
 cd $GORT/src/internal/abi
 $TOOL_DIR/asm -p internal/abi -trimpath "$WORK/${PKGS[internal/abi]}=>" -I $WORK/${PKGS[internal/abi]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/abi]}/abi_test.o ./abi_test.s
-mkdir -p $WORK/b027/
-cat >$WORK/b027/importcfg << EOF # internal
+mkdir -p $WORK/${PKGS[internal/race]}/
+cat >$WORK/${PKGS[internal/race]}/importcfg << EOF # internal
 # import config
 EOF
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/b027/_pkg_.a -trimpath "$WORK/b027=>" -p internal/race -std -complete -buildid 6k_7JN4Ro6ano3CJO236/6k_7JN4Ro6ano3CJO236 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b027/importcfg -pack $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
-mkdir -p $WORK/b028/
+$TOOL_DIR/compile -o $WORK/${PKGS[internal/race]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/race]}=>" -p internal/race -std -complete -buildid 6k_7JN4Ro6ano3CJO236/6k_7JN4Ro6ano3CJO236 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/race]}/importcfg -pack $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
+mkdir -p $WORK/${PKGS[sync/atomic]}/
 
-cat >$WORK/b028/go_asm.h << EOF # internal
+cat >$WORK/${PKGS[sync/atomic]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/sync/atomic
-$TOOL_DIR/asm -p sync/atomic -trimpath "$WORK/b028=>" -I $WORK/b028/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/b028/symabis ./asm.s
+$TOOL_DIR/asm -p sync/atomic -trimpath "$WORK/${PKGS[sync/atomic]}=>" -I $WORK/${PKGS[sync/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[sync/atomic]}/symabis ./asm.s
 cd $GORT/src/internal/cpu
 $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/cpu]}/cpu.o ./cpu.s
 cd $GORT/src/runtime/internal/syscall
@@ -208,12 +208,12 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/abi]}/_pkg_.a # internal
 cd $GORT/src/internal/cpu
 $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/cpu]}/cpu_x86.o ./cpu_x86.s
 $TOOL_DIR/buildid -w $WORK/b017/_pkg_.a # internal
-cat >$WORK/b028/importcfg << EOF # internal
+cat >$WORK/${PKGS[sync/atomic]}/importcfg << EOF # internal
 # import config
 EOF
-$TOOL_DIR/buildid -w $WORK/b027/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/race]}/_pkg_.a # internal
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/b028/_pkg_.a -trimpath "$WORK/b028=>" -p sync/atomic -std -buildid 8sTHEv3qeP6epKjkp86J/8sTHEv3qeP6epKjkp86J -goversion go1.20.4 -symabis $WORK/b028/symabis -c=4 -nolocalimports -importcfg $WORK/b028/importcfg -pack -asmhdr $WORK/b028/go_asm.h $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type.go $GORT/src/sync/atomic/value.go
+$TOOL_DIR/compile -o $WORK/${PKGS[sync/atomic]}/_pkg_.a -trimpath "$WORK/${PKGS[sync/atomic]}=>" -p sync/atomic -std -buildid 8sTHEv3qeP6epKjkp86J/8sTHEv3qeP6epKjkp86J -goversion go1.20.4 -symabis $WORK/${PKGS[sync/atomic]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[sync/atomic]}/importcfg -pack -asmhdr $WORK/${PKGS[sync/atomic]}/go_asm.h $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type.go $GORT/src/sync/atomic/value.go
 
 
 cd $GORT/src/runtime/internal/atomic
@@ -241,7 +241,7 @@ EOF
 cd $GORT/src/math
 $TOOL_DIR/asm -p math -trimpath "$WORK/b022=>" -I $WORK/b022/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/b022/symabis ./dim_amd64.s ./exp_amd64.s ./floor_amd64.s ./hypot_amd64.s ./log_amd64.s
 cd $GORT/src/sync/atomic
-$TOOL_DIR/asm -p sync/atomic -trimpath "$WORK/b028=>" -I $WORK/b028/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b028/asm.o ./asm.s
+$TOOL_DIR/asm -p sync/atomic -trimpath "$WORK/${PKGS[sync/atomic]}=>" -I $WORK/${PKGS[sync/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[sync/atomic]}/asm.o ./asm.s
 cat >$WORK/b022/importcfg << EOF # internal
 # import config
 packagefile internal/cpu=$WORK/${PKGS[internal/cpu]}/_pkg_.a
@@ -250,8 +250,8 @@ EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b022/_pkg_.a -trimpath "$WORK/b022=>" -p math -std -buildid M2k9bU3HlBq2CeX7eecL/M2k9bU3HlBq2CeX7eecL -goversion go1.20.4 -symabis $WORK/b022/symabis -c=4 -nolocalimports -importcfg $WORK/b022/importcfg -pack -asmhdr $WORK/b022/go_asm.h $GORT/src/math/abs.go $GORT/src/math/acosh.go $GORT/src/math/asin.go $GORT/src/math/asinh.go $GORT/src/math/atan.go $GORT/src/math/atan2.go $GORT/src/math/atanh.go $GORT/src/math/bits.go $GORT/src/math/cbrt.go $GORT/src/math/const.go $GORT/src/math/copysign.go $GORT/src/math/dim.go $GORT/src/math/dim_asm.go $GORT/src/math/erf.go $GORT/src/math/erfinv.go $GORT/src/math/exp.go $GORT/src/math/exp2_noasm.go $GORT/src/math/exp_amd64.go $GORT/src/math/exp_asm.go $GORT/src/math/expm1.go $GORT/src/math/floor.go $GORT/src/math/floor_asm.go $GORT/src/math/fma.go $GORT/src/math/frexp.go $GORT/src/math/gamma.go $GORT/src/math/hypot.go $GORT/src/math/hypot_asm.go $GORT/src/math/j0.go $GORT/src/math/j1.go $GORT/src/math/jn.go $GORT/src/math/ldexp.go $GORT/src/math/lgamma.go $GORT/src/math/log.go $GORT/src/math/log10.go $GORT/src/math/log1p.go $GORT/src/math/log_asm.go $GORT/src/math/logb.go $GORT/src/math/mod.go $GORT/src/math/modf.go $GORT/src/math/modf_noasm.go $GORT/src/math/nextafter.go $GORT/src/math/pow.go $GORT/src/math/pow10.go $GORT/src/math/remainder.go $GORT/src/math/signbit.go $GORT/src/math/sin.go $GORT/src/math/sincos.go $GORT/src/math/sinh.go $GORT/src/math/sqrt.go $GORT/src/math/stubs.go $GORT/src/math/tan.go $GORT/src/math/tanh.go $GORT/src/math/trig_reduce.go $GORT/src/math/unsafe.go
 cd $GORT/src/sync/atomic
-$TOOL_DIR/pack r $WORK/b028/_pkg_.a $WORK/b028/asm.o # internal
-$TOOL_DIR/buildid -w $WORK/b028/_pkg_.a # internal
+$TOOL_DIR/pack r $WORK/${PKGS[sync/atomic]}/_pkg_.a $WORK/${PKGS[sync/atomic]}/asm.o # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[sync/atomic]}/_pkg_.a # internal
 cd $GORT/src/internal/bytealg
 $TOOL_DIR/asm -p internal/bytealg -trimpath "$WORK/${PKGS[internal/bytealg]}=>" -I $WORK/${PKGS[internal/bytealg]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[internal/bytealg]}/compare_amd64.o ./compare_amd64.s
 
@@ -317,9 +317,9 @@ $TOOL_DIR/asm -p internal/reflectlite -trimpath "$WORK/b004=>" -I $WORK/b004/ -I
 mkdir -p $WORK/b026/
 cat >$WORK/b026/importcfg << EOF # internal
 # import config
-packagefile internal/race=$WORK/b027/_pkg_.a
+packagefile internal/race=$WORK/${PKGS[internal/race]}/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
 EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b026/_pkg_.a -trimpath "$WORK/b026=>" -p sync -std -buildid awcGvD6YFJooe2gt9uJS/awcGvD6YFJooe2gt9uJS -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b026/importcfg -pack $GORT/src/sync/cond.go $GORT/src/sync/map.go $GORT/src/sync/mutex.go $GORT/src/sync/once.go $GORT/src/sync/pool.go $GORT/src/sync/poolqueue.go $GORT/src/sync/runtime.go $GORT/src/sync/runtime2.go $GORT/src/sync/rwmutex.go $GORT/src/sync/waitgroup.go
@@ -336,7 +336,7 @@ mkdir -p $WORK/b040/
 cat >$WORK/b040/importcfg << EOF # internal
 # import config
 packagefile sync=$WORK/b026/_pkg_.a
-packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b040/_pkg_.a -trimpath "$WORK/b040=>" -p internal/testlog -std -complete -buildid B423dGniR5COkyvnWNiY/B423dGniR5COkyvnWNiY -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b040/importcfg -pack $GORT/src/internal/testlog/exit.go $GORT/src/internal/testlog/log.go
 $TOOL_DIR/buildid -w $WORK/b040/_pkg_.a # internal
@@ -421,10 +421,10 @@ packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
 packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
 packagefile internal/itoa=$WORK/${PKGS[internal/itoa]}/_pkg_.a
 packagefile internal/oserror=$WORK/b036/_pkg_.a
-packagefile internal/race=$WORK/b027/_pkg_.a
+packagefile internal/race=$WORK/${PKGS[internal/race]}/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
 packagefile sync=$WORK/b026/_pkg_.a
-packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
 EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b035/_pkg_.a -trimpath "$WORK/b035=>" -p syscall -std -buildid Gf1emYuyeATzm8AHyHFR/Gf1emYuyeATzm8AHyHFR -goversion go1.20.4 -symabis $WORK/b035/symabis -c=4 -nolocalimports -importcfg $WORK/b035/importcfg -pack -asmhdr $WORK/b035/go_asm.h $GORT/src/syscall/asan0.go $GORT/src/syscall/dirent.go $GORT/src/syscall/endian_little.go $GORT/src/syscall/env_unix.go $GORT/src/syscall/exec_linux.go $GORT/src/syscall/exec_unix.go $GORT/src/syscall/flock.go $GORT/src/syscall/lsf_linux.go $GORT/src/syscall/msan0.go $GORT/src/syscall/net.go $GORT/src/syscall/netlink_linux.go $GORT/src/syscall/rlimit.go $GORT/src/syscall/rlimit_stub.go $GORT/src/syscall/setuidgid_linux.go $GORT/src/syscall/sockcmsg_linux.go $GORT/src/syscall/sockcmsg_unix.go $GORT/src/syscall/sockcmsg_unix_other.go $GORT/src/syscall/syscall.go $GORT/src/syscall/syscall_linux.go $GORT/src/syscall/syscall_linux_accept4.go $GORT/src/syscall/syscall_linux_amd64.go $GORT/src/syscall/syscall_unix.go $GORT/src/syscall/time_nofake.go $GORT/src/syscall/timestruct.go $GORT/src/syscall/zerrors_linux_amd64.go $GORT/src/syscall/zsyscall_linux_amd64.go $GORT/src/syscall/zsysnum_linux_amd64.go $GORT/src/syscall/ztypes_linux_amd64.go
@@ -468,7 +468,7 @@ mkdir -p $WORK/b034/
 mkdir -p $WORK/b037/
 cat >$WORK/b034/importcfg << EOF # internal
 # import config
-packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
 packagefile syscall=$WORK/b035/_pkg_.a
 EOF
 cat >$WORK/b037/importcfg << EOF # internal
@@ -508,7 +508,7 @@ packagefile internal/syscall/unix=$WORK/b034/_pkg_.a
 packagefile io=$WORK/b031/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
 packagefile sync=$WORK/b026/_pkg_.a
-packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
 packagefile syscall=$WORK/b035/_pkg_.a
 packagefile time=$WORK/b037/_pkg_.a
 EOF
@@ -553,7 +553,7 @@ packagefile io/fs=$WORK/b041/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
 packagefile sort=$WORK/b030/_pkg_.a
 packagefile sync=$WORK/b026/_pkg_.a
-packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
 packagefile syscall=$WORK/b035/_pkg_.a
 packagefile time=$WORK/b037/_pkg_.a
 EOF
@@ -630,12 +630,12 @@ packagefile internal/syscall/execenv=$WORK/b039/_pkg_.a
 packagefile internal/syscall/unix=$WORK/b034/_pkg_.a
 packagefile internal/testlog=$WORK/b040/_pkg_.a
 packagefile io/fs=$WORK/b041/_pkg_.a
-packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
 packagefile syscall=$WORK/b035/_pkg_.a
 packagefile time=$WORK/b037/_pkg_.a
 packagefile internal/unsafeheader=$WORK/${PKGS[internal/unsafeheader]}/_pkg_.a
 packagefile unicode=$WORK/b029/_pkg_.a
-packagefile internal/race=$WORK/b027/_pkg_.a
+packagefile internal/race=$WORK/${PKGS[internal/race]}/_pkg_.a
 packagefile internal/oserror=$WORK/b036/_pkg_.a
 packagefile path=$WORK/b042/_pkg_.a
 modinfo "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\tgithub.com/DQNEO/go-samples/birudo\nmod\tgithub.com/DQNEO/go-samples/birudo\t(devel)\t\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\tCGO_ENABLED=0\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=a721858f4c22cb178c3f3853f9c55aa3773afc2c\nbuild\tvcs.time=2023-06-02T12:08:04Z\nbuild\tvcs.modified=true\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2"
