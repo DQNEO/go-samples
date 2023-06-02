@@ -60,6 +60,8 @@ declare -A DEPENDS=(
 [internal/fmtsort]="reflect sort"
 [internal/coverage/rtcov]=""
 [internal/unsafeheader]=""
+[internal/goarch]=""
+[internal/goos]=""
 )
 
 declare -A FILES=(
@@ -108,18 +110,12 @@ mkdir -p $WORK/${PKGS[internal/goarch]}/
 make_importcfg internal/coverage/rtcov
 
 mkdir -p $WORK/${PKGS[internal/goos]}/
-cat >$WORK/${PKGS[internal/unsafeheader]}/importcfg << EOF # internal
-# import config
-EOF
+make_importcfg internal/unsafeheader
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/unsafeheader]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/unsafeheader]}=>" -p internal/unsafeheader   -std    -complete -buildid P7qFpguryEe_9bufASvc/P7qFpguryEe_9bufASvc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/unsafeheader]}/importcfg -pack $GORT/src/internal/unsafeheader/unsafeheader.go
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/coverage/rtcov]}=>" -p internal/coverage/rtcov -std -+ -complete -buildid Gk43QGhY-y2T4KaecSdc/Gk43QGhY-y2T4KaecSdc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/coverage/rtcov]}/importcfg -pack $GORT/src/internal/coverage/rtcov/rtcov.go
-cat >$WORK/${PKGS[internal/goarch]}/importcfg << EOF # internal
-# import config
-EOF
-cat >$WORK/${PKGS[internal/goos]}/importcfg << EOF # internal
-# import config
-EOF
+make_importcfg internal/goarch
+make_importcfg internal/goos
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/goarch]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/goarch]}=>" -p internal/goarch -std -+ -complete -buildid IeHgz3mN0XMxQJyLQgHG/IeHgz3mN0XMxQJyLQgHG -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/goarch]}/importcfg -pack $GORT/src/internal/goarch/goarch.go $GORT/src/internal/goarch/goarch_amd64.go $GORT/src/internal/goarch/zgoarch_amd64.go
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/goos]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/goos]}=>" -p internal/goos -std -+ -complete -buildid yhVHvx5gAuhGe0etJIbA/yhVHvx5gAuhGe0etJIbA -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/goos]}/importcfg -pack $GORT/src/internal/goos/goos.go $GORT/src/internal/goos/unix.go $GORT/src/internal/goos/zgoos_linux.go
 mkdir -p $WORK/${PKGS[internal/goexperiment]}/
