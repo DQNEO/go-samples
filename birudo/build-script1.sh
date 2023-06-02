@@ -57,6 +57,9 @@ declare -A DEPENDS=(
 [fmt]="errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 "
 )
 
+declare -A FILES=(
+[fmt]="doc.go errors.go format.go print.go scan.go"
+)
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 git status --porcelain
@@ -569,16 +572,25 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 }
 
 function build_fmt() {
-wdir=$WORK/$1
+pkgname=$1
+bdir=${PKGS[fmt]}
+wdir=$WORK/$bdir
 mkdir -p $wdir/
 (
 echo '# import config'
-for i in  ${DEPENDS[fmt]}
+for i in  ${DEPENDS[$pkgname]}
 do
   echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
 done
 ) >$wdir/importcfg
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p fmt -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $GORT/src/fmt/doc.go $GORT/src/fmt/errors.go $GORT/src/fmt/format.go $GORT/src/fmt/print.go $GORT/src/fmt/scan.go
+
+files=""
+for i in ${FILES[$pkgname]}
+do
+  files="$files $GORT/src/$pkgname/$i"
+done
+
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 }
@@ -650,5 +662,5 @@ rm -r $wdir/
 
 build_internal_fmtsort ${PKGS[internal/fmtsort]}
 build_os ${PKGS[os]}
-build_fmt ${PKGS[fmt]}
+build_fmt fmt
 doLink
