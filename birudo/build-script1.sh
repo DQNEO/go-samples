@@ -1,3 +1,8 @@
+#!/bin/bash
+set -eux
+rm -f birudo
+export GOOS=linux
+export GOARCH=amd64
 WORK=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 git status --porcelain

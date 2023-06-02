@@ -12,5 +12,9 @@ birudo-by-script0: build-script0.sh
 	GOOS=linux GOARCH=amd64 bash $<
 	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./birudo
 
+birudo-by-script1: build-script1.sh
+	./$<
+	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./birudo
+
 clean:
 	rm -f birudo
