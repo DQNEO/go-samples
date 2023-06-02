@@ -96,12 +96,12 @@ cp $WORK/b012/_pkg_.a /Users/DQNEO/Library/Caches/go-build/92/926df4eb753eaf2114
 mkdir -p $WORK/b016/
 cat >$WORK/b009/importcfg << EOF # internal
 # import config
-packagefile internal/goarch=${WORK}/b005/_pkg_.a
+packagefile internal/goarch=$WORK/b005/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b009/_pkg_.a -trimpath "$WORK/b009=>" -p internal/abi -std -+ -buildid EVg-QcN5p97xUAw5kfuR/EVg-QcN5p97xUAw5kfuR -goversion go1.20.4 -symabis $WORK/b009/symabis -c=4 -nolocalimports -importcfg $WORK/b009/importcfg -pack -asmhdr $WORK/b009/go_asm.h /usr/local/opt/go/libexec/src/internal/abi/abi.go /usr/local/opt/go/libexec/src/internal/abi/abi_amd64.go
 cat >$WORK/b016/importcfg << EOF # internal
 # import config
-packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
+packagefile internal/goarch=$WORK/b005/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b016/_pkg_.a -trimpath "$WORK/b016=>" -p runtime/internal/math -std -+ -complete -buildid dKV2PXLfEa-bpWk_4jjm/dKV2PXLfEa-bpWk_4jjm -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b016/importcfg -pack /usr/local/opt/go/libexec/src/runtime/internal/math/math.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b021/_pkg_.a # internal
@@ -111,8 +111,8 @@ cd /usr/local/opt/go/libexec/src/runtime/internal/syscall
 mkdir -p $WORK/b017/
 cat >$WORK/b017/importcfg << EOF # internal
 # import config
-packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
-packagefile internal/goos=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b014/_pkg_.a
+packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/goos=$WORK/b014/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b017/_pkg_.a -trimpath "$WORK/b017=>" -p runtime/internal/sys -std -+ -complete -buildid p57uPEDCp39nHZBklMoj/p57uPEDCp39nHZBklMoj -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b017/importcfg -pack /usr/local/opt/go/libexec/src/runtime/internal/sys/consts.go /usr/local/opt/go/libexec/src/runtime/internal/sys/consts_norace.go /usr/local/opt/go/libexec/src/runtime/internal/sys/intrinsics.go /usr/local/opt/go/libexec/src/runtime/internal/sys/intrinsics_common.go /usr/local/opt/go/libexec/src/runtime/internal/sys/nih.go /usr/local/opt/go/libexec/src/runtime/internal/sys/sys.go /usr/local/opt/go/libexec/src/runtime/internal/sys/zversion.go
@@ -179,7 +179,7 @@ cd /usr/local/opt/go/libexec/src/internal/bytealg
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p internal/bytealg -trimpath "$WORK/b010=>" -I $WORK/b010/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b010/symabis ./compare_amd64.s ./count_amd64.s ./equal_amd64.s ./index_amd64.s ./indexbyte_amd64.s
 cat >$WORK/b010/importcfg << EOF # internal
 # import config
-packagefile internal/cpu=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b011/_pkg_.a
+packagefile internal/cpu=$WORK/b011/_pkg_.a
 EOF
 mkdir -p $WORK/b022/
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
@@ -192,8 +192,8 @@ cd /usr/local/opt/go/libexec/src/sync/atomic
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p sync/atomic -trimpath "$WORK/b028=>" -I $WORK/b028/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b028/asm.o ./asm.s
 cat >$WORK/b022/importcfg << EOF # internal
 # import config
-packagefile internal/cpu=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b011/_pkg_.a
-packagefile math/bits=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b023/_pkg_.a
+packagefile internal/cpu=$WORK/b011/_pkg_.a
+packagefile math/bits=$WORK/b023/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b022/_pkg_.a -trimpath "$WORK/b022=>" -p math -std -buildid M2k9bU3HlBq2CeX7eecL/M2k9bU3HlBq2CeX7eecL -goversion go1.20.4 -symabis $WORK/b022/symabis -c=4 -nolocalimports -importcfg $WORK/b022/importcfg -pack -asmhdr $WORK/b022/go_asm.h /usr/local/opt/go/libexec/src/math/abs.go /usr/local/opt/go/libexec/src/math/acosh.go /usr/local/opt/go/libexec/src/math/asin.go /usr/local/opt/go/libexec/src/math/asinh.go /usr/local/opt/go/libexec/src/math/atan.go /usr/local/opt/go/libexec/src/math/atan2.go /usr/local/opt/go/libexec/src/math/atanh.go /usr/local/opt/go/libexec/src/math/bits.go /usr/local/opt/go/libexec/src/math/cbrt.go /usr/local/opt/go/libexec/src/math/const.go /usr/local/opt/go/libexec/src/math/copysign.go /usr/local/opt/go/libexec/src/math/dim.go /usr/local/opt/go/libexec/src/math/dim_asm.go /usr/local/opt/go/libexec/src/math/erf.go /usr/local/opt/go/libexec/src/math/erfinv.go /usr/local/opt/go/libexec/src/math/exp.go /usr/local/opt/go/libexec/src/math/exp2_noasm.go /usr/local/opt/go/libexec/src/math/exp_amd64.go /usr/local/opt/go/libexec/src/math/exp_asm.go /usr/local/opt/go/libexec/src/math/expm1.go /usr/local/opt/go/libexec/src/math/floor.go /usr/local/opt/go/libexec/src/math/floor_asm.go /usr/local/opt/go/libexec/src/math/fma.go /usr/local/opt/go/libexec/src/math/frexp.go /usr/local/opt/go/libexec/src/math/gamma.go /usr/local/opt/go/libexec/src/math/hypot.go /usr/local/opt/go/libexec/src/math/hypot_asm.go /usr/local/opt/go/libexec/src/math/j0.go /usr/local/opt/go/libexec/src/math/j1.go /usr/local/opt/go/libexec/src/math/jn.go /usr/local/opt/go/libexec/src/math/ldexp.go /usr/local/opt/go/libexec/src/math/lgamma.go /usr/local/opt/go/libexec/src/math/log.go /usr/local/opt/go/libexec/src/math/log10.go /usr/local/opt/go/libexec/src/math/log1p.go /usr/local/opt/go/libexec/src/math/log_asm.go /usr/local/opt/go/libexec/src/math/logb.go /usr/local/opt/go/libexec/src/math/mod.go /usr/local/opt/go/libexec/src/math/modf.go /usr/local/opt/go/libexec/src/math/modf_noasm.go /usr/local/opt/go/libexec/src/math/nextafter.go /usr/local/opt/go/libexec/src/math/pow.go /usr/local/opt/go/libexec/src/math/pow10.go /usr/local/opt/go/libexec/src/math/remainder.go /usr/local/opt/go/libexec/src/math/signbit.go /usr/local/opt/go/libexec/src/math/sin.go /usr/local/opt/go/libexec/src/math/sincos.go /usr/local/opt/go/libexec/src/math/sinh.go /usr/local/opt/go/libexec/src/math/sqrt.go /usr/local/opt/go/libexec/src/math/stubs.go /usr/local/opt/go/libexec/src/math/tan.go /usr/local/opt/go/libexec/src/math/tanh.go /usr/local/opt/go/libexec/src/math/trig_reduce.go /usr/local/opt/go/libexec/src/math/unsafe.go
@@ -219,17 +219,17 @@ cd /usr/local/opt/go/libexec/src/math
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p math -trimpath "$WORK/b022=>" -I $WORK/b022/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b022/dim_amd64.o ./dim_amd64.s
 cat >$WORK/b008/importcfg << EOF # internal
 # import config
-packagefile internal/abi=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b009/_pkg_.a
-packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
-packagefile internal/coverage/rtcov=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b012/_pkg_.a
-packagefile internal/cpu=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b011/_pkg_.a
-packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
-packagefile internal/goexperiment=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b013/_pkg_.a
-packagefile internal/goos=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b014/_pkg_.a
-packagefile runtime/internal/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b015/_pkg_.a
-packagefile runtime/internal/math=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b016/_pkg_.a
-packagefile runtime/internal/sys=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b017/_pkg_.a
-packagefile runtime/internal/syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b018/_pkg_.a
+packagefile internal/abi=$WORK/b009/_pkg_.a
+packagefile internal/bytealg=$WORK/b010/_pkg_.a
+packagefile internal/coverage/rtcov=$WORK/b012/_pkg_.a
+packagefile internal/cpu=$WORK/b011/_pkg_.a
+packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/goexperiment=$WORK/b013/_pkg_.a
+packagefile internal/goos=$WORK/b014/_pkg_.a
+packagefile runtime/internal/atomic=$WORK/b015/_pkg_.a
+packagefile runtime/internal/math=$WORK/b016/_pkg_.a
+packagefile runtime/internal/sys=$WORK/b017/_pkg_.a
+packagefile runtime/internal/syscall=$WORK/b018/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b029/_pkg_.a # internal
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
@@ -265,17 +265,17 @@ cd /usr/local/opt/go/libexec/src/internal/reflectlite
 mkdir -p $WORK/b026/
 cat >$WORK/b026/importcfg << EOF # internal
 # import config
-packagefile internal/race=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b027/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
-packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b028/_pkg_.a
+packagefile internal/race=$WORK/b027/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
+packagefile sync/atomic=$WORK/b028/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b026/_pkg_.a -trimpath "$WORK/b026=>" -p sync -std -buildid awcGvD6YFJooe2gt9uJS/awcGvD6YFJooe2gt9uJS -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b026/importcfg -pack /usr/local/opt/go/libexec/src/sync/cond.go /usr/local/opt/go/libexec/src/sync/map.go /usr/local/opt/go/libexec/src/sync/mutex.go /usr/local/opt/go/libexec/src/sync/once.go /usr/local/opt/go/libexec/src/sync/pool.go /usr/local/opt/go/libexec/src/sync/poolqueue.go /usr/local/opt/go/libexec/src/sync/runtime.go /usr/local/opt/go/libexec/src/sync/runtime2.go /usr/local/opt/go/libexec/src/sync/rwmutex.go /usr/local/opt/go/libexec/src/sync/waitgroup.go
 cat >$WORK/b004/importcfg << EOF # internal
 # import config
-packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
-packagefile internal/unsafeheader=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b006/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
+packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/unsafeheader=$WORK/b006/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b004/_pkg_.a -trimpath "$WORK/b004=>" -p internal/reflectlite -std -buildid 8f99mKJg6-OCUXX8caR3/8f99mKJg6-OCUXX8caR3 -goversion go1.20.4 -symabis $WORK/b004/symabis -c=4 -nolocalimports -importcfg $WORK/b004/importcfg -pack -asmhdr $WORK/b004/go_asm.h /usr/local/opt/go/libexec/src/internal/reflectlite/swapper.go /usr/local/opt/go/libexec/src/internal/reflectlite/type.go /usr/local/opt/go/libexec/src/internal/reflectlite/value.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b026/_pkg_.a # internal
@@ -283,8 +283,8 @@ cp $WORK/b026/_pkg_.a /Users/DQNEO/Library/Caches/go-build/8c/8ca5cd7b10f028bde0
 mkdir -p $WORK/b040/
 cat >$WORK/b040/importcfg << EOF # internal
 # import config
-packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
-packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b028/_pkg_.a
+packagefile sync=$WORK/b026/_pkg_.a
+packagefile sync/atomic=$WORK/b028/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b040/_pkg_.a -trimpath "$WORK/b040=>" -p internal/testlog -std -complete -buildid B423dGniR5COkyvnWNiY/B423dGniR5COkyvnWNiY -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b040/importcfg -pack /usr/local/opt/go/libexec/src/internal/testlog/exit.go /usr/local/opt/go/libexec/src/internal/testlog/log.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b040/_pkg_.a # internal
@@ -298,14 +298,14 @@ mkdir -p $WORK/b003/
 mkdir -p $WORK/b030/
 cat >$WORK/b003/importcfg << EOF # internal
 # import config
-packagefile internal/reflectlite=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b004/_pkg_.a
+packagefile internal/reflectlite=$WORK/b004/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b003/_pkg_.a -trimpath "$WORK/b003=>" -p errors -std -complete -buildid F_mcCqBziAv01tav5M2I/F_mcCqBziAv01tav5M2I -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b003/importcfg -pack /usr/local/opt/go/libexec/src/errors/errors.go /usr/local/opt/go/libexec/src/errors/join.go /usr/local/opt/go/libexec/src/errors/wrap.go
 cat >$WORK/b030/importcfg << EOF # internal
 # import config
-packagefile internal/reflectlite=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b004/_pkg_.a
-packagefile math/bits=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b023/_pkg_.a
+packagefile internal/reflectlite=$WORK/b004/_pkg_.a
+packagefile math/bits=$WORK/b023/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b030/_pkg_.a -trimpath "$WORK/b030=>" -p sort -std -complete -buildid RPytz-InhRnbWmq4E73g/RPytz-InhRnbWmq4E73g -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b030/importcfg -pack /usr/local/opt/go/libexec/src/sort/search.go /usr/local/opt/go/libexec/src/sort/slice.go /usr/local/opt/go/libexec/src/sort/sort.go /usr/local/opt/go/libexec/src/sort/zsortfunc.go /usr/local/opt/go/libexec/src/sort/zsortinterface.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b003/_pkg_.a # internal
@@ -315,37 +315,37 @@ mkdir -p $WORK/b036/
 mkdir -p $WORK/b042/
 cat >$WORK/b038/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
 EOF
 cat >$WORK/b036/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
 EOF
 mkdir -p $WORK/b031/
 cat >$WORK/b042/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
-packagefile unicode/utf8=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b025/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile internal/bytealg=$WORK/b010/_pkg_.a
+packagefile unicode/utf8=$WORK/b025/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b038/_pkg_.a -trimpath "$WORK/b038=>" -p internal/safefilepath -std -complete -buildid hm1QrtEgJmcNx15tya8Y/hm1QrtEgJmcNx15tya8Y -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b038/importcfg -pack /usr/local/opt/go/libexec/src/internal/safefilepath/path.go /usr/local/opt/go/libexec/src/internal/safefilepath/path_other.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b036/_pkg_.a -trimpath "$WORK/b036=>" -p internal/oserror -std -complete -buildid ZyMHKeNnjmaHsZb3SqbR/ZyMHKeNnjmaHsZb3SqbR -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b036/importcfg -pack /usr/local/opt/go/libexec/src/internal/oserror/errors.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b042/_pkg_.a -trimpath "$WORK/b042=>" -p path -std -complete -buildid oyZvoNp0jsV46ZkzhwtB/oyZvoNp0jsV46ZkzhwtB -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b042/importcfg -pack /usr/local/opt/go/libexec/src/path/match.go /usr/local/opt/go/libexec/src/path/path.go
 cat >$WORK/b031/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile sync=$WORK/b026/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b031/_pkg_.a -trimpath "$WORK/b031=>" -p io -std -complete -buildid UXfIU_f9dqciElRShcLJ/UXfIU_f9dqciElRShcLJ -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b031/importcfg -pack /usr/local/opt/go/libexec/src/io/io.go /usr/local/opt/go/libexec/src/io/multi.go /usr/local/opt/go/libexec/src/io/pipe.go
 mkdir -p $WORK/b024/
 cat >$WORK/b024/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
-packagefile math=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b022/_pkg_.a
-packagefile math/bits=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b023/_pkg_.a
-packagefile unicode/utf8=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b025/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile internal/bytealg=$WORK/b010/_pkg_.a
+packagefile math=$WORK/b022/_pkg_.a
+packagefile math/bits=$WORK/b023/_pkg_.a
+packagefile unicode/utf8=$WORK/b025/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b024/_pkg_.a -trimpath "$WORK/b024=>" -p strconv -std -complete -buildid tsZ-5FuCj28fNWLKgaGw/tsZ-5FuCj28fNWLKgaGw -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b024/importcfg -pack /usr/local/opt/go/libexec/src/strconv/atob.go /usr/local/opt/go/libexec/src/strconv/atoc.go /usr/local/opt/go/libexec/src/strconv/atof.go /usr/local/opt/go/libexec/src/strconv/atoi.go /usr/local/opt/go/libexec/src/strconv/bytealg.go /usr/local/opt/go/libexec/src/strconv/ctoa.go /usr/local/opt/go/libexec/src/strconv/decimal.go /usr/local/opt/go/libexec/src/strconv/doc.go /usr/local/opt/go/libexec/src/strconv/eisel_lemire.go /usr/local/opt/go/libexec/src/strconv/ftoa.go /usr/local/opt/go/libexec/src/strconv/ftoaryu.go /usr/local/opt/go/libexec/src/strconv/isprint.go /usr/local/opt/go/libexec/src/strconv/itoa.go /usr/local/opt/go/libexec/src/strconv/quote.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b038/_pkg_.a # internal
@@ -365,14 +365,14 @@ cd /usr/local/opt/go/libexec/src/syscall
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p syscall -trimpath "$WORK/b035=>" -I $WORK/b035/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b035/symabis ./asm_linux_amd64.s
 cat >$WORK/b035/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
-packagefile internal/itoa=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b021/_pkg_.a
-packagefile internal/oserror=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b036/_pkg_.a
-packagefile internal/race=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b027/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
-packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
-packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b028/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile internal/bytealg=$WORK/b010/_pkg_.a
+packagefile internal/itoa=$WORK/b021/_pkg_.a
+packagefile internal/oserror=$WORK/b036/_pkg_.a
+packagefile internal/race=$WORK/b027/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
+packagefile sync=$WORK/b026/_pkg_.a
+packagefile sync/atomic=$WORK/b028/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b035/_pkg_.a -trimpath "$WORK/b035=>" -p syscall -std -buildid Gf1emYuyeATzm8AHyHFR/Gf1emYuyeATzm8AHyHFR -goversion go1.20.4 -symabis $WORK/b035/symabis -c=4 -nolocalimports -importcfg $WORK/b035/importcfg -pack -asmhdr $WORK/b035/go_asm.h /usr/local/opt/go/libexec/src/syscall/asan0.go /usr/local/opt/go/libexec/src/syscall/dirent.go /usr/local/opt/go/libexec/src/syscall/endian_little.go /usr/local/opt/go/libexec/src/syscall/env_unix.go /usr/local/opt/go/libexec/src/syscall/exec_linux.go /usr/local/opt/go/libexec/src/syscall/exec_unix.go /usr/local/opt/go/libexec/src/syscall/flock.go /usr/local/opt/go/libexec/src/syscall/lsf_linux.go /usr/local/opt/go/libexec/src/syscall/msan0.go /usr/local/opt/go/libexec/src/syscall/net.go /usr/local/opt/go/libexec/src/syscall/netlink_linux.go /usr/local/opt/go/libexec/src/syscall/rlimit.go /usr/local/opt/go/libexec/src/syscall/rlimit_stub.go /usr/local/opt/go/libexec/src/syscall/setuidgid_linux.go /usr/local/opt/go/libexec/src/syscall/sockcmsg_linux.go /usr/local/opt/go/libexec/src/syscall/sockcmsg_unix.go /usr/local/opt/go/libexec/src/syscall/sockcmsg_unix_other.go /usr/local/opt/go/libexec/src/syscall/syscall.go /usr/local/opt/go/libexec/src/syscall/syscall_linux.go /usr/local/opt/go/libexec/src/syscall/syscall_linux_accept4.go /usr/local/opt/go/libexec/src/syscall/syscall_linux_amd64.go /usr/local/opt/go/libexec/src/syscall/syscall_unix.go /usr/local/opt/go/libexec/src/syscall/time_nofake.go /usr/local/opt/go/libexec/src/syscall/timestruct.go /usr/local/opt/go/libexec/src/syscall/zerrors_linux_amd64.go /usr/local/opt/go/libexec/src/syscall/zsyscall_linux_amd64.go /usr/local/opt/go/libexec/src/syscall/zsysnum_linux_amd64.go /usr/local/opt/go/libexec/src/syscall/ztypes_linux_amd64.go
@@ -385,18 +385,18 @@ cd /usr/local/opt/go/libexec/src/reflect
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p reflect -trimpath "$WORK/b020=>" -I $WORK/b020/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b020/symabis ./asm_amd64.s
 cat >$WORK/b020/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile internal/abi=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b009/_pkg_.a
-packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
-packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
-packagefile internal/itoa=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b021/_pkg_.a
-packagefile internal/unsafeheader=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b006/_pkg_.a
-packagefile math=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b022/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
-packagefile strconv=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b024/_pkg_.a
-packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
-packagefile unicode=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b029/_pkg_.a
-packagefile unicode/utf8=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b025/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile internal/abi=$WORK/b009/_pkg_.a
+packagefile internal/bytealg=$WORK/b010/_pkg_.a
+packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/itoa=$WORK/b021/_pkg_.a
+packagefile internal/unsafeheader=$WORK/b006/_pkg_.a
+packagefile math=$WORK/b022/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
+packagefile strconv=$WORK/b024/_pkg_.a
+packagefile sync=$WORK/b026/_pkg_.a
+packagefile unicode=$WORK/b029/_pkg_.a
+packagefile unicode/utf8=$WORK/b025/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b020/_pkg_.a -trimpath "$WORK/b020=>" -p reflect -std -buildid nIapndKG10ZTabsNBtM3/nIapndKG10ZTabsNBtM3 -goversion go1.20.4 -symabis $WORK/b020/symabis -c=4 -nolocalimports -importcfg $WORK/b020/importcfg -pack -asmhdr $WORK/b020/go_asm.h /usr/local/opt/go/libexec/src/reflect/abi.go /usr/local/opt/go/libexec/src/reflect/deepequal.go /usr/local/opt/go/libexec/src/reflect/float32reg_generic.go /usr/local/opt/go/libexec/src/reflect/makefunc.go /usr/local/opt/go/libexec/src/reflect/swapper.go /usr/local/opt/go/libexec/src/reflect/type.go /usr/local/opt/go/libexec/src/reflect/value.go /usr/local/opt/go/libexec/src/reflect/visiblefields.go
@@ -408,7 +408,7 @@ cp $WORK/b035/_pkg_.a /Users/DQNEO/Library/Caches/go-build/90/90c34d05dac34b8a71
 mkdir -p $WORK/b039/
 cat >$WORK/b039/importcfg << EOF # internal
 # import config
-packagefile syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b035/_pkg_.a
+packagefile syscall=$WORK/b035/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b039/_pkg_.a -trimpath "$WORK/b039=>" -p internal/syscall/execenv -std -complete -buildid 9v4cH9-eclFZmCPdzfl0/9v4cH9-eclFZmCPdzfl0 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b039/importcfg -pack /usr/local/opt/go/libexec/src/internal/syscall/execenv/execenv_default.go
@@ -416,15 +416,15 @@ mkdir -p $WORK/b034/
 mkdir -p $WORK/b037/
 cat >$WORK/b034/importcfg << EOF # internal
 # import config
-packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b028/_pkg_.a
-packagefile syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b035/_pkg_.a
+packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile syscall=$WORK/b035/_pkg_.a
 EOF
 cat >$WORK/b037/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
-packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
-packagefile syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b035/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
+packagefile sync=$WORK/b026/_pkg_.a
+packagefile syscall=$WORK/b035/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b034/_pkg_.a -trimpath "$WORK/b034=>" -p internal/syscall/unix -std -complete -buildid y7B9w1xvVOcllLe1UHTw/y7B9w1xvVOcllLe1UHTw -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b034/importcfg -pack /usr/local/opt/go/libexec/src/internal/syscall/unix/at.go /usr/local/opt/go/libexec/src/internal/syscall/unix/at_fstatat.go /usr/local/opt/go/libexec/src/internal/syscall/unix/at_sysnum_linux.go /usr/local/opt/go/libexec/src/internal/syscall/unix/at_sysnum_newfstatat_linux.go /usr/local/opt/go/libexec/src/internal/syscall/unix/constants.go /usr/local/opt/go/libexec/src/internal/syscall/unix/copy_file_range_linux.go /usr/local/opt/go/libexec/src/internal/syscall/unix/eaccess_linux.go /usr/local/opt/go/libexec/src/internal/syscall/unix/getrandom.go /usr/local/opt/go/libexec/src/internal/syscall/unix/getrandom_linux.go /usr/local/opt/go/libexec/src/internal/syscall/unix/kernel_version_linux.go /usr/local/opt/go/libexec/src/internal/syscall/unix/net.go /usr/local/opt/go/libexec/src/internal/syscall/unix/nonblocking.go /usr/local/opt/go/libexec/src/internal/syscall/unix/sysnum_linux_amd64.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b037/_pkg_.a -trimpath "$WORK/b037=>" -p time -std -buildid JPr4o2PkKYQpYoXGOl8u/JPr4o2PkKYQpYoXGOl8u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b037/importcfg -pack /usr/local/opt/go/libexec/src/time/format.go /usr/local/opt/go/libexec/src/time/format_rfc3339.go /usr/local/opt/go/libexec/src/time/sleep.go /usr/local/opt/go/libexec/src/time/sys_unix.go /usr/local/opt/go/libexec/src/time/tick.go /usr/local/opt/go/libexec/src/time/time.go /usr/local/opt/go/libexec/src/time/zoneinfo.go /usr/local/opt/go/libexec/src/time/zoneinfo_goroot.go /usr/local/opt/go/libexec/src/time/zoneinfo_read.go /usr/local/opt/go/libexec/src/time/zoneinfo_unix.go
@@ -437,13 +437,13 @@ cp $WORK/b037/_pkg_.a /Users/DQNEO/Library/Caches/go-build/2d/2d930289955ec68431
 mkdir -p $WORK/b041/
 cat >$WORK/b041/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile internal/oserror=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b036/_pkg_.a
-packagefile io=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b031/_pkg_.a
-packagefile path=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b042/_pkg_.a
-packagefile sort=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b030/_pkg_.a
-packagefile time=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b037/_pkg_.a
-packagefile unicode/utf8=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b025/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile internal/oserror=$WORK/b036/_pkg_.a
+packagefile io=$WORK/b031/_pkg_.a
+packagefile path=$WORK/b042/_pkg_.a
+packagefile sort=$WORK/b030/_pkg_.a
+packagefile time=$WORK/b037/_pkg_.a
+packagefile unicode/utf8=$WORK/b025/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b041/_pkg_.a -trimpath "$WORK/b041=>" -p io/fs -std -complete -buildid EvJOhnLtLuHzGX4dFlcg/EvJOhnLtLuHzGX4dFlcg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b041/importcfg -pack /usr/local/opt/go/libexec/src/io/fs/fs.go /usr/local/opt/go/libexec/src/io/fs/glob.go /usr/local/opt/go/libexec/src/io/fs/readdir.go /usr/local/opt/go/libexec/src/io/fs/readfile.go /usr/local/opt/go/libexec/src/io/fs/stat.go /usr/local/opt/go/libexec/src/io/fs/sub.go /usr/local/opt/go/libexec/src/io/fs/walk.go
 cd /usr/local/opt/go/libexec/src/reflect
@@ -451,14 +451,14 @@ cd /usr/local/opt/go/libexec/src/reflect
 mkdir -p $WORK/b033/
 cat >$WORK/b033/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile internal/syscall/unix=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b034/_pkg_.a
-packagefile io=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b031/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
-packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
-packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b028/_pkg_.a
-packagefile syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b035/_pkg_.a
-packagefile time=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b037/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile internal/syscall/unix=$WORK/b034/_pkg_.a
+packagefile io=$WORK/b031/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
+packagefile sync=$WORK/b026/_pkg_.a
+packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile syscall=$WORK/b035/_pkg_.a
+packagefile time=$WORK/b037/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b033/_pkg_.a -trimpath "$WORK/b033=>" -p internal/poll -std -buildid z1T_88ivNUFrGnA9-Iwx/z1T_88ivNUFrGnA9-Iwx -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b033/importcfg -pack /usr/local/opt/go/libexec/src/internal/poll/copy_file_range_linux.go /usr/local/opt/go/libexec/src/internal/poll/errno_unix.go /usr/local/opt/go/libexec/src/internal/poll/fcntl_syscall.go /usr/local/opt/go/libexec/src/internal/poll/fd.go /usr/local/opt/go/libexec/src/internal/poll/fd_fsync_posix.go /usr/local/opt/go/libexec/src/internal/poll/fd_mutex.go /usr/local/opt/go/libexec/src/internal/poll/fd_poll_runtime.go /usr/local/opt/go/libexec/src/internal/poll/fd_posix.go /usr/local/opt/go/libexec/src/internal/poll/fd_unix.go /usr/local/opt/go/libexec/src/internal/poll/fd_writev_unix.go /usr/local/opt/go/libexec/src/internal/poll/hook_cloexec.go /usr/local/opt/go/libexec/src/internal/poll/hook_unix.go /usr/local/opt/go/libexec/src/internal/poll/iovec_unix.go /usr/local/opt/go/libexec/src/internal/poll/sendfile_linux.go /usr/local/opt/go/libexec/src/internal/poll/sock_cloexec.go /usr/local/opt/go/libexec/src/internal/poll/sockopt.go /usr/local/opt/go/libexec/src/internal/poll/sockopt_linux.go /usr/local/opt/go/libexec/src/internal/poll/sockopt_unix.go /usr/local/opt/go/libexec/src/internal/poll/sockoptip.go /usr/local/opt/go/libexec/src/internal/poll/splice_linux.go /usr/local/opt/go/libexec/src/internal/poll/writev.go
@@ -470,8 +470,8 @@ cp $WORK/b020/_pkg_.a /Users/DQNEO/Library/Caches/go-build/d5/d5fd69d99da4bee5f1
 mkdir -p $WORK/b019/
 cat >$WORK/b019/importcfg << EOF # internal
 # import config
-packagefile reflect=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b020/_pkg_.a
-packagefile sort=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b030/_pkg_.a
+packagefile reflect=$WORK/b020/_pkg_.a
+packagefile sort=$WORK/b030/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b019/_pkg_.a -trimpath "$WORK/b019=>" -p internal/fmtsort -std -complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b019/importcfg -pack /usr/local/opt/go/libexec/src/internal/fmtsort/sort.go
@@ -483,21 +483,21 @@ cp $WORK/b033/_pkg_.a /Users/DQNEO/Library/Caches/go-build/8a/8a23e35e436231c957
 mkdir -p $WORK/b032/
 cat >$WORK/b032/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile internal/itoa=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b021/_pkg_.a
-packagefile internal/poll=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b033/_pkg_.a
-packagefile internal/safefilepath=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b038/_pkg_.a
-packagefile internal/syscall/execenv=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b039/_pkg_.a
-packagefile internal/syscall/unix=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b034/_pkg_.a
-packagefile internal/testlog=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b040/_pkg_.a
-packagefile io=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b031/_pkg_.a
-packagefile io/fs=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b041/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
-packagefile sort=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b030/_pkg_.a
-packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
-packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b028/_pkg_.a
-packagefile syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b035/_pkg_.a
-packagefile time=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b037/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile internal/itoa=$WORK/b021/_pkg_.a
+packagefile internal/poll=$WORK/b033/_pkg_.a
+packagefile internal/safefilepath=$WORK/b038/_pkg_.a
+packagefile internal/syscall/execenv=$WORK/b039/_pkg_.a
+packagefile internal/syscall/unix=$WORK/b034/_pkg_.a
+packagefile internal/testlog=$WORK/b040/_pkg_.a
+packagefile io=$WORK/b031/_pkg_.a
+packagefile io/fs=$WORK/b041/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
+packagefile sort=$WORK/b030/_pkg_.a
+packagefile sync=$WORK/b026/_pkg_.a
+packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile syscall=$WORK/b035/_pkg_.a
+packagefile time=$WORK/b037/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b032/_pkg_.a -trimpath "$WORK/b032=>" -p os -std -buildid 8kTY3IGtc09hvOwTK2Gg/8kTY3IGtc09hvOwTK2Gg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b032/importcfg -pack /usr/local/opt/go/libexec/src/os/dir.go /usr/local/opt/go/libexec/src/os/dir_unix.go /usr/local/opt/go/libexec/src/os/dirent_linux.go /usr/local/opt/go/libexec/src/os/endian_little.go /usr/local/opt/go/libexec/src/os/env.go /usr/local/opt/go/libexec/src/os/error.go /usr/local/opt/go/libexec/src/os/error_errno.go /usr/local/opt/go/libexec/src/os/error_posix.go /usr/local/opt/go/libexec/src/os/exec.go /usr/local/opt/go/libexec/src/os/exec_posix.go /usr/local/opt/go/libexec/src/os/exec_unix.go /usr/local/opt/go/libexec/src/os/executable.go /usr/local/opt/go/libexec/src/os/executable_procfs.go /usr/local/opt/go/libexec/src/os/file.go /usr/local/opt/go/libexec/src/os/file_posix.go /usr/local/opt/go/libexec/src/os/file_unix.go /usr/local/opt/go/libexec/src/os/getwd.go /usr/local/opt/go/libexec/src/os/path.go /usr/local/opt/go/libexec/src/os/path_unix.go /usr/local/opt/go/libexec/src/os/pipe2_unix.go /usr/local/opt/go/libexec/src/os/proc.go /usr/local/opt/go/libexec/src/os/rawconn.go /usr/local/opt/go/libexec/src/os/readfrom_linux.go /usr/local/opt/go/libexec/src/os/removeall_at.go /usr/local/opt/go/libexec/src/os/stat.go /usr/local/opt/go/libexec/src/os/stat_linux.go /usr/local/opt/go/libexec/src/os/stat_unix.go /usr/local/opt/go/libexec/src/os/sticky_notbsd.go /usr/local/opt/go/libexec/src/os/str.go /usr/local/opt/go/libexec/src/os/sys.go /usr/local/opt/go/libexec/src/os/sys_linux.go /usr/local/opt/go/libexec/src/os/sys_unix.go /usr/local/opt/go/libexec/src/os/tempfile.go /usr/local/opt/go/libexec/src/os/types.go /usr/local/opt/go/libexec/src/os/types_unix.go /usr/local/opt/go/libexec/src/os/wait_waitid.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b032/_pkg_.a # internal
@@ -505,16 +505,16 @@ cp $WORK/b032/_pkg_.a /Users/DQNEO/Library/Caches/go-build/9f/9f4f9105c37b2865b1
 mkdir -p $WORK/b002/
 cat >$WORK/b002/importcfg << EOF # internal
 # import config
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile internal/fmtsort=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b019/_pkg_.a
-packagefile io=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b031/_pkg_.a
-packagefile math=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b022/_pkg_.a
-packagefile os=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b032/_pkg_.a
-packagefile reflect=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b020/_pkg_.a
-packagefile sort=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b030/_pkg_.a
-packagefile strconv=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b024/_pkg_.a
-packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
-packagefile unicode/utf8=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b025/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile internal/fmtsort=$WORK/b019/_pkg_.a
+packagefile io=$WORK/b031/_pkg_.a
+packagefile math=$WORK/b022/_pkg_.a
+packagefile os=$WORK/b032/_pkg_.a
+packagefile reflect=$WORK/b020/_pkg_.a
+packagefile sort=$WORK/b030/_pkg_.a
+packagefile strconv=$WORK/b024/_pkg_.a
+packagefile sync=$WORK/b026/_pkg_.a
+packagefile unicode/utf8=$WORK/b025/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b002/_pkg_.a -trimpath "$WORK/b002=>" -p fmt -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b002/importcfg -pack /usr/local/opt/go/libexec/src/fmt/doc.go /usr/local/opt/go/libexec/src/fmt/errors.go /usr/local/opt/go/libexec/src/fmt/format.go /usr/local/opt/go/libexec/src/fmt/print.go /usr/local/opt/go/libexec/src/fmt/scan.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b002/_pkg_.a # internal
@@ -522,54 +522,54 @@ cp $WORK/b002/_pkg_.a /Users/DQNEO/Library/Caches/go-build/cf/cff345f70671e50877
 mkdir -p $WORK/b001/
 cat >$WORK/b001/importcfg << EOF # internal
 # import config
-packagefile fmt=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b002/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
+packagefile fmt=$WORK/b002/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b001/importcfg -pack ./main.go ./sum.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b001/_pkg_.a # internal
 cp $WORK/b001/_pkg_.a /Users/DQNEO/Library/Caches/go-build/7a/7a314cdb7644f75ade9e29b91291f7f6635c9ddf4a7ab138f3a0578465a22a40-d # internal
 cat >$WORK/b001/importcfg.link << EOF # internal
-packagefile github.com/DQNEO/go-samples/birudo=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b001/_pkg_.a
-packagefile fmt=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b002/_pkg_.a
-packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
-packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
-packagefile internal/fmtsort=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b019/_pkg_.a
-packagefile io=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b031/_pkg_.a
-packagefile math=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b022/_pkg_.a
-packagefile os=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b032/_pkg_.a
-packagefile reflect=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b020/_pkg_.a
-packagefile sort=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b030/_pkg_.a
-packagefile strconv=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b024/_pkg_.a
-packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
-packagefile unicode/utf8=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b025/_pkg_.a
-packagefile internal/abi=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b009/_pkg_.a
-packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
-packagefile internal/coverage/rtcov=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b012/_pkg_.a
-packagefile internal/cpu=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b011/_pkg_.a
-packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
-packagefile internal/goexperiment=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b013/_pkg_.a
-packagefile internal/goos=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b014/_pkg_.a
-packagefile runtime/internal/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b015/_pkg_.a
-packagefile runtime/internal/math=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b016/_pkg_.a
-packagefile runtime/internal/sys=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b017/_pkg_.a
-packagefile runtime/internal/syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b018/_pkg_.a
-packagefile internal/reflectlite=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b004/_pkg_.a
-packagefile math/bits=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b023/_pkg_.a
-packagefile internal/itoa=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b021/_pkg_.a
-packagefile internal/poll=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b033/_pkg_.a
-packagefile internal/safefilepath=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b038/_pkg_.a
-packagefile internal/syscall/execenv=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b039/_pkg_.a
-packagefile internal/syscall/unix=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b034/_pkg_.a
-packagefile internal/testlog=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b040/_pkg_.a
-packagefile io/fs=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b041/_pkg_.a
-packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b028/_pkg_.a
-packagefile syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b035/_pkg_.a
-packagefile time=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b037/_pkg_.a
-packagefile internal/unsafeheader=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b006/_pkg_.a
-packagefile unicode=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b029/_pkg_.a
-packagefile internal/race=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b027/_pkg_.a
-packagefile internal/oserror=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b036/_pkg_.a
-packagefile path=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b042/_pkg_.a
+packagefile github.com/DQNEO/go-samples/birudo=$WORK/b001/_pkg_.a
+packagefile fmt=$WORK/b002/_pkg_.a
+packagefile runtime=$WORK/b008/_pkg_.a
+packagefile errors=$WORK/b003/_pkg_.a
+packagefile internal/fmtsort=$WORK/b019/_pkg_.a
+packagefile io=$WORK/b031/_pkg_.a
+packagefile math=$WORK/b022/_pkg_.a
+packagefile os=$WORK/b032/_pkg_.a
+packagefile reflect=$WORK/b020/_pkg_.a
+packagefile sort=$WORK/b030/_pkg_.a
+packagefile strconv=$WORK/b024/_pkg_.a
+packagefile sync=$WORK/b026/_pkg_.a
+packagefile unicode/utf8=$WORK/b025/_pkg_.a
+packagefile internal/abi=$WORK/b009/_pkg_.a
+packagefile internal/bytealg=$WORK/b010/_pkg_.a
+packagefile internal/coverage/rtcov=$WORK/b012/_pkg_.a
+packagefile internal/cpu=$WORK/b011/_pkg_.a
+packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/goexperiment=$WORK/b013/_pkg_.a
+packagefile internal/goos=$WORK/b014/_pkg_.a
+packagefile runtime/internal/atomic=$WORK/b015/_pkg_.a
+packagefile runtime/internal/math=$WORK/b016/_pkg_.a
+packagefile runtime/internal/sys=$WORK/b017/_pkg_.a
+packagefile runtime/internal/syscall=$WORK/b018/_pkg_.a
+packagefile internal/reflectlite=$WORK/b004/_pkg_.a
+packagefile math/bits=$WORK/b023/_pkg_.a
+packagefile internal/itoa=$WORK/b021/_pkg_.a
+packagefile internal/poll=$WORK/b033/_pkg_.a
+packagefile internal/safefilepath=$WORK/b038/_pkg_.a
+packagefile internal/syscall/execenv=$WORK/b039/_pkg_.a
+packagefile internal/syscall/unix=$WORK/b034/_pkg_.a
+packagefile internal/testlog=$WORK/b040/_pkg_.a
+packagefile io/fs=$WORK/b041/_pkg_.a
+packagefile sync/atomic=$WORK/b028/_pkg_.a
+packagefile syscall=$WORK/b035/_pkg_.a
+packagefile time=$WORK/b037/_pkg_.a
+packagefile internal/unsafeheader=$WORK/b006/_pkg_.a
+packagefile unicode=$WORK/b029/_pkg_.a
+packagefile internal/race=$WORK/b027/_pkg_.a
+packagefile internal/oserror=$WORK/b036/_pkg_.a
+packagefile path=$WORK/b042/_pkg_.a
 modinfo "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\tgithub.com/DQNEO/go-samples/birudo\nmod\tgithub.com/DQNEO/go-samples/birudo\t(devel)\t\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\tCGO_ENABLED=0\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=a721858f4c22cb178c3f3853f9c55aa3773afc2c\nbuild\tvcs.time=2023-06-02T12:08:04Z\nbuild\tvcs.modified=true\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2"
 EOF
 mkdir -p $WORK/b001/exe/
