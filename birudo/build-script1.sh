@@ -12,7 +12,7 @@ CACHE_DIR=/Users/DQNEO/Library/Caches/go-build
 declare -A PKGS
 PKGS[os]="b032"
 PKGS[fmt]="b002"
-
+PKGS[main]="b001"
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 git status --porcelain
@@ -545,17 +545,18 @@ $TOOL_DIR/buildid -w $WORK/$dir/_pkg_.a # internal
 
 ## Final output
 function doLink() {
-mkdir -p $WORK/b001/
-cat >$WORK/b001/importcfg << EOF # internal
+wdir=$WORK/${PKGS[main]}
+mkdir -p $wdir/
+cat >$wdir/importcfg << EOF # internal
 # import config
 packagefile fmt=$WORK/${PKGS[fmt]}/_pkg_.a
 packagefile runtime=$WORK/b008/_pkg_.a
 EOF
-$TOOL_DIR/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b001/importcfg -pack ./main.go ./sum.go
-$TOOL_DIR/buildid -w $WORK/b001/_pkg_.a # internal
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack ./main.go ./sum.go
+$TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
-cat >$WORK/b001/importcfg.link << EOF # internal
-packagefile github.com/DQNEO/go-samples/birudo=$WORK/b001/_pkg_.a
+cat >$wdir/importcfg.link << EOF # internal
+packagefile github.com/DQNEO/go-samples/birudo=$wdir/_pkg_.a
 packagefile fmt=$WORK/${PKGS[fmt]}/_pkg_.a
 packagefile runtime=$WORK/b008/_pkg_.a
 packagefile errors=$WORK/b003/_pkg_.a
@@ -598,12 +599,12 @@ packagefile internal/oserror=$WORK/b036/_pkg_.a
 packagefile path=$WORK/b042/_pkg_.a
 modinfo "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\tgithub.com/DQNEO/go-samples/birudo\nmod\tgithub.com/DQNEO/go-samples/birudo\t(devel)\t\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\tCGO_ENABLED=0\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=a721858f4c22cb178c3f3853f9c55aa3773afc2c\nbuild\tvcs.time=2023-06-02T12:08:04Z\nbuild\tvcs.modified=true\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2"
 EOF
-mkdir -p $WORK/b001/exe/
+mkdir -p $wdir/exe/
 cd .
-$TOOL_DIR/link -o $WORK/b001/exe/a.out -importcfg $WORK/b001/importcfg.link -buildmode=exe -buildid=yekYyg_HZMgX517VPpiO/aHxht5d7JGm1qJULUhhT/ct0PU8-vieH10gtMxGeC/yekYyg_HZMgX517VPpiO -extld=cc $WORK/b001/_pkg_.a
-$TOOL_DIR/buildid -w $WORK/b001/exe/a.out # internal
-mv $WORK/b001/exe/a.out birudo
-rm -r $WORK/b001/
+$TOOL_DIR/link -o $wdir/exe/a.out -importcfg $wdir/importcfg.link -buildmode=exe -buildid=yekYyg_HZMgX517VPpiO/aHxht5d7JGm1qJULUhhT/ct0PU8-vieH10gtMxGeC/yekYyg_HZMgX517VPpiO -extld=cc $wdir/_pkg_.a
+$TOOL_DIR/buildid -w $wdir/exe/a.out # internal
+mv $wdir/exe/a.out birudo
+rm -r $wdir/
 }
 
 build_os ${PKGS[os]}
