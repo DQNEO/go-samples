@@ -67,11 +67,11 @@ $TOOL_DIR/buildid -w $WORK/b013/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b014/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b006/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b005/_pkg_.a # internal
-cp $WORK/b013/_pkg_.a $CACHE_DIR/8d/8de78bf1ef63a81cea0842fb8c763a9242c3cb58755f22415c152ba39d813fbf-d # internal
-cp $WORK/b006/_pkg_.a $CACHE_DIR/c5/c5b46fe40f7e8de2493764975e120119586accdba6937c78b1d5361bf99bc5b9-d # internal
-cp $WORK/b014/_pkg_.a $CACHE_DIR/fc/fc2639e7d82ded59f6db84cb817dd44e79b4ce07bf385d940b6a585ea2251d8d-d # internal
+
+
+
 mkdir -p $WORK/b021/
-cp $WORK/b005/_pkg_.a $CACHE_DIR/46/466361bf073f0514935abe900921ffaa557283dbec238ae7b237bf94e134e05e-d # internal
+
 mkdir -p $WORK/b025/
 cat >$WORK/b021/importcfg << EOF # internal
 # import config
@@ -106,7 +106,7 @@ cat >$WORK/b015/importcfg << EOF # internal
 EOF
 $TOOL_DIR/compile -o $WORK/b015/_pkg_.a -trimpath "$WORK/b015=>" -p runtime/internal/atomic -std -+ -buildid IgGysWgqntnGBJ3sVB-f/IgGysWgqntnGBJ3sVB-f -goversion go1.20.4 -symabis $WORK/b015/symabis -c=4 -nolocalimports -importcfg $WORK/b015/importcfg -pack -asmhdr $WORK/b015/go_asm.h $GORT/src/runtime/internal/atomic/atomic_amd64.go $GORT/src/runtime/internal/atomic/doc.go $GORT/src/runtime/internal/atomic/stubs.go $GORT/src/runtime/internal/atomic/types.go $GORT/src/runtime/internal/atomic/types_64bit.go $GORT/src/runtime/internal/atomic/unaligned.go
 $TOOL_DIR/buildid -w $WORK/b012/_pkg_.a # internal
-cp $WORK/b012/_pkg_.a $CACHE_DIR/92/926df4eb753eaf2114a466757f34e7afdfba1cf6ec04f1f2f34c85063d90e024-d # internal
+
 mkdir -p $WORK/b016/
 cat >$WORK/b009/importcfg << EOF # internal
 # import config
@@ -119,7 +119,7 @@ packagefile internal/goarch=$WORK/b005/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b016/_pkg_.a -trimpath "$WORK/b016=>" -p runtime/internal/math -std -+ -complete -buildid dKV2PXLfEa-bpWk_4jjm/dKV2PXLfEa-bpWk_4jjm -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b016/importcfg -pack $GORT/src/runtime/internal/math/math.go
 $TOOL_DIR/buildid -w $WORK/b021/_pkg_.a # internal
-cp $WORK/b021/_pkg_.a $CACHE_DIR/bf/bf12a0a0c4af776c027cff856238e7151c065ea070c1d8648374631c254efca2-d # internal
+
 cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/b018=>" -I $WORK/b018/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b018/asm_linux_amd64.o ./asm_linux_amd64.s
 mkdir -p $WORK/b017/
@@ -133,8 +133,8 @@ $TOOL_DIR/compile -o $WORK/b017/_pkg_.a -trimpath "$WORK/b017=>" -p runtime/inte
 $TOOL_DIR/buildid -w $WORK/b023/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b025/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b016/_pkg_.a # internal
-cp $WORK/b025/_pkg_.a $CACHE_DIR/3f/3f60081ee412ab78743d2744ee4e8db7b1a927b3480e8a0d74f175a6da78f2b4-d # internal
-cp $WORK/b016/_pkg_.a $CACHE_DIR/9f/9fdba1d4b52db1d9a6b1ef33709218afb9736e725ac2ed5b2d67732092133118-d # internal
+
+
 cd $GORT/src/internal/abi
 $TOOL_DIR/asm -p internal/abi -trimpath "$WORK/b009=>" -I $WORK/b009/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b009/abi_test.o ./abi_test.s
 mkdir -p $WORK/b027/
@@ -144,7 +144,7 @@ EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b027/_pkg_.a -trimpath "$WORK/b027=>" -p internal/race -std -complete -buildid 6k_7JN4Ro6ano3CJO236/6k_7JN4Ro6ano3CJO236 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b027/importcfg -pack $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
 mkdir -p $WORK/b028/
-cp $WORK/b023/_pkg_.a $CACHE_DIR/8a/8a8af225f53e3267a0e84e9236afd493febe04b00f6a1ebca9a385425ec5eb8b-d # internal
+
 cat >$WORK/b028/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/sync/atomic
@@ -164,9 +164,9 @@ cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b029/_pkg_.a -trimpath "$WORK/b029=>" -p unicode -std -complete -buildid H5EVtAclvmQgmtO5OIl1/H5EVtAclvmQgmtO5OIl1 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b029/importcfg -pack $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
 cd $GORT/src/internal/abi
 $TOOL_DIR/pack r $WORK/b009/_pkg_.a $WORK/b009/abi_test.o # internal
-cp $WORK/b018/_pkg_.a $CACHE_DIR/1d/1d8e21f62bbc5b5ae39b82f62d2103f987588ed752533b349b007897e395d080-d # internal
+
 $TOOL_DIR/buildid -w $WORK/b009/_pkg_.a # internal
-cp $WORK/b009/_pkg_.a $CACHE_DIR/97/97e46b4de6600d66a48c41890d9b418b13b20b22bb9116831e53bb277d3cc219-d # internal
+
 cd $GORT/src/internal/cpu
 $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/b011=>" -I $WORK/b011/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b011/cpu_x86.o ./cpu_x86.s
 $TOOL_DIR/buildid -w $WORK/b017/_pkg_.a # internal
@@ -176,16 +176,16 @@ EOF
 $TOOL_DIR/buildid -w $WORK/b027/_pkg_.a # internal
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b028/_pkg_.a -trimpath "$WORK/b028=>" -p sync/atomic -std -buildid 8sTHEv3qeP6epKjkp86J/8sTHEv3qeP6epKjkp86J -goversion go1.20.4 -symabis $WORK/b028/symabis -c=4 -nolocalimports -importcfg $WORK/b028/importcfg -pack -asmhdr $WORK/b028/go_asm.h $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type.go $GORT/src/sync/atomic/value.go
-cp $WORK/b027/_pkg_.a $CACHE_DIR/8d/8d8748d628c00b0e17ec37c3b489e3f71aa648f54ebd42850107185a25c9c5d0-d # internal
-cp $WORK/b017/_pkg_.a $CACHE_DIR/89/894fd9e5b3ec676bfc6db7792d9a73a660cab83b1469ee8b0ec1c7ab471453f3-d # internal
+
+
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/pack r $WORK/b015/_pkg_.a $WORK/b015/atomic_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/b015/_pkg_.a # internal
 cd $GORT/src/internal/cpu
 $TOOL_DIR/pack r $WORK/b011/_pkg_.a $WORK/b011/cpu.o $WORK/b011/cpu_x86.o # internal
 $TOOL_DIR/buildid -w $WORK/b011/_pkg_.a # internal
-cp $WORK/b015/_pkg_.a $CACHE_DIR/9b/9b27352913aac753062d263539a28267204689b4f2b07b08874edc157621a704-d # internal
-cp $WORK/b011/_pkg_.a $CACHE_DIR/06/0621a8c86a0f8a0475a63e05793305315e8701bc4b5d35227f39367f20a85bf7-d # internal
+
+
 mkdir -p $WORK/b010/
 cat >$WORK/b010/go_asm.h << EOF # internal
 EOF
@@ -216,14 +216,14 @@ $TOOL_DIR/pack r $WORK/b028/_pkg_.a $WORK/b028/asm.o # internal
 $TOOL_DIR/buildid -w $WORK/b028/_pkg_.a # internal
 cd $GORT/src/internal/bytealg
 $TOOL_DIR/asm -p internal/bytealg -trimpath "$WORK/b010=>" -I $WORK/b010/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b010/compare_amd64.o ./compare_amd64.s
-cp $WORK/b028/_pkg_.a $CACHE_DIR/60/607d046547a61f90e414bc462b44559534605a2b3331d30e80987de78eccec02-d # internal
+
 $TOOL_DIR/asm -p internal/bytealg -trimpath "$WORK/b010=>" -I $WORK/b010/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b010/count_amd64.o ./count_amd64.s
 $TOOL_DIR/asm -p internal/bytealg -trimpath "$WORK/b010=>" -I $WORK/b010/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b010/equal_amd64.o ./equal_amd64.s
 $TOOL_DIR/asm -p internal/bytealg -trimpath "$WORK/b010=>" -I $WORK/b010/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b010/index_amd64.o ./index_amd64.s
 $TOOL_DIR/asm -p internal/bytealg -trimpath "$WORK/b010=>" -I $WORK/b010/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b010/indexbyte_amd64.o ./indexbyte_amd64.s
 $TOOL_DIR/pack r $WORK/b010/_pkg_.a $WORK/b010/compare_amd64.o $WORK/b010/count_amd64.o $WORK/b010/equal_amd64.o $WORK/b010/index_amd64.o $WORK/b010/indexbyte_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/b010/_pkg_.a # internal
-cp $WORK/b010/_pkg_.a $CACHE_DIR/3d/3d8c80401513467afb4c0ae8bfb06d098f84d53f83c67e867a73d5a9bd52c621-d # internal
+
 mkdir -p $WORK/b008/
 cat >$WORK/b008/go_asm.h << EOF # internal
 EOF
@@ -250,14 +250,14 @@ cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b008/_pkg_.a -trimpath "$WORK/b008=>" -p runtime -std -+ -buildid Njl5lkeGSG8PAp_cny9y/Njl5lkeGSG8PAp_cny9y -goversion go1.20.4 -symabis $WORK/b008/symabis -c=4 -nolocalimports -importcfg $WORK/b008/importcfg -pack -asmhdr $WORK/b008/go_asm.h $GORT/src/runtime/alg.go $GORT/src/runtime/arena.go $GORT/src/runtime/asan0.go $GORT/src/runtime/atomic_pointer.go $GORT/src/runtime/cgo.go $GORT/src/runtime/cgo_mmap.go $GORT/src/runtime/cgo_sigaction.go $GORT/src/runtime/cgocall.go $GORT/src/runtime/cgocallback.go $GORT/src/runtime/cgocheck.go $GORT/src/runtime/chan.go $GORT/src/runtime/checkptr.go $GORT/src/runtime/compiler.go $GORT/src/runtime/complex.go $GORT/src/runtime/covercounter.go $GORT/src/runtime/covermeta.go $GORT/src/runtime/cpuflags.go $GORT/src/runtime/cpuflags_amd64.go $GORT/src/runtime/cpuprof.go $GORT/src/runtime/cputicks.go $GORT/src/runtime/create_file_unix.go $GORT/src/runtime/debug.go $GORT/src/runtime/debugcall.go $GORT/src/runtime/debuglog.go $GORT/src/runtime/debuglog_off.go $GORT/src/runtime/defs_linux_amd64.go $GORT/src/runtime/env_posix.go $GORT/src/runtime/error.go $GORT/src/runtime/exithook.go $GORT/src/runtime/extern.go $GORT/src/runtime/fastlog2.go $GORT/src/runtime/fastlog2table.go $GORT/src/runtime/float.go $GORT/src/runtime/hash64.go $GORT/src/runtime/heapdump.go $GORT/src/runtime/histogram.go $GORT/src/runtime/iface.go $GORT/src/runtime/lfstack.go $GORT/src/runtime/lfstack_64bit.go $GORT/src/runtime/lock_futex.go $GORT/src/runtime/lockrank.go $GORT/src/runtime/lockrank_off.go $GORT/src/runtime/malloc.go $GORT/src/runtime/map.go $GORT/src/runtime/map_fast32.go $GORT/src/runtime/map_fast64.go $GORT/src/runtime/map_faststr.go $GORT/src/runtime/mbarrier.go $GORT/src/runtime/mbitmap.go $GORT/src/runtime/mcache.go $GORT/src/runtime/mcentral.go $GORT/src/runtime/mcheckmark.go $GORT/src/runtime/mem.go $GORT/src/runtime/mem_linux.go $GORT/src/runtime/metrics.go $GORT/src/runtime/mfinal.go $GORT/src/runtime/mfixalloc.go $GORT/src/runtime/mgc.go $GORT/src/runtime/mgclimit.go $GORT/src/runtime/mgcmark.go $GORT/src/runtime/mgcpacer.go $GORT/src/runtime/mgcscavenge.go $GORT/src/runtime/mgcstack.go $GORT/src/runtime/mgcsweep.go $GORT/src/runtime/mgcwork.go $GORT/src/runtime/mheap.go $GORT/src/runtime/mpagealloc.go $GORT/src/runtime/mpagealloc_64bit.go $GORT/src/runtime/mpagecache.go $GORT/src/runtime/mpallocbits.go $GORT/src/runtime/mprof.go $GORT/src/runtime/mranges.go $GORT/src/runtime/msan0.go $GORT/src/runtime/msize.go $GORT/src/runtime/mspanset.go $GORT/src/runtime/mstats.go $GORT/src/runtime/mwbbuf.go $GORT/src/runtime/nbpipe_pipe2.go $GORT/src/runtime/netpoll.go $GORT/src/runtime/netpoll_epoll.go $GORT/src/runtime/os_linux.go $GORT/src/runtime/os_linux_generic.go $GORT/src/runtime/os_linux_noauxv.go $GORT/src/runtime/os_linux_x86.go $GORT/src/runtime/os_nonopenbsd.go $GORT/src/runtime/pagetrace_off.go $GORT/src/runtime/panic.go $GORT/src/runtime/plugin.go $GORT/src/runtime/preempt.go $GORT/src/runtime/preempt_nonwindows.go $GORT/src/runtime/print.go $GORT/src/runtime/proc.go $GORT/src/runtime/profbuf.go $GORT/src/runtime/proflabel.go $GORT/src/runtime/race0.go $GORT/src/runtime/rdebug.go $GORT/src/runtime/relax_stub.go $GORT/src/runtime/retry.go $GORT/src/runtime/runtime.go $GORT/src/runtime/runtime1.go $GORT/src/runtime/runtime2.go $GORT/src/runtime/runtime_boring.go $GORT/src/runtime/rwmutex.go $GORT/src/runtime/select.go $GORT/src/runtime/sema.go $GORT/src/runtime/signal_amd64.go $GORT/src/runtime/signal_linux_amd64.go $GORT/src/runtime/signal_unix.go $GORT/src/runtime/sigqueue.go $GORT/src/runtime/sigqueue_note.go $GORT/src/runtime/sigtab_linux_generic.go $GORT/src/runtime/sizeclasses.go $GORT/src/runtime/slice.go $GORT/src/runtime/softfloat64.go $GORT/src/runtime/stack.go $GORT/src/runtime/stkframe.go $GORT/src/runtime/string.go $GORT/src/runtime/stubs.go $GORT/src/runtime/stubs2.go $GORT/src/runtime/stubs3.go $GORT/src/runtime/stubs_amd64.go $GORT/src/runtime/stubs_linux.go $GORT/src/runtime/symtab.go $GORT/src/runtime/sys_nonppc64x.go $GORT/src/runtime/sys_x86.go $GORT/src/runtime/time.go $GORT/src/runtime/time_nofake.go $GORT/src/runtime/timeasm.go $GORT/src/runtime/tls_stub.go $GORT/src/runtime/trace.go $GORT/src/runtime/traceback.go $GORT/src/runtime/type.go $GORT/src/runtime/typekind.go $GORT/src/runtime/unsafe.go $GORT/src/runtime/utf8.go $GORT/src/runtime/vdso_elf64.go $GORT/src/runtime/vdso_linux.go $GORT/src/runtime/vdso_linux_amd64.go $GORT/src/runtime/write_err.go
 cd $GORT/src/math
 $TOOL_DIR/asm -p math -trimpath "$WORK/b022=>" -I $WORK/b022/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b022/exp_amd64.o ./exp_amd64.s
-cp $WORK/b029/_pkg_.a $CACHE_DIR/30/308aea17052e8d51adf8f3285ffddca41cb8097847ac43ecee40818df8954816-d # internal
+
 $TOOL_DIR/asm -p math -trimpath "$WORK/b022=>" -I $WORK/b022/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b022/floor_amd64.o ./floor_amd64.s
 $TOOL_DIR/asm -p math -trimpath "$WORK/b022=>" -I $WORK/b022/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b022/hypot_amd64.o ./hypot_amd64.s
 $TOOL_DIR/asm -p math -trimpath "$WORK/b022=>" -I $WORK/b022/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b022/log_amd64.o ./log_amd64.s
 $TOOL_DIR/pack r $WORK/b022/_pkg_.a $WORK/b022/dim_amd64.o $WORK/b022/exp_amd64.o $WORK/b022/floor_amd64.o $WORK/b022/hypot_amd64.o $WORK/b022/log_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/b022/_pkg_.a # internal
-cp $WORK/b022/_pkg_.a $CACHE_DIR/90/90e33f0d8f79c7585c1559728930cf6936e8721a38d6c2b25ab179c8cce393d3-d # internal
-cp $GORT/src/runtime/asm_amd64.h $WORK/b008/asm_GOARCH.h
+
+
 cd $GORT/src/runtime
 $TOOL_DIR/asm -p runtime -trimpath "$WORK/b008=>" -I $WORK/b008/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b008/asm.o ./asm.s
 $TOOL_DIR/asm -p runtime -trimpath "$WORK/b008=>" -I $WORK/b008/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b008/asm_amd64.o ./asm_amd64.s
@@ -270,7 +270,7 @@ $TOOL_DIR/asm -p runtime -trimpath "$WORK/b008=>" -I $WORK/b008/ -I $GORT/pkg/in
 $TOOL_DIR/asm -p runtime -trimpath "$WORK/b008=>" -I $WORK/b008/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b008/time_linux_amd64.o ./time_linux_amd64.s
 $TOOL_DIR/pack r $WORK/b008/_pkg_.a $WORK/b008/asm.o $WORK/b008/asm_amd64.o $WORK/b008/duff_amd64.o $WORK/b008/memclr_amd64.o $WORK/b008/memmove_amd64.o $WORK/b008/preempt_amd64.o $WORK/b008/rt0_linux_amd64.o $WORK/b008/sys_linux_amd64.o $WORK/b008/time_linux_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/b008/_pkg_.a # internal
-cp $WORK/b008/_pkg_.a $CACHE_DIR/f5/f5eae97d918371c7c83fe2a88e9dbb2fec09960c36aeb1d26b1c2f09d89305f9-d # internal
+
 mkdir -p $WORK/b004/
 cat >$WORK/b004/go_asm.h << EOF # internal
 EOF
@@ -293,7 +293,7 @@ packagefile runtime=$WORK/b008/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b004/_pkg_.a -trimpath "$WORK/b004=>" -p internal/reflectlite -std -buildid 8f99mKJg6-OCUXX8caR3/8f99mKJg6-OCUXX8caR3 -goversion go1.20.4 -symabis $WORK/b004/symabis -c=4 -nolocalimports -importcfg $WORK/b004/importcfg -pack -asmhdr $WORK/b004/go_asm.h $GORT/src/internal/reflectlite/swapper.go $GORT/src/internal/reflectlite/type.go $GORT/src/internal/reflectlite/value.go
 $TOOL_DIR/buildid -w $WORK/b026/_pkg_.a # internal
-cp $WORK/b026/_pkg_.a $CACHE_DIR/8c/8ca5cd7b10f028bde0add0570182855542c74dd7b0f3f185d05d55cfb2761225-d # internal
+
 mkdir -p $WORK/b040/
 cat >$WORK/b040/importcfg << EOF # internal
 # import config
@@ -302,12 +302,12 @@ packagefile sync/atomic=$WORK/b028/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b040/_pkg_.a -trimpath "$WORK/b040=>" -p internal/testlog -std -complete -buildid B423dGniR5COkyvnWNiY/B423dGniR5COkyvnWNiY -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b040/importcfg -pack $GORT/src/internal/testlog/exit.go $GORT/src/internal/testlog/log.go
 $TOOL_DIR/buildid -w $WORK/b040/_pkg_.a # internal
-cp $WORK/b040/_pkg_.a $CACHE_DIR/cd/cde97acef886e8f87e5610349ed4489b23a91ea2a610ba3fc6155f73d540d8a1-d # internal
+
 cd $GORT/src/internal/reflectlite
 $TOOL_DIR/asm -p internal/reflectlite -trimpath "$WORK/b004=>" -I $WORK/b004/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b004/asm.o ./asm.s
 $TOOL_DIR/pack r $WORK/b004/_pkg_.a $WORK/b004/asm.o # internal
 $TOOL_DIR/buildid -w $WORK/b004/_pkg_.a # internal
-cp $WORK/b004/_pkg_.a $CACHE_DIR/68/68e93efe874f570ec44808ba740ec9e7f85ae99517fc1aa4d7d47a25f1ba0dd5-d # internal
+
 mkdir -p $WORK/b003/
 mkdir -p $WORK/b030/
 cat >$WORK/b003/importcfg << EOF # internal
@@ -323,7 +323,7 @@ packagefile math/bits=$WORK/b023/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b030/_pkg_.a -trimpath "$WORK/b030=>" -p sort -std -complete -buildid RPytz-InhRnbWmq4E73g/RPytz-InhRnbWmq4E73g -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b030/importcfg -pack $GORT/src/sort/search.go $GORT/src/sort/slice.go $GORT/src/sort/sort.go $GORT/src/sort/zsortfunc.go $GORT/src/sort/zsortinterface.go
 $TOOL_DIR/buildid -w $WORK/b003/_pkg_.a # internal
-cp $WORK/b003/_pkg_.a $CACHE_DIR/c3/c3ca51b3dbf02d375ed334068291399ab9045e70f116b083e81befc8b32073f9-d # internal
+
 mkdir -p $WORK/b038/
 mkdir -p $WORK/b036/
 mkdir -p $WORK/b042/
@@ -364,15 +364,15 @@ EOF
 $TOOL_DIR/compile -o $WORK/b024/_pkg_.a -trimpath "$WORK/b024=>" -p strconv -std -complete -buildid tsZ-5FuCj28fNWLKgaGw/tsZ-5FuCj28fNWLKgaGw -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b024/importcfg -pack $GORT/src/strconv/atob.go $GORT/src/strconv/atoc.go $GORT/src/strconv/atof.go $GORT/src/strconv/atoi.go $GORT/src/strconv/bytealg.go $GORT/src/strconv/ctoa.go $GORT/src/strconv/decimal.go $GORT/src/strconv/doc.go $GORT/src/strconv/eisel_lemire.go $GORT/src/strconv/ftoa.go $GORT/src/strconv/ftoaryu.go $GORT/src/strconv/isprint.go $GORT/src/strconv/itoa.go $GORT/src/strconv/quote.go
 $TOOL_DIR/buildid -w $WORK/b038/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b036/_pkg_.a # internal
-cp $WORK/b038/_pkg_.a $CACHE_DIR/7f/7f19737cdc4b7a80fe6c79a5773771840937e0649edced18bda637085f3eb5a7-d # internal
-cp $WORK/b036/_pkg_.a $CACHE_DIR/6b/6bfc832c097aa830784db2380ca2fbeb0c5bbe680d0ce64ceda4afd925e21407-d # internal
+
+
 $TOOL_DIR/buildid -w $WORK/b042/_pkg_.a # internal
-cp $WORK/b042/_pkg_.a $CACHE_DIR/e3/e3566d6415cf10d62a5e496f409fab9922ec7c27417ea8ce5fe5a5a331f9b7f5-d # internal
+
 $TOOL_DIR/buildid -w $WORK/b030/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b031/_pkg_.a # internal
-cp $WORK/b030/_pkg_.a $CACHE_DIR/15/15c97b460afc045139634ffdd726154b4fce1651774ecd3a8a04434096da3516-d # internal
+
 mkdir -p $WORK/b035/
-cp $WORK/b031/_pkg_.a $CACHE_DIR/3f/3f47dbb23d8a725a8add0ccee53d305b53d47438adf59f282afb4e58c957e946-d # internal
+
 cat >$WORK/b035/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/syscall
@@ -391,7 +391,7 @@ EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b035/_pkg_.a -trimpath "$WORK/b035=>" -p syscall -std -buildid Gf1emYuyeATzm8AHyHFR/Gf1emYuyeATzm8AHyHFR -goversion go1.20.4 -symabis $WORK/b035/symabis -c=4 -nolocalimports -importcfg $WORK/b035/importcfg -pack -asmhdr $WORK/b035/go_asm.h $GORT/src/syscall/asan0.go $GORT/src/syscall/dirent.go $GORT/src/syscall/endian_little.go $GORT/src/syscall/env_unix.go $GORT/src/syscall/exec_linux.go $GORT/src/syscall/exec_unix.go $GORT/src/syscall/flock.go $GORT/src/syscall/lsf_linux.go $GORT/src/syscall/msan0.go $GORT/src/syscall/net.go $GORT/src/syscall/netlink_linux.go $GORT/src/syscall/rlimit.go $GORT/src/syscall/rlimit_stub.go $GORT/src/syscall/setuidgid_linux.go $GORT/src/syscall/sockcmsg_linux.go $GORT/src/syscall/sockcmsg_unix.go $GORT/src/syscall/sockcmsg_unix_other.go $GORT/src/syscall/syscall.go $GORT/src/syscall/syscall_linux.go $GORT/src/syscall/syscall_linux_accept4.go $GORT/src/syscall/syscall_linux_amd64.go $GORT/src/syscall/syscall_unix.go $GORT/src/syscall/time_nofake.go $GORT/src/syscall/timestruct.go $GORT/src/syscall/zerrors_linux_amd64.go $GORT/src/syscall/zsyscall_linux_amd64.go $GORT/src/syscall/zsysnum_linux_amd64.go $GORT/src/syscall/ztypes_linux_amd64.go
 $TOOL_DIR/buildid -w $WORK/b024/_pkg_.a # internal
-cp $WORK/b024/_pkg_.a $CACHE_DIR/1a/1ad0a4bf26d6a401443abecef2c0d58a39aa53cee9a04b799ed3b380005d7b6a-d # internal
+
 mkdir -p $WORK/b020/
 cat >$WORK/b020/go_asm.h << EOF # internal
 EOF
@@ -418,7 +418,7 @@ cd $GORT/src/syscall
 $TOOL_DIR/asm -p syscall -trimpath "$WORK/b035=>" -I $WORK/b035/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b035/asm_linux_amd64.o ./asm_linux_amd64.s
 $TOOL_DIR/pack r $WORK/b035/_pkg_.a $WORK/b035/asm_linux_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/b035/_pkg_.a # internal
-cp $WORK/b035/_pkg_.a $CACHE_DIR/90/90c34d05dac34b8a71d3fe8c56629372bbf8c526cb99cd62209ee723971848f7-d # internal
+
 mkdir -p $WORK/b039/
 cat >$WORK/b039/importcfg << EOF # internal
 # import config
@@ -443,11 +443,11 @@ EOF
 $TOOL_DIR/compile -o $WORK/b034/_pkg_.a -trimpath "$WORK/b034=>" -p internal/syscall/unix -std -complete -buildid y7B9w1xvVOcllLe1UHTw/y7B9w1xvVOcllLe1UHTw -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b034/importcfg -pack $GORT/src/internal/syscall/unix/at.go $GORT/src/internal/syscall/unix/at_fstatat.go $GORT/src/internal/syscall/unix/at_sysnum_linux.go $GORT/src/internal/syscall/unix/at_sysnum_newfstatat_linux.go $GORT/src/internal/syscall/unix/constants.go $GORT/src/internal/syscall/unix/copy_file_range_linux.go $GORT/src/internal/syscall/unix/eaccess_linux.go $GORT/src/internal/syscall/unix/getrandom.go $GORT/src/internal/syscall/unix/getrandom_linux.go $GORT/src/internal/syscall/unix/kernel_version_linux.go $GORT/src/internal/syscall/unix/net.go $GORT/src/internal/syscall/unix/nonblocking.go $GORT/src/internal/syscall/unix/sysnum_linux_amd64.go
 $TOOL_DIR/compile -o $WORK/b037/_pkg_.a -trimpath "$WORK/b037=>" -p time -std -buildid JPr4o2PkKYQpYoXGOl8u/JPr4o2PkKYQpYoXGOl8u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b037/importcfg -pack $GORT/src/time/format.go $GORT/src/time/format_rfc3339.go $GORT/src/time/sleep.go $GORT/src/time/sys_unix.go $GORT/src/time/tick.go $GORT/src/time/time.go $GORT/src/time/zoneinfo.go $GORT/src/time/zoneinfo_goroot.go $GORT/src/time/zoneinfo_read.go $GORT/src/time/zoneinfo_unix.go
 $TOOL_DIR/buildid -w $WORK/b039/_pkg_.a # internal
-cp $WORK/b039/_pkg_.a $CACHE_DIR/5a/5a5ad223fd7e129835d0f9a6c6ccecc70c2b50f40b78a6d4d20b06fafd51821b-d # internal
+
 $TOOL_DIR/buildid -w $WORK/b034/_pkg_.a # internal
-cp $WORK/b034/_pkg_.a $CACHE_DIR/42/426f444477d471f5cd570f0597420b970c802a8fbf1ca0ad38ac3b30f8bc3f0a-d # internal
+
 $TOOL_DIR/buildid -w $WORK/b037/_pkg_.a # internal
-cp $WORK/b037/_pkg_.a $CACHE_DIR/2d/2d930289955ec68431cef7e8d9bb7b5b2d6dccd93e45f68f63868cf7045146af-d # internal
+
 mkdir -p $WORK/b041/
 cat >$WORK/b041/importcfg << EOF # internal
 # import config
@@ -480,7 +480,7 @@ cd $GORT/src/reflect
 $TOOL_DIR/pack r $WORK/b020/_pkg_.a $WORK/b020/asm_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/b020/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b041/_pkg_.a # internal
-cp $WORK/b020/_pkg_.a $CACHE_DIR/d5/d5fd69d99da4bee5f1ec02b332f5f903af8e9e36df61950ce58553ec3f55b3a3-d # internal
+
 mkdir -p $WORK/b019/
 cat >$WORK/b019/importcfg << EOF # internal
 # import config
@@ -489,11 +489,11 @@ packagefile sort=$WORK/b030/_pkg_.a
 EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b019/_pkg_.a -trimpath "$WORK/b019=>" -p internal/fmtsort -std -complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b019/importcfg -pack $GORT/src/internal/fmtsort/sort.go
-cp $WORK/b041/_pkg_.a $CACHE_DIR/2c/2c2609c66a19a399f3dab8b33bd4da54655aefd1e62414acfe3fe7ffda6e7770-d # internal
+
 $TOOL_DIR/buildid -w $WORK/b019/_pkg_.a # internal
-cp $WORK/b019/_pkg_.a $CACHE_DIR/60/60db98208e085d1cb81f8849168369dd6dffaa75a2a8817537ff9840e544def8-d # internal
+
 $TOOL_DIR/buildid -w $WORK/b033/_pkg_.a # internal
-cp $WORK/b033/_pkg_.a $CACHE_DIR/8a/8a23e35e436231c957d53722575f693b9876e4444db8b34bddfa4b3af0d1a960-d # internal
+
 
 function build_os() {
 dir=$1
@@ -518,7 +518,7 @@ packagefile time=$WORK/b037/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/$dir/_pkg_.a -trimpath "$WORK/$dir=>" -p os -std -buildid 8kTY3IGtc09hvOwTK2Gg/8kTY3IGtc09hvOwTK2Gg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/$dir/importcfg -pack $GORT/src/os/dir.go $GORT/src/os/dir_unix.go $GORT/src/os/dirent_linux.go $GORT/src/os/endian_little.go $GORT/src/os/env.go $GORT/src/os/error.go $GORT/src/os/error_errno.go $GORT/src/os/error_posix.go $GORT/src/os/exec.go $GORT/src/os/exec_posix.go $GORT/src/os/exec_unix.go $GORT/src/os/executable.go $GORT/src/os/executable_procfs.go $GORT/src/os/file.go $GORT/src/os/file_posix.go $GORT/src/os/file_unix.go $GORT/src/os/getwd.go $GORT/src/os/path.go $GORT/src/os/path_unix.go $GORT/src/os/pipe2_unix.go $GORT/src/os/proc.go $GORT/src/os/rawconn.go $GORT/src/os/readfrom_linux.go $GORT/src/os/removeall_at.go $GORT/src/os/stat.go $GORT/src/os/stat_linux.go $GORT/src/os/stat_unix.go $GORT/src/os/sticky_notbsd.go $GORT/src/os/str.go $GORT/src/os/sys.go $GORT/src/os/sys_linux.go $GORT/src/os/sys_unix.go $GORT/src/os/tempfile.go $GORT/src/os/types.go $GORT/src/os/types_unix.go $GORT/src/os/wait_waitid.go
 $TOOL_DIR/buildid -w $WORK/$dir/_pkg_.a # internal
-cp $WORK/$dir/_pkg_.a $CACHE_DIR/9f/9f4f9105c37b2865b130bc5f783edf18bd1066b6d71eee53c8f53f2da3e87710-d # internal
+
 }
 
 function build_fmt() {
@@ -539,7 +539,6 @@ packagefile unicode/utf8=$WORK/b025/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/$dir/_pkg_.a -trimpath "$WORK/$dir=>" -p fmt -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/$dir/importcfg -pack $GORT/src/fmt/doc.go $GORT/src/fmt/errors.go $GORT/src/fmt/format.go $GORT/src/fmt/print.go $GORT/src/fmt/scan.go
 $TOOL_DIR/buildid -w $WORK/$dir/_pkg_.a # internal
-cp $WORK/$dir/_pkg_.a $CACHE_DIR/cf/cff345f70671e508776e8b231b79e372c4676ffe417a1a3806c5caf95e9bd7cf-d # internal
 
 }
 
@@ -554,7 +553,7 @@ packagefile runtime=$WORK/b008/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b001/importcfg -pack ./main.go ./sum.go
 $TOOL_DIR/buildid -w $WORK/b001/_pkg_.a # internal
-cp $WORK/b001/_pkg_.a $CACHE_DIR/7a/7a314cdb7644f75ade9e29b91291f7f6635c9ddf4a7ab138f3a0578465a22a40-d # internal
+
 cat >$WORK/b001/importcfg.link << EOF # internal
 packagefile github.com/DQNEO/go-samples/birudo=$WORK/b001/_pkg_.a
 packagefile fmt=$WORK/b002/_pkg_.a
