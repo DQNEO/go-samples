@@ -532,23 +532,6 @@ $TOOL_DIR/pack r $WORK/${PKGS[reflect]}/_pkg_.a $WORK/${PKGS[reflect]}/asm_amd64
 $TOOL_DIR/buildid -w $WORK/${PKGS[reflect]}/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[io/fs]}/_pkg_.a # internal
 
-function build_internal_fmtsort() {
-pkgname=$1
-complete=$2
-bdir=${PKGS[$pkgname]}
-wdir=$WORK/$bdir
-mkdir -p $wdir/
-make_importcfg $pkgname >$wdir/importcfg
-files=""
-for i in ${FILES[$pkgname]}
-do
-  files="$files $GORT/src/$pkgname/$i"
-done
-
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
-$TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
-}
-
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/poll]}/_pkg_.a # internal
 
 
