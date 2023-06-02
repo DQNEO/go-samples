@@ -55,10 +55,12 @@ declare -A PKGS=(
 
 declare -A DEPENDS=(
 [fmt]="errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 "
+[os]="errors internal/itoa internal/poll internal/safefilepath internal/syscall/execenv internal/syscall/unix internal/testlog io io/fs runtime sort sync sync/atomic syscall time"
 )
 
 declare -A FILES=(
 [fmt]="doc.go errors.go format.go print.go scan.go"
+[os]="dir.go dir_unix.go dirent_linux.go endian_little.go env.go error.go error_errno.go error_posix.go exec.go exec_posix.go exec_unix.go executable.go executable_procfs.go file.go file_posix.go file_unix.go getwd.go path.go path_unix.go pipe2_unix.go proc.go rawconn.go readfrom_linux.go removeall_at.go stat.go stat_linux.go stat_unix.go sticky_notbsd.go str.go sys.go sys_linux.go sys_unix.go tempfile.go types.go types_unix.go wait_waitid.go"
 )
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
@@ -546,34 +548,32 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/poll]}/_pkg_.a # internal
 
 
 function build_os() {
-wdir=$WORK/$1
+pkgname=$1
+bdir=${PKGS[$pkgname]}
+wdir=$WORK/$bdir
 mkdir -p $wdir/
-cat >$wdir/importcfg << EOF # internal
-# import config
-packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile internal/itoa=$WORK/${PKGS[internal/itoa]}/_pkg_.a
-packagefile internal/poll=$WORK/${PKGS[internal/poll]}/_pkg_.a
-packagefile internal/safefilepath=$WORK/${PKGS[internal/safefilepath]}/_pkg_.a
-packagefile internal/syscall/execenv=$WORK/${PKGS[internal/syscall/execenv]}/_pkg_.a
-packagefile internal/syscall/unix=$WORK/${PKGS[internal/syscall/unix]}/_pkg_.a
-packagefile internal/testlog=$WORK/${PKGS[internal/testlog]}/_pkg_.a
-packagefile io=$WORK/${PKGS[io]}/_pkg_.a
-packagefile io/fs=$WORK/${PKGS[io/fs]}/_pkg_.a
-packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
-packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
-packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
-packagefile syscall=$WORK/${PKGS[syscall]}/_pkg_.a
-packagefile time=$WORK/${PKGS[time]}/_pkg_.a
-EOF
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p os -std -buildid 8kTY3IGtc09hvOwTK2Gg/8kTY3IGtc09hvOwTK2Gg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $GORT/src/os/dir.go $GORT/src/os/dir_unix.go $GORT/src/os/dirent_linux.go $GORT/src/os/endian_little.go $GORT/src/os/env.go $GORT/src/os/error.go $GORT/src/os/error_errno.go $GORT/src/os/error_posix.go $GORT/src/os/exec.go $GORT/src/os/exec_posix.go $GORT/src/os/exec_unix.go $GORT/src/os/executable.go $GORT/src/os/executable_procfs.go $GORT/src/os/file.go $GORT/src/os/file_posix.go $GORT/src/os/file_unix.go $GORT/src/os/getwd.go $GORT/src/os/path.go $GORT/src/os/path_unix.go $GORT/src/os/pipe2_unix.go $GORT/src/os/proc.go $GORT/src/os/rawconn.go $GORT/src/os/readfrom_linux.go $GORT/src/os/removeall_at.go $GORT/src/os/stat.go $GORT/src/os/stat_linux.go $GORT/src/os/stat_unix.go $GORT/src/os/sticky_notbsd.go $GORT/src/os/str.go $GORT/src/os/sys.go $GORT/src/os/sys_linux.go $GORT/src/os/sys_unix.go $GORT/src/os/tempfile.go $GORT/src/os/types.go $GORT/src/os/types_unix.go $GORT/src/os/wait_waitid.go
+(
+echo '# import config'
+for i in  ${DEPENDS[$pkgname]}
+do
+  echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
+done
+) >$wdir/importcfg
+
+files=""
+for i in ${FILES[$pkgname]}
+do
+  files="$files $GORT/src/$pkgname/$i"
+done
+
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std -buildid 8kTY3IGtc09hvOwTK2Gg/8kTY3IGtc09hvOwTK2Gg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 }
 
 function build_fmt() {
 pkgname=$1
-bdir=${PKGS[fmt]}
+bdir=${PKGS[$pkgname]}
 wdir=$WORK/$bdir
 mkdir -p $wdir/
 (
@@ -661,6 +661,6 @@ rm -r $wdir/
 }
 
 build_internal_fmtsort ${PKGS[internal/fmtsort]}
-build_os ${PKGS[os]}
+build_os os
 build_fmt fmt
 doLink
