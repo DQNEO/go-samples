@@ -487,8 +487,9 @@ $TOOL_DIR/buildid -w $WORK/b033/_pkg_.a # internal
 cp $WORK/b033/_pkg_.a $CACHE_DIR/8a/8a23e35e436231c957d53722575f693b9876e4444db8b34bddfa4b3af0d1a960-d # internal
 
 function build_os() {
-mkdir -p $WORK/b032/
-cat >$WORK/b032/importcfg << EOF # internal
+dir=$1
+mkdir -p $WORK/$dir/
+cat >$WORK/$dir/importcfg << EOF # internal
 # import config
 packagefile errors=$WORK/b003/_pkg_.a
 packagefile internal/itoa=$WORK/b021/_pkg_.a
@@ -506,14 +507,15 @@ packagefile sync/atomic=$WORK/b028/_pkg_.a
 packagefile syscall=$WORK/b035/_pkg_.a
 packagefile time=$WORK/b037/_pkg_.a
 EOF
-$TOOL_DIR/compile -o $WORK/b032/_pkg_.a -trimpath "$WORK/b032=>" -p os -std -buildid 8kTY3IGtc09hvOwTK2Gg/8kTY3IGtc09hvOwTK2Gg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b032/importcfg -pack $GORT/src/os/dir.go $GORT/src/os/dir_unix.go $GORT/src/os/dirent_linux.go $GORT/src/os/endian_little.go $GORT/src/os/env.go $GORT/src/os/error.go $GORT/src/os/error_errno.go $GORT/src/os/error_posix.go $GORT/src/os/exec.go $GORT/src/os/exec_posix.go $GORT/src/os/exec_unix.go $GORT/src/os/executable.go $GORT/src/os/executable_procfs.go $GORT/src/os/file.go $GORT/src/os/file_posix.go $GORT/src/os/file_unix.go $GORT/src/os/getwd.go $GORT/src/os/path.go $GORT/src/os/path_unix.go $GORT/src/os/pipe2_unix.go $GORT/src/os/proc.go $GORT/src/os/rawconn.go $GORT/src/os/readfrom_linux.go $GORT/src/os/removeall_at.go $GORT/src/os/stat.go $GORT/src/os/stat_linux.go $GORT/src/os/stat_unix.go $GORT/src/os/sticky_notbsd.go $GORT/src/os/str.go $GORT/src/os/sys.go $GORT/src/os/sys_linux.go $GORT/src/os/sys_unix.go $GORT/src/os/tempfile.go $GORT/src/os/types.go $GORT/src/os/types_unix.go $GORT/src/os/wait_waitid.go
-$TOOL_DIR/buildid -w $WORK/b032/_pkg_.a # internal
-cp $WORK/b032/_pkg_.a $CACHE_DIR/9f/9f4f9105c37b2865b130bc5f783edf18bd1066b6d71eee53c8f53f2da3e87710-d # internal
+$TOOL_DIR/compile -o $WORK/$dir/_pkg_.a -trimpath "$WORK/$dir=>" -p os -std -buildid 8kTY3IGtc09hvOwTK2Gg/8kTY3IGtc09hvOwTK2Gg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/$dir/importcfg -pack $GORT/src/os/dir.go $GORT/src/os/dir_unix.go $GORT/src/os/dirent_linux.go $GORT/src/os/endian_little.go $GORT/src/os/env.go $GORT/src/os/error.go $GORT/src/os/error_errno.go $GORT/src/os/error_posix.go $GORT/src/os/exec.go $GORT/src/os/exec_posix.go $GORT/src/os/exec_unix.go $GORT/src/os/executable.go $GORT/src/os/executable_procfs.go $GORT/src/os/file.go $GORT/src/os/file_posix.go $GORT/src/os/file_unix.go $GORT/src/os/getwd.go $GORT/src/os/path.go $GORT/src/os/path_unix.go $GORT/src/os/pipe2_unix.go $GORT/src/os/proc.go $GORT/src/os/rawconn.go $GORT/src/os/readfrom_linux.go $GORT/src/os/removeall_at.go $GORT/src/os/stat.go $GORT/src/os/stat_linux.go $GORT/src/os/stat_unix.go $GORT/src/os/sticky_notbsd.go $GORT/src/os/str.go $GORT/src/os/sys.go $GORT/src/os/sys_linux.go $GORT/src/os/sys_unix.go $GORT/src/os/tempfile.go $GORT/src/os/types.go $GORT/src/os/types_unix.go $GORT/src/os/wait_waitid.go
+$TOOL_DIR/buildid -w $WORK/$dir/_pkg_.a # internal
+cp $WORK/$dir/_pkg_.a $CACHE_DIR/9f/9f4f9105c37b2865b130bc5f783edf18bd1066b6d71eee53c8f53f2da3e87710-d # internal
 }
 
 function build_fmt() {
-mkdir -p $WORK/b002/
-cat >$WORK/b002/importcfg << EOF # internal
+dir=$1
+mkdir -p $WORK/$dir/
+cat >$WORK/$dir/importcfg << EOF # internal
 # import config
 packagefile errors=$WORK/b003/_pkg_.a
 packagefile internal/fmtsort=$WORK/b019/_pkg_.a
@@ -526,9 +528,9 @@ packagefile strconv=$WORK/b024/_pkg_.a
 packagefile sync=$WORK/b026/_pkg_.a
 packagefile unicode/utf8=$WORK/b025/_pkg_.a
 EOF
-$TOOL_DIR/compile -o $WORK/b002/_pkg_.a -trimpath "$WORK/b002=>" -p fmt -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b002/importcfg -pack $GORT/src/fmt/doc.go $GORT/src/fmt/errors.go $GORT/src/fmt/format.go $GORT/src/fmt/print.go $GORT/src/fmt/scan.go
-$TOOL_DIR/buildid -w $WORK/b002/_pkg_.a # internal
-cp $WORK/b002/_pkg_.a $CACHE_DIR/cf/cff345f70671e508776e8b231b79e372c4676ffe417a1a3806c5caf95e9bd7cf-d # internal
+$TOOL_DIR/compile -o $WORK/$dir/_pkg_.a -trimpath "$WORK/$dir=>" -p fmt -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/$dir/importcfg -pack $GORT/src/fmt/doc.go $GORT/src/fmt/errors.go $GORT/src/fmt/format.go $GORT/src/fmt/print.go $GORT/src/fmt/scan.go
+$TOOL_DIR/buildid -w $WORK/$dir/_pkg_.a # internal
+cp $WORK/$dir/_pkg_.a $CACHE_DIR/cf/cff345f70671e508776e8b231b79e372c4676ffe417a1a3806c5caf95e9bd7cf-d # internal
 
 }
 
@@ -596,6 +598,6 @@ mv $WORK/b001/exe/a.out birudo
 rm -r $WORK/b001/
 }
 
-build_os
-build_fmt
+build_os "032"
+build_fmt "002"
 doLink
