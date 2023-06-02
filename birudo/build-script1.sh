@@ -66,12 +66,6 @@ declare -A FILES=(
 )
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
-git status --porcelain
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples
-git -c log.showsignature=false show -s --format=%H:%ct
-
-
-
 
 mkdir -p $WORK/${PKGS[internal/coverage/rtcov]}/
 mkdir -p $WORK/${PKGS[internal/unsafeheader]}/
