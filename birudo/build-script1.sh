@@ -647,7 +647,7 @@ mv $wdir/exe/a.out birudo
 rm -r $wdir/
 }
 
-build_internal_fmtsort internal/fmtsort -complete
+build_pkg internal/fmtsort -complete
 cd $SRC_DIR
 build_pkg os ""
 build_pkg fmt -complete
