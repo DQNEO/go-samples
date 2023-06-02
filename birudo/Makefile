@@ -1,6 +1,9 @@
 birudo: *.go Makefile
 	GOOS=linux GOARCH=amd64 go build .
 
+run: birudo
+	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./birudo
+
 build-script0.sh:*.go Makefile
 	GOOS=linux GOARCH=amd64 go build -x -a . 2>$@
 
