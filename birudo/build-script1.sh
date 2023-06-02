@@ -13,6 +13,7 @@ declare -A PKGS
 PKGS[os]="b032"
 PKGS[fmt]="b002"
 PKGS[main]="b001"
+PKGS[internal/fmtsort]="b019"
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 git status --porcelain
@@ -481,16 +482,19 @@ $TOOL_DIR/pack r $WORK/b020/_pkg_.a $WORK/b020/asm_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/b020/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b041/_pkg_.a # internal
 
-mkdir -p $WORK/b019/
-cat >$WORK/b019/importcfg << EOF # internal
+function build_internal_fmtsort() {
+wdir=$WORK/$1
+mkdir -p $wdir/
+cat >$wdir/importcfg << EOF # internal
 # import config
 packagefile reflect=$WORK/b020/_pkg_.a
 packagefile sort=$WORK/b030/_pkg_.a
 EOF
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/b019/_pkg_.a -trimpath "$WORK/b019=>" -p internal/fmtsort -std -complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b019/importcfg -pack $GORT/src/internal/fmtsort/sort.go
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p internal/fmtsort -std -complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $GORT/src/internal/fmtsort/sort.go
 
-$TOOL_DIR/buildid -w $WORK/b019/_pkg_.a # internal
+$TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
+}
 
 $TOOL_DIR/buildid -w $WORK/b033/_pkg_.a # internal
 
@@ -527,7 +531,7 @@ mkdir -p $wdir/
 cat >$wdir/importcfg << EOF # internal
 # import config
 packagefile errors=$WORK/b003/_pkg_.a
-packagefile internal/fmtsort=$WORK/b019/_pkg_.a
+packagefile internal/fmtsort=$WORK/${PKGS[internal/fmtsort]}/_pkg_.a
 packagefile io=$WORK/b031/_pkg_.a
 packagefile math=$WORK/b022/_pkg_.a
 packagefile os=$WORK/${PKGS[os]}/_pkg_.a
@@ -560,7 +564,7 @@ packagefile github.com/DQNEO/go-samples/birudo=$wdir/_pkg_.a
 packagefile fmt=$WORK/${PKGS[fmt]}/_pkg_.a
 packagefile runtime=$WORK/b008/_pkg_.a
 packagefile errors=$WORK/b003/_pkg_.a
-packagefile internal/fmtsort=$WORK/b019/_pkg_.a
+packagefile internal/fmtsort=$WORK/${PKGS[internal/fmtsort]}/_pkg_.a
 packagefile io=$WORK/b031/_pkg_.a
 packagefile math=$WORK/b022/_pkg_.a
 packagefile os=$WORK/${PKGS[os]}/_pkg_.a
@@ -607,6 +611,7 @@ mv $wdir/exe/a.out birudo
 rm -r $wdir/
 }
 
+build_internal_fmtsort ${PKGS[internal/fmtsort]}
 build_os ${PKGS[os]}
 build_fmt ${PKGS[fmt]}
 doLink
