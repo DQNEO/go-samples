@@ -10,8 +10,8 @@ TOOL_DIR=$GORT/pkg/tool/darwin_amd64
 CACHE_DIR=/Users/DQNEO/Library/Caches/go-build
 
 declare -A PKGS
-PKGS[os]="032"
-PKGS[fmt]="002"
+PKGS[os]="b032"
+PKGS[fmt]="b002"
 
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
@@ -530,7 +530,7 @@ packagefile errors=$WORK/b003/_pkg_.a
 packagefile internal/fmtsort=$WORK/b019/_pkg_.a
 packagefile io=$WORK/b031/_pkg_.a
 packagefile math=$WORK/b022/_pkg_.a
-packagefile os=$WORK/b032/_pkg_.a
+packagefile os=$WORK/${PKGS[os]}/_pkg_.a
 packagefile reflect=$WORK/b020/_pkg_.a
 packagefile sort=$WORK/b030/_pkg_.a
 packagefile strconv=$WORK/b024/_pkg_.a
@@ -562,7 +562,7 @@ packagefile errors=$WORK/b003/_pkg_.a
 packagefile internal/fmtsort=$WORK/b019/_pkg_.a
 packagefile io=$WORK/b031/_pkg_.a
 packagefile math=$WORK/b022/_pkg_.a
-packagefile os=$WORK/b032/_pkg_.a
+packagefile os=$WORK/${PKGS[os]}/_pkg_.a
 packagefile reflect=$WORK/b020/_pkg_.a
 packagefile sort=$WORK/b030/_pkg_.a
 packagefile strconv=$WORK/b024/_pkg_.a
