@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 set -eux
 rm -f birudo
 export GOOS=linux
@@ -9,10 +9,19 @@ GORT=/usr/local/opt/go/libexec
 TOOL_DIR=$GORT/pkg/tool/darwin_amd64
 CACHE_DIR=/Users/DQNEO/Library/Caches/go-build
 
+declare -A PKGS
+PKGS[os]="032"
+PKGS[fmt]="002"
+
+
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 git status --porcelain
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 git -c log.showsignature=false show -s --format=%H:%ct
+
+
+
+
 mkdir -p $WORK/b012/
 mkdir -p $WORK/b006/
 mkdir -p $WORK/b005/
@@ -598,6 +607,6 @@ mv $WORK/b001/exe/a.out birudo
 rm -r $WORK/b001/
 }
 
-build_os "032"
-build_fmt "002"
+build_os ${PKGS[os]}
+build_fmt ${PKGS[fmt]}
 doLink
