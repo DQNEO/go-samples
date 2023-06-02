@@ -524,6 +524,10 @@ EOF
 $TOOL_DIR/compile -o $WORK/b002/_pkg_.a -trimpath "$WORK/b002=>" -p fmt -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b002/importcfg -pack $GORT/src/fmt/doc.go $GORT/src/fmt/errors.go $GORT/src/fmt/format.go $GORT/src/fmt/print.go $GORT/src/fmt/scan.go
 $TOOL_DIR/buildid -w $WORK/b002/_pkg_.a # internal
 cp $WORK/b002/_pkg_.a $CACHE_DIR/cf/cff345f70671e508776e8b231b79e372c4676ffe417a1a3806c5caf95e9bd7cf-d # internal
+
+
+## Final output
+function doLink() {
 mkdir -p $WORK/b001/
 cat >$WORK/b001/importcfg << EOF # internal
 # import config
@@ -583,3 +587,6 @@ $TOOL_DIR/link -o $WORK/b001/exe/a.out -importcfg $WORK/b001/importcfg.link -bui
 $TOOL_DIR/buildid -w $WORK/b001/exe/a.out # internal
 mv $WORK/b001/exe/a.out birudo
 rm -r $WORK/b001/
+}
+
+doLink
