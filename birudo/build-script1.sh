@@ -58,6 +58,7 @@ declare -A DEPENDS=(
 [fmt]="errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 "
 [os]="errors internal/itoa internal/poll internal/safefilepath internal/syscall/execenv internal/syscall/unix internal/testlog io io/fs runtime sort sync sync/atomic syscall time"
 [internal/fmtsort]="reflect sort"
+[internal/coverage/rtcov]=""
 )
 
 declare -A FILES=(
@@ -100,9 +101,8 @@ cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 mkdir -p $WORK/${PKGS[internal/coverage/rtcov]}/
 mkdir -p $WORK/${PKGS[internal/unsafeheader]}/
 mkdir -p $WORK/${PKGS[internal/goarch]}/
-cat >$WORK/${PKGS[internal/coverage/rtcov]}/importcfg << EOF # internal
-# import config
-EOF
+make_importcfg internal/coverage/rtcov >$WORK/${PKGS[internal/coverage/rtcov]}/importcfg
+
 mkdir -p $WORK/${PKGS[internal/goos]}/
 cat >$WORK/${PKGS[internal/unsafeheader]}/importcfg << EOF # internal
 # import config
