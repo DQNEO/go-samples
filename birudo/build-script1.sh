@@ -548,7 +548,7 @@ function doLink() {
 mkdir -p $WORK/b001/
 cat >$WORK/b001/importcfg << EOF # internal
 # import config
-packagefile fmt=$WORK/b002/_pkg_.a
+packagefile fmt=$WORK/${PKGS[fmt]}/_pkg_.a
 packagefile runtime=$WORK/b008/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b001/importcfg -pack ./main.go ./sum.go
@@ -556,7 +556,7 @@ $TOOL_DIR/buildid -w $WORK/b001/_pkg_.a # internal
 
 cat >$WORK/b001/importcfg.link << EOF # internal
 packagefile github.com/DQNEO/go-samples/birudo=$WORK/b001/_pkg_.a
-packagefile fmt=$WORK/b002/_pkg_.a
+packagefile fmt=$WORK/${PKGS[fmt]}/_pkg_.a
 packagefile runtime=$WORK/b008/_pkg_.a
 packagefile errors=$WORK/b003/_pkg_.a
 packagefile internal/fmtsort=$WORK/b019/_pkg_.a
