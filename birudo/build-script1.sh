@@ -56,11 +56,13 @@ declare -A PKGS=(
 declare -A DEPENDS=(
 [fmt]="errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 "
 [os]="errors internal/itoa internal/poll internal/safefilepath internal/syscall/execenv internal/syscall/unix internal/testlog io io/fs runtime sort sync sync/atomic syscall time"
+[internal/fmtsort]="reflect sort"
 )
 
 declare -A FILES=(
 [fmt]="doc.go errors.go format.go print.go scan.go"
 [os]="dir.go dir_unix.go dirent_linux.go endian_little.go env.go error.go error_errno.go error_posix.go exec.go exec_posix.go exec_unix.go executable.go executable_procfs.go file.go file_posix.go file_unix.go getwd.go path.go path_unix.go pipe2_unix.go proc.go rawconn.go readfrom_linux.go removeall_at.go stat.go stat_linux.go stat_unix.go sticky_notbsd.go str.go sys.go sys_linux.go sys_unix.go tempfile.go types.go types_unix.go wait_waitid.go"
+[internal/fmtsort]="sort.go"
 )
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
@@ -531,31 +533,26 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[reflect]}/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[io/fs]}/_pkg_.a # internal
 
 function build_internal_fmtsort() {
-wdir=$WORK/$1
+pkgname=$1
+complete=$2
+bdir=${PKGS[$pkgname]}
+wdir=$WORK/$bdir
 mkdir -p $wdir/
-cat >$wdir/importcfg << EOF # internal
-# import config
-packagefile reflect=$WORK/${PKGS[reflect]}/_pkg_.a
-packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
-EOF
-cd $SRC_DIR
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p internal/fmtsort -std -complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $GORT/src/internal/fmtsort/sort.go
+make_importcfg $pkgname >$wdir/importcfg
+files=""
+for i in ${FILES[$pkgname]}
+do
+  files="$files $GORT/src/$pkgname/$i"
+done
 
+cd $SRC_DIR
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete -buildid sCxpPvJyA5xP8dZYIW2S/sCxpPvJyA5xP8dZYIW2S -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 }
 
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/poll]}/_pkg_.a # internal
 
 
-function make_importcfg() {
-pkgname=$1
-echo '# import config'
-for i in  ${DEPENDS[$pkgname]}
-do
-  echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
-done
-
-}
 
 function build_pkg() {
 pkgname=$1
@@ -572,6 +569,16 @@ do
 done
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete -buildid abcdefghijklmnopqrst/abcdefghijklmnopqrst -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
+}
+
+function make_importcfg() {
+pkgname=$1
+echo '# import config'
+for i in  ${DEPENDS[$pkgname]}
+do
+  echo "packagefile $i=$WORK/${PKGS[$i]}/_pkg_.a"
+done
+
 }
 
 
@@ -639,7 +646,7 @@ mv $wdir/exe/a.out birudo
 rm -r $wdir/
 }
 
-build_internal_fmtsort ${PKGS[internal/fmtsort]}
+build_internal_fmtsort internal/fmtsort -complete
 build_pkg os ""
 build_pkg fmt -complete
 doLink
