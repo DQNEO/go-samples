@@ -11,41 +11,41 @@ git -c log.showsignature=false show -s --format=%H:%ct
 mkdir -p $WORK/b012/
 mkdir -p $WORK/b006/
 mkdir -p $WORK/b005/
-cat >$WORK/b012/importcfg << 'EOF' # internal
+cat >$WORK/b012/importcfg << EOF # internal
 # import config
 EOF
 mkdir -p $WORK/b014/
-cat >$WORK/b006/importcfg << 'EOF' # internal
+cat >$WORK/b006/importcfg << EOF # internal
 # import config
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b006/_pkg_.a -trimpath "$WORK/b006=>" -p internal/unsafeheader -std -complete -buildid P7qFpguryEe_9bufASvc/P7qFpguryEe_9bufASvc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b006/importcfg -pack /usr/local/opt/go/libexec/src/internal/unsafeheader/unsafeheader.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b012/_pkg_.a -trimpath "$WORK/b012=>" -p internal/coverage/rtcov -std -+ -complete -buildid Gk43QGhY-y2T4KaecSdc/Gk43QGhY-y2T4KaecSdc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b012/importcfg -pack /usr/local/opt/go/libexec/src/internal/coverage/rtcov/rtcov.go
-cat >$WORK/b005/importcfg << 'EOF' # internal
+cat >$WORK/b005/importcfg << EOF # internal
 # import config
 EOF
-cat >$WORK/b014/importcfg << 'EOF' # internal
+cat >$WORK/b014/importcfg << EOF # internal
 # import config
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b005/_pkg_.a -trimpath "$WORK/b005=>" -p internal/goarch -std -+ -complete -buildid IeHgz3mN0XMxQJyLQgHG/IeHgz3mN0XMxQJyLQgHG -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b005/importcfg -pack /usr/local/opt/go/libexec/src/internal/goarch/goarch.go /usr/local/opt/go/libexec/src/internal/goarch/goarch_amd64.go /usr/local/opt/go/libexec/src/internal/goarch/zgoarch_amd64.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b014/_pkg_.a -trimpath "$WORK/b014=>" -p internal/goos -std -+ -complete -buildid yhVHvx5gAuhGe0etJIbA/yhVHvx5gAuhGe0etJIbA -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b014/importcfg -pack /usr/local/opt/go/libexec/src/internal/goos/goos.go /usr/local/opt/go/libexec/src/internal/goos/unix.go /usr/local/opt/go/libexec/src/internal/goos/zgoos_linux.go
 mkdir -p $WORK/b013/
-cat >$WORK/b013/importcfg << 'EOF' # internal
+cat >$WORK/b013/importcfg << EOF # internal
 # import config
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b013/_pkg_.a -trimpath "$WORK/b013=>" -p internal/goexperiment -std -complete -buildid yMFIFNsS8SAX_RrWD2i8/yMFIFNsS8SAX_RrWD2i8 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b013/importcfg -pack /usr/local/opt/go/libexec/src/internal/goexperiment/exp_arenas_off.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_boringcrypto_off.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_coverageredesign_on.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_fieldtrack_off.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_heapminimum512kib_off.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_pagetrace_off.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_preemptibleloops_off.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_regabiargs_on.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_regabiwrappers_on.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_staticlockranking_off.go /usr/local/opt/go/libexec/src/internal/goexperiment/exp_unified_on.go /usr/local/opt/go/libexec/src/internal/goexperiment/flags.go
 mkdir -p $WORK/b018/
 mkdir -p $WORK/b011/
-cat >$WORK/b018/go_asm.h << 'EOF' # internal
+cat >$WORK/b018/go_asm.h << EOF # internal
 EOF
 mkdir -p $WORK/b015/
-cat >$WORK/b011/go_asm.h << 'EOF' # internal
+cat >$WORK/b011/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/runtime/internal/syscall
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p runtime/internal/syscall -trimpath "$WORK/b018=>" -I $WORK/b018/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b018/symabis ./asm_linux_amd64.s
 cd /usr/local/opt/go/libexec/src/internal/cpu
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p internal/cpu -trimpath "$WORK/b011=>" -I $WORK/b011/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/b011/symabis ./cpu.s ./cpu_x86.s
-cat >$WORK/b015/go_asm.h << 'EOF' # internal
+cat >$WORK/b015/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/runtime/internal/atomic
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p runtime/internal/atomic -trimpath "$WORK/b015=>" -I $WORK/b015/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b015/symabis ./atomic_amd64.s
@@ -59,10 +59,10 @@ cp $WORK/b014/_pkg_.a /Users/DQNEO/Library/Caches/go-build/fc/fc2639e7d82ded59f6
 mkdir -p $WORK/b021/
 cp $WORK/b005/_pkg_.a /Users/DQNEO/Library/Caches/go-build/46/466361bf073f0514935abe900921ffaa557283dbec238ae7b237bf94e134e05e-d # internal
 mkdir -p $WORK/b025/
-cat >$WORK/b021/importcfg << 'EOF' # internal
+cat >$WORK/b021/importcfg << EOF # internal
 # import config
 EOF
-cat >$WORK/b025/importcfg << 'EOF' # internal
+cat >$WORK/b025/importcfg << EOF # internal
 # import config
 EOF
 mkdir -p $WORK/b023/
@@ -70,36 +70,36 @@ cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b025/_pkg_.a -trimpath "$WORK/b025=>" -p unicode/utf8 -std -complete -buildid cSCUZ94vs3WynnuPq7bO/cSCUZ94vs3WynnuPq7bO -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b025/importcfg -pack /usr/local/opt/go/libexec/src/unicode/utf8/utf8.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b021/_pkg_.a -trimpath "$WORK/b021=>" -p internal/itoa -std -complete -buildid KywV8ckBASs47DioyK2u/KywV8ckBASs47DioyK2u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b021/importcfg -pack /usr/local/opt/go/libexec/src/internal/itoa/itoa.go
 mkdir -p $WORK/b009/
-cat >$WORK/b023/importcfg << 'EOF' # internal
+cat >$WORK/b023/importcfg << EOF # internal
 # import config
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b023/_pkg_.a -trimpath "$WORK/b023=>" -p math/bits -std -complete -buildid dCrtqElNlXZukOS2aC7Q/dCrtqElNlXZukOS2aC7Q -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b023/importcfg -pack /usr/local/opt/go/libexec/src/math/bits/bits.go /usr/local/opt/go/libexec/src/math/bits/bits_errors.go /usr/local/opt/go/libexec/src/math/bits/bits_tables.go
-cat >$WORK/b009/go_asm.h << 'EOF' # internal
+cat >$WORK/b009/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/internal/abi
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p internal/abi -trimpath "$WORK/b009=>" -I $WORK/b009/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/b009/symabis ./abi_test.s
-cat >$WORK/b011/importcfg << 'EOF' # internal
+cat >$WORK/b011/importcfg << EOF # internal
 # import config
 EOF
-cat >$WORK/b018/importcfg << 'EOF' # internal
+cat >$WORK/b018/importcfg << EOF # internal
 # import config
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b011/_pkg_.a -trimpath "$WORK/b011=>" -p internal/cpu -std -+ -buildid j9mgjw9q7aHUtebwQoGa/j9mgjw9q7aHUtebwQoGa -goversion go1.20.4 -symabis $WORK/b011/symabis -c=4 -nolocalimports -importcfg $WORK/b011/importcfg -pack -asmhdr $WORK/b011/go_asm.h /usr/local/opt/go/libexec/src/internal/cpu/cpu.go /usr/local/opt/go/libexec/src/internal/cpu/cpu_x86.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b018/_pkg_.a -trimpath "$WORK/b018=>" -p runtime/internal/syscall -std -+ -buildid gZLMb57b8-GCtAQAQvdR/gZLMb57b8-GCtAQAQvdR -goversion go1.20.4 -symabis $WORK/b018/symabis -c=4 -nolocalimports -importcfg $WORK/b018/importcfg -pack -asmhdr $WORK/b018/go_asm.h /usr/local/opt/go/libexec/src/runtime/internal/syscall/defs_linux.go /usr/local/opt/go/libexec/src/runtime/internal/syscall/defs_linux_amd64.go /usr/local/opt/go/libexec/src/runtime/internal/syscall/syscall_linux.go
-cat >$WORK/b015/importcfg << 'EOF' # internal
+cat >$WORK/b015/importcfg << EOF # internal
 # import config
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b015/_pkg_.a -trimpath "$WORK/b015=>" -p runtime/internal/atomic -std -+ -buildid IgGysWgqntnGBJ3sVB-f/IgGysWgqntnGBJ3sVB-f -goversion go1.20.4 -symabis $WORK/b015/symabis -c=4 -nolocalimports -importcfg $WORK/b015/importcfg -pack -asmhdr $WORK/b015/go_asm.h /usr/local/opt/go/libexec/src/runtime/internal/atomic/atomic_amd64.go /usr/local/opt/go/libexec/src/runtime/internal/atomic/doc.go /usr/local/opt/go/libexec/src/runtime/internal/atomic/stubs.go /usr/local/opt/go/libexec/src/runtime/internal/atomic/types.go /usr/local/opt/go/libexec/src/runtime/internal/atomic/types_64bit.go /usr/local/opt/go/libexec/src/runtime/internal/atomic/unaligned.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b012/_pkg_.a # internal
 cp $WORK/b012/_pkg_.a /Users/DQNEO/Library/Caches/go-build/92/926df4eb753eaf2114a466757f34e7afdfba1cf6ec04f1f2f34c85063d90e024-d # internal
 mkdir -p $WORK/b016/
-cat >$WORK/b009/importcfg << 'EOF' # internal
+cat >$WORK/b009/importcfg << EOF # internal
 # import config
-packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
+packagefile internal/goarch=${WORK}/b005/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b009/_pkg_.a -trimpath "$WORK/b009=>" -p internal/abi -std -+ -buildid EVg-QcN5p97xUAw5kfuR/EVg-QcN5p97xUAw5kfuR -goversion go1.20.4 -symabis $WORK/b009/symabis -c=4 -nolocalimports -importcfg $WORK/b009/importcfg -pack -asmhdr $WORK/b009/go_asm.h /usr/local/opt/go/libexec/src/internal/abi/abi.go /usr/local/opt/go/libexec/src/internal/abi/abi_amd64.go
-cat >$WORK/b016/importcfg << 'EOF' # internal
+cat >$WORK/b016/importcfg << EOF # internal
 # import config
 packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
 EOF
@@ -109,7 +109,7 @@ cp $WORK/b021/_pkg_.a /Users/DQNEO/Library/Caches/go-build/bf/bf12a0a0c4af776c02
 cd /usr/local/opt/go/libexec/src/runtime/internal/syscall
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p runtime/internal/syscall -trimpath "$WORK/b018=>" -I $WORK/b018/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b018/asm_linux_amd64.o ./asm_linux_amd64.s
 mkdir -p $WORK/b017/
-cat >$WORK/b017/importcfg << 'EOF' # internal
+cat >$WORK/b017/importcfg << EOF # internal
 # import config
 packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
 packagefile internal/goos=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b014/_pkg_.a
@@ -124,14 +124,14 @@ cp $WORK/b016/_pkg_.a /Users/DQNEO/Library/Caches/go-build/9f/9fdba1d4b52db1d9a6
 cd /usr/local/opt/go/libexec/src/internal/abi
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p internal/abi -trimpath "$WORK/b009=>" -I $WORK/b009/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b009/abi_test.o ./abi_test.s
 mkdir -p $WORK/b027/
-cat >$WORK/b027/importcfg << 'EOF' # internal
+cat >$WORK/b027/importcfg << EOF # internal
 # import config
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b027/_pkg_.a -trimpath "$WORK/b027=>" -p internal/race -std -complete -buildid 6k_7JN4Ro6ano3CJO236/6k_7JN4Ro6ano3CJO236 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b027/importcfg -pack /usr/local/opt/go/libexec/src/internal/race/doc.go /usr/local/opt/go/libexec/src/internal/race/norace.go
 mkdir -p $WORK/b028/
 cp $WORK/b023/_pkg_.a /Users/DQNEO/Library/Caches/go-build/8a/8a8af225f53e3267a0e84e9236afd493febe04b00f6a1ebca9a385425ec5eb8b-d # internal
-cat >$WORK/b028/go_asm.h << 'EOF' # internal
+cat >$WORK/b028/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/sync/atomic
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p sync/atomic -trimpath "$WORK/b028=>" -I $WORK/b028/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/b028/symabis ./asm.s
@@ -141,7 +141,7 @@ cd /usr/local/opt/go/libexec/src/runtime/internal/syscall
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/pack r $WORK/b018/_pkg_.a $WORK/b018/asm_linux_amd64.o # internal
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b018/_pkg_.a # internal
 mkdir -p $WORK/b029/
-cat >$WORK/b029/importcfg << 'EOF' # internal
+cat >$WORK/b029/importcfg << EOF # internal
 # import config
 EOF
 cd /usr/local/opt/go/libexec/src/runtime/internal/atomic
@@ -156,7 +156,7 @@ cp $WORK/b009/_pkg_.a /Users/DQNEO/Library/Caches/go-build/97/97e46b4de6600d66a4
 cd /usr/local/opt/go/libexec/src/internal/cpu
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p internal/cpu -trimpath "$WORK/b011=>" -I $WORK/b011/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b011/cpu_x86.o ./cpu_x86.s
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b017/_pkg_.a # internal
-cat >$WORK/b028/importcfg << 'EOF' # internal
+cat >$WORK/b028/importcfg << EOF # internal
 # import config
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b027/_pkg_.a # internal
@@ -173,24 +173,24 @@ cd /usr/local/opt/go/libexec/src/internal/cpu
 cp $WORK/b015/_pkg_.a /Users/DQNEO/Library/Caches/go-build/9b/9b27352913aac753062d263539a28267204689b4f2b07b08874edc157621a704-d # internal
 cp $WORK/b011/_pkg_.a /Users/DQNEO/Library/Caches/go-build/06/0621a8c86a0f8a0475a63e05793305315e8701bc4b5d35227f39367f20a85bf7-d # internal
 mkdir -p $WORK/b010/
-cat >$WORK/b010/go_asm.h << 'EOF' # internal
+cat >$WORK/b010/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/internal/bytealg
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p internal/bytealg -trimpath "$WORK/b010=>" -I $WORK/b010/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b010/symabis ./compare_amd64.s ./count_amd64.s ./equal_amd64.s ./index_amd64.s ./indexbyte_amd64.s
-cat >$WORK/b010/importcfg << 'EOF' # internal
+cat >$WORK/b010/importcfg << EOF # internal
 # import config
 packagefile internal/cpu=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b011/_pkg_.a
 EOF
 mkdir -p $WORK/b022/
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b010/_pkg_.a -trimpath "$WORK/b010=>" -p internal/bytealg -std -+ -buildid OWPwmEGblMug2ig95x_j/OWPwmEGblMug2ig95x_j -goversion go1.20.4 -symabis $WORK/b010/symabis -c=4 -nolocalimports -importcfg $WORK/b010/importcfg -pack -asmhdr $WORK/b010/go_asm.h /usr/local/opt/go/libexec/src/internal/bytealg/bytealg.go /usr/local/opt/go/libexec/src/internal/bytealg/compare_native.go /usr/local/opt/go/libexec/src/internal/bytealg/count_native.go /usr/local/opt/go/libexec/src/internal/bytealg/equal_generic.go /usr/local/opt/go/libexec/src/internal/bytealg/equal_native.go /usr/local/opt/go/libexec/src/internal/bytealg/index_amd64.go /usr/local/opt/go/libexec/src/internal/bytealg/index_native.go /usr/local/opt/go/libexec/src/internal/bytealg/indexbyte_native.go
-cat >$WORK/b022/go_asm.h << 'EOF' # internal
+cat >$WORK/b022/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/math
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p math -trimpath "$WORK/b022=>" -I $WORK/b022/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/b022/symabis ./dim_amd64.s ./exp_amd64.s ./floor_amd64.s ./hypot_amd64.s ./log_amd64.s
 cd /usr/local/opt/go/libexec/src/sync/atomic
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p sync/atomic -trimpath "$WORK/b028=>" -I $WORK/b028/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b028/asm.o ./asm.s
-cat >$WORK/b022/importcfg << 'EOF' # internal
+cat >$WORK/b022/importcfg << EOF # internal
 # import config
 packagefile internal/cpu=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b011/_pkg_.a
 packagefile math/bits=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b023/_pkg_.a
@@ -211,13 +211,13 @@ cp $WORK/b028/_pkg_.a /Users/DQNEO/Library/Caches/go-build/60/607d046547a61f90e4
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b010/_pkg_.a # internal
 cp $WORK/b010/_pkg_.a /Users/DQNEO/Library/Caches/go-build/3d/3d8c80401513467afb4c0ae8bfb06d098f84d53f83c67e867a73d5a9bd52c621-d # internal
 mkdir -p $WORK/b008/
-cat >$WORK/b008/go_asm.h << 'EOF' # internal
+cat >$WORK/b008/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/runtime
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p runtime -trimpath "$WORK/b008=>" -I $WORK/b008/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b008/symabis ./asm.s ./asm_amd64.s ./duff_amd64.s ./memclr_amd64.s ./memmove_amd64.s ./preempt_amd64.s ./rt0_linux_amd64.s ./sys_linux_amd64.s ./time_linux_amd64.s
 cd /usr/local/opt/go/libexec/src/math
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p math -trimpath "$WORK/b022=>" -I $WORK/b022/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/b022/dim_amd64.o ./dim_amd64.s
-cat >$WORK/b008/importcfg << 'EOF' # internal
+cat >$WORK/b008/importcfg << EOF # internal
 # import config
 packagefile internal/abi=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b009/_pkg_.a
 packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
@@ -258,12 +258,12 @@ cd /usr/local/opt/go/libexec/src/runtime
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b008/_pkg_.a # internal
 cp $WORK/b008/_pkg_.a /Users/DQNEO/Library/Caches/go-build/f5/f5eae97d918371c7c83fe2a88e9dbb2fec09960c36aeb1d26b1c2f09d89305f9-d # internal
 mkdir -p $WORK/b004/
-cat >$WORK/b004/go_asm.h << 'EOF' # internal
+cat >$WORK/b004/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/internal/reflectlite
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p internal/reflectlite -trimpath "$WORK/b004=>" -I $WORK/b004/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/b004/symabis ./asm.s
 mkdir -p $WORK/b026/
-cat >$WORK/b026/importcfg << 'EOF' # internal
+cat >$WORK/b026/importcfg << EOF # internal
 # import config
 packagefile internal/race=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b027/_pkg_.a
 packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
@@ -271,7 +271,7 @@ packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-buil
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b026/_pkg_.a -trimpath "$WORK/b026=>" -p sync -std -buildid awcGvD6YFJooe2gt9uJS/awcGvD6YFJooe2gt9uJS -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b026/importcfg -pack /usr/local/opt/go/libexec/src/sync/cond.go /usr/local/opt/go/libexec/src/sync/map.go /usr/local/opt/go/libexec/src/sync/mutex.go /usr/local/opt/go/libexec/src/sync/once.go /usr/local/opt/go/libexec/src/sync/pool.go /usr/local/opt/go/libexec/src/sync/poolqueue.go /usr/local/opt/go/libexec/src/sync/runtime.go /usr/local/opt/go/libexec/src/sync/runtime2.go /usr/local/opt/go/libexec/src/sync/rwmutex.go /usr/local/opt/go/libexec/src/sync/waitgroup.go
-cat >$WORK/b004/importcfg << 'EOF' # internal
+cat >$WORK/b004/importcfg << EOF # internal
 # import config
 packagefile internal/goarch=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b005/_pkg_.a
 packagefile internal/unsafeheader=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b006/_pkg_.a
@@ -281,7 +281,7 @@ EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b026/_pkg_.a # internal
 cp $WORK/b026/_pkg_.a /Users/DQNEO/Library/Caches/go-build/8c/8ca5cd7b10f028bde0add0570182855542c74dd7b0f3f185d05d55cfb2761225-d # internal
 mkdir -p $WORK/b040/
-cat >$WORK/b040/importcfg << 'EOF' # internal
+cat >$WORK/b040/importcfg << EOF # internal
 # import config
 packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
 packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b028/_pkg_.a
@@ -296,13 +296,13 @@ cd /usr/local/opt/go/libexec/src/internal/reflectlite
 cp $WORK/b004/_pkg_.a /Users/DQNEO/Library/Caches/go-build/68/68e93efe874f570ec44808ba740ec9e7f85ae99517fc1aa4d7d47a25f1ba0dd5-d # internal
 mkdir -p $WORK/b003/
 mkdir -p $WORK/b030/
-cat >$WORK/b003/importcfg << 'EOF' # internal
+cat >$WORK/b003/importcfg << EOF # internal
 # import config
 packagefile internal/reflectlite=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b004/_pkg_.a
 EOF
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b003/_pkg_.a -trimpath "$WORK/b003=>" -p errors -std -complete -buildid F_mcCqBziAv01tav5M2I/F_mcCqBziAv01tav5M2I -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b003/importcfg -pack /usr/local/opt/go/libexec/src/errors/errors.go /usr/local/opt/go/libexec/src/errors/join.go /usr/local/opt/go/libexec/src/errors/wrap.go
-cat >$WORK/b030/importcfg << 'EOF' # internal
+cat >$WORK/b030/importcfg << EOF # internal
 # import config
 packagefile internal/reflectlite=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b004/_pkg_.a
 packagefile math/bits=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b023/_pkg_.a
@@ -313,17 +313,17 @@ cp $WORK/b003/_pkg_.a /Users/DQNEO/Library/Caches/go-build/c3/c3ca51b3dbf02d375e
 mkdir -p $WORK/b038/
 mkdir -p $WORK/b036/
 mkdir -p $WORK/b042/
-cat >$WORK/b038/importcfg << 'EOF' # internal
+cat >$WORK/b038/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
 EOF
-cat >$WORK/b036/importcfg << 'EOF' # internal
+cat >$WORK/b036/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 EOF
 mkdir -p $WORK/b031/
-cat >$WORK/b042/importcfg << 'EOF' # internal
+cat >$WORK/b042/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
@@ -332,14 +332,14 @@ EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b038/_pkg_.a -trimpath "$WORK/b038=>" -p internal/safefilepath -std -complete -buildid hm1QrtEgJmcNx15tya8Y/hm1QrtEgJmcNx15tya8Y -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b038/importcfg -pack /usr/local/opt/go/libexec/src/internal/safefilepath/path.go /usr/local/opt/go/libexec/src/internal/safefilepath/path_other.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b036/_pkg_.a -trimpath "$WORK/b036=>" -p internal/oserror -std -complete -buildid ZyMHKeNnjmaHsZb3SqbR/ZyMHKeNnjmaHsZb3SqbR -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b036/importcfg -pack /usr/local/opt/go/libexec/src/internal/oserror/errors.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b042/_pkg_.a -trimpath "$WORK/b042=>" -p path -std -complete -buildid oyZvoNp0jsV46ZkzhwtB/oyZvoNp0jsV46ZkzhwtB -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b042/importcfg -pack /usr/local/opt/go/libexec/src/path/match.go /usr/local/opt/go/libexec/src/path/path.go
-cat >$WORK/b031/importcfg << 'EOF' # internal
+cat >$WORK/b031/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile sync=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b026/_pkg_.a
 EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b031/_pkg_.a -trimpath "$WORK/b031=>" -p io -std -complete -buildid UXfIU_f9dqciElRShcLJ/UXfIU_f9dqciElRShcLJ -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b031/importcfg -pack /usr/local/opt/go/libexec/src/io/io.go /usr/local/opt/go/libexec/src/io/multi.go /usr/local/opt/go/libexec/src/io/pipe.go
 mkdir -p $WORK/b024/
-cat >$WORK/b024/importcfg << 'EOF' # internal
+cat >$WORK/b024/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
@@ -359,11 +359,11 @@ cp $WORK/b042/_pkg_.a /Users/DQNEO/Library/Caches/go-build/e3/e3566d6415cf10d62a
 cp $WORK/b030/_pkg_.a /Users/DQNEO/Library/Caches/go-build/15/15c97b460afc045139634ffdd726154b4fce1651774ecd3a8a04434096da3516-d # internal
 mkdir -p $WORK/b035/
 cp $WORK/b031/_pkg_.a /Users/DQNEO/Library/Caches/go-build/3f/3f47dbb23d8a725a8add0ccee53d305b53d47438adf59f282afb4e58c957e946-d # internal
-cat >$WORK/b035/go_asm.h << 'EOF' # internal
+cat >$WORK/b035/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/syscall
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p syscall -trimpath "$WORK/b035=>" -I $WORK/b035/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b035/symabis ./asm_linux_amd64.s
-cat >$WORK/b035/importcfg << 'EOF' # internal
+cat >$WORK/b035/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile internal/bytealg=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b010/_pkg_.a
@@ -379,11 +379,11 @@ cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b024/_pkg_.a # internal
 cp $WORK/b024/_pkg_.a /Users/DQNEO/Library/Caches/go-build/1a/1ad0a4bf26d6a401443abecef2c0d58a39aa53cee9a04b799ed3b380005d7b6a-d # internal
 mkdir -p $WORK/b020/
-cat >$WORK/b020/go_asm.h << 'EOF' # internal
+cat >$WORK/b020/go_asm.h << EOF # internal
 EOF
 cd /usr/local/opt/go/libexec/src/reflect
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p reflect -trimpath "$WORK/b020=>" -I $WORK/b020/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b020/symabis ./asm_amd64.s
-cat >$WORK/b020/importcfg << 'EOF' # internal
+cat >$WORK/b020/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile internal/abi=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b009/_pkg_.a
@@ -406,7 +406,7 @@ cd /usr/local/opt/go/libexec/src/syscall
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b035/_pkg_.a # internal
 cp $WORK/b035/_pkg_.a /Users/DQNEO/Library/Caches/go-build/90/90c34d05dac34b8a71d3fe8c56629372bbf8c526cb99cd62209ee723971848f7-d # internal
 mkdir -p $WORK/b039/
-cat >$WORK/b039/importcfg << 'EOF' # internal
+cat >$WORK/b039/importcfg << EOF # internal
 # import config
 packagefile syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b035/_pkg_.a
 EOF
@@ -414,12 +414,12 @@ cd /Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b039/_pkg_.a -trimpath "$WORK/b039=>" -p internal/syscall/execenv -std -complete -buildid 9v4cH9-eclFZmCPdzfl0/9v4cH9-eclFZmCPdzfl0 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b039/importcfg -pack /usr/local/opt/go/libexec/src/internal/syscall/execenv/execenv_default.go
 mkdir -p $WORK/b034/
 mkdir -p $WORK/b037/
-cat >$WORK/b034/importcfg << 'EOF' # internal
+cat >$WORK/b034/importcfg << EOF # internal
 # import config
 packagefile sync/atomic=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b028/_pkg_.a
 packagefile syscall=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b035/_pkg_.a
 EOF
-cat >$WORK/b037/importcfg << 'EOF' # internal
+cat >$WORK/b037/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
@@ -435,7 +435,7 @@ cp $WORK/b034/_pkg_.a /Users/DQNEO/Library/Caches/go-build/42/426f444477d471f5cd
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b037/_pkg_.a # internal
 cp $WORK/b037/_pkg_.a /Users/DQNEO/Library/Caches/go-build/2d/2d930289955ec68431cef7e8d9bb7b5b2d6dccd93e45f68f63868cf7045146af-d # internal
 mkdir -p $WORK/b041/
-cat >$WORK/b041/importcfg << 'EOF' # internal
+cat >$WORK/b041/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile internal/oserror=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b036/_pkg_.a
@@ -449,7 +449,7 @@ EOF
 cd /usr/local/opt/go/libexec/src/reflect
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/asm -p reflect -trimpath "$WORK/b020=>" -I $WORK/b020/ -I /usr/local/opt/go/libexec/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b020/asm_amd64.o ./asm_amd64.s
 mkdir -p $WORK/b033/
-cat >$WORK/b033/importcfg << 'EOF' # internal
+cat >$WORK/b033/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile internal/syscall/unix=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b034/_pkg_.a
@@ -468,7 +468,7 @@ cd /usr/local/opt/go/libexec/src/reflect
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b041/_pkg_.a # internal
 cp $WORK/b020/_pkg_.a /Users/DQNEO/Library/Caches/go-build/d5/d5fd69d99da4bee5f1ec02b332f5f903af8e9e36df61950ce58553ec3f55b3a3-d # internal
 mkdir -p $WORK/b019/
-cat >$WORK/b019/importcfg << 'EOF' # internal
+cat >$WORK/b019/importcfg << EOF # internal
 # import config
 packagefile reflect=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b020/_pkg_.a
 packagefile sort=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b030/_pkg_.a
@@ -481,7 +481,7 @@ cp $WORK/b019/_pkg_.a /Users/DQNEO/Library/Caches/go-build/60/60db98208e085d1cb8
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b033/_pkg_.a # internal
 cp $WORK/b033/_pkg_.a /Users/DQNEO/Library/Caches/go-build/8a/8a23e35e436231c957d53722575f693b9876e4444db8b34bddfa4b3af0d1a960-d # internal
 mkdir -p $WORK/b032/
-cat >$WORK/b032/importcfg << 'EOF' # internal
+cat >$WORK/b032/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile internal/itoa=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b021/_pkg_.a
@@ -503,7 +503,7 @@ EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b032/_pkg_.a # internal
 cp $WORK/b032/_pkg_.a /Users/DQNEO/Library/Caches/go-build/9f/9f4f9105c37b2865b130bc5f783edf18bd1066b6d71eee53c8f53f2da3e87710-d # internal
 mkdir -p $WORK/b002/
-cat >$WORK/b002/importcfg << 'EOF' # internal
+cat >$WORK/b002/importcfg << EOF # internal
 # import config
 packagefile errors=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b003/_pkg_.a
 packagefile internal/fmtsort=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b019/_pkg_.a
@@ -520,7 +520,7 @@ EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b002/_pkg_.a # internal
 cp $WORK/b002/_pkg_.a /Users/DQNEO/Library/Caches/go-build/cf/cff345f70671e508776e8b231b79e372c4676ffe417a1a3806c5caf95e9bd7cf-d # internal
 mkdir -p $WORK/b001/
-cat >$WORK/b001/importcfg << 'EOF' # internal
+cat >$WORK/b001/importcfg << EOF # internal
 # import config
 packagefile fmt=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b002/_pkg_.a
 packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
@@ -528,7 +528,7 @@ EOF
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b001/importcfg -pack ./main.go ./sum.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b001/_pkg_.a # internal
 cp $WORK/b001/_pkg_.a /Users/DQNEO/Library/Caches/go-build/7a/7a314cdb7644f75ade9e29b91291f7f6635c9ddf4a7ab138f3a0578465a22a40-d # internal
-cat >$WORK/b001/importcfg.link << 'EOF' # internal
+cat >$WORK/b001/importcfg.link << EOF # internal
 packagefile github.com/DQNEO/go-samples/birudo=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b001/_pkg_.a
 packagefile fmt=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b002/_pkg_.a
 packagefile runtime=/var/folders/bq/2mhmkrcn59dd9t7pq5_6hbw80000gp/T/go-build2769554778/b008/_pkg_.a
