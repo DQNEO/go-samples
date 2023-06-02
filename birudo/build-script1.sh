@@ -9,11 +9,12 @@ GORT=/usr/local/opt/go/libexec
 TOOL_DIR=$GORT/pkg/tool/darwin_amd64
 CACHE_DIR=/Users/DQNEO/Library/Caches/go-build
 
-declare -A PKGS
-PKGS[os]="b032"
-PKGS[fmt]="b002"
-PKGS[main]="b001"
-PKGS[internal/fmtsort]="b019"
+declare -A PKGS=(
+[os]="b032"
+[main]="b001"
+[fmt]="b002"
+[internal/fmtsort]="b019"
+)
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 git status --porcelain
