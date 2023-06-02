@@ -61,25 +61,25 @@ git -c log.showsignature=false show -s --format=%H:%ct
 
 
 mkdir -p $WORK/${PKGS[internal/coverage/rtcov]}/
-mkdir -p $WORK/b006/
-mkdir -p $WORK/b005/
+mkdir -p $WORK/${PKGS[internal/unsafeheader]}/
+mkdir -p $WORK/${PKGS[internal/goarch]}/
 cat >$WORK/${PKGS[internal/coverage/rtcov]}/importcfg << EOF # internal
 # import config
 EOF
 mkdir -p $WORK/${PKGS[internal/goos]}/
-cat >$WORK/b006/importcfg << EOF # internal
+cat >$WORK/${PKGS[internal/unsafeheader]}/importcfg << EOF # internal
 # import config
 EOF
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/b006/_pkg_.a -trimpath "$WORK/b006=>" -p internal/unsafeheader   -std    -complete -buildid P7qFpguryEe_9bufASvc/P7qFpguryEe_9bufASvc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b006/importcfg -pack $GORT/src/internal/unsafeheader/unsafeheader.go
+$TOOL_DIR/compile -o $WORK/${PKGS[internal/unsafeheader]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/unsafeheader]}=>" -p internal/unsafeheader   -std    -complete -buildid P7qFpguryEe_9bufASvc/P7qFpguryEe_9bufASvc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/unsafeheader]}/importcfg -pack $GORT/src/internal/unsafeheader/unsafeheader.go
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/coverage/rtcov]}=>" -p internal/coverage/rtcov -std -+ -complete -buildid Gk43QGhY-y2T4KaecSdc/Gk43QGhY-y2T4KaecSdc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/coverage/rtcov]}/importcfg -pack $GORT/src/internal/coverage/rtcov/rtcov.go
-cat >$WORK/b005/importcfg << EOF # internal
+cat >$WORK/${PKGS[internal/goarch]}/importcfg << EOF # internal
 # import config
 EOF
 cat >$WORK/${PKGS[internal/goos]}/importcfg << EOF # internal
 # import config
 EOF
-$TOOL_DIR/compile -o $WORK/b005/_pkg_.a -trimpath "$WORK/b005=>" -p internal/goarch -std -+ -complete -buildid IeHgz3mN0XMxQJyLQgHG/IeHgz3mN0XMxQJyLQgHG -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b005/importcfg -pack $GORT/src/internal/goarch/goarch.go $GORT/src/internal/goarch/goarch_amd64.go $GORT/src/internal/goarch/zgoarch_amd64.go
+$TOOL_DIR/compile -o $WORK/${PKGS[internal/goarch]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/goarch]}=>" -p internal/goarch -std -+ -complete -buildid IeHgz3mN0XMxQJyLQgHG/IeHgz3mN0XMxQJyLQgHG -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/goarch]}/importcfg -pack $GORT/src/internal/goarch/goarch.go $GORT/src/internal/goarch/goarch_amd64.go $GORT/src/internal/goarch/zgoarch_amd64.go
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/goos]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/goos]}=>" -p internal/goos -std -+ -complete -buildid yhVHvx5gAuhGe0etJIbA/yhVHvx5gAuhGe0etJIbA -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/goos]}/importcfg -pack $GORT/src/internal/goos/goos.go $GORT/src/internal/goos/unix.go $GORT/src/internal/goos/zgoos_linux.go
 mkdir -p $WORK/${PKGS[internal/goexperiment]}/
 cat >$WORK/${PKGS[internal/goexperiment]}/importcfg << EOF # internal
@@ -103,29 +103,29 @@ cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/b015=>" -I $WORK/b015/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/b015/symabis ./atomic_amd64.s
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/goexperiment]}/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/goos]}/_pkg_.a # internal
-$TOOL_DIR/buildid -w $WORK/b006/_pkg_.a # internal
-$TOOL_DIR/buildid -w $WORK/b005/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/unsafeheader]}/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/goarch]}/_pkg_.a # internal
 
 
 
-mkdir -p $WORK/b021/
+mkdir -p $WORK/${PKGS[internal/itoa]}/
 
-mkdir -p $WORK/b025/
-cat >$WORK/b021/importcfg << EOF # internal
+mkdir -p $WORK/${PKGS[unicode/utf8]}/
+cat >$WORK/${PKGS[internal/itoa]}/importcfg << EOF # internal
 # import config
 EOF
-cat >$WORK/b025/importcfg << EOF # internal
+cat >$WORK/${PKGS[unicode/utf8]}/importcfg << EOF # internal
 # import config
 EOF
-mkdir -p $WORK/b023/
+mkdir -p $WORK/${PKGS[math/bits]}/
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/b025/_pkg_.a -trimpath "$WORK/b025=>" -p unicode/utf8 -std -complete -buildid cSCUZ94vs3WynnuPq7bO/cSCUZ94vs3WynnuPq7bO -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b025/importcfg -pack $GORT/src/unicode/utf8/utf8.go
-$TOOL_DIR/compile -o $WORK/b021/_pkg_.a -trimpath "$WORK/b021=>" -p internal/itoa -std -complete -buildid KywV8ckBASs47DioyK2u/KywV8ckBASs47DioyK2u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b021/importcfg -pack $GORT/src/internal/itoa/itoa.go
+$TOOL_DIR/compile -o $WORK/${PKGS[unicode/utf8]}/_pkg_.a -trimpath "$WORK/${PKGS[unicode/utf8]}=>" -p unicode/utf8 -std -complete -buildid cSCUZ94vs3WynnuPq7bO/cSCUZ94vs3WynnuPq7bO -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[unicode/utf8]}/importcfg -pack $GORT/src/unicode/utf8/utf8.go
+$TOOL_DIR/compile -o $WORK/${PKGS[internal/itoa]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/itoa]}=>" -p internal/itoa -std -complete -buildid KywV8ckBASs47DioyK2u/KywV8ckBASs47DioyK2u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/itoa]}/importcfg -pack $GORT/src/internal/itoa/itoa.go
 mkdir -p $WORK/${PKGS[internal/abi]}/
-cat >$WORK/b023/importcfg << EOF # internal
+cat >$WORK/${PKGS[math/bits]}/importcfg << EOF # internal
 # import config
 EOF
-$TOOL_DIR/compile -o $WORK/b023/_pkg_.a -trimpath "$WORK/b023=>" -p math/bits -std -complete -buildid dCrtqElNlXZukOS2aC7Q/dCrtqElNlXZukOS2aC7Q -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b023/importcfg -pack $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
+$TOOL_DIR/compile -o $WORK/${PKGS[math/bits]}/_pkg_.a -trimpath "$WORK/${PKGS[math/bits]}=>" -p math/bits -std -complete -buildid dCrtqElNlXZukOS2aC7Q/dCrtqElNlXZukOS2aC7Q -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[math/bits]}/importcfg -pack $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
 cat >$WORK/${PKGS[internal/abi]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/internal/abi
@@ -148,28 +148,28 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a # internal
 mkdir -p $WORK/b016/
 cat >$WORK/${PKGS[internal/abi]}/importcfg << EOF # internal
 # import config
-packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/abi]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/abi]}=>" -p internal/abi -std -+ -buildid EVg-QcN5p97xUAw5kfuR/EVg-QcN5p97xUAw5kfuR -goversion go1.20.4 -symabis $WORK/${PKGS[internal/abi]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/abi]}/importcfg -pack -asmhdr $WORK/${PKGS[internal/abi]}/go_asm.h $GORT/src/internal/abi/abi.go $GORT/src/internal/abi/abi_amd64.go
 cat >$WORK/b016/importcfg << EOF # internal
 # import config
-packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b016/_pkg_.a -trimpath "$WORK/b016=>" -p runtime/internal/math -std -+ -complete -buildid dKV2PXLfEa-bpWk_4jjm/dKV2PXLfEa-bpWk_4jjm -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b016/importcfg -pack $GORT/src/runtime/internal/math/math.go
-$TOOL_DIR/buildid -w $WORK/b021/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/itoa]}/_pkg_.a # internal
 
 cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/b018=>" -I $WORK/b018/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/b018/asm_linux_amd64.o ./asm_linux_amd64.s
 mkdir -p $WORK/b017/
 cat >$WORK/b017/importcfg << EOF # internal
 # import config
-packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
 packagefile internal/goos=$WORK/${PKGS[internal/goos]}/_pkg_.a
 EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b017/_pkg_.a -trimpath "$WORK/b017=>" -p runtime/internal/sys -std -+ -complete -buildid p57uPEDCp39nHZBklMoj/p57uPEDCp39nHZBklMoj -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b017/importcfg -pack $GORT/src/runtime/internal/sys/consts.go $GORT/src/runtime/internal/sys/consts_norace.go $GORT/src/runtime/internal/sys/intrinsics.go $GORT/src/runtime/internal/sys/intrinsics_common.go $GORT/src/runtime/internal/sys/nih.go $GORT/src/runtime/internal/sys/sys.go $GORT/src/runtime/internal/sys/zversion.go
-$TOOL_DIR/buildid -w $WORK/b023/_pkg_.a # internal
-$TOOL_DIR/buildid -w $WORK/b025/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[math/bits]}/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[unicode/utf8]}/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/b016/_pkg_.a # internal
 
 
@@ -245,7 +245,7 @@ $TOOL_DIR/asm -p sync/atomic -trimpath "$WORK/b028=>" -I $WORK/b028/ -I $GORT/pk
 cat >$WORK/b022/importcfg << EOF # internal
 # import config
 packagefile internal/cpu=$WORK/${PKGS[internal/cpu]}/_pkg_.a
-packagefile math/bits=$WORK/b023/_pkg_.a
+packagefile math/bits=$WORK/${PKGS[math/bits]}/_pkg_.a
 EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b022/_pkg_.a -trimpath "$WORK/b022=>" -p math -std -buildid M2k9bU3HlBq2CeX7eecL/M2k9bU3HlBq2CeX7eecL -goversion go1.20.4 -symabis $WORK/b022/symabis -c=4 -nolocalimports -importcfg $WORK/b022/importcfg -pack -asmhdr $WORK/b022/go_asm.h $GORT/src/math/abs.go $GORT/src/math/acosh.go $GORT/src/math/asin.go $GORT/src/math/asinh.go $GORT/src/math/atan.go $GORT/src/math/atan2.go $GORT/src/math/atanh.go $GORT/src/math/bits.go $GORT/src/math/cbrt.go $GORT/src/math/const.go $GORT/src/math/copysign.go $GORT/src/math/dim.go $GORT/src/math/dim_asm.go $GORT/src/math/erf.go $GORT/src/math/erfinv.go $GORT/src/math/exp.go $GORT/src/math/exp2_noasm.go $GORT/src/math/exp_amd64.go $GORT/src/math/exp_asm.go $GORT/src/math/expm1.go $GORT/src/math/floor.go $GORT/src/math/floor_asm.go $GORT/src/math/fma.go $GORT/src/math/frexp.go $GORT/src/math/gamma.go $GORT/src/math/hypot.go $GORT/src/math/hypot_asm.go $GORT/src/math/j0.go $GORT/src/math/j1.go $GORT/src/math/jn.go $GORT/src/math/ldexp.go $GORT/src/math/lgamma.go $GORT/src/math/log.go $GORT/src/math/log10.go $GORT/src/math/log1p.go $GORT/src/math/log_asm.go $GORT/src/math/logb.go $GORT/src/math/mod.go $GORT/src/math/modf.go $GORT/src/math/modf_noasm.go $GORT/src/math/nextafter.go $GORT/src/math/pow.go $GORT/src/math/pow10.go $GORT/src/math/remainder.go $GORT/src/math/signbit.go $GORT/src/math/sin.go $GORT/src/math/sincos.go $GORT/src/math/sinh.go $GORT/src/math/sqrt.go $GORT/src/math/stubs.go $GORT/src/math/tan.go $GORT/src/math/tanh.go $GORT/src/math/trig_reduce.go $GORT/src/math/unsafe.go
@@ -275,7 +275,7 @@ packagefile internal/abi=$WORK/${PKGS[internal/abi]}/_pkg_.a
 packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
 packagefile internal/coverage/rtcov=$WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a
 packagefile internal/cpu=$WORK/${PKGS[internal/cpu]}/_pkg_.a
-packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
 packagefile internal/goexperiment=$WORK/${PKGS[internal/goexperiment]}/_pkg_.a
 packagefile internal/goos=$WORK/${PKGS[internal/goos]}/_pkg_.a
 packagefile runtime/internal/atomic=$WORK/b015/_pkg_.a
@@ -325,8 +325,8 @@ cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b026/_pkg_.a -trimpath "$WORK/b026=>" -p sync -std -buildid awcGvD6YFJooe2gt9uJS/awcGvD6YFJooe2gt9uJS -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b026/importcfg -pack $GORT/src/sync/cond.go $GORT/src/sync/map.go $GORT/src/sync/mutex.go $GORT/src/sync/once.go $GORT/src/sync/pool.go $GORT/src/sync/poolqueue.go $GORT/src/sync/runtime.go $GORT/src/sync/runtime2.go $GORT/src/sync/rwmutex.go $GORT/src/sync/waitgroup.go
 cat >$WORK/b004/importcfg << EOF # internal
 # import config
-packagefile internal/goarch=$WORK/b005/_pkg_.a
-packagefile internal/unsafeheader=$WORK/b006/_pkg_.a
+packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
+packagefile internal/unsafeheader=$WORK/${PKGS[internal/unsafeheader]}/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b004/_pkg_.a -trimpath "$WORK/b004=>" -p internal/reflectlite -std -buildid 8f99mKJg6-OCUXX8caR3/8f99mKJg6-OCUXX8caR3 -goversion go1.20.4 -symabis $WORK/b004/symabis -c=4 -nolocalimports -importcfg $WORK/b004/importcfg -pack -asmhdr $WORK/b004/go_asm.h $GORT/src/internal/reflectlite/swapper.go $GORT/src/internal/reflectlite/type.go $GORT/src/internal/reflectlite/value.go
@@ -357,7 +357,7 @@ $TOOL_DIR/compile -o $WORK/${PKGS[errors]}/_pkg_.a -trimpath "$WORK/${PKGS[error
 cat >$WORK/b030/importcfg << EOF # internal
 # import config
 packagefile internal/reflectlite=$WORK/b004/_pkg_.a
-packagefile math/bits=$WORK/b023/_pkg_.a
+packagefile math/bits=$WORK/${PKGS[math/bits]}/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b030/_pkg_.a -trimpath "$WORK/b030=>" -p sort -std -complete -buildid RPytz-InhRnbWmq4E73g/RPytz-InhRnbWmq4E73g -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b030/importcfg -pack $GORT/src/sort/search.go $GORT/src/sort/slice.go $GORT/src/sort/sort.go $GORT/src/sort/zsortfunc.go $GORT/src/sort/zsortinterface.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[errors]}/_pkg_.a # internal
@@ -379,7 +379,7 @@ cat >$WORK/b042/importcfg << EOF # internal
 # import config
 packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
 packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
-packagefile unicode/utf8=$WORK/b025/_pkg_.a
+packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b038/_pkg_.a -trimpath "$WORK/b038=>" -p internal/safefilepath -std -complete -buildid hm1QrtEgJmcNx15tya8Y/hm1QrtEgJmcNx15tya8Y -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b038/importcfg -pack $GORT/src/internal/safefilepath/path.go $GORT/src/internal/safefilepath/path_other.go
 $TOOL_DIR/compile -o $WORK/b036/_pkg_.a -trimpath "$WORK/b036=>" -p internal/oserror -std -complete -buildid ZyMHKeNnjmaHsZb3SqbR/ZyMHKeNnjmaHsZb3SqbR -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b036/importcfg -pack $GORT/src/internal/oserror/errors.go
@@ -396,8 +396,8 @@ cat >$WORK/b024/importcfg << EOF # internal
 packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
 packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
 packagefile math=$WORK/b022/_pkg_.a
-packagefile math/bits=$WORK/b023/_pkg_.a
-packagefile unicode/utf8=$WORK/b025/_pkg_.a
+packagefile math/bits=$WORK/${PKGS[math/bits]}/_pkg_.a
+packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b024/_pkg_.a -trimpath "$WORK/b024=>" -p strconv -std -complete -buildid tsZ-5FuCj28fNWLKgaGw/tsZ-5FuCj28fNWLKgaGw -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b024/importcfg -pack $GORT/src/strconv/atob.go $GORT/src/strconv/atoc.go $GORT/src/strconv/atof.go $GORT/src/strconv/atoi.go $GORT/src/strconv/bytealg.go $GORT/src/strconv/ctoa.go $GORT/src/strconv/decimal.go $GORT/src/strconv/doc.go $GORT/src/strconv/eisel_lemire.go $GORT/src/strconv/ftoa.go $GORT/src/strconv/ftoaryu.go $GORT/src/strconv/isprint.go $GORT/src/strconv/itoa.go $GORT/src/strconv/quote.go
 $TOOL_DIR/buildid -w $WORK/b038/_pkg_.a # internal
@@ -419,7 +419,7 @@ cat >$WORK/b035/importcfg << EOF # internal
 # import config
 packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
 packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
-packagefile internal/itoa=$WORK/b021/_pkg_.a
+packagefile internal/itoa=$WORK/${PKGS[internal/itoa]}/_pkg_.a
 packagefile internal/oserror=$WORK/b036/_pkg_.a
 packagefile internal/race=$WORK/b027/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
@@ -440,15 +440,15 @@ cat >$WORK/b020/importcfg << EOF # internal
 packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
 packagefile internal/abi=$WORK/${PKGS[internal/abi]}/_pkg_.a
 packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
-packagefile internal/goarch=$WORK/b005/_pkg_.a
-packagefile internal/itoa=$WORK/b021/_pkg_.a
-packagefile internal/unsafeheader=$WORK/b006/_pkg_.a
+packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
+packagefile internal/itoa=$WORK/${PKGS[internal/itoa]}/_pkg_.a
+packagefile internal/unsafeheader=$WORK/${PKGS[internal/unsafeheader]}/_pkg_.a
 packagefile math=$WORK/b022/_pkg_.a
 packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
 packagefile strconv=$WORK/b024/_pkg_.a
 packagefile sync=$WORK/b026/_pkg_.a
 packagefile unicode=$WORK/b029/_pkg_.a
-packagefile unicode/utf8=$WORK/b025/_pkg_.a
+packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
 EOF
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/b020/_pkg_.a -trimpath "$WORK/b020=>" -p reflect -std -buildid nIapndKG10ZTabsNBtM3/nIapndKG10ZTabsNBtM3 -goversion go1.20.4 -symabis $WORK/b020/symabis -c=4 -nolocalimports -importcfg $WORK/b020/importcfg -pack -asmhdr $WORK/b020/go_asm.h $GORT/src/reflect/abi.go $GORT/src/reflect/deepequal.go $GORT/src/reflect/float32reg_generic.go $GORT/src/reflect/makefunc.go $GORT/src/reflect/swapper.go $GORT/src/reflect/type.go $GORT/src/reflect/value.go $GORT/src/reflect/visiblefields.go
@@ -495,7 +495,7 @@ packagefile io=$WORK/b031/_pkg_.a
 packagefile path=$WORK/b042/_pkg_.a
 packagefile sort=$WORK/b030/_pkg_.a
 packagefile time=$WORK/b037/_pkg_.a
-packagefile unicode/utf8=$WORK/b025/_pkg_.a
+packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $WORK/b041/_pkg_.a -trimpath "$WORK/b041=>" -p io/fs -std -complete -buildid EvJOhnLtLuHzGX4dFlcg/EvJOhnLtLuHzGX4dFlcg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/b041/importcfg -pack $GORT/src/io/fs/fs.go $GORT/src/io/fs/glob.go $GORT/src/io/fs/readdir.go $GORT/src/io/fs/readfile.go $GORT/src/io/fs/stat.go $GORT/src/io/fs/sub.go $GORT/src/io/fs/walk.go
 cd $GORT/src/reflect
@@ -542,7 +542,7 @@ mkdir -p $wdir/
 cat >$wdir/importcfg << EOF # internal
 # import config
 packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile internal/itoa=$WORK/b021/_pkg_.a
+packagefile internal/itoa=$WORK/${PKGS[internal/itoa]}/_pkg_.a
 packagefile internal/poll=$WORK/b033/_pkg_.a
 packagefile internal/safefilepath=$WORK/b038/_pkg_.a
 packagefile internal/syscall/execenv=$WORK/b039/_pkg_.a
@@ -576,7 +576,7 @@ packagefile reflect=$WORK/b020/_pkg_.a
 packagefile sort=$WORK/b030/_pkg_.a
 packagefile strconv=$WORK/b024/_pkg_.a
 packagefile sync=$WORK/b026/_pkg_.a
-packagefile unicode/utf8=$WORK/b025/_pkg_.a
+packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
 EOF
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p fmt -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $GORT/src/fmt/doc.go $GORT/src/fmt/errors.go $GORT/src/fmt/format.go $GORT/src/fmt/print.go $GORT/src/fmt/scan.go
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
@@ -609,12 +609,12 @@ packagefile reflect=$WORK/b020/_pkg_.a
 packagefile sort=$WORK/b030/_pkg_.a
 packagefile strconv=$WORK/b024/_pkg_.a
 packagefile sync=$WORK/b026/_pkg_.a
-packagefile unicode/utf8=$WORK/b025/_pkg_.a
+packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
 packagefile internal/abi=$WORK/${PKGS[internal/abi]}/_pkg_.a
 packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
 packagefile internal/coverage/rtcov=$WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a
 packagefile internal/cpu=$WORK/${PKGS[internal/cpu]}/_pkg_.a
-packagefile internal/goarch=$WORK/b005/_pkg_.a
+packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
 packagefile internal/goexperiment=$WORK/${PKGS[internal/goexperiment]}/_pkg_.a
 packagefile internal/goos=$WORK/${PKGS[internal/goos]}/_pkg_.a
 packagefile runtime/internal/atomic=$WORK/b015/_pkg_.a
@@ -622,8 +622,8 @@ packagefile runtime/internal/math=$WORK/b016/_pkg_.a
 packagefile runtime/internal/sys=$WORK/b017/_pkg_.a
 packagefile runtime/internal/syscall=$WORK/b018/_pkg_.a
 packagefile internal/reflectlite=$WORK/b004/_pkg_.a
-packagefile math/bits=$WORK/b023/_pkg_.a
-packagefile internal/itoa=$WORK/b021/_pkg_.a
+packagefile math/bits=$WORK/${PKGS[math/bits]}/_pkg_.a
+packagefile internal/itoa=$WORK/${PKGS[internal/itoa]}/_pkg_.a
 packagefile internal/poll=$WORK/b033/_pkg_.a
 packagefile internal/safefilepath=$WORK/b038/_pkg_.a
 packagefile internal/syscall/execenv=$WORK/b039/_pkg_.a
@@ -633,7 +633,7 @@ packagefile io/fs=$WORK/b041/_pkg_.a
 packagefile sync/atomic=$WORK/b028/_pkg_.a
 packagefile syscall=$WORK/b035/_pkg_.a
 packagefile time=$WORK/b037/_pkg_.a
-packagefile internal/unsafeheader=$WORK/b006/_pkg_.a
+packagefile internal/unsafeheader=$WORK/${PKGS[internal/unsafeheader]}/_pkg_.a
 packagefile unicode=$WORK/b029/_pkg_.a
 packagefile internal/race=$WORK/b027/_pkg_.a
 packagefile internal/oserror=$WORK/b036/_pkg_.a
