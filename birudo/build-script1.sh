@@ -566,7 +566,7 @@ do
   files="$files $GORT/src/$pkgname/$i"
 done
 
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std -buildid 8kTY3IGtc09hvOwTK2Gg/8kTY3IGtc09hvOwTK2Gg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std -buildid abcdefghijklmnopqrst/abcdefghijklmnopqrst -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 }
@@ -590,7 +590,7 @@ do
   files="$files $GORT/src/$pkgname/$i"
 done
 
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std -complete -buildid ISNWJORYgVMWtTTWVw3z/ISNWJORYgVMWtTTWVw3z -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std -complete -buildid abcdefghijklmnopqrst/abcdefghijklmnopqrst -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 }
