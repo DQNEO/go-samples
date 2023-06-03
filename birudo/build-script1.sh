@@ -63,6 +63,9 @@ declare -A DEPENDS=(
 [internal/testlog]="sync sync/atomic"
 [errors]="internal/reflectlite"
 [sort]="internal/reflectlite math/bits"
+[internal/abi]="internal/goarch"
+[runtime/internal/math]="internal/goarch"
+[runtime/internal/sys]="internal/goarch internal/goos"
 
 [internal/coverage/rtcov]=""
 [internal/unsafeheader]=""
@@ -187,26 +190,16 @@ $TOOL_DIR/compile -o $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a -trimpath "$
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[runtime/internal/math]}/
-cat >$WORK/${PKGS[internal/abi]}/importcfg << EOF # internal
-# import config
-packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
-EOF
+make_importcfg internal/abi
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/abi]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/abi]}=>" -p internal/abi -std -+ -buildid EVg-QcN5p97xUAw5kfuR/EVg-QcN5p97xUAw5kfuR -goversion go1.20.4 -symabis $WORK/${PKGS[internal/abi]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/abi]}/importcfg -pack -asmhdr $WORK/${PKGS[internal/abi]}/go_asm.h $GORT/src/internal/abi/abi.go $GORT/src/internal/abi/abi_amd64.go
-cat >$WORK/${PKGS[runtime/internal/math]}/importcfg << EOF # internal
-# import config
-packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
-EOF
+make_importcfg runtime/internal/math
 $TOOL_DIR/compile -o $WORK/${PKGS[runtime/internal/math]}/_pkg_.a -trimpath "$WORK/${PKGS[runtime/internal/math]}=>" -p runtime/internal/math -std -+ -complete -buildid dKV2PXLfEa-bpWk_4jjm/dKV2PXLfEa-bpWk_4jjm -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[runtime/internal/math]}/importcfg -pack $GORT/src/runtime/internal/math/math.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/itoa]}/_pkg_.a # internal
 
 cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o ./asm_linux_amd64.s
 mkdir -p $WORK/${PKGS[runtime/internal/sys]}/
-cat >$WORK/${PKGS[runtime/internal/sys]}/importcfg << EOF # internal
-# import config
-packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
-packagefile internal/goos=$WORK/${PKGS[internal/goos]}/_pkg_.a
-EOF
+make_importcfg runtime/internal/sys
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[runtime/internal/sys]}/_pkg_.a -trimpath "$WORK/${PKGS[runtime/internal/sys]}=>" -p runtime/internal/sys -std -+ -complete -buildid p57uPEDCp39nHZBklMoj/p57uPEDCp39nHZBklMoj -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[runtime/internal/sys]}/importcfg -pack $GORT/src/runtime/internal/sys/consts.go $GORT/src/runtime/internal/sys/consts_norace.go $GORT/src/runtime/internal/sys/intrinsics.go $GORT/src/runtime/internal/sys/intrinsics_common.go $GORT/src/runtime/internal/sys/nih.go $GORT/src/runtime/internal/sys/sys.go $GORT/src/runtime/internal/sys/zversion.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[math/bits]}/_pkg_.a # internal
