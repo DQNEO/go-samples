@@ -157,7 +157,8 @@ if [ "$complete" = "1" ]; then
 fi
 local buildid=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 
-$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg  -std $splus $scomplete  -buildid $buildid -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
+$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg \
+ -std $splus $scomplete  -buildid $buildid -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
 
 }
 
@@ -230,7 +231,7 @@ mkdir -p $WORK/${PKGS[runtime/internal/math]}/
 make_importcfg internal/abi
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/abi]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/abi]}=>" -p internal/abi -std -+ -buildid EVg-QcN5p97xUAw5kfuR/EVg-QcN5p97xUAw5kfuR -goversion go1.20.4 -symabis $WORK/${PKGS[internal/abi]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/abi]}/importcfg -pack -asmhdr $WORK/${PKGS[internal/abi]}/go_asm.h $GORT/src/internal/abi/abi.go $GORT/src/internal/abi/abi_amd64.go
 make_importcfg runtime/internal/math
-$TOOL_DIR/compile -o $WORK/${PKGS[runtime/internal/math]}/_pkg_.a -trimpath "$WORK/${PKGS[runtime/internal/math]}=>" -p runtime/internal/math -std -+ -complete -buildid dKV2PXLfEa-bpWk_4jjm/dKV2PXLfEa-bpWk_4jjm -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[runtime/internal/math]}/importcfg -pack $GORT/src/runtime/internal/math/math.go
+cmpl runtime/internal/math 1 1 $GORT/src/runtime/internal/math/math.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/itoa]}/_pkg_.a # internal
 
 cd $GORT/src/runtime/internal/syscall
@@ -238,7 +239,7 @@ $TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/intern
 mkdir -p $WORK/${PKGS[runtime/internal/sys]}/
 make_importcfg runtime/internal/sys
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/${PKGS[runtime/internal/sys]}/_pkg_.a -trimpath "$WORK/${PKGS[runtime/internal/sys]}=>" -p runtime/internal/sys -std -+ -complete -buildid p57uPEDCp39nHZBklMoj/p57uPEDCp39nHZBklMoj -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[runtime/internal/sys]}/importcfg -pack $GORT/src/runtime/internal/sys/consts.go $GORT/src/runtime/internal/sys/consts_norace.go $GORT/src/runtime/internal/sys/intrinsics.go $GORT/src/runtime/internal/sys/intrinsics_common.go $GORT/src/runtime/internal/sys/nih.go $GORT/src/runtime/internal/sys/sys.go $GORT/src/runtime/internal/sys/zversion.go
+cmpl runtime/internal/sys 1 1 $GORT/src/runtime/internal/sys/consts.go $GORT/src/runtime/internal/sys/consts_norace.go $GORT/src/runtime/internal/sys/intrinsics.go $GORT/src/runtime/internal/sys/intrinsics_common.go $GORT/src/runtime/internal/sys/nih.go $GORT/src/runtime/internal/sys/sys.go $GORT/src/runtime/internal/sys/zversion.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[math/bits]}/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[unicode/utf8]}/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/math]}/_pkg_.a # internal
@@ -249,7 +250,7 @@ $TOOL_DIR/asm -p internal/abi -trimpath "$WORK/${PKGS[internal/abi]}=>" -I $WORK
 mkdir -p $WORK/${PKGS[internal/race]}/
 make_importcfg internal/race
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/race]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/race]}=>" -p internal/race -std -complete -buildid 6k_7JN4Ro6ano3CJO236/6k_7JN4Ro6ano3CJO236 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/race]}/importcfg -pack $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
+cmpl internal/race 0 1 $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
 mkdir -p $WORK/${PKGS[sync/atomic]}/
 
 cat >$WORK/${PKGS[sync/atomic]}/go_asm.h << EOF # internal
