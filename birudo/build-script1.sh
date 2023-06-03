@@ -213,12 +213,14 @@ mkdir -p $WORK/${PKGS[runtime/internal/syscall]}/
 make_importcfg runtime/internal/syscall
 cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[runtime/internal/syscall]}/symabis ./asm_linux_amd64.s
+make_importcfg runtime/internal/syscall
 
 mkdir -p $WORK/${PKGS[internal/cpu]}/
 cat >$WORK/${PKGS[internal/cpu]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/internal/cpu
 $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[internal/cpu]}/symabis ./cpu.s ./cpu_x86.s
+make_importcfg internal/cpu
 
 mkdir -p $WORK/${PKGS[runtime/internal/atomic]}/
 cat >$WORK/${PKGS[runtime/internal/atomic]}/go_asm.h << EOF # internal
@@ -229,23 +231,22 @@ $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/interna
 
 mkdir -p $WORK/${PKGS[internal/itoa]}/
 make_importcfg internal/itoa
+cmpl internal/itoa 0 1 $GORT/src/internal/itoa/itoa.go
 
 mkdir -p $WORK/${PKGS[unicode/utf8]}/
 make_importcfg unicode/utf8
+cmpl unicode/utf8 0 1 $GORT/src/unicode/utf8/utf8.go
 
 mkdir -p $WORK/${PKGS[math/bits]}/
-cd $SRC_DIR
-cmpl unicode/utf8 0 1 $GORT/src/unicode/utf8/utf8.go
-cmpl internal/itoa 0 1 $GORT/src/internal/itoa/itoa.go
-mkdir -p $WORK/${PKGS[internal/abi]}/
 make_importcfg math/bits
 cmpl math/bits 0 1 $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
+
+mkdir -p $WORK/${PKGS[internal/abi]}/
 cat >$WORK/${PKGS[internal/abi]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/internal/abi
 $TOOL_DIR/asm -p internal/abi -trimpath "$WORK/${PKGS[internal/abi]}=>" -I $WORK/${PKGS[internal/abi]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[internal/abi]}/symabis ./abi_test.s
-make_importcfg internal/cpu
-make_importcfg runtime/internal/syscall
+
 cd $SRC_DIR
 cmpl_asm internal/cpu 1 0 $GORT/src/internal/cpu/cpu.go $GORT/src/internal/cpu/cpu_x86.go
 cmpl_asm runtime/internal/syscall 1 0 $GORT/src/runtime/internal/syscall/defs_linux.go $GORT/src/runtime/internal/syscall/defs_linux_amd64.go $GORT/src/runtime/internal/syscall/syscall_linux.go
