@@ -142,23 +142,23 @@ done
 
 function cmpl() {
 pkg=$1
-plus=$2
+runtime=$2
 complete=$3
 shift;shift;shift;
 files="$@"
 
-splus=""
-if [ "$plus" = "1" ]; then
-  splus="-+"
+local sruntime=""
+if [ "$runtime" = "1" ]; then
+  sruntime="-+"
 fi
-scomplete=""
+local scomplete=""
 if [ "$complete" = "1" ]; then
   scomplete="-complete"
 fi
 local buildid=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 
 $TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg \
- -std $splus $scomplete  -buildid $buildid -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
+ -std $sruntime $scomplete  -buildid $buildid -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
 
 }
 
