@@ -252,6 +252,9 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a # internal
 build_pkg_f internal/itoa 0 1 $GORT/src/internal/itoa/itoa.go
 build_pkg_f unicode/utf8 0 1 $GORT/src/unicode/utf8/utf8.go
 build_pkg_f math/bits 0 1 $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
+build_pkg_f runtime/internal/math 1 1 $GORT/src/runtime/internal/math/math.go
+build_pkg_f runtime/internal/sys 1 1 $GORT/src/runtime/internal/sys/consts.go $GORT/src/runtime/internal/sys/consts_norace.go $GORT/src/runtime/internal/sys/intrinsics.go $GORT/src/runtime/internal/sys/intrinsics_common.go $GORT/src/runtime/internal/sys/nih.go $GORT/src/runtime/internal/sys/sys.go $GORT/src/runtime/internal/sys/zversion.go
+build_pkg_f internal/race 0 1 $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
 
 mkdir -p $WORK/${PKGS[internal/abi]}/
 cat >$WORK/${PKGS[internal/abi]}/go_asm.h << EOF # internal
@@ -265,20 +268,6 @@ cmpl_asm internal/abi 1 0 $GORT/src/internal/abi/abi.go $GORT/src/internal/abi/a
 cd $GORT/src/internal/abi
 $TOOL_DIR/pack r $WORK/${PKGS[internal/abi]}/_pkg_.a $WORK/${PKGS[internal/abi]}/abi_test.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/abi]}/_pkg_.a # internal
-
-build_pkg_f runtime/internal/math 1 1 $GORT/src/runtime/internal/math/math.go
-
-mkdir -p $WORK/${PKGS[runtime/internal/sys]}/
-make_importcfg runtime/internal/sys
-cd $SRC_DIR
-cmpl runtime/internal/sys 1 1 $GORT/src/runtime/internal/sys/consts.go $GORT/src/runtime/internal/sys/consts_norace.go $GORT/src/runtime/internal/sys/intrinsics.go $GORT/src/runtime/internal/sys/intrinsics_common.go $GORT/src/runtime/internal/sys/nih.go $GORT/src/runtime/internal/sys/sys.go $GORT/src/runtime/internal/sys/zversion.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/sys]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[internal/race]}/
-make_importcfg internal/race
-cd $SRC_DIR
-cmpl internal/race 0 1 $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/race]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[sync/atomic]}/
 cat >$WORK/${PKGS[sync/atomic]}/go_asm.h << EOF # internal
