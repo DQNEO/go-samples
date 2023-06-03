@@ -289,10 +289,7 @@ $TOOL_DIR/pack r $WORK/${PKGS[sync/atomic]}/_pkg_.a $WORK/${PKGS[sync/atomic]}/a
 $TOOL_DIR/buildid -w $WORK/${PKGS[sync/atomic]}/_pkg_.a # internal
 
 
-mkdir -p $WORK/${PKGS[unicode]}/
-make_importcfg unicode
-cmpl unicode 0 1 $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[unicode]}/_pkg_.a # internal
+build_pkg_f unicode 0 1 $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
 
 
 mkdir -p $WORK/${PKGS[internal/bytealg]}/
@@ -352,11 +349,7 @@ $TOOL_DIR/asm -p runtime -trimpath "$WORK/${PKGS[runtime]}=>" -I $WORK/${PKGS[ru
 $TOOL_DIR/pack r $WORK/${PKGS[runtime]}/_pkg_.a $WORK/${PKGS[runtime]}/asm.o $WORK/${PKGS[runtime]}/asm_amd64.o $WORK/${PKGS[runtime]}/duff_amd64.o $WORK/${PKGS[runtime]}/memclr_amd64.o $WORK/${PKGS[runtime]}/memmove_amd64.o $WORK/${PKGS[runtime]}/preempt_amd64.o $WORK/${PKGS[runtime]}/rt0_linux_amd64.o $WORK/${PKGS[runtime]}/sys_linux_amd64.o $WORK/${PKGS[runtime]}/time_linux_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime]}/_pkg_.a # internal
 
-mkdir -p $WORK/${PKGS[sync]}/
-make_importcfg sync
-cd $SRC_DIR
-cmpl sync 0 0 $GORT/src/sync/cond.go $GORT/src/sync/map.go $GORT/src/sync/mutex.go $GORT/src/sync/once.go $GORT/src/sync/pool.go $GORT/src/sync/poolqueue.go $GORT/src/sync/runtime.go $GORT/src/sync/runtime2.go $GORT/src/sync/rwmutex.go $GORT/src/sync/waitgroup.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[sync]}/_pkg_.a # internal
+build_pkg_f sync 0 0 $GORT/src/sync/cond.go $GORT/src/sync/map.go $GORT/src/sync/mutex.go $GORT/src/sync/once.go $GORT/src/sync/pool.go $GORT/src/sync/poolqueue.go $GORT/src/sync/runtime.go $GORT/src/sync/runtime2.go $GORT/src/sync/rwmutex.go $GORT/src/sync/waitgroup.go
 
 mkdir -p $WORK/${PKGS[internal/reflectlite]}/
 cat >$WORK/${PKGS[internal/reflectlite]}/go_asm.h << EOF # internal
@@ -371,46 +364,14 @@ $TOOL_DIR/asm -p internal/reflectlite -trimpath "$WORK/${PKGS[internal/reflectli
 $TOOL_DIR/pack r $WORK/${PKGS[internal/reflectlite]}/_pkg_.a $WORK/${PKGS[internal/reflectlite]}/asm.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/reflectlite]}/_pkg_.a # internal
 
-mkdir -p $WORK/${PKGS[internal/testlog]}/
-make_importcfg internal/testlog
-cmpl internal/testlog 0 1 $GORT/src/internal/testlog/exit.go $GORT/src/internal/testlog/log.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/testlog]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[errors]}/
-make_importcfg errors
-cd $SRC_DIR
-cmpl errors 0 1  $GORT/src/errors/errors.go $GORT/src/errors/join.go $GORT/src/errors/wrap.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[errors]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[sort]}/
-make_importcfg sort
-cmpl sort 0 1  $GORT/src/sort/search.go $GORT/src/sort/slice.go $GORT/src/sort/sort.go $GORT/src/sort/zsortfunc.go $GORT/src/sort/zsortinterface.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[sort]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[internal/safefilepath]}/
-make_importcfg internal/safefilepath
-cmpl internal/safefilepath 0 1  $GORT/src/internal/safefilepath/path.go $GORT/src/internal/safefilepath/path_other.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/safefilepath]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[internal/oserror]}/
-make_importcfg internal/oserror
-cmpl internal/oserror 0 1 $GORT/src/internal/oserror/errors.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/oserror]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[path]}/
-make_importcfg path
-cmpl path 0 1 $GORT/src/path/match.go $GORT/src/path/path.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[path]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[io]}/
-make_importcfg io
-cmpl io 0 1 $GORT/src/io/io.go $GORT/src/io/multi.go $GORT/src/io/pipe.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[io]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[strconv]}/
-make_importcfg strconv
-cmpl strconv 0 1 $GORT/src/strconv/atob.go $GORT/src/strconv/atoc.go $GORT/src/strconv/atof.go $GORT/src/strconv/atoi.go $GORT/src/strconv/bytealg.go $GORT/src/strconv/ctoa.go $GORT/src/strconv/decimal.go $GORT/src/strconv/doc.go $GORT/src/strconv/eisel_lemire.go $GORT/src/strconv/ftoa.go $GORT/src/strconv/ftoaryu.go $GORT/src/strconv/isprint.go $GORT/src/strconv/itoa.go $GORT/src/strconv/quote.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[strconv]}/_pkg_.a # internal
+build_pkg_f internal/testlog 0 1 $GORT/src/internal/testlog/exit.go $GORT/src/internal/testlog/log.go
+build_pkg_f errors 0 1  $GORT/src/errors/errors.go $GORT/src/errors/join.go $GORT/src/errors/wrap.go
+build_pkg_f sort 0 1  $GORT/src/sort/search.go $GORT/src/sort/slice.go $GORT/src/sort/sort.go $GORT/src/sort/zsortfunc.go $GORT/src/sort/zsortinterface.go
+build_pkg_f internal/safefilepath 0 1  $GORT/src/internal/safefilepath/path.go $GORT/src/internal/safefilepath/path_other.go
+build_pkg_f internal/oserror 0 1 $GORT/src/internal/oserror/errors.go
+build_pkg_f path 0 1 $GORT/src/path/match.go $GORT/src/path/path.go
+build_pkg_f io 0 1 $GORT/src/io/io.go $GORT/src/io/multi.go $GORT/src/io/pipe.go
+build_pkg_f strconv 0 1 $GORT/src/strconv/atob.go $GORT/src/strconv/atoc.go $GORT/src/strconv/atof.go $GORT/src/strconv/atoi.go $GORT/src/strconv/bytealg.go $GORT/src/strconv/ctoa.go $GORT/src/strconv/decimal.go $GORT/src/strconv/doc.go $GORT/src/strconv/eisel_lemire.go $GORT/src/strconv/ftoa.go $GORT/src/strconv/ftoaryu.go $GORT/src/strconv/isprint.go $GORT/src/strconv/itoa.go $GORT/src/strconv/quote.go
 
 mkdir -p $WORK/${PKGS[syscall]}/
 cat >$WORK/${PKGS[syscall]}/go_asm.h << EOF # internal
