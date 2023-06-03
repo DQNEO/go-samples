@@ -245,11 +245,10 @@ $TOOL_DIR/asm -p internal/abi -trimpath "$WORK/${PKGS[internal/abi]}=>" -I $WORK
 make_importcfg internal/cpu
 make_importcfg runtime/internal/syscall
 cd $SRC_DIR
-# $TOOL_DIR/compile -o $WORK/${PKGS[internal/cpu]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/cpu]}=>" -p internal/cpu -std -+ -buildid j9mgjw9q7aHUtebwQoGa/j9mgjw9q7aHUtebwQoGa -goversion go1.20.4 -symabis $WORK/${PKGS[internal/cpu]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/cpu]}/importcfg -pack -asmhdr $WORK/${PKGS[internal/cpu]}/go_asm.h $GORT/src/internal/cpu/cpu.go $GORT/src/internal/cpu/cpu_x86.go
 cmpl_asm internal/cpu 1 0 $GORT/src/internal/cpu/cpu.go $GORT/src/internal/cpu/cpu_x86.go
-$TOOL_DIR/compile -o $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -p runtime/internal/syscall -std -+ -buildid gZLMb57b8-GCtAQAQvdR/gZLMb57b8-GCtAQAQvdR -goversion go1.20.4 -symabis $WORK/${PKGS[runtime/internal/syscall]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[runtime/internal/syscall]}/importcfg -pack -asmhdr $WORK/${PKGS[runtime/internal/syscall]}/go_asm.h $GORT/src/runtime/internal/syscall/defs_linux.go $GORT/src/runtime/internal/syscall/defs_linux_amd64.go $GORT/src/runtime/internal/syscall/syscall_linux.go
+cmpl_asm runtime/internal/syscall 1 0 $GORT/src/runtime/internal/syscall/defs_linux.go $GORT/src/runtime/internal/syscall/defs_linux_amd64.go $GORT/src/runtime/internal/syscall/syscall_linux.go
 make_importcfg runtime/internal/atomic
-$TOOL_DIR/compile -o $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -p runtime/internal/atomic -std -+ -buildid IgGysWgqntnGBJ3sVB-f/IgGysWgqntnGBJ3sVB-f -goversion go1.20.4 -symabis $WORK/${PKGS[runtime/internal/atomic]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[runtime/internal/atomic]}/importcfg -pack -asmhdr $WORK/${PKGS[runtime/internal/atomic]}/go_asm.h $GORT/src/runtime/internal/atomic/atomic_amd64.go $GORT/src/runtime/internal/atomic/doc.go $GORT/src/runtime/internal/atomic/stubs.go $GORT/src/runtime/internal/atomic/types.go $GORT/src/runtime/internal/atomic/types_64bit.go $GORT/src/runtime/internal/atomic/unaligned.go
+cmpl_asm runtime/internal/atomic 1 0 $GORT/src/runtime/internal/atomic/atomic_amd64.go $GORT/src/runtime/internal/atomic/doc.go $GORT/src/runtime/internal/atomic/stubs.go $GORT/src/runtime/internal/atomic/types.go $GORT/src/runtime/internal/atomic/types_64bit.go $GORT/src/runtime/internal/atomic/unaligned.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[runtime/internal/math]}/
