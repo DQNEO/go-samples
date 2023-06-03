@@ -176,8 +176,7 @@ fi
 scomplete=""
 
 
-cat >$WORK/${PKGS[$pkg]}/go_asm.h << EOF
-EOF
+touch $WORK/${PKGS[$pkg]}/go_asm.h # Actually not needed
 
 local asmopts="-symabis $WORK/${PKGS[$pkg]}/symabis -asmhdr $WORK/${PKGS[$pkg]}/go_asm.h"
 $TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>" -p $pkg\
