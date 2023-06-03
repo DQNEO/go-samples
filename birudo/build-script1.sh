@@ -247,7 +247,6 @@ build_pkg_f internal/goexperiment 0 1 $GORT/src/internal/goexperiment/exp_arenas
 # internal/syscall
 mkdir -p $WORK/${PKGS[runtime/internal/syscall]}/
 make_importcfg runtime/internal/syscall
-cd $GORT/src/runtime/internal/syscall # crucial
 gen_symabis runtime/internal/syscall ./asm_linux_amd64.s
 cmpl_asm runtime/internal/syscall 1 0 $GORT/src/runtime/internal/syscall/defs_linux.go $GORT/src/runtime/internal/syscall/defs_linux_amd64.go $GORT/src/runtime/internal/syscall/syscall_linux.go
 append_asm runtime/internal/syscall ./asm_linux_amd64.s
@@ -256,7 +255,6 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a # internal
 # internal/cpu
 mkdir -p $WORK/${PKGS[internal/cpu]}/
 make_importcfg internal/cpu
-cd $GORT/src/internal/cpu
 gen_symabis internal/cpu ./cpu.s ./cpu_x86.s
 cmpl_asm internal/cpu 1 0 $GORT/src/internal/cpu/cpu.go $GORT/src/internal/cpu/cpu_x86.go
 append_asm internal/cpu ./cpu.s ./cpu_x86.s
@@ -265,7 +263,6 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/cpu]}/_pkg_.a # internal
 # internal/atomic
 mkdir -p $WORK/${PKGS[runtime/internal/atomic]}/
 make_importcfg runtime/internal/atomic
-cd $GORT/src/runtime/internal/atomic
 gen_symabis runtime/internal/atomic ./atomic_amd64.s
 cmpl_asm runtime/internal/atomic 1 0 $GORT/src/runtime/internal/atomic/atomic_amd64.go $GORT/src/runtime/internal/atomic/doc.go $GORT/src/runtime/internal/atomic/stubs.go $GORT/src/runtime/internal/atomic/types.go $GORT/src/runtime/internal/atomic/types_64bit.go $GORT/src/runtime/internal/atomic/unaligned.go
 append_asm runtime/internal/atomic ./atomic_amd64.s
@@ -281,7 +278,6 @@ build_pkg_f internal/race 0 1 $GORT/src/internal/race/doc.go $GORT/src/internal/
 # internal/abi
 mkdir -p $WORK/${PKGS[internal/abi]}/
 make_importcfg internal/abi
-cd $GORT/src/internal/abi
 gen_symabis internal/abi ./abi_test.s
 cmpl_asm internal/abi 1 0 $GORT/src/internal/abi/abi.go $GORT/src/internal/abi/abi_amd64.go
 append_asm internal/abi ./abi_test.s
@@ -290,7 +286,6 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/abi]}/_pkg_.a # internal
 # sync/atomic
 mkdir -p $WORK/${PKGS[sync/atomic]}/
 make_importcfg sync/atomic
-cd $GORT/src/sync/atomic
 gen_symabis sync/atomic ./asm.s
 cmpl_asm sync/atomic 0 0 $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type.go $GORT/src/sync/atomic/value.go
 append_asm sync/atomic ./asm.s
