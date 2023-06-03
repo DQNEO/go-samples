@@ -66,6 +66,8 @@ declare -A DEPENDS=(
 [internal/abi]="internal/goarch"
 [runtime/internal/math]="internal/goarch"
 [runtime/internal/sys]="internal/goarch internal/goos"
+[internal/bytealg]="internal/cpu"
+[math]="internal/cpu math/bits"
 
 [internal/coverage/rtcov]=""
 [internal/unsafeheader]=""
@@ -257,10 +259,7 @@ cat >$WORK/${PKGS[internal/bytealg]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/internal/bytealg
 $TOOL_DIR/asm -p internal/bytealg -trimpath "$WORK/${PKGS[internal/bytealg]}=>" -I $WORK/${PKGS[internal/bytealg]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[internal/bytealg]}/symabis ./compare_amd64.s ./count_amd64.s ./equal_amd64.s ./index_amd64.s ./indexbyte_amd64.s
-cat >$WORK/${PKGS[internal/bytealg]}/importcfg << EOF # internal
-# import config
-packagefile internal/cpu=$WORK/${PKGS[internal/cpu]}/_pkg_.a
-EOF
+make_importcfg internal/bytealg
 mkdir -p $WORK/${PKGS[math]}/
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/bytealg]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/bytealg]}=>" -p internal/bytealg -std -+ -buildid OWPwmEGblMug2ig95x_j/OWPwmEGblMug2ig95x_j -goversion go1.20.4 -symabis $WORK/${PKGS[internal/bytealg]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/bytealg]}/importcfg -pack -asmhdr $WORK/${PKGS[internal/bytealg]}/go_asm.h $GORT/src/internal/bytealg/bytealg.go $GORT/src/internal/bytealg/compare_native.go $GORT/src/internal/bytealg/count_native.go $GORT/src/internal/bytealg/equal_generic.go $GORT/src/internal/bytealg/equal_native.go $GORT/src/internal/bytealg/index_amd64.go $GORT/src/internal/bytealg/index_native.go $GORT/src/internal/bytealg/indexbyte_native.go
@@ -270,11 +269,7 @@ cd $GORT/src/math
 $TOOL_DIR/asm -p math -trimpath "$WORK/${PKGS[math]}=>" -I $WORK/${PKGS[math]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[math]}/symabis ./dim_amd64.s ./exp_amd64.s ./floor_amd64.s ./hypot_amd64.s ./log_amd64.s
 cd $GORT/src/sync/atomic
 $TOOL_DIR/asm -p sync/atomic -trimpath "$WORK/${PKGS[sync/atomic]}=>" -I $WORK/${PKGS[sync/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[sync/atomic]}/asm.o ./asm.s
-cat >$WORK/${PKGS[math]}/importcfg << EOF # internal
-# import config
-packagefile internal/cpu=$WORK/${PKGS[internal/cpu]}/_pkg_.a
-packagefile math/bits=$WORK/${PKGS[math/bits]}/_pkg_.a
-EOF
+make_importcfg math
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[math]}/_pkg_.a -trimpath "$WORK/${PKGS[math]}=>" -p math -std -buildid M2k9bU3HlBq2CeX7eecL/M2k9bU3HlBq2CeX7eecL -goversion go1.20.4 -symabis $WORK/${PKGS[math]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[math]}/importcfg -pack -asmhdr $WORK/${PKGS[math]}/go_asm.h $GORT/src/math/abs.go $GORT/src/math/acosh.go $GORT/src/math/asin.go $GORT/src/math/asinh.go $GORT/src/math/atan.go $GORT/src/math/atan2.go $GORT/src/math/atanh.go $GORT/src/math/bits.go $GORT/src/math/cbrt.go $GORT/src/math/const.go $GORT/src/math/copysign.go $GORT/src/math/dim.go $GORT/src/math/dim_asm.go $GORT/src/math/erf.go $GORT/src/math/erfinv.go $GORT/src/math/exp.go $GORT/src/math/exp2_noasm.go $GORT/src/math/exp_amd64.go $GORT/src/math/exp_asm.go $GORT/src/math/expm1.go $GORT/src/math/floor.go $GORT/src/math/floor_asm.go $GORT/src/math/fma.go $GORT/src/math/frexp.go $GORT/src/math/gamma.go $GORT/src/math/hypot.go $GORT/src/math/hypot_asm.go $GORT/src/math/j0.go $GORT/src/math/j1.go $GORT/src/math/jn.go $GORT/src/math/ldexp.go $GORT/src/math/lgamma.go $GORT/src/math/log.go $GORT/src/math/log10.go $GORT/src/math/log1p.go $GORT/src/math/log_asm.go $GORT/src/math/logb.go $GORT/src/math/mod.go $GORT/src/math/modf.go $GORT/src/math/modf_noasm.go $GORT/src/math/nextafter.go $GORT/src/math/pow.go $GORT/src/math/pow10.go $GORT/src/math/remainder.go $GORT/src/math/signbit.go $GORT/src/math/sin.go $GORT/src/math/sincos.go $GORT/src/math/sinh.go $GORT/src/math/sqrt.go $GORT/src/math/stubs.go $GORT/src/math/tan.go $GORT/src/math/tanh.go $GORT/src/math/trig_reduce.go $GORT/src/math/unsafe.go
 cd $GORT/src/sync/atomic
