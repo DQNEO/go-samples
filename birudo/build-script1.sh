@@ -58,6 +58,11 @@ declare -A DEPENDS=(
 [fmt]="errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 "
 [os]="errors internal/itoa internal/poll internal/safefilepath internal/syscall/execenv internal/syscall/unix internal/testlog io io/fs runtime sort sync sync/atomic syscall time"
 [internal/fmtsort]="reflect sort"
+[sync]="internal/race runtime sync/atomic"
+[internal/reflectlite]="internal/goarch internal/unsafeheader runtime"
+[internal/testlog]="sync sync/atomic"
+
+
 
 [internal/coverage/rtcov]=""
 [internal/unsafeheader]=""
@@ -345,29 +350,15 @@ EOF
 cd $GORT/src/internal/reflectlite
 $TOOL_DIR/asm -p internal/reflectlite -trimpath "$WORK/${PKGS[internal/reflectlite]}=>" -I $WORK/${PKGS[internal/reflectlite]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[internal/reflectlite]}/symabis ./asm.s
 mkdir -p $WORK/${PKGS[sync]}/
-cat >$WORK/${PKGS[sync]}/importcfg << EOF # internal
-# import config
-packagefile internal/race=$WORK/${PKGS[internal/race]}/_pkg_.a
-packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
-EOF
+make_importcfg sync
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[sync]}/_pkg_.a -trimpath "$WORK/${PKGS[sync]}=>" -p sync -std -buildid awcGvD6YFJooe2gt9uJS/awcGvD6YFJooe2gt9uJS -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[sync]}/importcfg -pack $GORT/src/sync/cond.go $GORT/src/sync/map.go $GORT/src/sync/mutex.go $GORT/src/sync/once.go $GORT/src/sync/pool.go $GORT/src/sync/poolqueue.go $GORT/src/sync/runtime.go $GORT/src/sync/runtime2.go $GORT/src/sync/rwmutex.go $GORT/src/sync/waitgroup.go
-cat >$WORK/${PKGS[internal/reflectlite]}/importcfg << EOF # internal
-# import config
-packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
-packagefile internal/unsafeheader=$WORK/${PKGS[internal/unsafeheader]}/_pkg_.a
-packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-EOF
+make_importcfg internal/reflectlite
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/reflectlite]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/reflectlite]}=>" -p internal/reflectlite -std -buildid 8f99mKJg6-OCUXX8caR3/8f99mKJg6-OCUXX8caR3 -goversion go1.20.4 -symabis $WORK/${PKGS[internal/reflectlite]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/reflectlite]}/importcfg -pack -asmhdr $WORK/${PKGS[internal/reflectlite]}/go_asm.h $GORT/src/internal/reflectlite/swapper.go $GORT/src/internal/reflectlite/type.go $GORT/src/internal/reflectlite/value.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[sync]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[internal/testlog]}/
-cat >$WORK/${PKGS[internal/testlog]}/importcfg << EOF # internal
-# import config
-packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
-packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
-EOF
+make_importcfg internal/testlog
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/testlog]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/testlog]}=>" -p internal/testlog -std -complete -buildid B423dGniR5COkyvnWNiY/B423dGniR5COkyvnWNiY -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/testlog]}/importcfg -pack $GORT/src/internal/testlog/exit.go $GORT/src/internal/testlog/log.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/testlog]}/_pkg_.a # internal
 
