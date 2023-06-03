@@ -418,50 +418,19 @@ make_importcfg main
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p main -lang=go1.20 -complete $B -c=4 -nolocalimports -importcfg $wdir/importcfg -pack ./main.go ./sum.go
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
+local maindepends="fmt runtime errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 internal/abi internal/bytealg internal/coverage/rtcov internal/cpu internal/goarch internal/goexperiment internal/goos runtime/internal/atomic runtime/internal/math runtime/internal/sys runtime/internal/syscall internal/reflectlite math/bits internal/itoa internal/poll internal/safefilepath internal/syscall/execenv internal/syscall/unix internal/testlog io/fs sync/atomic syscall time internal/unsafeheader unicode internal/race internal/oserror path"
+local pkgsfiles=""
+for p in $maindepends
+do
+  pkgsfiles="${pkgsfiles}packagefile ${p}=$WORK/${PKGS[$p]}/_pkg_.a
+"
+done
 cat >$wdir/importcfg.link << EOF # internal
 packagefile github.com/DQNEO/go-samples/birudo=$wdir/_pkg_.a
-packagefile fmt=$WORK/${PKGS[fmt]}/_pkg_.a
-packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile internal/fmtsort=$WORK/${PKGS[internal/fmtsort]}/_pkg_.a
-packagefile io=$WORK/${PKGS[io]}/_pkg_.a
-packagefile math=$WORK/${PKGS[math]}/_pkg_.a
-packagefile os=$WORK/${PKGS[os]}/_pkg_.a
-packagefile reflect=$WORK/${PKGS[reflect]}/_pkg_.a
-packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
-packagefile strconv=$WORK/${PKGS[strconv]}/_pkg_.a
-packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
-packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
-packagefile internal/abi=$WORK/${PKGS[internal/abi]}/_pkg_.a
-packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
-packagefile internal/coverage/rtcov=$WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a
-packagefile internal/cpu=$WORK/${PKGS[internal/cpu]}/_pkg_.a
-packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
-packagefile internal/goexperiment=$WORK/${PKGS[internal/goexperiment]}/_pkg_.a
-packagefile internal/goos=$WORK/${PKGS[internal/goos]}/_pkg_.a
-packagefile runtime/internal/atomic=$WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a
-packagefile runtime/internal/math=$WORK/${PKGS[runtime/internal/math]}/_pkg_.a
-packagefile runtime/internal/sys=$WORK/${PKGS[runtime/internal/sys]}/_pkg_.a
-packagefile runtime/internal/syscall=$WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a
-packagefile internal/reflectlite=$WORK/${PKGS[internal/reflectlite]}/_pkg_.a
-packagefile math/bits=$WORK/${PKGS[math/bits]}/_pkg_.a
-packagefile internal/itoa=$WORK/${PKGS[internal/itoa]}/_pkg_.a
-packagefile internal/poll=$WORK/${PKGS[internal/poll]}/_pkg_.a
-packagefile internal/safefilepath=$WORK/${PKGS[internal/safefilepath]}/_pkg_.a
-packagefile internal/syscall/execenv=$WORK/${PKGS[internal/syscall/execenv]}/_pkg_.a
-packagefile internal/syscall/unix=$WORK/${PKGS[internal/syscall/unix]}/_pkg_.a
-packagefile internal/testlog=$WORK/${PKGS[internal/testlog]}/_pkg_.a
-packagefile io/fs=$WORK/${PKGS[io/fs]}/_pkg_.a
-packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
-packagefile syscall=$WORK/${PKGS[syscall]}/_pkg_.a
-packagefile time=$WORK/${PKGS[time]}/_pkg_.a
-packagefile internal/unsafeheader=$WORK/${PKGS[internal/unsafeheader]}/_pkg_.a
-packagefile unicode=$WORK/${PKGS[unicode]}/_pkg_.a
-packagefile internal/race=$WORK/${PKGS[internal/race]}/_pkg_.a
-packagefile internal/oserror=$WORK/${PKGS[internal/oserror]}/_pkg_.a
-packagefile path=$WORK/${PKGS[path]}/_pkg_.a
+$pkgsfiles
 modinfo "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\tgithub.com/DQNEO/go-samples/birudo\nmod\tgithub.com/DQNEO/go-samples/birudo\t(devel)\t\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\tCGO_ENABLED=0\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=a721858f4c22cb178c3f3853f9c55aa3773afc2c\nbuild\tvcs.time=2023-06-02T12:08:04Z\nbuild\tvcs.modified=true\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2"
 EOF
+
 mkdir -p $wdir/exe/
 cd .
 $TOOL_DIR/link -o $wdir/exe/a.out -importcfg $wdir/importcfg.link -buildmode=exe -buildid=yekYyg_HZMgX517VPpiO/aHxht5d7JGm1qJULUhhT/ct0PU8-vieH10gtMxGeC/yekYyg_HZMgX517VPpiO -extld=cc $wdir/_pkg_.a
