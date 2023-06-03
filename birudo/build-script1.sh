@@ -176,7 +176,8 @@ fi
 
 $TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>" -p $pkg\
  -std $sruntime $B\
- -symabis $WORK/${PKGS[$pkg]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
+ -symabis $WORK/${PKGS[$pkg]}/symabis \
+ -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
  -pack -asmhdr $WORK/${PKGS[$pkg]}/go_asm.h $files
 
 }
@@ -197,8 +198,9 @@ if [ "$complete" = "1" ]; then
   scomplete="-complete"
 fi
 
-$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg \
- -std $sruntime $scomplete  $B -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
+$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg\
+ -std $sruntime $scomplete  $B -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
+ -pack $files
 }
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
