@@ -79,6 +79,10 @@ declare -A DEPENDS=(
 [internal/syscall/execenv]="syscall"
 [internal/syscall/unix]="sync/atomic syscall"
 [time]="errors runtime sync syscall "
+[io/fs]="errors internal/oserror io path sort time unicode/utf8 "
+[internal/poll]="errors internal/syscall/unix io runtime sync sync/atomic syscall time "
+
+
 [internal/coverage/rtcov]=""
 [internal/unsafeheader]=""
 [internal/goarch]=""
@@ -426,31 +430,13 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/syscall/unix]}/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[time]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[io/fs]}/
-cat >$WORK/${PKGS[io/fs]}/importcfg << EOF # internal
-# import config
-packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile internal/oserror=$WORK/${PKGS[internal/oserror]}/_pkg_.a
-packagefile io=$WORK/${PKGS[io]}/_pkg_.a
-packagefile path=$WORK/${PKGS[path]}/_pkg_.a
-packagefile sort=$WORK/${PKGS[sort]}/_pkg_.a
-packagefile time=$WORK/${PKGS[time]}/_pkg_.a
-packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
-EOF
+make_importcfg io/fs
 $TOOL_DIR/compile -o $WORK/${PKGS[io/fs]}/_pkg_.a -trimpath "$WORK/${PKGS[io/fs]}=>" -p io/fs -std -complete -buildid EvJOhnLtLuHzGX4dFlcg/EvJOhnLtLuHzGX4dFlcg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[io/fs]}/importcfg -pack $GORT/src/io/fs/fs.go $GORT/src/io/fs/glob.go $GORT/src/io/fs/readdir.go $GORT/src/io/fs/readfile.go $GORT/src/io/fs/stat.go $GORT/src/io/fs/sub.go $GORT/src/io/fs/walk.go
 cd $GORT/src/reflect
 $TOOL_DIR/asm -p reflect -trimpath "$WORK/${PKGS[reflect]}=>" -I $WORK/${PKGS[reflect]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[reflect]}/asm_amd64.o ./asm_amd64.s
 mkdir -p $WORK/${PKGS[internal/poll]}/
-cat >$WORK/${PKGS[internal/poll]}/importcfg << EOF # internal
-# import config
-packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile internal/syscall/unix=$WORK/${PKGS[internal/syscall/unix]}/_pkg_.a
-packagefile io=$WORK/${PKGS[io]}/_pkg_.a
-packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
-packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
-packagefile syscall=$WORK/${PKGS[syscall]}/_pkg_.a
-packagefile time=$WORK/${PKGS[time]}/_pkg_.a
-EOF
+make_importcfg internal/poll
+
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/poll]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/poll]}=>" -p internal/poll -std -buildid z1T_88ivNUFrGnA9-Iwx/z1T_88ivNUFrGnA9-Iwx -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/poll]}/importcfg -pack $GORT/src/internal/poll/copy_file_range_linux.go $GORT/src/internal/poll/errno_unix.go $GORT/src/internal/poll/fcntl_syscall.go $GORT/src/internal/poll/fd.go $GORT/src/internal/poll/fd_fsync_posix.go $GORT/src/internal/poll/fd_mutex.go $GORT/src/internal/poll/fd_poll_runtime.go $GORT/src/internal/poll/fd_posix.go $GORT/src/internal/poll/fd_unix.go $GORT/src/internal/poll/fd_writev_unix.go $GORT/src/internal/poll/hook_cloexec.go $GORT/src/internal/poll/hook_unix.go $GORT/src/internal/poll/iovec_unix.go $GORT/src/internal/poll/sendfile_linux.go $GORT/src/internal/poll/sock_cloexec.go $GORT/src/internal/poll/sockopt.go $GORT/src/internal/poll/sockopt_linux.go $GORT/src/internal/poll/sockopt_unix.go $GORT/src/internal/poll/sockoptip.go $GORT/src/internal/poll/splice_linux.go $GORT/src/internal/poll/writev.go
 cd $GORT/src/reflect
