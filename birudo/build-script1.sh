@@ -453,7 +453,7 @@ cd $GORT/src/reflect
 $TOOL_DIR/asm -p reflect -trimpath "$WORK/${PKGS[reflect]}=>" -I $WORK/${PKGS[reflect]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[reflect]}/symabis ./asm_amd64.s
 make_importcfg reflect
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/${PKGS[reflect]}/_pkg_.a -trimpath "$WORK/${PKGS[reflect]}=>" -p reflect -std -buildid nIapndKG10ZTabsNBtM3/nIapndKG10ZTabsNBtM3 -goversion go1.20.4 -symabis $WORK/${PKGS[reflect]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[reflect]}/importcfg -pack -asmhdr $WORK/${PKGS[reflect]}/go_asm.h $GORT/src/reflect/abi.go $GORT/src/reflect/deepequal.go $GORT/src/reflect/float32reg_generic.go $GORT/src/reflect/makefunc.go $GORT/src/reflect/swapper.go $GORT/src/reflect/type.go $GORT/src/reflect/value.go $GORT/src/reflect/visiblefields.go
+cmpl_asm reflect 0 0 $GORT/src/reflect/abi.go $GORT/src/reflect/deepequal.go $GORT/src/reflect/float32reg_generic.go $GORT/src/reflect/makefunc.go $GORT/src/reflect/swapper.go $GORT/src/reflect/type.go $GORT/src/reflect/value.go $GORT/src/reflect/visiblefields.go
 cd $GORT/src/syscall
 $TOOL_DIR/asm -p syscall -trimpath "$WORK/${PKGS[syscall]}=>" -I $WORK/${PKGS[syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[syscall]}/asm_linux_amd64.o ./asm_linux_amd64.s
 $TOOL_DIR/pack r $WORK/${PKGS[syscall]}/_pkg_.a $WORK/${PKGS[syscall]}/asm_linux_amd64.o # internal
@@ -462,13 +462,13 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[syscall]}/_pkg_.a # internal
 mkdir -p $WORK/${PKGS[internal/syscall/execenv]}/
 make_importcfg internal/syscall/execenv
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/syscall/execenv]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/syscall/execenv]}=>" -p internal/syscall/execenv -std -complete -buildid 9v4cH9-eclFZmCPdzfl0/9v4cH9-eclFZmCPdzfl0 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/syscall/execenv]}/importcfg -pack $GORT/src/internal/syscall/execenv/execenv_default.go
+cmpl internal/syscall/execenv 0 1  $GORT/src/internal/syscall/execenv/execenv_default.go
 mkdir -p $WORK/${PKGS[internal/syscall/unix]}/
 mkdir -p $WORK/${PKGS[time]}/
 make_importcfg internal/syscall/unix
 make_importcfg time
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/syscall/unix]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/syscall/unix]}=>" -p internal/syscall/unix -std -complete -buildid y7B9w1xvVOcllLe1UHTw/y7B9w1xvVOcllLe1UHTw -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/syscall/unix]}/importcfg -pack $GORT/src/internal/syscall/unix/at.go $GORT/src/internal/syscall/unix/at_fstatat.go $GORT/src/internal/syscall/unix/at_sysnum_linux.go $GORT/src/internal/syscall/unix/at_sysnum_newfstatat_linux.go $GORT/src/internal/syscall/unix/constants.go $GORT/src/internal/syscall/unix/copy_file_range_linux.go $GORT/src/internal/syscall/unix/eaccess_linux.go $GORT/src/internal/syscall/unix/getrandom.go $GORT/src/internal/syscall/unix/getrandom_linux.go $GORT/src/internal/syscall/unix/kernel_version_linux.go $GORT/src/internal/syscall/unix/net.go $GORT/src/internal/syscall/unix/nonblocking.go $GORT/src/internal/syscall/unix/sysnum_linux_amd64.go
-$TOOL_DIR/compile -o $WORK/${PKGS[time]}/_pkg_.a -trimpath "$WORK/${PKGS[time]}=>" -p time -std -buildid JPr4o2PkKYQpYoXGOl8u/JPr4o2PkKYQpYoXGOl8u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[time]}/importcfg -pack $GORT/src/time/format.go $GORT/src/time/format_rfc3339.go $GORT/src/time/sleep.go $GORT/src/time/sys_unix.go $GORT/src/time/tick.go $GORT/src/time/time.go $GORT/src/time/zoneinfo.go $GORT/src/time/zoneinfo_goroot.go $GORT/src/time/zoneinfo_read.go $GORT/src/time/zoneinfo_unix.go
+cmpl internal/syscall/unix 0 1 $GORT/src/internal/syscall/unix/at.go $GORT/src/internal/syscall/unix/at_fstatat.go $GORT/src/internal/syscall/unix/at_sysnum_linux.go $GORT/src/internal/syscall/unix/at_sysnum_newfstatat_linux.go $GORT/src/internal/syscall/unix/constants.go $GORT/src/internal/syscall/unix/copy_file_range_linux.go $GORT/src/internal/syscall/unix/eaccess_linux.go $GORT/src/internal/syscall/unix/getrandom.go $GORT/src/internal/syscall/unix/getrandom_linux.go $GORT/src/internal/syscall/unix/kernel_version_linux.go $GORT/src/internal/syscall/unix/net.go $GORT/src/internal/syscall/unix/nonblocking.go $GORT/src/internal/syscall/unix/sysnum_linux_amd64.go
+cmpl time 0 0  $GORT/src/time/format.go $GORT/src/time/format_rfc3339.go $GORT/src/time/sleep.go $GORT/src/time/sys_unix.go $GORT/src/time/tick.go $GORT/src/time/time.go $GORT/src/time/zoneinfo.go $GORT/src/time/zoneinfo_goroot.go $GORT/src/time/zoneinfo_read.go $GORT/src/time/zoneinfo_unix.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/syscall/execenv]}/_pkg_.a # internal
 
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/syscall/unix]}/_pkg_.a # internal
