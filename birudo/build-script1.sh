@@ -221,7 +221,6 @@ cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a # internal
 
-
 mkdir -p $WORK/${PKGS[internal/cpu]}/
 cat >$WORK/${PKGS[internal/cpu]}/go_asm.h << EOF # internal
 EOF
@@ -232,6 +231,9 @@ cmpl_asm internal/cpu 1 0 $GORT/src/internal/cpu/cpu.go $GORT/src/internal/cpu/c
 $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/cpu]}/cpu.o ./cpu.s
 cd $GORT/src/internal/cpu
 $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/cpu]}/cpu_x86.o ./cpu_x86.s
+cd $GORT/src/internal/cpu
+$TOOL_DIR/pack r $WORK/${PKGS[internal/cpu]}/_pkg_.a $WORK/${PKGS[internal/cpu]}/cpu.o $WORK/${PKGS[internal/cpu]}/cpu_x86.o # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/cpu]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[runtime/internal/atomic]}/
 cat >$WORK/${PKGS[runtime/internal/atomic]}/go_asm.h << EOF # internal
@@ -243,7 +245,9 @@ cmpl_asm runtime/internal/atomic 1 0 $GORT/src/runtime/internal/atomic/atomic_am
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -I $WORK/${PKGS[runtime/internal/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o ./atomic_amd64.s
 cd $SRC_DIR
-
+cd $GORT/src/runtime/internal/atomic
+$TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[internal/itoa]}/
 make_importcfg internal/itoa
@@ -302,14 +306,6 @@ cmpl_asm sync/atomic 0 0 $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type
 mkdir -p $WORK/${PKGS[unicode]}/
 make_importcfg unicode
 cmpl unicode 0 1 $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
-
-
-cd $GORT/src/runtime/internal/atomic
-$TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a # internal
-cd $GORT/src/internal/cpu
-$TOOL_DIR/pack r $WORK/${PKGS[internal/cpu]}/_pkg_.a $WORK/${PKGS[internal/cpu]}/cpu.o $WORK/${PKGS[internal/cpu]}/cpu_x86.o # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/cpu]}/_pkg_.a # internal
 
 
 mkdir -p $WORK/${PKGS[internal/bytealg]}/
