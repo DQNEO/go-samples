@@ -140,6 +140,24 @@ done
 ) >$wdir/importcfg
 }
 
+function cmpl() {
+pkg=$1
+plus=$2
+complete=$3
+files=$4
+splus=""
+scomplete=""
+if ["$plus" = "1"]; then
+  splus="-+"
+fi
+if ["$complete" = "1"]; then
+  scomplete="-complete"
+fi
+
+$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg  -std $scomplete  -buildid P7qFpguryEe_9bufASvc/P7qFpguryEe_9bufASvc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
+
+}
+
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 
 mkdir -p $WORK/${PKGS[internal/coverage/rtcov]}/
@@ -150,8 +168,8 @@ make_importcfg internal/coverage/rtcov
 mkdir -p $WORK/${PKGS[internal/goos]}/
 make_importcfg internal/unsafeheader
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/unsafeheader]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/unsafeheader]}=>" -p internal/unsafeheader   -std    -complete -buildid P7qFpguryEe_9bufASvc/P7qFpguryEe_9bufASvc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/unsafeheader]}/importcfg -pack $GORT/src/internal/unsafeheader/unsafeheader.go
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/coverage/rtcov]}=>" -p internal/coverage/rtcov -std -+ -complete -buildid Gk43QGhY-y2T4KaecSdc/Gk43QGhY-y2T4KaecSdc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/coverage/rtcov]}/importcfg -pack $GORT/src/internal/coverage/rtcov/rtcov.go
+cmpl internal/unsafeheader 0 1 $GORT/src/internal/unsafeheader/unsafeheader.go
+cmpl internal/coverage/rtcov 1 1 $GORT/src/internal/coverage/rtcov/rtcov.go
 make_importcfg internal/goarch
 make_importcfg internal/goos
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/goarch]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/goarch]}=>" -p internal/goarch -std -+ -complete -buildid IeHgz3mN0XMxQJyLQgHG/IeHgz3mN0XMxQJyLQgHG -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/goarch]}/importcfg -pack $GORT/src/internal/goarch/goarch.go $GORT/src/internal/goarch/goarch_amd64.go $GORT/src/internal/goarch/zgoarch_amd64.go
@@ -159,6 +177,7 @@ $TOOL_DIR/compile -o $WORK/${PKGS[internal/goos]}/_pkg_.a -trimpath "$WORK/${PKG
 mkdir -p $WORK/${PKGS[internal/goexperiment]}/
 make_importcfg internal/goexperiment
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/goexperiment]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/goexperiment]}=>" -p internal/goexperiment -std -complete -buildid yMFIFNsS8SAX_RrWD2i8/yMFIFNsS8SAX_RrWD2i8 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/goexperiment]}/importcfg -pack $GORT/src/internal/goexperiment/exp_arenas_off.go $GORT/src/internal/goexperiment/exp_boringcrypto_off.go $GORT/src/internal/goexperiment/exp_coverageredesign_on.go $GORT/src/internal/goexperiment/exp_fieldtrack_off.go $GORT/src/internal/goexperiment/exp_heapminimum512kib_off.go $GORT/src/internal/goexperiment/exp_pagetrace_off.go $GORT/src/internal/goexperiment/exp_preemptibleloops_off.go $GORT/src/internal/goexperiment/exp_regabiargs_on.go $GORT/src/internal/goexperiment/exp_regabiwrappers_on.go $GORT/src/internal/goexperiment/exp_staticlockranking_off.go $GORT/src/internal/goexperiment/exp_unified_on.go $GORT/src/internal/goexperiment/flags.go
+
 mkdir -p $WORK/${PKGS[runtime/internal/syscall]}/
 mkdir -p $WORK/${PKGS[internal/cpu]}/
 make_importcfg runtime/internal/syscall
@@ -434,9 +453,9 @@ make_importcfg io/fs
 $TOOL_DIR/compile -o $WORK/${PKGS[io/fs]}/_pkg_.a -trimpath "$WORK/${PKGS[io/fs]}=>" -p io/fs -std -complete -buildid EvJOhnLtLuHzGX4dFlcg/EvJOhnLtLuHzGX4dFlcg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[io/fs]}/importcfg -pack $GORT/src/io/fs/fs.go $GORT/src/io/fs/glob.go $GORT/src/io/fs/readdir.go $GORT/src/io/fs/readfile.go $GORT/src/io/fs/stat.go $GORT/src/io/fs/sub.go $GORT/src/io/fs/walk.go
 cd $GORT/src/reflect
 $TOOL_DIR/asm -p reflect -trimpath "$WORK/${PKGS[reflect]}=>" -I $WORK/${PKGS[reflect]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[reflect]}/asm_amd64.o ./asm_amd64.s
+
 mkdir -p $WORK/${PKGS[internal/poll]}/
 make_importcfg internal/poll
-
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/poll]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/poll]}=>" -p internal/poll -std -buildid z1T_88ivNUFrGnA9-Iwx/z1T_88ivNUFrGnA9-Iwx -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/poll]}/importcfg -pack $GORT/src/internal/poll/copy_file_range_linux.go $GORT/src/internal/poll/errno_unix.go $GORT/src/internal/poll/fcntl_syscall.go $GORT/src/internal/poll/fd.go $GORT/src/internal/poll/fd_fsync_posix.go $GORT/src/internal/poll/fd_mutex.go $GORT/src/internal/poll/fd_poll_runtime.go $GORT/src/internal/poll/fd_posix.go $GORT/src/internal/poll/fd_unix.go $GORT/src/internal/poll/fd_writev_unix.go $GORT/src/internal/poll/hook_cloexec.go $GORT/src/internal/poll/hook_unix.go $GORT/src/internal/poll/iovec_unix.go $GORT/src/internal/poll/sendfile_linux.go $GORT/src/internal/poll/sock_cloexec.go $GORT/src/internal/poll/sockopt.go $GORT/src/internal/poll/sockopt_linux.go $GORT/src/internal/poll/sockopt_unix.go $GORT/src/internal/poll/sockoptip.go $GORT/src/internal/poll/splice_linux.go $GORT/src/internal/poll/writev.go
 cd $GORT/src/reflect
