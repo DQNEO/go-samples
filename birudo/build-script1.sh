@@ -214,6 +214,13 @@ make_importcfg runtime/internal/syscall
 cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[runtime/internal/syscall]}/symabis ./asm_linux_amd64.s
 make_importcfg runtime/internal/syscall
+cmpl_asm runtime/internal/syscall 1 0 $GORT/src/runtime/internal/syscall/defs_linux.go $GORT/src/runtime/internal/syscall/defs_linux_amd64.go $GORT/src/runtime/internal/syscall/syscall_linux.go
+cd $GORT/src/runtime/internal/syscall
+$TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o ./asm_linux_amd64.s
+cd $GORT/src/runtime/internal/syscall
+$TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a # internal
+
 
 mkdir -p $WORK/${PKGS[internal/cpu]}/
 cat >$WORK/${PKGS[internal/cpu]}/go_asm.h << EOF # internal
@@ -221,91 +228,81 @@ EOF
 cd $GORT/src/internal/cpu
 $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[internal/cpu]}/symabis ./cpu.s ./cpu_x86.s
 make_importcfg internal/cpu
+cmpl_asm internal/cpu 1 0 $GORT/src/internal/cpu/cpu.go $GORT/src/internal/cpu/cpu_x86.go
+$TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/cpu]}/cpu.o ./cpu.s
+cd $GORT/src/internal/cpu
+$TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/cpu]}/cpu_x86.o ./cpu_x86.s
 
 mkdir -p $WORK/${PKGS[runtime/internal/atomic]}/
 cat >$WORK/${PKGS[runtime/internal/atomic]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -I $WORK/${PKGS[runtime/internal/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[runtime/internal/atomic]}/symabis ./atomic_amd64.s
+make_importcfg runtime/internal/atomic
+cmpl_asm runtime/internal/atomic 1 0 $GORT/src/runtime/internal/atomic/atomic_amd64.go $GORT/src/runtime/internal/atomic/doc.go $GORT/src/runtime/internal/atomic/stubs.go $GORT/src/runtime/internal/atomic/types.go $GORT/src/runtime/internal/atomic/types_64bit.go $GORT/src/runtime/internal/atomic/unaligned.go
+cd $GORT/src/runtime/internal/atomic
+$TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -I $WORK/${PKGS[runtime/internal/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o ./atomic_amd64.s
+cd $SRC_DIR
 
 
 mkdir -p $WORK/${PKGS[internal/itoa]}/
 make_importcfg internal/itoa
 cmpl internal/itoa 0 1 $GORT/src/internal/itoa/itoa.go
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/itoa]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[unicode/utf8]}/
 make_importcfg unicode/utf8
 cmpl unicode/utf8 0 1 $GORT/src/unicode/utf8/utf8.go
+$TOOL_DIR/buildid -w $WORK/${PKGS[unicode/utf8]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[math/bits]}/
 make_importcfg math/bits
 cmpl math/bits 0 1 $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
+$TOOL_DIR/buildid -w $WORK/${PKGS[math/bits]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[internal/abi]}/
 cat >$WORK/${PKGS[internal/abi]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/internal/abi
 $TOOL_DIR/asm -p internal/abi -trimpath "$WORK/${PKGS[internal/abi]}=>" -I $WORK/${PKGS[internal/abi]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[internal/abi]}/symabis ./abi_test.s
-
-cd $SRC_DIR
-cmpl_asm internal/cpu 1 0 $GORT/src/internal/cpu/cpu.go $GORT/src/internal/cpu/cpu_x86.go
-cmpl_asm runtime/internal/syscall 1 0 $GORT/src/runtime/internal/syscall/defs_linux.go $GORT/src/runtime/internal/syscall/defs_linux_amd64.go $GORT/src/runtime/internal/syscall/syscall_linux.go
-make_importcfg runtime/internal/atomic
-cmpl_asm runtime/internal/atomic 1 0 $GORT/src/runtime/internal/atomic/atomic_amd64.go $GORT/src/runtime/internal/atomic/doc.go $GORT/src/runtime/internal/atomic/stubs.go $GORT/src/runtime/internal/atomic/types.go $GORT/src/runtime/internal/atomic/types_64bit.go $GORT/src/runtime/internal/atomic/unaligned.go
-
-mkdir -p $WORK/${PKGS[runtime/internal/math]}/
+cd $GORT/src/internal/abi
+$TOOL_DIR/asm -p internal/abi -trimpath "$WORK/${PKGS[internal/abi]}=>" -I $WORK/${PKGS[internal/abi]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/abi]}/abi_test.o ./abi_test.s
 make_importcfg internal/abi
 cmpl_asm internal/abi 1 0 $GORT/src/internal/abi/abi.go $GORT/src/internal/abi/abi_amd64.go
+cd $GORT/src/internal/abi
+$TOOL_DIR/pack r $WORK/${PKGS[internal/abi]}/_pkg_.a $WORK/${PKGS[internal/abi]}/abi_test.o # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/abi]}/_pkg_.a # internal
+
+mkdir -p $WORK/${PKGS[runtime/internal/math]}/
 make_importcfg runtime/internal/math
 cmpl runtime/internal/math 1 1 $GORT/src/runtime/internal/math/math.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/itoa]}/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/math]}/_pkg_.a # internal
 
-cd $GORT/src/runtime/internal/syscall
-$TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o ./asm_linux_amd64.s
 mkdir -p $WORK/${PKGS[runtime/internal/sys]}/
 make_importcfg runtime/internal/sys
 cd $SRC_DIR
 cmpl runtime/internal/sys 1 1 $GORT/src/runtime/internal/sys/consts.go $GORT/src/runtime/internal/sys/consts_norace.go $GORT/src/runtime/internal/sys/intrinsics.go $GORT/src/runtime/internal/sys/intrinsics_common.go $GORT/src/runtime/internal/sys/nih.go $GORT/src/runtime/internal/sys/sys.go $GORT/src/runtime/internal/sys/zversion.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[math/bits]}/_pkg_.a # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[unicode/utf8]}/_pkg_.a # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/math]}/_pkg_.a # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/sys]}/_pkg_.a # internal
 
-
-cd $GORT/src/internal/abi
-$TOOL_DIR/asm -p internal/abi -trimpath "$WORK/${PKGS[internal/abi]}=>" -I $WORK/${PKGS[internal/abi]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/abi]}/abi_test.o ./abi_test.s
 mkdir -p $WORK/${PKGS[internal/race]}/
 make_importcfg internal/race
 cd $SRC_DIR
 cmpl internal/race 0 1 $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
-mkdir -p $WORK/${PKGS[sync/atomic]}/
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/race]}/_pkg_.a # internal
 
+mkdir -p $WORK/${PKGS[sync/atomic]}/
 cat >$WORK/${PKGS[sync/atomic]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/sync/atomic
 $TOOL_DIR/asm -p sync/atomic -trimpath "$WORK/${PKGS[sync/atomic]}=>" -I $WORK/${PKGS[sync/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[sync/atomic]}/symabis ./asm.s
-cd $GORT/src/internal/cpu
-$TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/cpu]}/cpu.o ./cpu.s
-cd $GORT/src/runtime/internal/syscall
-$TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a # internal
-mkdir -p $WORK/${PKGS[unicode]}/
-make_importcfg unicode
-cd $GORT/src/runtime/internal/atomic
-$TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -I $WORK/${PKGS[runtime/internal/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o ./atomic_amd64.s
-cd $SRC_DIR
-cmpl unicode 0 1 $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
-cd $GORT/src/internal/abi
-$TOOL_DIR/pack r $WORK/${PKGS[internal/abi]}/_pkg_.a $WORK/${PKGS[internal/abi]}/abi_test.o # internal
-
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/abi]}/_pkg_.a # internal
-
-cd $GORT/src/internal/cpu
-$TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/cpu]}/cpu_x86.o ./cpu_x86.s
-$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/sys]}/_pkg_.a # internal
 make_importcfg sync/atomic
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/race]}/_pkg_.a # internal
 cd $SRC_DIR
 cmpl_asm sync/atomic 0 0 $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type.go $GORT/src/sync/atomic/value.go
+
+mkdir -p $WORK/${PKGS[unicode]}/
+make_importcfg unicode
+cmpl unicode 0 1 $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
+
 
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o # internal
