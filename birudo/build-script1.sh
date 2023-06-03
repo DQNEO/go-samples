@@ -210,27 +210,29 @@ build_pkg_f internal/goos 1 1 $GORT/src/internal/goos/goos.go $GORT/src/internal
 build_pkg_f internal/goexperiment 0 1 $GORT/src/internal/goexperiment/exp_arenas_off.go $GORT/src/internal/goexperiment/exp_boringcrypto_off.go $GORT/src/internal/goexperiment/exp_coverageredesign_on.go $GORT/src/internal/goexperiment/exp_fieldtrack_off.go $GORT/src/internal/goexperiment/exp_heapminimum512kib_off.go $GORT/src/internal/goexperiment/exp_pagetrace_off.go $GORT/src/internal/goexperiment/exp_preemptibleloops_off.go $GORT/src/internal/goexperiment/exp_regabiargs_on.go $GORT/src/internal/goexperiment/exp_regabiwrappers_on.go $GORT/src/internal/goexperiment/exp_staticlockranking_off.go $GORT/src/internal/goexperiment/exp_unified_on.go $GORT/src/internal/goexperiment/flags.go
 
 mkdir -p $WORK/${PKGS[runtime/internal/syscall]}/
-mkdir -p $WORK/${PKGS[internal/cpu]}/
 make_importcfg runtime/internal/syscall
-mkdir -p $WORK/${PKGS[runtime/internal/atomic]}/
-cat >$WORK/${PKGS[internal/cpu]}/go_asm.h << EOF # internal
-EOF
 cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[runtime/internal/syscall]}/symabis ./asm_linux_amd64.s
+
+mkdir -p $WORK/${PKGS[internal/cpu]}/
+cat >$WORK/${PKGS[internal/cpu]}/go_asm.h << EOF # internal
+EOF
 cd $GORT/src/internal/cpu
 $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[internal/cpu]}/symabis ./cpu.s ./cpu_x86.s
+
+mkdir -p $WORK/${PKGS[runtime/internal/atomic]}/
 cat >$WORK/${PKGS[runtime/internal/atomic]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -I $WORK/${PKGS[runtime/internal/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[runtime/internal/atomic]}/symabis ./atomic_amd64.s
 
 
-
 mkdir -p $WORK/${PKGS[internal/itoa]}/
+make_importcfg internal/itoa
 
 mkdir -p $WORK/${PKGS[unicode/utf8]}/
-make_importcfg internal/itoa
 make_importcfg unicode/utf8
+
 mkdir -p $WORK/${PKGS[math/bits]}/
 cd $SRC_DIR
 cmpl unicode/utf8 0 1 $GORT/src/unicode/utf8/utf8.go
