@@ -71,6 +71,11 @@ declare -A DEPENDS=(
 [internal/cpu]=""
 [runtime/internal/syscall]=""
 [runtime/internal/atomic]=""
+[internal/race]=""
+[unicode]=""
+[sync/atomic]=""
+
+
 )
 
 declare -A FILES=(
@@ -207,9 +212,7 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/math]}/_pkg_.a # internal
 cd $GORT/src/internal/abi
 $TOOL_DIR/asm -p internal/abi -trimpath "$WORK/${PKGS[internal/abi]}=>" -I $WORK/${PKGS[internal/abi]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/abi]}/abi_test.o ./abi_test.s
 mkdir -p $WORK/${PKGS[internal/race]}/
-cat >$WORK/${PKGS[internal/race]}/importcfg << EOF # internal
-# import config
-EOF
+make_importcfg internal/race
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/race]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/race]}=>" -p internal/race -std -complete -buildid 6k_7JN4Ro6ano3CJO236/6k_7JN4Ro6ano3CJO236 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/race]}/importcfg -pack $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
 mkdir -p $WORK/${PKGS[sync/atomic]}/
@@ -224,9 +227,7 @@ cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a # internal
 mkdir -p $WORK/${PKGS[unicode]}/
-cat >$WORK/${PKGS[unicode]}/importcfg << EOF # internal
-# import config
-EOF
+make_importcfg unicode
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -I $WORK/${PKGS[runtime/internal/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o ./atomic_amd64.s
 cd $SRC_DIR
@@ -239,9 +240,7 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/abi]}/_pkg_.a # internal
 cd $GORT/src/internal/cpu
 $TOOL_DIR/asm -p internal/cpu -trimpath "$WORK/${PKGS[internal/cpu]}=>" -I $WORK/${PKGS[internal/cpu]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/cpu]}/cpu_x86.o ./cpu_x86.s
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/sys]}/_pkg_.a # internal
-cat >$WORK/${PKGS[sync/atomic]}/importcfg << EOF # internal
-# import config
-EOF
+make_importcfg sync/atomic
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/race]}/_pkg_.a # internal
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[sync/atomic]}/_pkg_.a -trimpath "$WORK/${PKGS[sync/atomic]}=>" -p sync/atomic -std -buildid 8sTHEv3qeP6epKjkp86J/8sTHEv3qeP6epKjkp86J -goversion go1.20.4 -symabis $WORK/${PKGS[sync/atomic]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[sync/atomic]}/importcfg -pack -asmhdr $WORK/${PKGS[sync/atomic]}/go_asm.h $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type.go $GORT/src/sync/atomic/value.go
