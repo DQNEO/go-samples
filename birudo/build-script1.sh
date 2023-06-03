@@ -95,7 +95,6 @@ declare -A DEPENDS=(
 [unicode/utf8]=""
 [math/bits]=""
 [internal/cpu]=""
-[runtime/internal/syscall]=""
 [runtime/internal/atomic]=""
 [internal/race]=""
 [unicode]=""
