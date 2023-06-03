@@ -112,7 +112,9 @@ declare -A FILES=(
 
 function build_pkg() {
 pkgname=$1
-complete=$2
+runtime=$2
+complete=$3
+
 bdir=${PKGS[$pkgname]}
 wdir=$WORK/$bdir
 
@@ -124,9 +126,8 @@ for i in ${FILES[$pkgname]}
 do
   files="$files $GORT/src/$pkgname/$i"
 done
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname \
- -std $complete $B -c=4 -nolocalimports -importcfg $wdir/importcfg \
- -pack $files
+
+cmpl $pkgname $runtime $complete $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 }
 
@@ -184,7 +185,6 @@ fi
 
 $TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg \
  -std $sruntime $scomplete  $B -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
-
 }
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
@@ -494,7 +494,10 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[io/fs]}/_pkg_.a # internal
 
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/poll]}/_pkg_.a # internal
 
-
+build_pkg internal/fmtsort 0 1
+cd $SRC_DIR
+build_pkg os 0 0
+build_pkg fmt 0 1
 
 
 
@@ -559,8 +562,4 @@ mv $wdir/exe/a.out birudo
 rm -r $wdir/
 }
 
-build_pkg internal/fmtsort -complete
-cd $SRC_DIR
-build_pkg os ""
-build_pkg fmt -complete
 doLink
