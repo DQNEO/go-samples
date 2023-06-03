@@ -73,8 +73,12 @@ declare -A DEPENDS=(
 [internal/oserror]="errors"
 [path]="errors internal/bytealg unicode/utf8"
 [io]="errors sync"
-
-
+[strconv]="errors internal/bytealg math math/bits unicode/utf8 "
+[syscall]="errors internal/bytealg internal/itoa internal/oserror internal/race runtime sync sync/atomic "
+[reflect]="errors internal/abi internal/bytealg internal/goarch internal/itoa internal/unsafeheader math runtime strconv sync unicode unicode/utf8 "
+[internal/syscall/execenv]="syscall"
+[internal/syscall/unix]="sync/atomic syscall"
+[time]="errors runtime sync syscall "
 [internal/coverage/rtcov]=""
 [internal/unsafeheader]=""
 [internal/goarch]=""
@@ -370,14 +374,7 @@ $TOOL_DIR/compile -o $WORK/${PKGS[path]}/_pkg_.a -trimpath "$WORK/${PKGS[path]}=
 make_importcfg io
 $TOOL_DIR/compile -o $WORK/${PKGS[io]}/_pkg_.a -trimpath "$WORK/${PKGS[io]}=>" -p io -std -complete -buildid UXfIU_f9dqciElRShcLJ/UXfIU_f9dqciElRShcLJ -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[io]}/importcfg -pack $GORT/src/io/io.go $GORT/src/io/multi.go $GORT/src/io/pipe.go
 mkdir -p $WORK/${PKGS[strconv]}/
-cat >$WORK/${PKGS[strconv]}/importcfg << EOF # internal
-# import config
-packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
-packagefile math=$WORK/${PKGS[math]}/_pkg_.a
-packagefile math/bits=$WORK/${PKGS[math/bits]}/_pkg_.a
-packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
-EOF
+make_importcfg strconv
 $TOOL_DIR/compile -o $WORK/${PKGS[strconv]}/_pkg_.a -trimpath "$WORK/${PKGS[strconv]}=>" -p strconv -std -complete -buildid tsZ-5FuCj28fNWLKgaGw/tsZ-5FuCj28fNWLKgaGw -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[strconv]}/importcfg -pack $GORT/src/strconv/atob.go $GORT/src/strconv/atoc.go $GORT/src/strconv/atof.go $GORT/src/strconv/atoi.go $GORT/src/strconv/bytealg.go $GORT/src/strconv/ctoa.go $GORT/src/strconv/decimal.go $GORT/src/strconv/doc.go $GORT/src/strconv/eisel_lemire.go $GORT/src/strconv/ftoa.go $GORT/src/strconv/ftoaryu.go $GORT/src/strconv/isprint.go $GORT/src/strconv/itoa.go $GORT/src/strconv/quote.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/safefilepath]}/_pkg_.a # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/oserror]}/_pkg_.a # internal
@@ -394,17 +391,7 @@ cat >$WORK/${PKGS[syscall]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/syscall
 $TOOL_DIR/asm -p syscall -trimpath "$WORK/${PKGS[syscall]}=>" -I $WORK/${PKGS[syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[syscall]}/symabis ./asm_linux_amd64.s
-cat >$WORK/${PKGS[syscall]}/importcfg << EOF # internal
-# import config
-packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
-packagefile internal/itoa=$WORK/${PKGS[internal/itoa]}/_pkg_.a
-packagefile internal/oserror=$WORK/${PKGS[internal/oserror]}/_pkg_.a
-packagefile internal/race=$WORK/${PKGS[internal/race]}/_pkg_.a
-packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
-packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
-EOF
+make_importcfg syscall
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[syscall]}/_pkg_.a -trimpath "$WORK/${PKGS[syscall]}=>" -p syscall -std -buildid Gf1emYuyeATzm8AHyHFR/Gf1emYuyeATzm8AHyHFR -goversion go1.20.4 -symabis $WORK/${PKGS[syscall]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[syscall]}/importcfg -pack -asmhdr $WORK/${PKGS[syscall]}/go_asm.h $GORT/src/syscall/asan0.go $GORT/src/syscall/dirent.go $GORT/src/syscall/endian_little.go $GORT/src/syscall/env_unix.go $GORT/src/syscall/exec_linux.go $GORT/src/syscall/exec_unix.go $GORT/src/syscall/flock.go $GORT/src/syscall/lsf_linux.go $GORT/src/syscall/msan0.go $GORT/src/syscall/net.go $GORT/src/syscall/netlink_linux.go $GORT/src/syscall/rlimit.go $GORT/src/syscall/rlimit_stub.go $GORT/src/syscall/setuidgid_linux.go $GORT/src/syscall/sockcmsg_linux.go $GORT/src/syscall/sockcmsg_unix.go $GORT/src/syscall/sockcmsg_unix_other.go $GORT/src/syscall/syscall.go $GORT/src/syscall/syscall_linux.go $GORT/src/syscall/syscall_linux_accept4.go $GORT/src/syscall/syscall_linux_amd64.go $GORT/src/syscall/syscall_unix.go $GORT/src/syscall/time_nofake.go $GORT/src/syscall/timestruct.go $GORT/src/syscall/zerrors_linux_amd64.go $GORT/src/syscall/zsyscall_linux_amd64.go $GORT/src/syscall/zsysnum_linux_amd64.go $GORT/src/syscall/ztypes_linux_amd64.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[strconv]}/_pkg_.a # internal
@@ -414,21 +401,7 @@ cat >$WORK/${PKGS[reflect]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/reflect
 $TOOL_DIR/asm -p reflect -trimpath "$WORK/${PKGS[reflect]}=>" -I $WORK/${PKGS[reflect]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[reflect]}/symabis ./asm_amd64.s
-cat >$WORK/${PKGS[reflect]}/importcfg << EOF # internal
-# import config
-packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile internal/abi=$WORK/${PKGS[internal/abi]}/_pkg_.a
-packagefile internal/bytealg=$WORK/${PKGS[internal/bytealg]}/_pkg_.a
-packagefile internal/goarch=$WORK/${PKGS[internal/goarch]}/_pkg_.a
-packagefile internal/itoa=$WORK/${PKGS[internal/itoa]}/_pkg_.a
-packagefile internal/unsafeheader=$WORK/${PKGS[internal/unsafeheader]}/_pkg_.a
-packagefile math=$WORK/${PKGS[math]}/_pkg_.a
-packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-packagefile strconv=$WORK/${PKGS[strconv]}/_pkg_.a
-packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
-packagefile unicode=$WORK/${PKGS[unicode]}/_pkg_.a
-packagefile unicode/utf8=$WORK/${PKGS[unicode/utf8]}/_pkg_.a
-EOF
+make_importcfg reflect
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[reflect]}/_pkg_.a -trimpath "$WORK/${PKGS[reflect]}=>" -p reflect -std -buildid nIapndKG10ZTabsNBtM3/nIapndKG10ZTabsNBtM3 -goversion go1.20.4 -symabis $WORK/${PKGS[reflect]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[reflect]}/importcfg -pack -asmhdr $WORK/${PKGS[reflect]}/go_asm.h $GORT/src/reflect/abi.go $GORT/src/reflect/deepequal.go $GORT/src/reflect/float32reg_generic.go $GORT/src/reflect/makefunc.go $GORT/src/reflect/swapper.go $GORT/src/reflect/type.go $GORT/src/reflect/value.go $GORT/src/reflect/visiblefields.go
 cd $GORT/src/syscall
@@ -437,26 +410,13 @@ $TOOL_DIR/pack r $WORK/${PKGS[syscall]}/_pkg_.a $WORK/${PKGS[syscall]}/asm_linux
 $TOOL_DIR/buildid -w $WORK/${PKGS[syscall]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[internal/syscall/execenv]}/
-cat >$WORK/${PKGS[internal/syscall/execenv]}/importcfg << EOF # internal
-# import config
-packagefile syscall=$WORK/${PKGS[syscall]}/_pkg_.a
-EOF
+make_importcfg internal/syscall/execenv
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/syscall/execenv]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/syscall/execenv]}=>" -p internal/syscall/execenv -std -complete -buildid 9v4cH9-eclFZmCPdzfl0/9v4cH9-eclFZmCPdzfl0 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/syscall/execenv]}/importcfg -pack $GORT/src/internal/syscall/execenv/execenv_default.go
 mkdir -p $WORK/${PKGS[internal/syscall/unix]}/
 mkdir -p $WORK/${PKGS[time]}/
-cat >$WORK/${PKGS[internal/syscall/unix]}/importcfg << EOF # internal
-# import config
-packagefile sync/atomic=$WORK/${PKGS[sync/atomic]}/_pkg_.a
-packagefile syscall=$WORK/${PKGS[syscall]}/_pkg_.a
-EOF
-cat >$WORK/${PKGS[time]}/importcfg << EOF # internal
-# import config
-packagefile errors=$WORK/${PKGS[errors]}/_pkg_.a
-packagefile runtime=$WORK/${PKGS[runtime]}/_pkg_.a
-packagefile sync=$WORK/${PKGS[sync]}/_pkg_.a
-packagefile syscall=$WORK/${PKGS[syscall]}/_pkg_.a
-EOF
+make_importcfg internal/syscall/unix
+make_importcfg time
 $TOOL_DIR/compile -o $WORK/${PKGS[internal/syscall/unix]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/syscall/unix]}=>" -p internal/syscall/unix -std -complete -buildid y7B9w1xvVOcllLe1UHTw/y7B9w1xvVOcllLe1UHTw -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/syscall/unix]}/importcfg -pack $GORT/src/internal/syscall/unix/at.go $GORT/src/internal/syscall/unix/at_fstatat.go $GORT/src/internal/syscall/unix/at_sysnum_linux.go $GORT/src/internal/syscall/unix/at_sysnum_newfstatat_linux.go $GORT/src/internal/syscall/unix/constants.go $GORT/src/internal/syscall/unix/copy_file_range_linux.go $GORT/src/internal/syscall/unix/eaccess_linux.go $GORT/src/internal/syscall/unix/getrandom.go $GORT/src/internal/syscall/unix/getrandom_linux.go $GORT/src/internal/syscall/unix/kernel_version_linux.go $GORT/src/internal/syscall/unix/net.go $GORT/src/internal/syscall/unix/nonblocking.go $GORT/src/internal/syscall/unix/sysnum_linux_amd64.go
 $TOOL_DIR/compile -o $WORK/${PKGS[time]}/_pkg_.a -trimpath "$WORK/${PKGS[time]}=>" -p time -std -buildid JPr4o2PkKYQpYoXGOl8u/JPr4o2PkKYQpYoXGOl8u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[time]}/importcfg -pack $GORT/src/time/format.go $GORT/src/time/format_rfc3339.go $GORT/src/time/sleep.go $GORT/src/time/sys_unix.go $GORT/src/time/tick.go $GORT/src/time/time.go $GORT/src/time/zoneinfo.go $GORT/src/time/zoneinfo_goroot.go $GORT/src/time/zoneinfo_read.go $GORT/src/time/zoneinfo_unix.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/syscall/execenv]}/_pkg_.a # internal
