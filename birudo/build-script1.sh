@@ -254,7 +254,7 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[runtime/internal/math]}/
 make_importcfg internal/abi
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/abi]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/abi]}=>" -p internal/abi -std -+ $B -symabis $WORK/${PKGS[internal/abi]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/abi]}/importcfg -pack -asmhdr $WORK/${PKGS[internal/abi]}/go_asm.h $GORT/src/internal/abi/abi.go $GORT/src/internal/abi/abi_amd64.go
+cmpl_asm internal/abi 1 0 $GORT/src/internal/abi/abi.go $GORT/src/internal/abi/abi_amd64.go
 make_importcfg runtime/internal/math
 cmpl runtime/internal/math 1 1 $GORT/src/runtime/internal/math/math.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/itoa]}/_pkg_.a # internal
@@ -292,7 +292,7 @@ make_importcfg unicode
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -I $WORK/${PKGS[runtime/internal/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o ./atomic_amd64.s
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/${PKGS[unicode]}/_pkg_.a -trimpath "$WORK/${PKGS[unicode]}=>" -p unicode -std -complete $B -c=4 -nolocalimports -importcfg $WORK/${PKGS[unicode]}/importcfg -pack $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
+cmpl unicode 0 1 $GORT/src/unicode/casetables.go $GORT/src/unicode/digit.go $GORT/src/unicode/graphic.go $GORT/src/unicode/letter.go $GORT/src/unicode/tables.go
 cd $GORT/src/internal/abi
 $TOOL_DIR/pack r $WORK/${PKGS[internal/abi]}/_pkg_.a $WORK/${PKGS[internal/abi]}/abi_test.o # internal
 
@@ -304,8 +304,8 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/sys]}/_pkg_.a # internal
 make_importcfg sync/atomic
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/race]}/_pkg_.a # internal
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/${PKGS[sync/atomic]}/_pkg_.a -trimpath "$WORK/${PKGS[sync/atomic]}=>" -p sync/atomic -std $B -symabis $WORK/${PKGS[sync/atomic]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[sync/atomic]}/importcfg -pack -asmhdr $WORK/${PKGS[sync/atomic]}/go_asm.h $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type.go $GORT/src/sync/atomic/value.go
-
+#$TOOL_DIR/compile -o $WORK/${PKGS[sync/atomic]}/_pkg_.a -trimpath "$WORK/${PKGS[sync/atomic]}=>" -p sync/atomic -std $B -symabis $WORK/${PKGS[sync/atomic]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[sync/atomic]}/importcfg -pack -asmhdr $WORK/${PKGS[sync/atomic]}/go_asm.h $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type.go $GORT/src/sync/atomic/value.go
+cmpl_asm sync/atomic 0 0 $GORT/src/sync/atomic/doc.go $GORT/src/sync/atomic/type.go $GORT/src/sync/atomic/value.go
 
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o # internal
