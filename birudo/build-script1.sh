@@ -209,6 +209,7 @@ build_pkg_f internal/goarch 1 1 $GORT/src/internal/goarch/goarch.go $GORT/src/in
 build_pkg_f internal/goos 1 1 $GORT/src/internal/goos/goos.go $GORT/src/internal/goos/unix.go $GORT/src/internal/goos/zgoos_linux.go
 build_pkg_f internal/goexperiment 0 1 $GORT/src/internal/goexperiment/exp_arenas_off.go $GORT/src/internal/goexperiment/exp_boringcrypto_off.go $GORT/src/internal/goexperiment/exp_coverageredesign_on.go $GORT/src/internal/goexperiment/exp_fieldtrack_off.go $GORT/src/internal/goexperiment/exp_heapminimum512kib_off.go $GORT/src/internal/goexperiment/exp_pagetrace_off.go $GORT/src/internal/goexperiment/exp_preemptibleloops_off.go $GORT/src/internal/goexperiment/exp_regabiargs_on.go $GORT/src/internal/goexperiment/exp_regabiwrappers_on.go $GORT/src/internal/goexperiment/exp_staticlockranking_off.go $GORT/src/internal/goexperiment/exp_unified_on.go $GORT/src/internal/goexperiment/flags.go
 
+# internal/syscall
 mkdir -p $WORK/${PKGS[runtime/internal/syscall]}/
 make_importcfg runtime/internal/syscall
 cd $GORT/src/runtime/internal/syscall
@@ -221,6 +222,7 @@ cd $GORT/src/runtime/internal/syscall
 $TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a # internal
 
+# internal/cpu
 mkdir -p $WORK/${PKGS[internal/cpu]}/
 cat >$WORK/${PKGS[internal/cpu]}/go_asm.h << EOF # internal
 EOF
@@ -235,6 +237,7 @@ cd $GORT/src/internal/cpu
 $TOOL_DIR/pack r $WORK/${PKGS[internal/cpu]}/_pkg_.a $WORK/${PKGS[internal/cpu]}/cpu.o $WORK/${PKGS[internal/cpu]}/cpu_x86.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/cpu]}/_pkg_.a # internal
 
+# internal/atomic
 mkdir -p $WORK/${PKGS[runtime/internal/atomic]}/
 cat >$WORK/${PKGS[runtime/internal/atomic]}/go_asm.h << EOF # internal
 EOF
@@ -256,6 +259,7 @@ build_pkg_f runtime/internal/math 1 1 $GORT/src/runtime/internal/math/math.go
 build_pkg_f runtime/internal/sys 1 1 $GORT/src/runtime/internal/sys/consts.go $GORT/src/runtime/internal/sys/consts_norace.go $GORT/src/runtime/internal/sys/intrinsics.go $GORT/src/runtime/internal/sys/intrinsics_common.go $GORT/src/runtime/internal/sys/nih.go $GORT/src/runtime/internal/sys/sys.go $GORT/src/runtime/internal/sys/zversion.go
 build_pkg_f internal/race 0 1 $GORT/src/internal/race/doc.go $GORT/src/internal/race/norace.go
 
+# internal/abi
 mkdir -p $WORK/${PKGS[internal/abi]}/
 cat >$WORK/${PKGS[internal/abi]}/go_asm.h << EOF # internal
 EOF
@@ -269,6 +273,7 @@ cd $GORT/src/internal/abi
 $TOOL_DIR/pack r $WORK/${PKGS[internal/abi]}/_pkg_.a $WORK/${PKGS[internal/abi]}/abi_test.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/abi]}/_pkg_.a # internal
 
+# sync/atomic
 mkdir -p $WORK/${PKGS[sync/atomic]}/
 cat >$WORK/${PKGS[sync/atomic]}/go_asm.h << EOF # internal
 EOF
@@ -292,6 +297,7 @@ make_importcfg internal/bytealg
 mkdir -p $WORK/${PKGS[math]}/
 cd $SRC_DIR
 cmpl_asm  internal/bytealg 1 0 $GORT/src/internal/bytealg/bytealg.go $GORT/src/internal/bytealg/compare_native.go $GORT/src/internal/bytealg/count_native.go $GORT/src/internal/bytealg/equal_generic.go $GORT/src/internal/bytealg/equal_native.go $GORT/src/internal/bytealg/index_amd64.go $GORT/src/internal/bytealg/index_native.go $GORT/src/internal/bytealg/indexbyte_native.go
+
 cat >$WORK/${PKGS[math]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/math
@@ -304,6 +310,7 @@ cmpl_asm math 0 0 $GORT/src/math/abs.go $GORT/src/math/acosh.go $GORT/src/math/a
 cd $GORT/src/sync/atomic
 $TOOL_DIR/pack r $WORK/${PKGS[sync/atomic]}/_pkg_.a $WORK/${PKGS[sync/atomic]}/asm.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[sync/atomic]}/_pkg_.a # internal
+
 cd $GORT/src/internal/bytealg
 $TOOL_DIR/asm -p internal/bytealg -trimpath "$WORK/${PKGS[internal/bytealg]}=>" -I $WORK/${PKGS[internal/bytealg]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[internal/bytealg]}/compare_amd64.o ./compare_amd64.s
 
@@ -319,6 +326,7 @@ cat >$WORK/${PKGS[runtime]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/runtime
 $TOOL_DIR/asm -p runtime -trimpath "$WORK/${PKGS[runtime]}=>" -I $WORK/${PKGS[runtime]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[runtime]}/symabis ./asm.s ./asm_amd64.s ./duff_amd64.s ./memclr_amd64.s ./memmove_amd64.s ./preempt_amd64.s ./rt0_linux_amd64.s ./sys_linux_amd64.s ./time_linux_amd64.s
+
 cd $GORT/src/math
 $TOOL_DIR/asm -p math -trimpath "$WORK/${PKGS[math]}=>" -I $WORK/${PKGS[math]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[math]}/dim_amd64.o ./dim_amd64.s
 make_importcfg runtime
@@ -327,7 +335,6 @@ cd $SRC_DIR
 cmpl_asm runtime 1 0 $GORT/src/runtime/alg.go $GORT/src/runtime/arena.go $GORT/src/runtime/asan0.go $GORT/src/runtime/atomic_pointer.go $GORT/src/runtime/cgo.go $GORT/src/runtime/cgo_mmap.go $GORT/src/runtime/cgo_sigaction.go $GORT/src/runtime/cgocall.go $GORT/src/runtime/cgocallback.go $GORT/src/runtime/cgocheck.go $GORT/src/runtime/chan.go $GORT/src/runtime/checkptr.go $GORT/src/runtime/compiler.go $GORT/src/runtime/complex.go $GORT/src/runtime/covercounter.go $GORT/src/runtime/covermeta.go $GORT/src/runtime/cpuflags.go $GORT/src/runtime/cpuflags_amd64.go $GORT/src/runtime/cpuprof.go $GORT/src/runtime/cputicks.go $GORT/src/runtime/create_file_unix.go $GORT/src/runtime/debug.go $GORT/src/runtime/debugcall.go $GORT/src/runtime/debuglog.go $GORT/src/runtime/debuglog_off.go $GORT/src/runtime/defs_linux_amd64.go $GORT/src/runtime/env_posix.go $GORT/src/runtime/error.go $GORT/src/runtime/exithook.go $GORT/src/runtime/extern.go $GORT/src/runtime/fastlog2.go $GORT/src/runtime/fastlog2table.go $GORT/src/runtime/float.go $GORT/src/runtime/hash64.go $GORT/src/runtime/heapdump.go $GORT/src/runtime/histogram.go $GORT/src/runtime/iface.go $GORT/src/runtime/lfstack.go $GORT/src/runtime/lfstack_64bit.go $GORT/src/runtime/lock_futex.go $GORT/src/runtime/lockrank.go $GORT/src/runtime/lockrank_off.go $GORT/src/runtime/malloc.go $GORT/src/runtime/map.go $GORT/src/runtime/map_fast32.go $GORT/src/runtime/map_fast64.go $GORT/src/runtime/map_faststr.go $GORT/src/runtime/mbarrier.go $GORT/src/runtime/mbitmap.go $GORT/src/runtime/mcache.go $GORT/src/runtime/mcentral.go $GORT/src/runtime/mcheckmark.go $GORT/src/runtime/mem.go $GORT/src/runtime/mem_linux.go $GORT/src/runtime/metrics.go $GORT/src/runtime/mfinal.go $GORT/src/runtime/mfixalloc.go $GORT/src/runtime/mgc.go $GORT/src/runtime/mgclimit.go $GORT/src/runtime/mgcmark.go $GORT/src/runtime/mgcpacer.go $GORT/src/runtime/mgcscavenge.go $GORT/src/runtime/mgcstack.go $GORT/src/runtime/mgcsweep.go $GORT/src/runtime/mgcwork.go $GORT/src/runtime/mheap.go $GORT/src/runtime/mpagealloc.go $GORT/src/runtime/mpagealloc_64bit.go $GORT/src/runtime/mpagecache.go $GORT/src/runtime/mpallocbits.go $GORT/src/runtime/mprof.go $GORT/src/runtime/mranges.go $GORT/src/runtime/msan0.go $GORT/src/runtime/msize.go $GORT/src/runtime/mspanset.go $GORT/src/runtime/mstats.go $GORT/src/runtime/mwbbuf.go $GORT/src/runtime/nbpipe_pipe2.go $GORT/src/runtime/netpoll.go $GORT/src/runtime/netpoll_epoll.go $GORT/src/runtime/os_linux.go $GORT/src/runtime/os_linux_generic.go $GORT/src/runtime/os_linux_noauxv.go $GORT/src/runtime/os_linux_x86.go $GORT/src/runtime/os_nonopenbsd.go $GORT/src/runtime/pagetrace_off.go $GORT/src/runtime/panic.go $GORT/src/runtime/plugin.go $GORT/src/runtime/preempt.go $GORT/src/runtime/preempt_nonwindows.go $GORT/src/runtime/print.go $GORT/src/runtime/proc.go $GORT/src/runtime/profbuf.go $GORT/src/runtime/proflabel.go $GORT/src/runtime/race0.go $GORT/src/runtime/rdebug.go $GORT/src/runtime/relax_stub.go $GORT/src/runtime/retry.go $GORT/src/runtime/runtime.go $GORT/src/runtime/runtime1.go $GORT/src/runtime/runtime2.go $GORT/src/runtime/runtime_boring.go $GORT/src/runtime/rwmutex.go $GORT/src/runtime/select.go $GORT/src/runtime/sema.go $GORT/src/runtime/signal_amd64.go $GORT/src/runtime/signal_linux_amd64.go $GORT/src/runtime/signal_unix.go $GORT/src/runtime/sigqueue.go $GORT/src/runtime/sigqueue_note.go $GORT/src/runtime/sigtab_linux_generic.go $GORT/src/runtime/sizeclasses.go $GORT/src/runtime/slice.go $GORT/src/runtime/softfloat64.go $GORT/src/runtime/stack.go $GORT/src/runtime/stkframe.go $GORT/src/runtime/string.go $GORT/src/runtime/stubs.go $GORT/src/runtime/stubs2.go $GORT/src/runtime/stubs3.go $GORT/src/runtime/stubs_amd64.go $GORT/src/runtime/stubs_linux.go $GORT/src/runtime/symtab.go $GORT/src/runtime/sys_nonppc64x.go $GORT/src/runtime/sys_x86.go $GORT/src/runtime/time.go $GORT/src/runtime/time_nofake.go $GORT/src/runtime/timeasm.go $GORT/src/runtime/tls_stub.go $GORT/src/runtime/trace.go $GORT/src/runtime/traceback.go $GORT/src/runtime/type.go $GORT/src/runtime/typekind.go $GORT/src/runtime/unsafe.go $GORT/src/runtime/utf8.go $GORT/src/runtime/vdso_elf64.go $GORT/src/runtime/vdso_linux.go $GORT/src/runtime/vdso_linux_amd64.go $GORT/src/runtime/write_err.go
 cd $GORT/src/math
 $TOOL_DIR/asm -p math -trimpath "$WORK/${PKGS[math]}=>" -I $WORK/${PKGS[math]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[math]}/exp_amd64.o ./exp_amd64.s
-
 $TOOL_DIR/asm -p math -trimpath "$WORK/${PKGS[math]}=>" -I $WORK/${PKGS[math]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[math]}/floor_amd64.o ./floor_amd64.s
 $TOOL_DIR/asm -p math -trimpath "$WORK/${PKGS[math]}=>" -I $WORK/${PKGS[math]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[math]}/hypot_amd64.o ./hypot_amd64.s
 $TOOL_DIR/asm -p math -trimpath "$WORK/${PKGS[math]}=>" -I $WORK/${PKGS[math]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[math]}/log_amd64.o ./log_amd64.s
@@ -348,29 +355,30 @@ $TOOL_DIR/asm -p runtime -trimpath "$WORK/${PKGS[runtime]}=>" -I $WORK/${PKGS[ru
 $TOOL_DIR/pack r $WORK/${PKGS[runtime]}/_pkg_.a $WORK/${PKGS[runtime]}/asm.o $WORK/${PKGS[runtime]}/asm_amd64.o $WORK/${PKGS[runtime]}/duff_amd64.o $WORK/${PKGS[runtime]}/memclr_amd64.o $WORK/${PKGS[runtime]}/memmove_amd64.o $WORK/${PKGS[runtime]}/preempt_amd64.o $WORK/${PKGS[runtime]}/rt0_linux_amd64.o $WORK/${PKGS[runtime]}/sys_linux_amd64.o $WORK/${PKGS[runtime]}/time_linux_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime]}/_pkg_.a # internal
 
+
+mkdir -p $WORK/${PKGS[sync]}/
+make_importcfg sync
+cd $SRC_DIR
+cmpl sync 0 0 $GORT/src/sync/cond.go $GORT/src/sync/map.go $GORT/src/sync/mutex.go $GORT/src/sync/once.go $GORT/src/sync/pool.go $GORT/src/sync/poolqueue.go $GORT/src/sync/runtime.go $GORT/src/sync/runtime2.go $GORT/src/sync/rwmutex.go $GORT/src/sync/waitgroup.go
+$TOOL_DIR/buildid -w $WORK/${PKGS[sync]}/_pkg_.a # internal
+
 mkdir -p $WORK/${PKGS[internal/reflectlite]}/
 cat >$WORK/${PKGS[internal/reflectlite]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/internal/reflectlite
 $TOOL_DIR/asm -p internal/reflectlite -trimpath "$WORK/${PKGS[internal/reflectlite]}=>" -I $WORK/${PKGS[internal/reflectlite]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[internal/reflectlite]}/symabis ./asm.s
-mkdir -p $WORK/${PKGS[sync]}/
-make_importcfg sync
-cd $SRC_DIR
-cmpl sync 0 0 $GORT/src/sync/cond.go $GORT/src/sync/map.go $GORT/src/sync/mutex.go $GORT/src/sync/once.go $GORT/src/sync/pool.go $GORT/src/sync/poolqueue.go $GORT/src/sync/runtime.go $GORT/src/sync/runtime2.go $GORT/src/sync/rwmutex.go $GORT/src/sync/waitgroup.go
 make_importcfg internal/reflectlite
 cmpl_asm internal/reflectlite 0 0 $GORT/src/internal/reflectlite/swapper.go $GORT/src/internal/reflectlite/type.go $GORT/src/internal/reflectlite/value.go
 cmpl internal/reflectlite 0 0 $GORT/src/internal/reflectlite/swapper.go $GORT/src/internal/reflectlite/type.go $GORT/src/internal/reflectlite/value.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[sync]}/_pkg_.a # internal
+cd $GORT/src/internal/reflectlite
+$TOOL_DIR/asm -p internal/reflectlite -trimpath "$WORK/${PKGS[internal/reflectlite]}=>" -I $WORK/${PKGS[internal/reflectlite]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/reflectlite]}/asm.o ./asm.s
+$TOOL_DIR/pack r $WORK/${PKGS[internal/reflectlite]}/_pkg_.a $WORK/${PKGS[internal/reflectlite]}/asm.o # internal
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/reflectlite]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[internal/testlog]}/
 make_importcfg internal/testlog
 cmpl internal/testlog 0 1 $GORT/src/internal/testlog/exit.go $GORT/src/internal/testlog/log.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/testlog]}/_pkg_.a # internal
-
-cd $GORT/src/internal/reflectlite
-$TOOL_DIR/asm -p internal/reflectlite -trimpath "$WORK/${PKGS[internal/reflectlite]}=>" -I $WORK/${PKGS[internal/reflectlite]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -D GOAMD64_v1 -o $WORK/${PKGS[internal/reflectlite]}/asm.o ./asm.s
-$TOOL_DIR/pack r $WORK/${PKGS[internal/reflectlite]}/_pkg_.a $WORK/${PKGS[internal/reflectlite]}/asm.o # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/reflectlite]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[errors]}/
 mkdir -p $WORK/${PKGS[sort]}/
@@ -383,22 +391,26 @@ cmpl sort 0 1  $GORT/src/sort/search.go $GORT/src/sort/slice.go $GORT/src/sort/s
 $TOOL_DIR/buildid -w $WORK/${PKGS[errors]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[internal/safefilepath]}/
-mkdir -p $WORK/${PKGS[internal/oserror]}/
-mkdir -p $WORK/${PKGS[path]}/
 make_importcfg internal/safefilepath
-make_importcfg internal/oserror
-mkdir -p $WORK/${PKGS[io]}/
-make_importcfg path
 cmpl internal/safefilepath 0 1  $GORT/src/internal/safefilepath/path.go $GORT/src/internal/safefilepath/path_other.go
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/safefilepath]}/_pkg_.a # internal
+
+mkdir -p $WORK/${PKGS[internal/oserror]}/
+make_importcfg internal/oserror
 cmpl internal/oserror 0 1 $GORT/src/internal/oserror/errors.go
+$TOOL_DIR/buildid -w $WORK/${PKGS[internal/oserror]}/_pkg_.a # internal
+
+mkdir -p $WORK/${PKGS[path]}/
+make_importcfg path
 cmpl path 0 1 $GORT/src/path/match.go $GORT/src/path/path.go
+
+mkdir -p $WORK/${PKGS[io]}/
 make_importcfg io
 cmpl io 0 1 $GORT/src/io/io.go $GORT/src/io/multi.go $GORT/src/io/pipe.go
+
 mkdir -p $WORK/${PKGS[strconv]}/
 make_importcfg strconv
 cmpl strconv 0 1 $GORT/src/strconv/atob.go $GORT/src/strconv/atoc.go $GORT/src/strconv/atof.go $GORT/src/strconv/atoi.go $GORT/src/strconv/bytealg.go $GORT/src/strconv/ctoa.go $GORT/src/strconv/decimal.go $GORT/src/strconv/doc.go $GORT/src/strconv/eisel_lemire.go $GORT/src/strconv/ftoa.go $GORT/src/strconv/ftoaryu.go $GORT/src/strconv/isprint.go $GORT/src/strconv/itoa.go $GORT/src/strconv/quote.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/safefilepath]}/_pkg_.a # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/oserror]}/_pkg_.a # internal
 
 
 $TOOL_DIR/buildid -w $WORK/${PKGS[path]}/_pkg_.a # internal
