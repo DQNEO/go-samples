@@ -144,17 +144,19 @@ function cmpl() {
 pkg=$1
 plus=$2
 complete=$3
-files=$4
+shift;shift;shift;
+files="$@"
+
 splus=""
-scomplete=""
-if ["$plus" = "1"]; then
+if [ "$plus" = "1" ]; then
   splus="-+"
 fi
-if ["$complete" = "1"]; then
+scomplete=""
+if [ "$complete" = "1" ]; then
   scomplete="-complete"
 fi
 
-$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg  -std $scomplete  -buildid P7qFpguryEe_9bufASvc/P7qFpguryEe_9bufASvc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
+$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg  -std $splus $scomplete  -buildid P7qFpguryEe_9bufASvc/P7qFpguryEe_9bufASvc -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
 
 }
 
@@ -172,12 +174,11 @@ cmpl internal/unsafeheader 0 1 $GORT/src/internal/unsafeheader/unsafeheader.go
 cmpl internal/coverage/rtcov 1 1 $GORT/src/internal/coverage/rtcov/rtcov.go
 make_importcfg internal/goarch
 make_importcfg internal/goos
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/goarch]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/goarch]}=>" -p internal/goarch -std -+ -complete -buildid IeHgz3mN0XMxQJyLQgHG/IeHgz3mN0XMxQJyLQgHG -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/goarch]}/importcfg -pack $GORT/src/internal/goarch/goarch.go $GORT/src/internal/goarch/goarch_amd64.go $GORT/src/internal/goarch/zgoarch_amd64.go
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/goos]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/goos]}=>" -p internal/goos -std -+ -complete -buildid yhVHvx5gAuhGe0etJIbA/yhVHvx5gAuhGe0etJIbA -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/goos]}/importcfg -pack $GORT/src/internal/goos/goos.go $GORT/src/internal/goos/unix.go $GORT/src/internal/goos/zgoos_linux.go
+cmpl internal/goarch 1 1 $GORT/src/internal/goarch/goarch.go $GORT/src/internal/goarch/goarch_amd64.go $GORT/src/internal/goarch/zgoarch_amd64.go
+cmpl internal/goos 1 1 $GORT/src/internal/goos/goos.go $GORT/src/internal/goos/unix.go $GORT/src/internal/goos/zgoos_linux.go
 mkdir -p $WORK/${PKGS[internal/goexperiment]}/
 make_importcfg internal/goexperiment
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/goexperiment]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/goexperiment]}=>" -p internal/goexperiment -std -complete -buildid yMFIFNsS8SAX_RrWD2i8/yMFIFNsS8SAX_RrWD2i8 -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/goexperiment]}/importcfg -pack $GORT/src/internal/goexperiment/exp_arenas_off.go $GORT/src/internal/goexperiment/exp_boringcrypto_off.go $GORT/src/internal/goexperiment/exp_coverageredesign_on.go $GORT/src/internal/goexperiment/exp_fieldtrack_off.go $GORT/src/internal/goexperiment/exp_heapminimum512kib_off.go $GORT/src/internal/goexperiment/exp_pagetrace_off.go $GORT/src/internal/goexperiment/exp_preemptibleloops_off.go $GORT/src/internal/goexperiment/exp_regabiargs_on.go $GORT/src/internal/goexperiment/exp_regabiwrappers_on.go $GORT/src/internal/goexperiment/exp_staticlockranking_off.go $GORT/src/internal/goexperiment/exp_unified_on.go $GORT/src/internal/goexperiment/flags.go
-
+cmpl internal/goexperiment 0 1 $GORT/src/internal/goexperiment/exp_arenas_off.go $GORT/src/internal/goexperiment/exp_boringcrypto_off.go $GORT/src/internal/goexperiment/exp_coverageredesign_on.go $GORT/src/internal/goexperiment/exp_fieldtrack_off.go $GORT/src/internal/goexperiment/exp_heapminimum512kib_off.go $GORT/src/internal/goexperiment/exp_pagetrace_off.go $GORT/src/internal/goexperiment/exp_preemptibleloops_off.go $GORT/src/internal/goexperiment/exp_regabiargs_on.go $GORT/src/internal/goexperiment/exp_regabiwrappers_on.go $GORT/src/internal/goexperiment/exp_staticlockranking_off.go $GORT/src/internal/goexperiment/exp_unified_on.go $GORT/src/internal/goexperiment/flags.go
 mkdir -p $WORK/${PKGS[runtime/internal/syscall]}/
 mkdir -p $WORK/${PKGS[internal/cpu]}/
 make_importcfg runtime/internal/syscall
@@ -206,8 +207,10 @@ make_importcfg internal/itoa
 make_importcfg unicode/utf8
 mkdir -p $WORK/${PKGS[math/bits]}/
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/${PKGS[unicode/utf8]}/_pkg_.a -trimpath "$WORK/${PKGS[unicode/utf8]}=>" -p unicode/utf8 -std -complete -buildid cSCUZ94vs3WynnuPq7bO/cSCUZ94vs3WynnuPq7bO -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[unicode/utf8]}/importcfg -pack $GORT/src/unicode/utf8/utf8.go
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/itoa]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/itoa]}=>" -p internal/itoa -std -complete -buildid KywV8ckBASs47DioyK2u/KywV8ckBASs47DioyK2u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/itoa]}/importcfg -pack $GORT/src/internal/itoa/itoa.go
+#$TOOL_DIR/compile -o $WORK/${PKGS[unicode/utf8]}/_pkg_.a -trimpath "$WORK/${PKGS[unicode/utf8]}=>" -p unicode/utf8 -std -complete -buildid cSCUZ94vs3WynnuPq7bO/cSCUZ94vs3WynnuPq7bO -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[unicode/utf8]}/importcfg -pack $GORT/src/unicode/utf8/utf8.go
+#$TOOL_DIR/compile -o $WORK/${PKGS[internal/itoa]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/itoa]}=>" -p internal/itoa -std -complete -buildid KywV8ckBASs47DioyK2u/KywV8ckBASs47DioyK2u -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/itoa]}/importcfg -pack $GORT/src/internal/itoa/itoa.go
+cmpl unicode/utf8 0 1 $GORT/src/unicode/utf8/utf8.go
+cmpl internal/itoa 0 1 $GORT/src/internal/itoa/itoa.go
 mkdir -p $WORK/${PKGS[internal/abi]}/
 make_importcfg math/bits
 $TOOL_DIR/compile -o $WORK/${PKGS[math/bits]}/_pkg_.a -trimpath "$WORK/${PKGS[math/bits]}=>" -p math/bits -std -complete -buildid dCrtqElNlXZukOS2aC7Q/dCrtqElNlXZukOS2aC7Q -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[math/bits]}/importcfg -pack $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
