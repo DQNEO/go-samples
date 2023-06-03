@@ -110,6 +110,24 @@ declare -A FILES=(
 [internal/fmtsort]="sort.go"
 )
 
+
+function build_pkg_f() {
+pkgname=$1
+runtime=$2
+complete=$3
+shift;shift;shift;
+files="$@"
+bdir=${PKGS[$pkgname]}
+wdir=$WORK/$bdir
+
+mkdir -p $wdir/
+make_importcfg $pkgname
+
+cmpl $pkgname $runtime $complete $files
+$TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
+}
+
+
 function build_pkg() {
 pkgname=$1
 runtime=$2
@@ -185,23 +203,12 @@ $TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 
-mkdir -p $WORK/${PKGS[internal/coverage/rtcov]}/
-mkdir -p $WORK/${PKGS[internal/unsafeheader]}/
-mkdir -p $WORK/${PKGS[internal/goarch]}/
-make_importcfg internal/coverage/rtcov
+build_pkg_f internal/coverage/rtcov 1 1 $GORT/src/internal/coverage/rtcov/rtcov.go
+build_pkg_f internal/unsafeheader 0 1 $GORT/src/internal/unsafeheader/unsafeheader.go
+build_pkg_f internal/goarch 1 1 $GORT/src/internal/goarch/goarch.go $GORT/src/internal/goarch/goarch_amd64.go $GORT/src/internal/goarch/zgoarch_amd64.go
+build_pkg_f internal/goos 1 1 $GORT/src/internal/goos/goos.go $GORT/src/internal/goos/unix.go $GORT/src/internal/goos/zgoos_linux.go
+build_pkg_f internal/goexperiment 0 1 $GORT/src/internal/goexperiment/exp_arenas_off.go $GORT/src/internal/goexperiment/exp_boringcrypto_off.go $GORT/src/internal/goexperiment/exp_coverageredesign_on.go $GORT/src/internal/goexperiment/exp_fieldtrack_off.go $GORT/src/internal/goexperiment/exp_heapminimum512kib_off.go $GORT/src/internal/goexperiment/exp_pagetrace_off.go $GORT/src/internal/goexperiment/exp_preemptibleloops_off.go $GORT/src/internal/goexperiment/exp_regabiargs_on.go $GORT/src/internal/goexperiment/exp_regabiwrappers_on.go $GORT/src/internal/goexperiment/exp_staticlockranking_off.go $GORT/src/internal/goexperiment/exp_unified_on.go $GORT/src/internal/goexperiment/flags.go
 
-mkdir -p $WORK/${PKGS[internal/goos]}/
-make_importcfg internal/unsafeheader
-cd $SRC_DIR
-cmpl internal/unsafeheader 0 1 $GORT/src/internal/unsafeheader/unsafeheader.go
-cmpl internal/coverage/rtcov 1 1 $GORT/src/internal/coverage/rtcov/rtcov.go
-make_importcfg internal/goarch
-make_importcfg internal/goos
-cmpl internal/goarch 1 1 $GORT/src/internal/goarch/goarch.go $GORT/src/internal/goarch/goarch_amd64.go $GORT/src/internal/goarch/zgoarch_amd64.go
-cmpl internal/goos 1 1 $GORT/src/internal/goos/goos.go $GORT/src/internal/goos/unix.go $GORT/src/internal/goos/zgoos_linux.go
-mkdir -p $WORK/${PKGS[internal/goexperiment]}/
-make_importcfg internal/goexperiment
-cmpl internal/goexperiment 0 1 $GORT/src/internal/goexperiment/exp_arenas_off.go $GORT/src/internal/goexperiment/exp_boringcrypto_off.go $GORT/src/internal/goexperiment/exp_coverageredesign_on.go $GORT/src/internal/goexperiment/exp_fieldtrack_off.go $GORT/src/internal/goexperiment/exp_heapminimum512kib_off.go $GORT/src/internal/goexperiment/exp_pagetrace_off.go $GORT/src/internal/goexperiment/exp_preemptibleloops_off.go $GORT/src/internal/goexperiment/exp_regabiargs_on.go $GORT/src/internal/goexperiment/exp_regabiwrappers_on.go $GORT/src/internal/goexperiment/exp_staticlockranking_off.go $GORT/src/internal/goexperiment/exp_unified_on.go $GORT/src/internal/goexperiment/flags.go
 mkdir -p $WORK/${PKGS[runtime/internal/syscall]}/
 mkdir -p $WORK/${PKGS[internal/cpu]}/
 make_importcfg runtime/internal/syscall
@@ -216,10 +223,6 @@ cat >$WORK/${PKGS[runtime/internal/atomic]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/asm -p runtime/internal/atomic -trimpath "$WORK/${PKGS[runtime/internal/atomic]}=>" -I $WORK/${PKGS[runtime/internal/atomic]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[runtime/internal/atomic]}/symabis ./atomic_amd64.s
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/goexperiment]}/_pkg_.a # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/goos]}/_pkg_.a # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/unsafeheader]}/_pkg_.a # internal
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/goarch]}/_pkg_.a # internal
 
 
 
@@ -246,7 +249,6 @@ cmpl_asm internal/cpu 1 0 $GORT/src/internal/cpu/cpu.go $GORT/src/internal/cpu/c
 cmpl_asm runtime/internal/syscall 1 0 $GORT/src/runtime/internal/syscall/defs_linux.go $GORT/src/runtime/internal/syscall/defs_linux_amd64.go $GORT/src/runtime/internal/syscall/syscall_linux.go
 make_importcfg runtime/internal/atomic
 cmpl_asm runtime/internal/atomic 1 0 $GORT/src/runtime/internal/atomic/atomic_amd64.go $GORT/src/runtime/internal/atomic/doc.go $GORT/src/runtime/internal/atomic/stubs.go $GORT/src/runtime/internal/atomic/types.go $GORT/src/runtime/internal/atomic/types_64bit.go $GORT/src/runtime/internal/atomic/unaligned.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/coverage/rtcov]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[runtime/internal/math]}/
 make_importcfg internal/abi
