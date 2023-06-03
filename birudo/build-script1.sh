@@ -249,20 +249,9 @@ cd $GORT/src/runtime/internal/atomic
 $TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a $WORK/${PKGS[runtime/internal/atomic]}/atomic_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/atomic]}/_pkg_.a # internal
 
-mkdir -p $WORK/${PKGS[internal/itoa]}/
-make_importcfg internal/itoa
-cmpl internal/itoa 0 1 $GORT/src/internal/itoa/itoa.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[internal/itoa]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[unicode/utf8]}/
-make_importcfg unicode/utf8
-cmpl unicode/utf8 0 1 $GORT/src/unicode/utf8/utf8.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[unicode/utf8]}/_pkg_.a # internal
-
-mkdir -p $WORK/${PKGS[math/bits]}/
-make_importcfg math/bits
-cmpl math/bits 0 1 $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[math/bits]}/_pkg_.a # internal
+build_pkg_f internal/itoa 0 1 $GORT/src/internal/itoa/itoa.go
+build_pkg_f unicode/utf8 0 1 $GORT/src/unicode/utf8/utf8.go
+build_pkg_f math/bits 0 1 $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
 
 mkdir -p $WORK/${PKGS[internal/abi]}/
 cat >$WORK/${PKGS[internal/abi]}/go_asm.h << EOF # internal
@@ -277,10 +266,7 @@ cd $GORT/src/internal/abi
 $TOOL_DIR/pack r $WORK/${PKGS[internal/abi]}/_pkg_.a $WORK/${PKGS[internal/abi]}/abi_test.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[internal/abi]}/_pkg_.a # internal
 
-mkdir -p $WORK/${PKGS[runtime/internal/math]}/
-make_importcfg runtime/internal/math
-cmpl runtime/internal/math 1 1 $GORT/src/runtime/internal/math/math.go
-$TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/math]}/_pkg_.a # internal
+build_pkg_f runtime/internal/math 1 1 $GORT/src/runtime/internal/math/math.go
 
 mkdir -p $WORK/${PKGS[runtime/internal/sys]}/
 make_importcfg runtime/internal/sys
