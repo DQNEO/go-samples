@@ -61,8 +61,8 @@ declare -A DEPENDS=(
 [sync]="internal/race runtime sync/atomic"
 [internal/reflectlite]="internal/goarch internal/unsafeheader runtime"
 [internal/testlog]="sync sync/atomic"
-
-
+[errors]="internal/reflectlite"
+[sort]="internal/reflectlite math/bits"
 
 [internal/coverage/rtcov]=""
 [internal/unsafeheader]=""
@@ -369,17 +369,10 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[internal/reflectlite]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[errors]}/
 mkdir -p $WORK/${PKGS[sort]}/
-cat >$WORK/${PKGS[errors]}/importcfg << EOF # internal
-# import config
-packagefile internal/reflectlite=$WORK/${PKGS[internal/reflectlite]}/_pkg_.a
-EOF
+make_importcfg errors
 cd $SRC_DIR
 $TOOL_DIR/compile -o $WORK/${PKGS[errors]}/_pkg_.a -trimpath "$WORK/${PKGS[errors]}=>" -p errors -std -complete -buildid F_mcCqBziAv01tav5M2I/F_mcCqBziAv01tav5M2I -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[errors]}/importcfg -pack $GORT/src/errors/errors.go $GORT/src/errors/join.go $GORT/src/errors/wrap.go
-cat >$WORK/${PKGS[sort]}/importcfg << EOF # internal
-# import config
-packagefile internal/reflectlite=$WORK/${PKGS[internal/reflectlite]}/_pkg_.a
-packagefile math/bits=$WORK/${PKGS[math/bits]}/_pkg_.a
-EOF
+make_importcfg sort
 $TOOL_DIR/compile -o $WORK/${PKGS[sort]}/_pkg_.a -trimpath "$WORK/${PKGS[sort]}=>" -p sort -std -complete -buildid RPytz-InhRnbWmq4E73g/RPytz-InhRnbWmq4E73g -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[sort]}/importcfg -pack $GORT/src/sort/search.go $GORT/src/sort/slice.go $GORT/src/sort/sort.go $GORT/src/sort/zsortfunc.go $GORT/src/sort/zsortinterface.go
 $TOOL_DIR/buildid -w $WORK/${PKGS[errors]}/_pkg_.a # internal
 
