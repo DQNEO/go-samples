@@ -174,12 +174,14 @@ if [ "$runtime" = "1" ]; then
   sruntime="-+"
 fi
 
+scomplete=""
+local asmopts="-symabis $WORK/${PKGS[$pkg]}/symabis -asmhdr $WORK/${PKGS[$pkg]}/go_asm.h"
 $TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>" -p $pkg\
- -std $sruntime $B\
- -symabis $WORK/${PKGS[$pkg]}/symabis \
+ -std $sruntime $scomplete $B \
  -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
- -pack -asmhdr $WORK/${PKGS[$pkg]}/go_asm.h $files
-
+ -pack \
+ $asmopts \
+ $files
 }
 
 function cmpl() {
@@ -199,8 +201,10 @@ if [ "$complete" = "1" ]; then
 fi
 
 $TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg\
- -std $sruntime $scomplete  $B -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
- -pack $files
+ -std $sruntime $scomplete  $B \
+ -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
+ -pack \
+ $files
 }
 
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
