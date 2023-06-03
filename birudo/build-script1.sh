@@ -8,6 +8,7 @@ SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=/usr/local/opt/go/libexec
 TOOL_DIR=$GORT/pkg/tool/darwin_amd64
 CACHE_DIR=/Users/DQNEO/Library/Caches/go-build
+BUILDID=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 
 declare -A PKGS=(
 [errors]="b003"
@@ -122,8 +123,7 @@ for i in ${FILES[$pkgname]}
 do
   files="$files $GORT/src/$pkgname/$i"
 done
-local buildid=abcdefghijklmnopqrst/abcdefghijklmnopqrst
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete -buildid $buildid -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete -buildid $BUILDID -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 }
 
@@ -155,10 +155,9 @@ local scomplete=""
 if [ "$complete" = "1" ]; then
   scomplete="-complete"
 fi
-local buildid=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 
 $TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg \
- -std $sruntime $scomplete  -buildid $buildid -goversion go1.20.4 \
+ -std $sruntime $scomplete  -buildid $BUILDID -goversion go1.20.4 \
  -symabis $WORK/${PKGS[$pkg]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
  -pack -asmhdr $WORK/${PKGS[$pkg]}/go_asm.h $files
 
@@ -179,10 +178,9 @@ local scomplete=""
 if [ "$complete" = "1" ]; then
   scomplete="-complete"
 fi
-local buildid=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 
 $TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg \
- -std $sruntime $scomplete  -buildid $buildid -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
+ -std $sruntime $scomplete  -buildid $BUILDID -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg  -pack $files
 
 }
 
@@ -477,14 +475,14 @@ $TOOL_DIR/buildid -w $WORK/${PKGS[time]}/_pkg_.a # internal
 
 mkdir -p $WORK/${PKGS[io/fs]}/
 make_importcfg io/fs
-$TOOL_DIR/compile -o $WORK/${PKGS[io/fs]}/_pkg_.a -trimpath "$WORK/${PKGS[io/fs]}=>" -p io/fs -std -complete -buildid EvJOhnLtLuHzGX4dFlcg/EvJOhnLtLuHzGX4dFlcg -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[io/fs]}/importcfg -pack $GORT/src/io/fs/fs.go $GORT/src/io/fs/glob.go $GORT/src/io/fs/readdir.go $GORT/src/io/fs/readfile.go $GORT/src/io/fs/stat.go $GORT/src/io/fs/sub.go $GORT/src/io/fs/walk.go
+cmpl io/fs 0 1 $GORT/src/io/fs/fs.go $GORT/src/io/fs/glob.go $GORT/src/io/fs/readdir.go $GORT/src/io/fs/readfile.go $GORT/src/io/fs/stat.go $GORT/src/io/fs/sub.go $GORT/src/io/fs/walk.go
 cd $GORT/src/reflect
 $TOOL_DIR/asm -p reflect -trimpath "$WORK/${PKGS[reflect]}=>" -I $WORK/${PKGS[reflect]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[reflect]}/asm_amd64.o ./asm_amd64.s
 
 mkdir -p $WORK/${PKGS[internal/poll]}/
 make_importcfg internal/poll
 cd $SRC_DIR
-$TOOL_DIR/compile -o $WORK/${PKGS[internal/poll]}/_pkg_.a -trimpath "$WORK/${PKGS[internal/poll]}=>" -p internal/poll -std -buildid z1T_88ivNUFrGnA9-Iwx/z1T_88ivNUFrGnA9-Iwx -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[internal/poll]}/importcfg -pack $GORT/src/internal/poll/copy_file_range_linux.go $GORT/src/internal/poll/errno_unix.go $GORT/src/internal/poll/fcntl_syscall.go $GORT/src/internal/poll/fd.go $GORT/src/internal/poll/fd_fsync_posix.go $GORT/src/internal/poll/fd_mutex.go $GORT/src/internal/poll/fd_poll_runtime.go $GORT/src/internal/poll/fd_posix.go $GORT/src/internal/poll/fd_unix.go $GORT/src/internal/poll/fd_writev_unix.go $GORT/src/internal/poll/hook_cloexec.go $GORT/src/internal/poll/hook_unix.go $GORT/src/internal/poll/iovec_unix.go $GORT/src/internal/poll/sendfile_linux.go $GORT/src/internal/poll/sock_cloexec.go $GORT/src/internal/poll/sockopt.go $GORT/src/internal/poll/sockopt_linux.go $GORT/src/internal/poll/sockopt_unix.go $GORT/src/internal/poll/sockoptip.go $GORT/src/internal/poll/splice_linux.go $GORT/src/internal/poll/writev.go
+cmpl internal/poll 0 0 $GORT/src/internal/poll/copy_file_range_linux.go $GORT/src/internal/poll/errno_unix.go $GORT/src/internal/poll/fcntl_syscall.go $GORT/src/internal/poll/fd.go $GORT/src/internal/poll/fd_fsync_posix.go $GORT/src/internal/poll/fd_mutex.go $GORT/src/internal/poll/fd_poll_runtime.go $GORT/src/internal/poll/fd_posix.go $GORT/src/internal/poll/fd_unix.go $GORT/src/internal/poll/fd_writev_unix.go $GORT/src/internal/poll/hook_cloexec.go $GORT/src/internal/poll/hook_unix.go $GORT/src/internal/poll/iovec_unix.go $GORT/src/internal/poll/sendfile_linux.go $GORT/src/internal/poll/sock_cloexec.go $GORT/src/internal/poll/sockopt.go $GORT/src/internal/poll/sockopt_linux.go $GORT/src/internal/poll/sockopt_unix.go $GORT/src/internal/poll/sockoptip.go $GORT/src/internal/poll/splice_linux.go $GORT/src/internal/poll/writev.go
 cd $GORT/src/reflect
 $TOOL_DIR/pack r $WORK/${PKGS[reflect]}/_pkg_.a $WORK/${PKGS[reflect]}/asm_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[reflect]}/_pkg_.a # internal
@@ -502,7 +500,7 @@ wdir=$WORK/${PKGS[main]}
 mkdir -p $wdir/
 make_importcfg main
 
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p main -lang=go1.20 -complete -buildid aHxht5d7JGm1qJULUhhT/aHxht5d7JGm1qJULUhhT -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack ./main.go ./sum.go
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p main -lang=go1.20 -complete -buildid $BUILDID -goversion go1.20.4 -c=4 -nolocalimports -importcfg $wdir/importcfg -pack ./main.go ./sum.go
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 cat >$wdir/importcfg.link << EOF # internal
