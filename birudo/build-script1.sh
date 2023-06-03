@@ -212,12 +212,12 @@ build_pkg_f internal/goos 1 1 $GORT/src/internal/goos/goos.go $GORT/src/internal
 build_pkg_f internal/goexperiment 0 1 $GORT/src/internal/goexperiment/exp_arenas_off.go $GORT/src/internal/goexperiment/exp_boringcrypto_off.go $GORT/src/internal/goexperiment/exp_coverageredesign_on.go $GORT/src/internal/goexperiment/exp_fieldtrack_off.go $GORT/src/internal/goexperiment/exp_heapminimum512kib_off.go $GORT/src/internal/goexperiment/exp_pagetrace_off.go $GORT/src/internal/goexperiment/exp_preemptibleloops_off.go $GORT/src/internal/goexperiment/exp_regabiargs_on.go $GORT/src/internal/goexperiment/exp_regabiwrappers_on.go $GORT/src/internal/goexperiment/exp_staticlockranking_off.go $GORT/src/internal/goexperiment/exp_unified_on.go $GORT/src/internal/goexperiment/flags.go
 
 # internal/syscall
-cd $GORT/src/runtime/internal/syscall
 mkdir -p $WORK/${PKGS[runtime/internal/syscall]}/
 make_importcfg runtime/internal/syscall
-$TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[runtime/internal/syscall]}/symabis ./asm_linux_amd64.s
+cd $GORT/src/runtime/internal/syscall # crucial
+$TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[runtime/internal/syscall]}/symabis            ./asm_linux_amd64.s
 cmpl_asm runtime/internal/syscall 1 0 $GORT/src/runtime/internal/syscall/defs_linux.go $GORT/src/runtime/internal/syscall/defs_linux_amd64.go $GORT/src/runtime/internal/syscall/syscall_linux.go
-$TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -o $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o ./asm_linux_amd64.s
+$TOOL_DIR/asm -p runtime/internal/syscall -trimpath "$WORK/${PKGS[runtime/internal/syscall]}=>" -I $WORK/${PKGS[runtime/internal/syscall]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1             -o $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o ./asm_linux_amd64.s
 $TOOL_DIR/pack r $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a $WORK/${PKGS[runtime/internal/syscall]}/asm_linux_amd64.o # internal
 $TOOL_DIR/buildid -w $WORK/${PKGS[runtime/internal/syscall]}/_pkg_.a # internal
 
