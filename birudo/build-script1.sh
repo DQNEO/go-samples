@@ -212,7 +212,7 @@ cmpl unicode/utf8 0 1 $GORT/src/unicode/utf8/utf8.go
 cmpl internal/itoa 0 1 $GORT/src/internal/itoa/itoa.go
 mkdir -p $WORK/${PKGS[internal/abi]}/
 make_importcfg math/bits
-$TOOL_DIR/compile -o $WORK/${PKGS[math/bits]}/_pkg_.a -trimpath "$WORK/${PKGS[math/bits]}=>" -p math/bits -std -complete -buildid dCrtqElNlXZukOS2aC7Q/dCrtqElNlXZukOS2aC7Q -goversion go1.20.4 -c=4 -nolocalimports -importcfg $WORK/${PKGS[math/bits]}/importcfg -pack $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
+cmpl math/bits 0 1 $GORT/src/math/bits/bits.go $GORT/src/math/bits/bits_errors.go $GORT/src/math/bits/bits_tables.go
 cat >$WORK/${PKGS[internal/abi]}/go_asm.h << EOF # internal
 EOF
 cd $GORT/src/internal/abi
