@@ -124,7 +124,9 @@ for i in ${FILES[$pkgname]}
 do
   files="$files $GORT/src/$pkgname/$i"
 done
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname -std $complete $B -c=4 -nolocalimports -importcfg $wdir/importcfg -pack $files
+$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p $pkgname \
+ -std $complete $B -c=4 -nolocalimports -importcfg $wdir/importcfg \
+ -pack $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 }
 
@@ -157,8 +159,8 @@ if [ "$complete" = "1" ]; then
   scomplete="-complete"
 fi
 
-$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg \
- -std $sruntime $scomplete  $B \
+$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>" -p $pkg\
+ -std $sruntime $scomplete $B\
  -symabis $WORK/${PKGS[$pkg]}/symabis -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
  -pack -asmhdr $WORK/${PKGS[$pkg]}/go_asm.h $files
 
