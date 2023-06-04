@@ -154,15 +154,16 @@ fi
 if [ "$std" = "1" ]; then
   sstd="-std"
 fi
+if [ "$pkg" = "main" ]; then
+  slang="-lang=go1.20"
+fi
 
-local otheropts=" $sstd $sruntime $scomplete $asmopts "
+local otheropts=" $slang $sstd $sruntime $scomplete $asmopts "
 local pkgopts=$(get_package_opts $pkg)
 $TOOL_DIR/compile $commonopts $pkgopts $otheropts $gofiles
-
 if [[ -n $afiles ]]; then
   append_asm $pkg $afiles
 fi
-
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 }
 
@@ -270,21 +271,46 @@ function doLink() {
 pkg=main
 wdir=$WORK/${PKGS[$pkg]}
 
-files="./main.go ./sum.go"
+gofiles="./main.go ./sum.go"
+local afiles=""
 
 mkdir -p $wdir/
 make_importcfg $pkg
+local complete="1"
+local runtime="0"
+local std="1"
 
 local asmopts=""
 local sruntime=""
-local scomplete="-complete"
+local scomplete=""
 local sstd=""
-local slang="-lang=go1.20"
+local slang=""
+
+if [[ -n $afiles ]]; then
+  complete="0"
+  gen_symabis $pkg $afiles
+  asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
+fi
+
+if [ "$runtime" = "1" ]; then
+  sruntime="-+"
+fi
+if [ "$complete" = "1" ]; then
+  scomplete="-complete"
+fi
+if [ "$std" = "1" ]; then
+  sstd="-std"
+fi
+if [ "$pkg" = "main" ]; then
+  slang="-lang=go1.20"
+fi
 
 local otheropts=" $slang $sstd $sruntime $scomplete $asmopts "
 local pkgopts=$(get_package_opts $pkg)
-$TOOL_DIR/compile $commonopts $pkgopts $otheropts $files
-
+$TOOL_DIR/compile $commonopts $pkgopts $otheropts $gofiles
+if [[ -n $afiles ]]; then
+  append_asm $pkg $afiles
+fi
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 local pkgsfiles=""
