@@ -1,20 +1,23 @@
-birudo: *.go Makefile
-	GOOS=linux GOARCH=amd64 go build .
+birudo0: *.go Makefile
+	GOOS=linux GOARCH=amd64 go build -o $@ .
 
-run: birudo
-	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./birudo
+run0: birudo0
+	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./$<
 
 build-script0.sh:*.go Makefile
-	GOOS=linux GOARCH=amd64 go build -x -a . 2>$@
+	GOOS=linux GOARCH=amd64 go build -o birudo1 -n -x -a -p 1 . 2>$@
 
-birudo-by-script0: build-script0.sh
-	rm -f birudo
-	GOOS=linux GOARCH=amd64 bash $<
-	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./birudo
+birudo1: build-script0.sh
+	cat $< | sed -e "s/'EOF'/EOF/g" | GOOS=linux GOARCH=amd64 WORK=/tmp/go-build-20230606 bash -eux
 
-birudo-by-script1: build-script1.sh
+run1: birudo1
+	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./$<
+
+birudo2: build-script1.sh *.go
 	./$<
-	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./birudo
+
+run2: birudo2
+	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./$<
 
 clean:
-	rm -f birudo
+	rm -f birudo birudo0 birudo1 birudo2

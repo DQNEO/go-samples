@@ -4,6 +4,7 @@ set -eux
 export GOOS=linux
 export GOARCH=amd64
 WORK=/tmp/go-build1234567
+OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=/usr/local/opt/go/libexec
 TOOL_DIR=$GORT/pkg/tool/darwin_amd64
@@ -253,13 +254,13 @@ mkdir -p $wdir/exe/
 cd .
 $TOOL_DIR/link -o $wdir/exe/a.out -importcfg $wdir/importcfg.link -buildmode=exe -buildid=yekYyg_HZMgX517VPpiO/aHxht5d7JGm1qJULUhhT/ct0PU8-vieH10gtMxGeC/yekYyg_HZMgX517VPpiO -extld=cc $wdir/_pkg_.a
 $TOOL_DIR/buildid -w $wdir/exe/a.out # internal
-mv $wdir/exe/a.out birudo
+mv $wdir/exe/a.out $OUT_FILE
 rm -r $wdir/
 }
 
 # main procedure
 
-rm -f birudo
+rm -f $OUT_FILE
 
 #         pkg                  r c files
 build_std_pkg internal/coverage/rtcov  1 1 rtcov.go
