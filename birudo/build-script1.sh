@@ -128,15 +128,16 @@ mkdir -p $wdir/
 make_importcfg $pkg
 
 local asmopts=""
+local sruntime=""
+local scomplete=""
+local sstd="-std"
+local slang=""
 
 if [[ -n $afiles ]]; then
   complete="0"
   gen_symabis $pkg $afiles
   asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
 fi
-
-local sruntime=""
-local scomplete=""
 
 if [ "$runtime" = "1" ]; then
   sruntime="-+"
@@ -145,7 +146,7 @@ if [ "$complete" = "1" ]; then
   scomplete="-complete"
 fi
 
-local otheropts=" -std $sruntime $scomplete $asmopts "
+local otheropts=" $sstd $sruntime $scomplete $asmopts "
 local pkgopts=$(get_package_opts $pkg)
 $TOOL_DIR/compile $commonopts $pkgopts $otheropts $gofiles
 
@@ -261,11 +262,18 @@ function doLink() {
 pkg=main
 wdir=$WORK/${PKGS[$pkg]}
 
-mkdir -p $wdir/
-make_importcfg $pkg
 files="./main.go ./sum.go"
 
-local otheropts=" -complete -lang=go1.20 "
+mkdir -p $wdir/
+make_importcfg $pkg
+
+local asmopts=""
+local sruntime=""
+local scomplete="-complete"
+local sstd=""
+local slang="-lang=go1.20"
+
+local otheropts=" $slang $sstd $sruntime $scomplete $asmopts "
 local pkgopts=$(get_package_opts $pkg)
 $TOOL_DIR/compile $commonopts $pkgopts $otheropts $files
 
