@@ -103,12 +103,6 @@ declare -A DEPENDS=(
 
 )
 
-declare -A FILES=(
-[fmt]="doc.go errors.go format.go print.go scan.go"
-[os]="dir.go dir_unix.go dirent_linux.go endian_little.go env.go error.go error_errno.go error_posix.go exec.go exec_posix.go exec_unix.go executable.go executable_procfs.go file.go file_posix.go file_unix.go getwd.go path.go path_unix.go pipe2_unix.go proc.go rawconn.go readfrom_linux.go removeall_at.go stat.go stat_linux.go stat_unix.go sticky_notbsd.go str.go sys.go sys_linux.go sys_unix.go tempfile.go types.go types_unix.go wait_waitid.go"
-[internal/fmtsort]="sort.go"
-)
-
 function build_pkg_asm() {
 pkgname=$1
 runtime=$2
@@ -163,18 +157,18 @@ function build_pkg() {
 pkgname=$1
 runtime=$2
 complete=$3
-
+shift;shift;shift;
+infiles="$@"
+files=""
+for i in $infiles
+do
+  files="$files $GORT/src/$pkgname/$i"
+done
 bdir=${PKGS[$pkgname]}
 wdir=$WORK/$bdir
 
 mkdir -p $wdir/
 make_importcfg $pkgname
-
-files=""
-for i in ${FILES[$pkgname]}
-do
-  files="$files $GORT/src/$pkgname/$i"
-done
 
 cmpl $pkgname $runtime $complete $files
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
@@ -307,14 +301,13 @@ build_pkg_f internal/syscall/unix 0 1 $GORT/src/internal/syscall/unix/at.go $GOR
 build_pkg_f time 0 0  $GORT/src/time/format.go $GORT/src/time/format_rfc3339.go $GORT/src/time/sleep.go $GORT/src/time/sys_unix.go $GORT/src/time/tick.go $GORT/src/time/time.go $GORT/src/time/zoneinfo.go $GORT/src/time/zoneinfo_goroot.go $GORT/src/time/zoneinfo_read.go $GORT/src/time/zoneinfo_unix.go
 build_pkg_f io/fs 0 1 $GORT/src/io/fs/fs.go $GORT/src/io/fs/glob.go $GORT/src/io/fs/readdir.go $GORT/src/io/fs/readfile.go $GORT/src/io/fs/stat.go $GORT/src/io/fs/sub.go $GORT/src/io/fs/walk.go
 build_pkg_f internal/poll 0 0 $GORT/src/internal/poll/copy_file_range_linux.go $GORT/src/internal/poll/errno_unix.go $GORT/src/internal/poll/fcntl_syscall.go $GORT/src/internal/poll/fd.go $GORT/src/internal/poll/fd_fsync_posix.go $GORT/src/internal/poll/fd_mutex.go $GORT/src/internal/poll/fd_poll_runtime.go $GORT/src/internal/poll/fd_posix.go $GORT/src/internal/poll/fd_unix.go $GORT/src/internal/poll/fd_writev_unix.go $GORT/src/internal/poll/hook_cloexec.go $GORT/src/internal/poll/hook_unix.go $GORT/src/internal/poll/iovec_unix.go $GORT/src/internal/poll/sendfile_linux.go $GORT/src/internal/poll/sock_cloexec.go $GORT/src/internal/poll/sockopt.go $GORT/src/internal/poll/sockopt_linux.go $GORT/src/internal/poll/sockopt_unix.go $GORT/src/internal/poll/sockoptip.go $GORT/src/internal/poll/splice_linux.go $GORT/src/internal/poll/writev.go
-build_pkg internal/fmtsort 0 1
-
-cd $SRC_DIR
-build_pkg os 0 0
-build_pkg fmt 0 1
+build_pkg internal/fmtsort 0 1 sort.go
+build_pkg os 0 0 dir.go dir_unix.go dirent_linux.go endian_little.go env.go error.go error_errno.go error_posix.go exec.go exec_posix.go exec_unix.go executable.go executable_procfs.go file.go file_posix.go file_unix.go getwd.go path.go path_unix.go pipe2_unix.go proc.go rawconn.go readfrom_linux.go removeall_at.go stat.go stat_linux.go stat_unix.go sticky_notbsd.go str.go sys.go sys_linux.go sys_unix.go tempfile.go types.go types_unix.go wait_waitid.go
+build_pkg fmt 0 1 doc.go errors.go format.go print.go scan.go
 
 ## Final output
 function doLink() {
+  cd $SRC_DIR
 wdir=$WORK/${PKGS[main]}
 mkdir -p $wdir/
 make_importcfg main
