@@ -127,10 +127,13 @@ make_importcfg $pkg
 
 if [[ -n $afiles ]]; then
   gen_symabis $pkg $afiles
-  compile $pkg 1 $runtime 0 $gofiles
+  complete="0"
+  asm="1"
+  compile $pkg $asm $runtime $complete $gofiles
   append_asm $pkg $afiles
 else
-  compile $pkg 0 $runtime $complete $gofiles
+  asm="0"
+  compile $pkg $asm $runtime $complete $gofiles
 fi
 
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
@@ -202,12 +205,11 @@ function get_package_opts() {
 
 function compile() {
 pkg=$1
-asm=$2
+local asm=$2
 runtime=$3
 complete=$4
 shift;shift;shift;shift;
-files="$@"
-wdir=$WORK/${PKGS[$pkg]}
+local gofiles="$@"
 
 local sruntime=""
 if [ "$runtime" = "1" ]; then
@@ -221,12 +223,13 @@ local asmopts=""
 
 if [[ $asm = "1" ]]; then
   scomplete=""
+  wdir=$WORK/${PKGS[$pkg]}
   asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
 fi
-local sstd="-std"
 
+local otheropts=" -std $sruntime $scomplete $asmopts "
 local pkgopts=$(get_package_opts $pkg)
-_compile $pkgopts $sstd $sruntime $scomplete $asmopts $files
+_compile $pkgopts $otheropts $gofiles
 }
 
 rm -f birudo
@@ -283,9 +286,9 @@ mkdir -p $wdir/
 make_importcfg $pkg
 files="./main.go ./sum.go"
 
+local otheropts=" -complete -lang=go1.20 "
 local pkgopts=$(get_package_opts $pkg)
-_compile $pkgopts "-complete" "-lang=go1.20"  $files
-
+_compile $pkgopts $otheropts $files
 
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
