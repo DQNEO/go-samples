@@ -262,9 +262,8 @@ make_importcfg main
 $TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p main -lang=go1.20 -complete $B -c=4 -nolocalimports -importcfg $wdir/importcfg -pack ./main.go ./sum.go
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
-local maindepends="fmt runtime errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 internal/abi internal/bytealg internal/coverage/rtcov internal/cpu internal/goarch internal/goexperiment internal/goos runtime/internal/atomic runtime/internal/math runtime/internal/sys runtime/internal/syscall internal/reflectlite math/bits internal/itoa internal/poll internal/safefilepath internal/syscall/execenv internal/syscall/unix internal/testlog io/fs sync/atomic syscall time internal/unsafeheader unicode internal/race internal/oserror path"
 local pkgsfiles=""
-for p in $maindepends
+for p in "${!PKGS[@]}"
 do
   pkgsfiles="${pkgsfiles}packagefile ${p}=$WORK/${PKGS[$p]}/_pkg_.a
 "
