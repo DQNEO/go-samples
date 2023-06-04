@@ -10,8 +10,6 @@ TOOL_DIR=$GORT/pkg/tool/darwin_amd64
 BLDID=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 B="-buildid $BLDID -goversion go1.20.4"
 
-commonopts=" -c=4 -nolocalimports -pack "
-
 declare -A PKGS=(
 [errors]="b003"
 [fmt]="b002"
@@ -161,7 +159,8 @@ fi
 
 local otheropts=" $slang $sstd $sruntime $scomplete $asmopts "
 local pkgopts=$(get_package_opts $pkg)
-$TOOL_DIR/compile $commonopts $pkgopts $otheropts $gofiles
+
+$TOOL_DIR/compile -c=4 -nolocalimports -pack $pkgopts $otheropts $gofiles
 if [[ -n $afiles ]]; then
   append_asm $pkg $afiles
 fi
@@ -258,9 +257,9 @@ mv $wdir/exe/a.out birudo
 rm -r $wdir/
 }
 
+# main procedure
 
 rm -f birudo
-cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 
 #         pkg                  r c files
 build_std_pkg internal/coverage/rtcov  1 1 rtcov.go
