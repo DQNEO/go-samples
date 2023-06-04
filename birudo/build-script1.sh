@@ -199,7 +199,8 @@ fi
 
 $TOOL_DIR/compile -p $pkg -o $WORK/${PKGS[$pkg]}/_pkg_.a \
  -trimpath "$WORK/${PKGS[$pkg]}=>" \
- -std $sruntime $scomplete $B \
+ -std $sruntime \
+ $scomplete $B \
  -c=4 -nolocalimports \
  -importcfg $WORK/${PKGS[$pkg]}/importcfg \
  -pack \
@@ -254,12 +255,22 @@ build_pkg fmt                      0 1 doc.go errors.go format.go print.go scan.
 
 ## Final output
 function doLink() {
-  cd $SRC_DIR
-wdir=$WORK/${PKGS[main]}
+pkgname=main
+pkg=main
+wdir=$WORK/${PKGS[$pkgname]}
 mkdir -p $wdir/
-make_importcfg main
+make_importcfg $pkgname
+files="./main.go ./sum.go"
 
-$TOOL_DIR/compile -o $wdir/_pkg_.a -trimpath "$wdir=>" -p main -lang=go1.20 -complete $B -c=4 -nolocalimports -importcfg $wdir/importcfg -pack ./main.go ./sum.go
+$TOOL_DIR/compile  -p $pkg -o $wdir/_pkg_.a \
+  -trimpath "$wdir=>" \
+  -lang=go1.20 \
+  -complete $B \
+  -c=4 -nolocalimports \
+   -importcfg $wdir/importcfg \
+   -pack \
+   $files
+
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 local pkgsfiles=""
@@ -282,4 +293,5 @@ mv $wdir/exe/a.out birudo
 rm -r $wdir/
 }
 
+cd $SRC_DIR
 doLink
