@@ -100,12 +100,12 @@ declare -A DEPENDS=(
 )
 
 function build_pkg() {
-pkgname=$1
+pkg=$1
 runtime=$2
 complete=$3
 shift;shift;shift;
 filenames="$@"
-bdir=${PKGS[$pkgname]}
+bdir=${PKGS[$pkg]}
 wdir=$WORK/$bdir
 
 local gofiles=""
@@ -113,9 +113,9 @@ local afiles=""
   for f in $filenames
   do
     if [[ $f == *.go ]] ; then
-      gofiles="$gofiles $GORT/src/$pkgname/$f"
+      gofiles="$gofiles $GORT/src/$pkg/$f"
     elif [[ $f == *.s ]]; then
-       afiles="$afiles $GORT/src/$pkgname/$f"
+       afiles="$afiles $GORT/src/$pkg/$f"
     else
        echo "ERROR" >/dev/stderr
        exit 1
@@ -123,26 +123,26 @@ local afiles=""
   done
 
 mkdir -p $wdir/
-make_importcfg $pkgname
+make_importcfg $pkg
 
 if [[ -n $afiles ]]; then
-  gen_symabis $pkgname $afiles
-  compile $pkgname 1 $runtime 0 $gofiles
-  append_asm $pkgname $afiles
+  gen_symabis $pkg $afiles
+  compile $pkg 1 $runtime 0 $gofiles
+  append_asm $pkg $afiles
 else
-  compile $pkgname 0 $runtime $complete $gofiles
+  compile $pkg 0 $runtime $complete $gofiles
 fi
 
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 }
 
 function make_importcfg() {
-pkgname=$1
-bdir=${PKGS[$pkgname]}
+pkg=$1
+bdir=${PKGS[$pkg]}
 wdir=$WORK/$bdir
 (
 echo '# import config'
-for f in  ${DEPENDS[$pkgname]}
+for f in  ${DEPENDS[$pkg]}
 do
   echo "packagefile $f=$WORK/${PKGS[$f]}/_pkg_.a"
 done
@@ -211,7 +211,7 @@ $TOOL_DIR/compile -p $pkg -o $WORK/${PKGS[$pkg]}/_pkg_.a \
 rm -f birudo
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 
-#         pkgname                  r c files
+#         pkg                  r c files
 build_pkg internal/coverage/rtcov  1 1 rtcov.go
 build_pkg internal/unsafeheader    0 1 unsafeheader.go
 build_pkg internal/goarch          1 1 goarch.go goarch_amd64.go zgoarch_amd64.go
@@ -255,11 +255,10 @@ build_pkg fmt                      0 1 doc.go errors.go format.go print.go scan.
 
 ## Final output
 function doLink() {
-pkgname=main
 pkg=main
-wdir=$WORK/${PKGS[$pkgname]}
+wdir=$WORK/${PKGS[$pkg]}
 mkdir -p $wdir/
-make_importcfg $pkgname
+make_importcfg $pkg
 files="./main.go ./sum.go"
 
 $TOOL_DIR/compile  -p $pkg -o $wdir/_pkg_.a \
