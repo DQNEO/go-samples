@@ -108,27 +108,28 @@ complete=$3
 shift;shift;shift;
 filenames="$@"
 wdir=$WORK/${PKGS[$pkg]}
-std="1"
+local std="1"
 
 local gofiles=""
 local afiles=""
-  for f in $filenames
-  do
-    local file
-    if [[ $std == "1" ]]; then
-      file=$GORT/src/$pkg/$f
-    else
-      file=$f
-    fi
-    if [[ $f == *.go ]] ; then
-      gofiles="$gofiles $file"
-    elif [[ $f == *.s ]]; then
-       afiles="$afiles $file"
-    else
-       echo "ERROR" >/dev/stderr
-       exit 1
-    fi
-  done
+
+for f in $filenames
+do
+  local file
+  if [[ $std == "1" ]]; then
+    file=$GORT/src/$pkg/$f
+  else
+    file=$f
+  fi
+  if [[ $f == *.go ]] ; then
+    gofiles="$gofiles $file"
+  elif [[ $f == *.s ]]; then
+     afiles="$afiles $file"
+  else
+     echo "ERROR" >/dev/stderr
+     exit 1
+  fi
+done
 
 mkdir -p $wdir/
 make_importcfg $pkg
@@ -270,15 +271,35 @@ build_pkg fmt                      0 1 doc.go errors.go format.go print.go scan.
 function doLink() {
 pkg=main
 wdir=$WORK/${PKGS[$pkg]}
+filenames="./main.go ./sum.go"
 
-gofiles="./main.go ./sum.go"
+local complete="1"
+local runtime="0"
+local std="0"
+
+local gofiles=""
 local afiles=""
+
+for f in $filenames
+do
+  local file
+  if [[ $std == "1" ]]; then
+    file=$GORT/src/$pkg/$f
+  else
+    file=$f
+  fi
+  if [[ $f == *.go ]] ; then
+    gofiles="$gofiles $file"
+  elif [[ $f == *.s ]]; then
+     afiles="$afiles $file"
+  else
+     echo "ERROR" >/dev/stderr
+     exit 1
+  fi
+done
 
 mkdir -p $wdir/
 make_importcfg $pkg
-local complete="1"
-local runtime="0"
-local std="1"
 
 local asmopts=""
 local sruntime=""
