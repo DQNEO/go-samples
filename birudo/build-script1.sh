@@ -109,15 +109,22 @@ shift;shift;shift;
 filenames="$@"
 bdir=${PKGS[$pkg]}
 wdir=$WORK/$bdir
+std="1"
 
 local gofiles=""
 local afiles=""
   for f in $filenames
   do
+    local file
+    if [[ $std == "1" ]]; then
+      file=$GORT/src/$pkg/$f
+    else
+      file=$f
+    fi
     if [[ $f == *.go ]] ; then
-      gofiles="$gofiles $GORT/src/$pkg/$f"
+      gofiles="$gofiles $file"
     elif [[ $f == *.s ]]; then
-       afiles="$afiles $GORT/src/$pkg/$f"
+       afiles="$afiles $file"
     else
        echo "ERROR" >/dev/stderr
        exit 1
@@ -130,7 +137,7 @@ make_importcfg $pkg
 local asmopts=""
 local sruntime=""
 local scomplete=""
-local sstd="-std"
+local sstd=""
 local slang=""
 
 if [[ -n $afiles ]]; then
@@ -144,6 +151,9 @@ if [ "$runtime" = "1" ]; then
 fi
 if [ "$complete" = "1" ]; then
   scomplete="-complete"
+fi
+if [ "$std" = "1" ]; then
+  sstd="-std"
 fi
 
 local otheropts=" $sstd $sruntime $scomplete $asmopts "
