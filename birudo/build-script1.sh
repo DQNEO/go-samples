@@ -131,10 +131,10 @@ make_importcfg $pkgname
 
 if [[ -n $afiles ]]; then
   gen_symabis $pkgname $afiles
-  cmpl_asm $pkgname $runtime 0 $gofiles
+  cmpl_asm $pkgname 1 $runtime 0 $gofiles
   append_asm $pkgname $afiles
 else
-  cmpl $pkgname $runtime $complete $gofiles
+  cmpl_asm $pkgname 0 $runtime $complete $gofiles
 fi
 
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
@@ -178,38 +178,12 @@ $TOOL_DIR/pack r $WORK/${PKGS[$pkg]}/_pkg_.a $ofiles
 
 }
 
-function cmpl_asm() {
+function compile() {
 pkg=$1
-runtime=$2
-complete=$3
-shift;shift;shift;
-files="$@"
-
-local sruntime=""
-if [ "$runtime" = "1" ]; then
-  sruntime="-+"
-fi
-
-scomplete=""
-
-
-touch $WORK/${PKGS[$pkg]}/go_asm.h # Actually not needed
-
-local asmopts="-symabis $WORK/${PKGS[$pkg]}/symabis -asmhdr $WORK/${PKGS[$pkg]}/go_asm.h"
-
-$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>" -p $pkg\
- -std $sruntime $scomplete $B \
- -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
- -pack \
- $asmopts \
- $files
-}
-
-function cmpl() {
-pkg=$1
-runtime=$2
-complete=$3
-shift;shift;shift;
+asm=$2
+runtime=$3
+complete=$4
+shift;shift;shift;shift;
 files="$@"
 
 local sruntime=""
@@ -220,11 +194,20 @@ local scomplete=""
 if [ "$complete" = "1" ]; then
   scomplete="-complete"
 fi
+local asmopts=""
 
-$TOOL_DIR/compile -o $WORK/${PKGS[$pkg]}/_pkg_.a -trimpath "$WORK/${PKGS[$pkg]}=>"  -p $pkg\
- -std $sruntime $scomplete  $B \
- -c=4 -nolocalimports -importcfg $WORK/${PKGS[$pkg]}/importcfg \
+if [[ $asm = "1" ]]; then
+  scomplete=""
+  asmopts="-symabis $WORK/${PKGS[$pkg]}/symabis -asmhdr $WORK/${PKGS[$pkg]}/go_asm.h"
+fi
+
+$TOOL_DIR/compile -p $pkg -o $WORK/${PKGS[$pkg]}/_pkg_.a \
+ -trimpath "$WORK/${PKGS[$pkg]}=>" \
+ -std $sruntime $scomplete $B \
+ -c=4 -nolocalimports \
+ -importcfg $WORK/${PKGS[$pkg]}/importcfg \
  -pack \
+ $asmopts \
  $files
 }
 
