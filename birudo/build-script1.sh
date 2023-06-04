@@ -10,6 +10,8 @@ TOOL_DIR=$GORT/pkg/tool/darwin_amd64
 BLDID=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 B="-buildid $BLDID -goversion go1.20.4"
 
+commonopts=" -c=4 -nolocalimports -pack "
+
 declare -A PKGS=(
 [errors]="b003"
 [fmt]="b002"
@@ -125,15 +127,30 @@ local afiles=""
 mkdir -p $wdir/
 make_importcfg $pkg
 
+local asmopts=""
+
 if [[ -n $afiles ]]; then
-  gen_symabis $pkg $afiles
   complete="0"
-  asm="1"
-  compile $pkg $asm $runtime $complete $gofiles
+  gen_symabis $pkg $afiles
+  asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
+fi
+
+local sruntime=""
+local scomplete=""
+
+if [ "$runtime" = "1" ]; then
+  sruntime="-+"
+fi
+if [ "$complete" = "1" ]; then
+  scomplete="-complete"
+fi
+
+local otheropts=" -std $sruntime $scomplete $asmopts "
+local pkgopts=$(get_package_opts $pkg)
+$TOOL_DIR/compile $commonopts $pkgopts $otheropts $gofiles
+
+if [[ -n $afiles ]]; then
   append_asm $pkg $afiles
-else
-  asm="0"
-  compile $pkg $asm $runtime $complete $gofiles
 fi
 
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
@@ -181,15 +198,6 @@ $TOOL_DIR/pack r $wdir/_pkg_.a $ofiles
 
 }
 
-function _compile() {
-  local args="$@"
-  $TOOL_DIR/compile \
-    -c=4 \
-    -nolocalimports \
-    -pack \
-    $args
-}
-
 function get_package_opts() {
   pkg=$1
   wdir=$WORK/${PKGS[$pkg]}
@@ -201,35 +209,6 @@ function get_package_opts() {
     -importcfg $wdir/importcfg \
   "
   echo $pkgopts
-}
-
-function compile() {
-pkg=$1
-local asm=$2
-runtime=$3
-complete=$4
-shift;shift;shift;shift;
-local gofiles="$@"
-
-local sruntime=""
-if [ "$runtime" = "1" ]; then
-  sruntime="-+"
-fi
-local scomplete=""
-if [ "$complete" = "1" ]; then
-  scomplete="-complete"
-fi
-local asmopts=""
-
-if [[ $asm = "1" ]]; then
-  scomplete=""
-  wdir=$WORK/${PKGS[$pkg]}
-  asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
-fi
-
-local otheropts=" -std $sruntime $scomplete $asmopts "
-local pkgopts=$(get_package_opts $pkg)
-_compile $pkgopts $otheropts $gofiles
 }
 
 rm -f birudo
@@ -288,7 +267,7 @@ files="./main.go ./sum.go"
 
 local otheropts=" -complete -lang=go1.20 "
 local pkgopts=$(get_package_opts $pkg)
-_compile $pkgopts $otheropts $files
+$TOOL_DIR/compile $commonopts $pkgopts $otheropts $files
 
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
