@@ -187,6 +187,19 @@ function _compile() {
     $args
 }
 
+function get_package_opts() {
+  pkg=$1
+  wdir=$WORK/${PKGS[$pkg]}
+  local pkgopts=" \
+    -p $pkg \
+    -o $wdir/_pkg_.a \
+    -trimpath \"$wdir=>\" \
+    $B \
+    -importcfg $wdir/importcfg \
+  "
+  echo $pkgopts
+}
+
 function compile() {
 pkg=$1
 asm=$2
@@ -211,24 +224,9 @@ if [[ $asm = "1" ]]; then
   asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
 fi
 local sstd="-std"
-local slang=""
 
-local pkgopts=" \
-  -p $pkg \
-  -o $wdir/_pkg_.a \
-  -trimpath \"$wdir=>\" \
-  $B \
-  -importcfg $wdir/importcfg \
-"
-local opts=" \
-  $pkgopts \
-  $sstd \
-  $sruntime \
-  $slang \
-  $scomplete \
-  $asmopts \
-"
-_compile $opts $files
+local pkgopts=$(get_package_opts $pkg)
+_compile $pkgopts $sstd $sruntime $scomplete $asmopts $files
 }
 
 rm -f birudo
@@ -284,28 +282,9 @@ wdir=$WORK/${PKGS[$pkg]}
 mkdir -p $wdir/
 make_importcfg $pkg
 files="./main.go ./sum.go"
-local sstd=""
-local sruntime=""
-local scomplete="-complete"
-local slang="-lang=go1.20"
-local asmopts=""
 
-local pkgopts=" \
-  -p $pkg \
-  -o $wdir/_pkg_.a \
-  -trimpath \"$wdir=>\" \
-  $B \
-  -importcfg $wdir/importcfg \
-"
-local opts=" \
-  $pkgopts \
-  $sstd \
-  $sruntime \
-  $slang \
-  $scomplete\
-  $asmopts \
-"
-_compile $opts $files
+local pkgopts=$(get_package_opts $pkg)
+_compile $pkgopts "-complete" "-lang=go1.20"  $files
 
 
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
