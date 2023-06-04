@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash
 set -eux
-rm -f birudo
+
 export GOOS=linux
 export GOARCH=amd64
 WORK=/tmp/go-build1234567
@@ -210,6 +210,7 @@ $TOOL_DIR/compile -p $pkg -o $WORK/${PKGS[$pkg]}/_pkg_.a \
  $files
 }
 
+rm -f birudo
 cd /Users/DQNEO/src/github.com/DQNEO/go-samples
 
 build_pkg internal/coverage/rtcov  1 1 rtcov.go
