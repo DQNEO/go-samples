@@ -83,7 +83,6 @@ declare -A DEPENDS=(
 [io/fs]="errors internal/oserror io path sort time unicode/utf8 "
 [internal/poll]="errors internal/syscall/unix io runtime sync sync/atomic syscall time "
 
-
 [internal/coverage/rtcov]=""
 [internal/unsafeheader]=""
 [internal/goarch]=""
@@ -98,8 +97,6 @@ declare -A DEPENDS=(
 [internal/race]=""
 [unicode]=""
 [sync/atomic]=""
-
-
 )
 
 function build_pkg() {
