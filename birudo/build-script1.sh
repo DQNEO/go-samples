@@ -153,24 +153,28 @@ function gen_symabis() {
 pkg=$1
 shift
 files="$@"
-$TOOL_DIR/asm -p $pkg -trimpath "$WORK/${PKGS[$pkg]}=>" -I $WORK/${PKGS[$pkg]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $WORK/${PKGS[$pkg]}/symabis  $files
+wdir=$WORK/${PKGS[$pkg]}
+
+$TOOL_DIR/asm -p $pkg -trimpath "$wdir=>" -I $wdir/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1 -gensymabis -o $wdir/symabis  $files
 }
 
 function append_asm() {
 pkg=$1
 shift
 files="$@"
+
+wdir=$WORK/${PKGS[$pkg]}
 local ofiles=""
 for f in $files
 do
   local basename=${f##*/}
   local baseo=${basename%.s}.o
-  local ofile=$WORK/${PKGS[$pkg]}/$baseo
-  $TOOL_DIR/asm -p $pkg -trimpath "$WORK/${PKGS[$pkg]}=>" -I $WORK/${PKGS[$pkg]}/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1  -o $ofile $f
+  local ofile=$wdir/$baseo
+  $TOOL_DIR/asm -p $pkg -trimpath "$wdir=>" -I $wdir/ -I $GORT/pkg/include -D GOOS_linux -D GOARCH_amd64 -compiling-runtime -D GOAMD64_v1  -o $ofile $f
   ofiles="$ofiles $ofile"
 done
 
-$TOOL_DIR/pack r $WORK/${PKGS[$pkg]}/_pkg_.a $ofiles
+$TOOL_DIR/pack r $wdir/_pkg_.a $ofiles
 
 }
 
@@ -181,6 +185,7 @@ runtime=$3
 complete=$4
 shift;shift;shift;shift;
 files="$@"
+wdir=$WORK/${PKGS[$pkg]}
 
 local sruntime=""
 if [ "$runtime" = "1" ]; then
@@ -194,15 +199,15 @@ local asmopts=""
 
 if [[ $asm = "1" ]]; then
   scomplete=""
-  asmopts="-symabis $WORK/${PKGS[$pkg]}/symabis -asmhdr $WORK/${PKGS[$pkg]}/go_asm.h"
+  asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
 fi
 
-$TOOL_DIR/compile -p $pkg -o $WORK/${PKGS[$pkg]}/_pkg_.a \
- -trimpath "$WORK/${PKGS[$pkg]}=>" \
+$TOOL_DIR/compile -p $pkg -o $wdir/_pkg_.a \
+ -trimpath "$wdir=>" \
  -std $sruntime \
  $scomplete $B \
  -c=4 -nolocalimports \
- -importcfg $WORK/${PKGS[$pkg]}/importcfg \
+ -importcfg $wdir/importcfg \
  -pack \
  $asmopts \
  $files
@@ -257,6 +262,7 @@ build_pkg fmt                      0 1 doc.go errors.go format.go print.go scan.
 function doLink() {
 pkg=main
 wdir=$WORK/${PKGS[$pkg]}
+
 mkdir -p $wdir/
 make_importcfg $pkg
 files="./main.go ./sum.go"
