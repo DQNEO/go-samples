@@ -107,8 +107,7 @@ runtime=$2
 complete=$3
 shift;shift;shift;
 filenames="$@"
-bdir=${PKGS[$pkg]}
-wdir=$WORK/$bdir
+wdir=$WORK/${PKGS[$pkg]}
 std="1"
 
 local gofiles=""
@@ -169,8 +168,7 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 function make_importcfg() {
 pkg=$1
-bdir=${PKGS[$pkg]}
-wdir=$WORK/$bdir
+wdir=$WORK/${PKGS[$pkg]}
 (
 echo '# import config'
 for f in  ${DEPENDS[$pkg]}
