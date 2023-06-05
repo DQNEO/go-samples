@@ -5,7 +5,7 @@ run0: birudo0
 	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./$<
 
 build-script0.sh:*.go Makefile
-	GOOS=linux GOARCH=amd64 go build -o birudo1 -n -x -a -p 1 . 2>$@
+	GOOS=linux GOARCH=amd64 go build -o birudo1 -n -a -p 1 . 2>$@
 
 birudo1: build-script0.sh
 	cat $< | sed -e "s/'EOF'/EOF/g" | GOOS=linux GOARCH=amd64 WORK=/tmp/go-build-20230606 bash -eux
