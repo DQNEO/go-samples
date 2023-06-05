@@ -171,9 +171,8 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 function build_std_pkg() {
 pkg=$1
-_xxx_=$2
-complete=$3
-shift;shift;shift;
+complete=$2
+shift;shift;
 local filenames="$@"
 local std="1"
 
@@ -262,47 +261,47 @@ rm -r $wdir/
 
 rm -f $OUT_FILE
 
-#         pkg                          r c files
-build_std_pkg internal/coverage/rtcov  0 1 rtcov.go
-build_std_pkg internal/unsafeheader    0 1 unsafeheader.go
-build_std_pkg internal/goarch          0 1 goarch.go goarch_amd64.go zgoarch_amd64.go
-build_std_pkg internal/goos            0 1 goos.go unix.go zgoos_linux.go
-build_std_pkg internal/goexperiment    0 1 exp_arenas_off.go exp_boringcrypto_off.go exp_coverageredesign_on.go exp_fieldtrack_off.go exp_heapminimum512kib_off.go exp_pagetrace_off.go exp_preemptibleloops_off.go exp_regabiargs_on.go exp_regabiwrappers_on.go exp_staticlockranking_off.go exp_unified_on.go flags.go
-build_std_pkg runtime/internal/syscall 1 2 defs_linux.go defs_linux_amd64.go syscall_linux.go asm_linux_amd64.s
-build_std_pkg internal/cpu             1 2 cpu.go cpu_x86.go cpu.s cpu_x86.s
-build_std_pkg runtime/internal/atomic  1 2 atomic_amd64.go doc.go stubs.go types.go types_64bit.go unaligned.go atomic_amd64.s
-build_std_pkg internal/itoa            0 1 itoa.go
-build_std_pkg unicode/utf8             0 1 utf8.go
-build_std_pkg math/bits                0 1 bits.go bits_errors.go bits_tables.go
-build_std_pkg runtime/internal/math    1 1 math.go
-build_std_pkg runtime/internal/sys     1 1 consts.go consts_norace.go intrinsics.go intrinsics_common.go nih.go sys.go zversion.go
-build_std_pkg internal/race            0 1 doc.go norace.go
-build_std_pkg internal/abi             1 2 abi.go abi_amd64.go abi_test.s
-build_std_pkg sync/atomic              0 2 doc.go type.go value.go asm.s
-build_std_pkg unicode                  0 1 casetables.go digit.go graphic.go letter.go tables.go
-build_std_pkg internal/bytealg         1 2 bytealg.go compare_native.go count_native.go equal_generic.go equal_native.go index_amd64.go index_native.go indexbyte_native.go compare_amd64.s count_amd64.s equal_amd64.s index_amd64.s indexbyte_amd64.s
-build_std_pkg math                     0 2 abs.go acosh.go asin.go asinh.go atan.go atan2.go atanh.go bits.go cbrt.go const.go copysign.go dim.go dim_asm.go erf.go erfinv.go exp.go exp2_noasm.go exp_amd64.go exp_asm.go expm1.go floor.go floor_asm.go fma.go frexp.go gamma.go hypot.go hypot_asm.go j0.go j1.go jn.go ldexp.go lgamma.go log.go log10.go log1p.go log_asm.go logb.go mod.go modf.go modf_noasm.go nextafter.go pow.go pow10.go remainder.go signbit.go sin.go sincos.go sinh.go sqrt.go stubs.go tan.go tanh.go trig_reduce.go unsafe.go dim_amd64.s exp_amd64.s floor_amd64.s hypot_amd64.s log_amd64.s
-build_std_pkg runtime                  1 2 alg.go arena.go asan0.go atomic_pointer.go cgo.go cgo_mmap.go cgo_sigaction.go cgocall.go cgocallback.go cgocheck.go chan.go checkptr.go compiler.go complex.go covercounter.go covermeta.go cpuflags.go cpuflags_amd64.go cpuprof.go cputicks.go create_file_unix.go debug.go debugcall.go debuglog.go debuglog_off.go defs_linux_amd64.go env_posix.go error.go exithook.go extern.go fastlog2.go fastlog2table.go float.go hash64.go heapdump.go histogram.go iface.go lfstack.go lfstack_64bit.go lock_futex.go lockrank.go lockrank_off.go malloc.go map.go map_fast32.go map_fast64.go map_faststr.go mbarrier.go mbitmap.go mcache.go mcentral.go mcheckmark.go mem.go mem_linux.go metrics.go mfinal.go mfixalloc.go mgc.go mgclimit.go mgcmark.go mgcpacer.go mgcscavenge.go mgcstack.go mgcsweep.go mgcwork.go mheap.go mpagealloc.go mpagealloc_64bit.go mpagecache.go mpallocbits.go mprof.go mranges.go msan0.go msize.go mspanset.go mstats.go mwbbuf.go nbpipe_pipe2.go netpoll.go netpoll_epoll.go os_linux.go os_linux_generic.go os_linux_noauxv.go os_linux_x86.go os_nonopenbsd.go pagetrace_off.go panic.go plugin.go preempt.go preempt_nonwindows.go print.go proc.go profbuf.go proflabel.go race0.go rdebug.go relax_stub.go retry.go runtime.go runtime1.go runtime2.go runtime_boring.go rwmutex.go select.go sema.go signal_amd64.go signal_linux_amd64.go signal_unix.go sigqueue.go sigqueue_note.go sigtab_linux_generic.go sizeclasses.go slice.go softfloat64.go stack.go stkframe.go string.go stubs.go stubs2.go stubs3.go stubs_amd64.go stubs_linux.go symtab.go sys_nonppc64x.go sys_x86.go time.go time_nofake.go timeasm.go tls_stub.go trace.go traceback.go type.go typekind.go unsafe.go utf8.go vdso_elf64.go vdso_linux.go vdso_linux_amd64.go write_err.go asm.s asm_amd64.s duff_amd64.s memclr_amd64.s memmove_amd64.s preempt_amd64.s rt0_linux_amd64.s sys_linux_amd64.s time_linux_amd64.s
-build_std_pkg sync                     0 0 cond.go map.go mutex.go once.go pool.go poolqueue.go runtime.go runtime2.go rwmutex.go waitgroup.go
-build_std_pkg internal/reflectlite     0 2 swapper.go type.go value.go asm.s
-build_std_pkg internal/testlog         0 1 exit.go log.go
-build_std_pkg errors                   0 1 errors.go join.go wrap.go
-build_std_pkg sort                     0 1 search.go slice.go sort.go zsortfunc.go zsortinterface.go
-build_std_pkg internal/safefilepath    0 1 path.go path_other.go
-build_std_pkg internal/oserror         0 1 errors.go
-build_std_pkg path                     0 1 match.go path.go
-build_std_pkg io                       0 1 io.go multi.go pipe.go
-build_std_pkg strconv                  0 1 atob.go atoc.go atof.go atoi.go bytealg.go ctoa.go decimal.go doc.go eisel_lemire.go ftoa.go ftoaryu.go isprint.go itoa.go quote.go
-build_std_pkg syscall                  0 2 asan0.go dirent.go endian_little.go env_unix.go exec_linux.go exec_unix.go flock.go lsf_linux.go msan0.go net.go netlink_linux.go rlimit.go rlimit_stub.go setuidgid_linux.go sockcmsg_linux.go sockcmsg_unix.go sockcmsg_unix_other.go syscall.go syscall_linux.go syscall_linux_accept4.go syscall_linux_amd64.go syscall_unix.go time_nofake.go timestruct.go zerrors_linux_amd64.go zsyscall_linux_amd64.go zsysnum_linux_amd64.go ztypes_linux_amd64.go asm_linux_amd64.s
-build_std_pkg reflect                  0 2 abi.go deepequal.go float32reg_generic.go makefunc.go swapper.go type.go value.go visiblefields.go asm_amd64.s
-build_std_pkg internal/syscall/execenv 0 1 execenv_default.go
-build_std_pkg internal/syscall/unix    0 1 at.go at_fstatat.go at_sysnum_linux.go at_sysnum_newfstatat_linux.go constants.go copy_file_range_linux.go eaccess_linux.go getrandom.go getrandom_linux.go kernel_version_linux.go net.go nonblocking.go sysnum_linux_amd64.go
-build_std_pkg time                     0 0 format.go format_rfc3339.go sleep.go sys_unix.go tick.go time.go zoneinfo.go zoneinfo_goroot.go zoneinfo_read.go zoneinfo_unix.go
-build_std_pkg io/fs                    0 1 fs.go glob.go readdir.go readfile.go stat.go sub.go walk.go
-build_std_pkg internal/poll            0 0 copy_file_range_linux.go errno_unix.go fcntl_syscall.go fd.go fd_fsync_posix.go fd_mutex.go fd_poll_runtime.go fd_posix.go fd_unix.go fd_writev_unix.go hook_cloexec.go hook_unix.go iovec_unix.go sendfile_linux.go sock_cloexec.go sockopt.go sockopt_linux.go sockopt_unix.go sockoptip.go splice_linux.go writev.go
-build_std_pkg internal/fmtsort         0 1 sort.go
-build_std_pkg os                       0 0 dir.go dir_unix.go dirent_linux.go endian_little.go env.go error.go error_errno.go error_posix.go exec.go exec_posix.go exec_unix.go executable.go executable_procfs.go file.go file_posix.go file_unix.go getwd.go path.go path_unix.go pipe2_unix.go proc.go rawconn.go readfrom_linux.go removeall_at.go stat.go stat_linux.go stat_unix.go sticky_notbsd.go str.go sys.go sys_linux.go sys_unix.go tempfile.go types.go types_unix.go wait_waitid.go
-build_std_pkg fmt                      0 1 doc.go errors.go format.go print.go scan.go
+#         pkg                           c files
+build_std_pkg internal/coverage/rtcov   1 rtcov.go
+build_std_pkg internal/unsafeheader     1 unsafeheader.go
+build_std_pkg internal/goarch           1 goarch.go goarch_amd64.go zgoarch_amd64.go
+build_std_pkg internal/goos             1 goos.go unix.go zgoos_linux.go
+build_std_pkg internal/goexperiment     1 exp_arenas_off.go exp_boringcrypto_off.go exp_coverageredesign_on.go exp_fieldtrack_off.go exp_heapminimum512kib_off.go exp_pagetrace_off.go exp_preemptibleloops_off.go exp_regabiargs_on.go exp_regabiwrappers_on.go exp_staticlockranking_off.go exp_unified_on.go flags.go
+build_std_pkg runtime/internal/syscall  2 defs_linux.go defs_linux_amd64.go syscall_linux.go asm_linux_amd64.s
+build_std_pkg internal/cpu              2 cpu.go cpu_x86.go cpu.s cpu_x86.s
+build_std_pkg runtime/internal/atomic   2 atomic_amd64.go doc.go stubs.go types.go types_64bit.go unaligned.go atomic_amd64.s
+build_std_pkg internal/itoa             1 itoa.go
+build_std_pkg unicode/utf8              1 utf8.go
+build_std_pkg math/bits                 1 bits.go bits_errors.go bits_tables.go
+build_std_pkg runtime/internal/math     1 math.go
+build_std_pkg runtime/internal/sys      1 consts.go consts_norace.go intrinsics.go intrinsics_common.go nih.go sys.go zversion.go
+build_std_pkg internal/race             1 doc.go norace.go
+build_std_pkg internal/abi              2 abi.go abi_amd64.go abi_test.s
+build_std_pkg sync/atomic               2 doc.go type.go value.go asm.s
+build_std_pkg unicode                   1 casetables.go digit.go graphic.go letter.go tables.go
+build_std_pkg internal/bytealg          2 bytealg.go compare_native.go count_native.go equal_generic.go equal_native.go index_amd64.go index_native.go indexbyte_native.go compare_amd64.s count_amd64.s equal_amd64.s index_amd64.s indexbyte_amd64.s
+build_std_pkg math                      2 abs.go acosh.go asin.go asinh.go atan.go atan2.go atanh.go bits.go cbrt.go const.go copysign.go dim.go dim_asm.go erf.go erfinv.go exp.go exp2_noasm.go exp_amd64.go exp_asm.go expm1.go floor.go floor_asm.go fma.go frexp.go gamma.go hypot.go hypot_asm.go j0.go j1.go jn.go ldexp.go lgamma.go log.go log10.go log1p.go log_asm.go logb.go mod.go modf.go modf_noasm.go nextafter.go pow.go pow10.go remainder.go signbit.go sin.go sincos.go sinh.go sqrt.go stubs.go tan.go tanh.go trig_reduce.go unsafe.go dim_amd64.s exp_amd64.s floor_amd64.s hypot_amd64.s log_amd64.s
+build_std_pkg runtime                   2 alg.go arena.go asan0.go atomic_pointer.go cgo.go cgo_mmap.go cgo_sigaction.go cgocall.go cgocallback.go cgocheck.go chan.go checkptr.go compiler.go complex.go covercounter.go covermeta.go cpuflags.go cpuflags_amd64.go cpuprof.go cputicks.go create_file_unix.go debug.go debugcall.go debuglog.go debuglog_off.go defs_linux_amd64.go env_posix.go error.go exithook.go extern.go fastlog2.go fastlog2table.go float.go hash64.go heapdump.go histogram.go iface.go lfstack.go lfstack_64bit.go lock_futex.go lockrank.go lockrank_off.go malloc.go map.go map_fast32.go map_fast64.go map_faststr.go mbarrier.go mbitmap.go mcache.go mcentral.go mcheckmark.go mem.go mem_linux.go metrics.go mfinal.go mfixalloc.go mgc.go mgclimit.go mgcmark.go mgcpacer.go mgcscavenge.go mgcstack.go mgcsweep.go mgcwork.go mheap.go mpagealloc.go mpagealloc_64bit.go mpagecache.go mpallocbits.go mprof.go mranges.go msan0.go msize.go mspanset.go mstats.go mwbbuf.go nbpipe_pipe2.go netpoll.go netpoll_epoll.go os_linux.go os_linux_generic.go os_linux_noauxv.go os_linux_x86.go os_nonopenbsd.go pagetrace_off.go panic.go plugin.go preempt.go preempt_nonwindows.go print.go proc.go profbuf.go proflabel.go race0.go rdebug.go relax_stub.go retry.go runtime.go runtime1.go runtime2.go runtime_boring.go rwmutex.go select.go sema.go signal_amd64.go signal_linux_amd64.go signal_unix.go sigqueue.go sigqueue_note.go sigtab_linux_generic.go sizeclasses.go slice.go softfloat64.go stack.go stkframe.go string.go stubs.go stubs2.go stubs3.go stubs_amd64.go stubs_linux.go symtab.go sys_nonppc64x.go sys_x86.go time.go time_nofake.go timeasm.go tls_stub.go trace.go traceback.go type.go typekind.go unsafe.go utf8.go vdso_elf64.go vdso_linux.go vdso_linux_amd64.go write_err.go asm.s asm_amd64.s duff_amd64.s memclr_amd64.s memmove_amd64.s preempt_amd64.s rt0_linux_amd64.s sys_linux_amd64.s time_linux_amd64.s
+build_std_pkg sync                      0 cond.go map.go mutex.go once.go pool.go poolqueue.go runtime.go runtime2.go rwmutex.go waitgroup.go
+build_std_pkg internal/reflectlite      2 swapper.go type.go value.go asm.s
+build_std_pkg internal/testlog          1 exit.go log.go
+build_std_pkg errors                    1 errors.go join.go wrap.go
+build_std_pkg sort                      1 search.go slice.go sort.go zsortfunc.go zsortinterface.go
+build_std_pkg internal/safefilepath     1 path.go path_other.go
+build_std_pkg internal/oserror          1 errors.go
+build_std_pkg path                      1 match.go path.go
+build_std_pkg io                        1 io.go multi.go pipe.go
+build_std_pkg strconv                   1 atob.go atoc.go atof.go atoi.go bytealg.go ctoa.go decimal.go doc.go eisel_lemire.go ftoa.go ftoaryu.go isprint.go itoa.go quote.go
+build_std_pkg syscall                   2 asan0.go dirent.go endian_little.go env_unix.go exec_linux.go exec_unix.go flock.go lsf_linux.go msan0.go net.go netlink_linux.go rlimit.go rlimit_stub.go setuidgid_linux.go sockcmsg_linux.go sockcmsg_unix.go sockcmsg_unix_other.go syscall.go syscall_linux.go syscall_linux_accept4.go syscall_linux_amd64.go syscall_unix.go time_nofake.go timestruct.go zerrors_linux_amd64.go zsyscall_linux_amd64.go zsysnum_linux_amd64.go ztypes_linux_amd64.go asm_linux_amd64.s
+build_std_pkg reflect                   2 abi.go deepequal.go float32reg_generic.go makefunc.go swapper.go type.go value.go visiblefields.go asm_amd64.s
+build_std_pkg internal/syscall/execenv  1 execenv_default.go
+build_std_pkg internal/syscall/unix     1 at.go at_fstatat.go at_sysnum_linux.go at_sysnum_newfstatat_linux.go constants.go copy_file_range_linux.go eaccess_linux.go getrandom.go getrandom_linux.go kernel_version_linux.go net.go nonblocking.go sysnum_linux_amd64.go
+build_std_pkg time                      0 format.go format_rfc3339.go sleep.go sys_unix.go tick.go time.go zoneinfo.go zoneinfo_goroot.go zoneinfo_read.go zoneinfo_unix.go
+build_std_pkg io/fs                     1 fs.go glob.go readdir.go readfile.go stat.go sub.go walk.go
+build_std_pkg internal/poll             0 copy_file_range_linux.go errno_unix.go fcntl_syscall.go fd.go fd_fsync_posix.go fd_mutex.go fd_poll_runtime.go fd_posix.go fd_unix.go fd_writev_unix.go hook_cloexec.go hook_unix.go iovec_unix.go sendfile_linux.go sock_cloexec.go sockopt.go sockopt_linux.go sockopt_unix.go sockoptip.go splice_linux.go writev.go
+build_std_pkg internal/fmtsort          1 sort.go
+build_std_pkg os                        0 dir.go dir_unix.go dirent_linux.go endian_little.go env.go error.go error_errno.go error_posix.go exec.go exec_posix.go exec_unix.go executable.go executable_procfs.go file.go file_posix.go file_unix.go getwd.go path.go path_unix.go pipe2_unix.go proc.go rawconn.go readfrom_linux.go removeall_at.go stat.go stat_linux.go stat_unix.go sticky_notbsd.go str.go sys.go sys_linux.go sys_unix.go tempfile.go types.go types_unix.go wait_waitid.go
+build_std_pkg fmt                       1 doc.go errors.go format.go print.go scan.go
 
 cd $SRC_DIR
 mainfiles="./main.go ./sum.go"
