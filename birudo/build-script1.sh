@@ -102,10 +102,9 @@ declare -A DEPENDS=(
 
 function build_pkg() {
 pkg=$1
-runtime=$2
-complete=$3
-std=$4
-shift;shift;shift;shift;
+complete=$2
+std=$3
+shift;shift;shift;
 filenames="$@"
 
 local gofiles=""
@@ -145,9 +144,10 @@ if [[ -n $afiles ]]; then
   asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
 fi
 
-if [ "$runtime" = "1" ]; then
+if [[ $pkg = "runtime" ]]; then
   sruntime="-+"
 fi
+
 if [ "$complete" = "1" ]; then
   scomplete="-complete"
 fi
@@ -171,13 +171,13 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 function build_std_pkg() {
 pkg=$1
-runtime=$2
+_xxx_=$2
 complete=$3
 shift;shift;shift;
 local filenames="$@"
 local std="1"
 
-build_pkg $pkg $runtime $complete $std $filenames
+build_pkg $pkg $complete $std $filenames
 }
 
 function make_importcfg() {
@@ -262,11 +262,11 @@ rm -r $wdir/
 
 rm -f $OUT_FILE
 
-#         pkg                  r c files
-build_std_pkg internal/coverage/rtcov  1 1 rtcov.go
+#         pkg                          r c files
+build_std_pkg internal/coverage/rtcov  0 1 rtcov.go
 build_std_pkg internal/unsafeheader    0 1 unsafeheader.go
-build_std_pkg internal/goarch          1 1 goarch.go goarch_amd64.go zgoarch_amd64.go
-build_std_pkg internal/goos            1 1 goos.go unix.go zgoos_linux.go
+build_std_pkg internal/goarch          0 1 goarch.go goarch_amd64.go zgoarch_amd64.go
+build_std_pkg internal/goos            0 1 goos.go unix.go zgoos_linux.go
 build_std_pkg internal/goexperiment    0 1 exp_arenas_off.go exp_boringcrypto_off.go exp_coverageredesign_on.go exp_fieldtrack_off.go exp_heapminimum512kib_off.go exp_pagetrace_off.go exp_preemptibleloops_off.go exp_regabiargs_on.go exp_regabiwrappers_on.go exp_staticlockranking_off.go exp_unified_on.go flags.go
 build_std_pkg runtime/internal/syscall 1 2 defs_linux.go defs_linux_amd64.go syscall_linux.go asm_linux_amd64.s
 build_std_pkg internal/cpu             1 2 cpu.go cpu_x86.go cpu.s cpu_x86.s
@@ -306,5 +306,5 @@ build_std_pkg fmt                      0 1 doc.go errors.go format.go print.go s
 
 cd $SRC_DIR
 mainfiles="./main.go ./sum.go"
-build_pkg "main" 0 1 0 $mainfiles
+build_pkg "main" 1 0 $mainfiles
 do_link
