@@ -103,7 +103,7 @@ declare -A DEPENDS=(
 
 function build_pkg() {
 pkg=$1
-complete=$2
+complete=$2 # 0:off, 1:on, 2:auto
 std=$3
 shift;shift;shift;
 filenames="$@"
@@ -172,10 +172,16 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 function build_std_pkg() {
 pkg=$1
-complete=$2
-shift;shift;
+complete="1"
 local filenames=$(./find_files.sh $pkg)
 local std="1"
+
+# see /usr/local/opt/go/libexec/src/cmd/go/internal/work/gc.go:119
+if [[ $pkg = "os"  ]] || [[ $pkg = "sync" ]] || [[ $pkg = "syscall" ]] \
+ || [[ $pkg = "internal/poll" ]] || [[ $pkg = "time" ]]; then
+  complete="0"
+fi
+
 build_pkg $pkg $complete $std $filenames
 }
 
@@ -261,47 +267,47 @@ rm -r $wdir/
 
 rm -f $OUT_FILE
 
-#         pkg                           c files
-build_std_pkg internal/coverage/rtcov   1
-build_std_pkg internal/unsafeheader     1
-build_std_pkg internal/goarch           1
-build_std_pkg internal/goos             1
-build_std_pkg internal/goexperiment     1
-build_std_pkg runtime/internal/syscall  2
-build_std_pkg internal/cpu              2
-build_std_pkg runtime/internal/atomic   2
-build_std_pkg internal/itoa             1
-build_std_pkg unicode/utf8              1
-build_std_pkg math/bits                 1
-build_std_pkg runtime/internal/math     1
-build_std_pkg runtime/internal/sys      1
-build_std_pkg internal/race             1
-build_std_pkg internal/abi              2
-build_std_pkg sync/atomic               2
-build_std_pkg unicode                   1
-build_std_pkg internal/bytealg          2
-build_std_pkg math                      2
-build_std_pkg runtime                   2
-build_std_pkg sync                      0
-build_std_pkg internal/reflectlite      2
-build_std_pkg internal/testlog          1
-build_std_pkg errors                    1
-build_std_pkg sort                      1
-build_std_pkg internal/safefilepath     1
-build_std_pkg internal/oserror          1
-build_std_pkg path                      1
-build_std_pkg io                        1
-build_std_pkg strconv                   1
-build_std_pkg syscall                   2
-build_std_pkg reflect                   2
-build_std_pkg internal/syscall/execenv  1
-build_std_pkg internal/syscall/unix     1
-build_std_pkg time                      0
-build_std_pkg io/fs                     1
-build_std_pkg internal/poll             0
-build_std_pkg internal/fmtsort          1
-build_std_pkg os                        0
-build_std_pkg fmt                       1
+#         pkg
+build_std_pkg internal/coverage/rtcov
+build_std_pkg internal/unsafeheader
+build_std_pkg internal/goarch
+build_std_pkg internal/goos
+build_std_pkg internal/goexperiment
+build_std_pkg runtime/internal/syscall
+build_std_pkg internal/cpu
+build_std_pkg internal/itoa
+build_std_pkg unicode/utf8
+build_std_pkg math/bits
+build_std_pkg runtime/internal/math
+build_std_pkg runtime/internal/sys
+build_std_pkg internal/race
+build_std_pkg internal/abi
+build_std_pkg sync/atomic
+build_std_pkg unicode
+build_std_pkg internal/bytealg
+build_std_pkg math
+build_std_pkg runtime
+build_std_pkg sync
+build_std_pkg internal/reflectlite
+build_std_pkg internal/testlog
+build_std_pkg errors
+build_std_pkg sort
+build_std_pkg internal/safefilepath
+build_std_pkg internal/oserror
+build_std_pkg path
+build_std_pkg io
+build_std_pkg strconv
+build_std_pkg syscall
+build_std_pkg reflect
+build_std_pkg internal/syscall/execenv
+build_std_pkg runtime/internal/atomic
+build_std_pkg internal/syscall/unix
+build_std_pkg time
+build_std_pkg io/fs
+build_std_pkg internal/poll
+build_std_pkg internal/fmtsort
+build_std_pkg os
+build_std_pkg fmt
 
 cd $SRC_DIR
 mainfiles="./main.go ./sum.go"
