@@ -312,5 +312,5 @@ do
 done
 
 cd $SRC_DIR
-build_pkg 0 "main" ./main.go ./sum.go
+build_pkg 0 "main" $(./find_files.sh .)
 do_link
