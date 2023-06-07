@@ -3,7 +3,7 @@ set -eux
 
 export GOOS=linux
 export GOARCH=amd64
-WORK=/tmp/go-build1234567
+WORK=/tmp/go-build-0606-1433
 OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=`go env GOROOT`
@@ -139,6 +139,9 @@ local sstd=""
 local slang=""
 
 if [[ -n $afiles ]]; then
+  if [[ "$std" = "1" ]]; then
+    touch $wdir/go_asm.h
+  fi
   gen_symabis $pkg $afiles
   asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
 fi
@@ -263,46 +266,46 @@ rm -r $wdir/
 rm -f $OUT_FILE
 
 std_pkgs="
- internal/coverage/rtcov
- internal/unsafeheader
- internal/goarch
- internal/goos
- internal/goexperiment
- runtime/internal/syscall
- internal/cpu
- internal/itoa
- unicode/utf8
- math/bits
- runtime/internal/math
- runtime/internal/sys
- internal/race
- internal/abi
- sync/atomic
- unicode
- internal/bytealg
- math
- runtime
- sync
- internal/reflectlite
- internal/testlog
- errors
- sort
- internal/safefilepath
- internal/oserror
- path
- io
- strconv
- syscall
- reflect
- internal/syscall/execenv
- runtime/internal/atomic
- internal/syscall/unix
- time
- io/fs
- internal/poll
- internal/fmtsort
- os
- fmt
+internal/goarch
+internal/unsafeheader
+internal/abi
+internal/cpu
+internal/bytealg
+internal/coverage/rtcov
+internal/goexperiment
+internal/goos
+runtime/internal/atomic
+runtime/internal/math
+runtime/internal/sys
+runtime/internal/syscall
+runtime
+internal/reflectlite
+errors
+internal/itoa
+math/bits
+math
+unicode/utf8
+strconv
+internal/race
+sync/atomic
+sync
+unicode
+reflect
+sort
+internal/fmtsort
+io
+internal/oserror
+syscall
+internal/syscall/unix
+time
+internal/poll
+internal/safefilepath
+internal/syscall/execenv
+internal/testlog
+path
+io/fs
+os
+fmt
 "
 
 for pkg in $std_pkgs
