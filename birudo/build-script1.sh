@@ -1,9 +1,9 @@
 #!/usr/local/bin/bash
-set -eux
+set -eu
 
 export GOOS=linux
 export GOARCH=amd64
-WORK=/tmp/go-build-0606-1439
+WORK=/tmp/go-build-0607-0010
 OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=`go env GOROOT`
@@ -12,51 +12,50 @@ BLDID=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 B="-buildid $BLDID -goversion go1.20.4"
 
 declare -A PKGS=()
+std_pkgs="
+internal/goarch
+internal/unsafeheader
+internal/abi
+internal/cpu
+internal/bytealg
+internal/coverage/rtcov
+internal/goexperiment
+internal/goos
+runtime/internal/atomic
+runtime/internal/math
+runtime/internal/sys
+runtime/internal/syscall
+runtime
+internal/reflectlite
+errors
+internal/itoa
+math/bits
+math
+unicode/utf8
+strconv
+internal/race
+sync/atomic
+sync
+unicode
+reflect
+sort
+internal/fmtsort
+io
+internal/oserror
+syscall
+internal/syscall/unix
+time
+internal/poll
+internal/safefilepath
+internal/syscall/execenv
+internal/testlog
+path
+io/fs
+os
+fmt
+"
 
-declare -A DEPENDS=(
-[main]="fmt runtime"
-[fmt]="errors internal/fmtsort io math os reflect sort strconv sync unicode/utf8 "
-[os]="errors internal/itoa internal/poll internal/safefilepath internal/syscall/execenv internal/syscall/unix internal/testlog io io/fs runtime sort sync sync/atomic syscall time"
-[internal/fmtsort]="reflect sort"
-[sync]="internal/race runtime sync/atomic"
-[internal/reflectlite]="internal/goarch internal/unsafeheader runtime"
-[internal/testlog]="sync sync/atomic"
-[errors]="internal/reflectlite"
-[sort]="internal/reflectlite math/bits"
-[internal/abi]="internal/goarch"
-[runtime/internal/math]="internal/goarch"
-[runtime/internal/sys]="internal/goarch internal/goos"
-[internal/bytealg]="internal/cpu"
-[math]="internal/cpu math/bits"
-[runtime]="internal/abi internal/bytealg internal/coverage/rtcov internal/cpu internal/goarch internal/goexperiment internal/goos runtime/internal/atomic runtime/internal/math runtime/internal/sys runtime/internal/syscall"
-[internal/safefilepath]="errors runtime"
-[internal/oserror]="errors"
-[path]="errors internal/bytealg unicode/utf8"
-[io]="errors sync"
-[strconv]="errors internal/bytealg math math/bits unicode/utf8 "
-[syscall]="errors internal/bytealg internal/itoa internal/oserror internal/race runtime sync sync/atomic "
-[reflect]="errors internal/abi internal/bytealg internal/goarch internal/itoa internal/unsafeheader math runtime strconv sync unicode unicode/utf8 "
-[internal/syscall/execenv]="syscall"
-[internal/syscall/unix]="sync/atomic syscall"
-[time]="errors runtime sync syscall "
-[io/fs]="errors internal/oserror io path sort time unicode/utf8 "
-[internal/poll]="errors internal/syscall/unix io runtime sync sync/atomic syscall time "
-
-[internal/coverage/rtcov]=""
-[internal/unsafeheader]=""
-[internal/goarch]=""
-[internal/goos]=""
-[internal/goexperiment]=""
-[runtime/internal/syscall]=""
-[internal/itoa]=""
-[unicode/utf8]=""
-[math/bits]=""
-[internal/cpu]=""
-[runtime/internal/atomic]=""
-[internal/race]=""
-[unicode]=""
-[sync/atomic]=""
-)
+declare -A DEPENDS=()
 
 function build_pkg() {
 std=$1
@@ -218,55 +217,60 @@ mv $wdir/exe/a.out $OUT_FILE
 rm -r $wdir/
 }
 
+function find_depends() {
+  local pkg=$1
+  if [ -v 'DEPENDS[$pkg]' ]; then
+    return
+  fi
+  local dir=$(get_std_pkg_dir $pkg)
+  local files=$(./find_files.sh $dir)
+  local _pkgs=$(./parse_imports.sh $dir $files )
+  local pkgs=""
+  for _pkg in $_pkgs
+  do
+    if [[ $_pkg != "unsafe" ]]; then
+      if [[ -z $pkgs ]]; then
+        pkgs=$_pkg
+      else
+        pkgs="$pkgs $_pkg"
+      fi
+    fi
+  done
+
+  #echo "[$pkg]=\"$pkgs\""
+  DEPENDS[$pkg]=$pkgs
+
+  for _pkg in $pkgs
+  do
+    find_depends $_pkg
+  done
+}
+
+function resolve_dep_tree() {
+    local files="$@" # main files
+    local pkgs=$( ./parse_imports.sh . $files )
+    DEPENDS[main]=$pkgs
+
+    for pkg in $pkgs
+    do
+      find_depends $pkg
+    done
+}
+
+function get_std_pkg_dir() {
+  local pkg=$1
+  echo $GOROOT/src/$pkg
+}
 # main procedure
 
 rm -f $OUT_FILE
 
-std_pkgs="
-internal/goarch
-internal/unsafeheader
-internal/abi
-internal/cpu
-internal/bytealg
-internal/coverage/rtcov
-internal/goexperiment
-internal/goos
-runtime/internal/atomic
-runtime/internal/math
-runtime/internal/sys
-runtime/internal/syscall
-runtime
-internal/reflectlite
-errors
-internal/itoa
-math/bits
-math
-unicode/utf8
-strconv
-internal/race
-sync/atomic
-sync
-unicode
-reflect
-sort
-internal/fmtsort
-io
-internal/oserror
-syscall
-internal/syscall/unix
-time
-internal/poll
-internal/safefilepath
-internal/syscall/execenv
-internal/testlog
-path
-io/fs
-os
-fmt
-"
+
 
 PKGS[main]=1
 id=2
+
+resolve_dep_tree $(./find_files.sh .)
 
 for pkg in $std_pkgs
 do
@@ -276,7 +280,7 @@ done
 
 for pkg in $std_pkgs
 do
-  dir=$GOROOT/src/$pkg
+  dir=$(get_std_pkg_dir $pkg)
   build_pkg 1 $pkg $(./find_files.sh $dir)
 done
 
