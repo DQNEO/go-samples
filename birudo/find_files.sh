@@ -8,9 +8,9 @@ function log() {
   fi
 }
 
-function list_files_in_pkg() {
-  local pkg=$1
-  gfind $GOROOT/src/$pkg -maxdepth 1 -type f \( -name "*.go" -o -name "*.s" \) -printf "%f\n" \
+function list_files_in_dir() {
+  local dir=$1
+  gfind $dir -maxdepth 1 -type f \( -name "*.go" -o -name "*.s" \) -printf "%f\n" \
    | grep -v -E '_test.go' | sort
 }
 
@@ -56,10 +56,10 @@ function match_arch() {
 
 }
 
-function find_files_in_pkg() {
-  local pkg=$1
+function find_files_in_dir() {
+  local dir=$1
   local debug=$2
-  local files=$(list_files_in_pkg $pkg | exclude_arch)
+  local files=$(list_files_in_dir $dir | exclude_arch)
   local gofiles=""
   local sfiles=""
 
@@ -67,7 +67,7 @@ function find_files_in_pkg() {
 
   for f in $files
   do
-    local fullpath="$GOROOT/src/$pkg/$f"
+    local fullpath="$dir/$f"
     local tag=$(get_build_tag $fullpath)
     if match_arch "$tag" ; then
          log " => ok"
@@ -103,9 +103,10 @@ function find_files_in_pkg() {
 
 }
 
-pkg=$1
+dir=$1
 debug="false" # true or false
 if [[ $# -ge 2 ]] && [[ $2 = "true" ]]; then
   debug="true"
 fi
-find_files_in_pkg $pkg $debug
+
+find_files_in_dir $dir $debug

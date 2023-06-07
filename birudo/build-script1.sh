@@ -6,7 +6,7 @@ export GOARCH=amd64
 WORK=/tmp/go-build1234567
 OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
-GORT=/usr/local/opt/go/libexec
+GORT=`go env GOROOT`
 TOOL_DIR=$GORT/pkg/tool/darwin_amd64
 BLDID=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 B="-buildid $BLDID -goversion go1.20.4"
@@ -180,11 +180,6 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 
 }
 
-function build_std_pkg() {
-local pkg=$1
-build_pkg 1 $pkg $(./find_files.sh $pkg)
-}
-
 function make_importcfg() {
 pkg=$1
 wdir=$WORK/${PKGS[$pkg]}
@@ -309,9 +304,11 @@ std_pkgs="
  os
  fmt
 "
-for p in $std_pkgs
+
+for pkg in $std_pkgs
 do
-  build_std_pkg $p
+  dir=$GOROOT/src/$pkg
+  build_pkg 1 $pkg $(./find_files.sh $dir)
 done
 
 cd $SRC_DIR
