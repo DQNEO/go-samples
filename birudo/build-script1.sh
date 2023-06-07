@@ -267,47 +267,52 @@ rm -r $wdir/
 
 rm -f $OUT_FILE
 
-#         pkg
-build_std_pkg internal/coverage/rtcov
-build_std_pkg internal/unsafeheader
-build_std_pkg internal/goarch
-build_std_pkg internal/goos
-build_std_pkg internal/goexperiment
-build_std_pkg runtime/internal/syscall
-build_std_pkg internal/cpu
-build_std_pkg internal/itoa
-build_std_pkg unicode/utf8
-build_std_pkg math/bits
-build_std_pkg runtime/internal/math
-build_std_pkg runtime/internal/sys
-build_std_pkg internal/race
-build_std_pkg internal/abi
-build_std_pkg sync/atomic
-build_std_pkg unicode
-build_std_pkg internal/bytealg
-build_std_pkg math
-build_std_pkg runtime
-build_std_pkg sync
-build_std_pkg internal/reflectlite
-build_std_pkg internal/testlog
-build_std_pkg errors
-build_std_pkg sort
-build_std_pkg internal/safefilepath
-build_std_pkg internal/oserror
-build_std_pkg path
-build_std_pkg io
-build_std_pkg strconv
-build_std_pkg syscall
-build_std_pkg reflect
-build_std_pkg internal/syscall/execenv
-build_std_pkg runtime/internal/atomic
-build_std_pkg internal/syscall/unix
-build_std_pkg time
-build_std_pkg io/fs
-build_std_pkg internal/poll
-build_std_pkg internal/fmtsort
-build_std_pkg os
-build_std_pkg fmt
+std_pkgs="
+ internal/coverage/rtcov
+ internal/unsafeheader
+ internal/goarch
+ internal/goos
+ internal/goexperiment
+ runtime/internal/syscall
+ internal/cpu
+ internal/itoa
+ unicode/utf8
+ math/bits
+ runtime/internal/math
+ runtime/internal/sys
+ internal/race
+ internal/abi
+ sync/atomic
+ unicode
+ internal/bytealg
+ math
+ runtime
+ sync
+ internal/reflectlite
+ internal/testlog
+ errors
+ sort
+ internal/safefilepath
+ internal/oserror
+ path
+ io
+ strconv
+ syscall
+ reflect
+ internal/syscall/execenv
+ runtime/internal/atomic
+ internal/syscall/unix
+ time
+ io/fs
+ internal/poll
+ internal/fmtsort
+ os
+ fmt
+"
+for p in $std_pkgs
+do
+  build_std_pkg $p
+done
 
 cd $SRC_DIR
 build_pkg 0 "main" ./main.go ./sum.go
