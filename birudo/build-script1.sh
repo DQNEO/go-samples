@@ -102,10 +102,9 @@ declare -A DEPENDS=(
 )
 
 function build_pkg() {
-pkg=$1
-complete=$2 # 0:off, 1:on, 2:auto
-std=$3
-shift;shift;shift;
+std=$1
+pkg=$2
+shift;shift;
 filenames="$@"
 
 local gofiles=""
@@ -140,13 +139,24 @@ local sstd=""
 local slang=""
 
 if [[ -n $afiles ]]; then
-  complete="0"
   gen_symabis $pkg $afiles
   asmopts="-symabis $wdir/symabis -asmhdr $wdir/go_asm.h"
 fi
 
 if [[ $pkg = "runtime" ]]; then
   sruntime="-+"
+fi
+
+complete="1"
+if [[ -n $afiles ]]; then
+  complete="0"
+fi
+if [[ "$std" = "1" ]]; then
+  # see /usr/local/opt/go/libexec/src/cmd/go/internal/work/gc.go:119
+  if [[ $pkg = "os"  ]] || [[ $pkg = "sync" ]] || [[ $pkg = "syscall" ]] \
+   || [[ $pkg = "internal/poll" ]] || [[ $pkg = "time" ]]; then
+    complete="0"
+  fi
 fi
 
 if [ "$complete" = "1" ]; then
@@ -171,18 +181,8 @@ $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
 }
 
 function build_std_pkg() {
-pkg=$1
-complete="1"
-local filenames=$(./find_files.sh $pkg)
-local std="1"
-
-# see /usr/local/opt/go/libexec/src/cmd/go/internal/work/gc.go:119
-if [[ $pkg = "os"  ]] || [[ $pkg = "sync" ]] || [[ $pkg = "syscall" ]] \
- || [[ $pkg = "internal/poll" ]] || [[ $pkg = "time" ]]; then
-  complete="0"
-fi
-
-build_pkg $pkg $complete $std $filenames
+local pkg=$1
+build_pkg 1 $pkg $(./find_files.sh $pkg)
 }
 
 function make_importcfg() {
@@ -310,6 +310,5 @@ build_std_pkg os
 build_std_pkg fmt
 
 cd $SRC_DIR
-mainfiles="./main.go ./sum.go"
-build_pkg "main" 1 0 $mainfiles
+build_pkg 0 "main" ./main.go ./sum.go
 do_link
