@@ -3,7 +3,7 @@ set -eux
 
 export GOOS=linux
 export GOARCH=amd64
-WORK=/tmp/go-build-0606-1433
+WORK=/tmp/go-build-0606-1439
 OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=`go env GOROOT`
@@ -11,50 +11,7 @@ TOOL_DIR=$GORT/pkg/tool/darwin_amd64
 BLDID=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 B="-buildid $BLDID -goversion go1.20.4"
 
-declare -A PKGS=(
-[main]="b001"
-[fmt]="b002"
-[errors]="b003"
-[internal/reflectlite]="b004"
-[internal/goarch]="b005"
-[internal/unsafeheader]="b006"
-[runtime]="b008"
-[internal/abi]="b009"
-[internal/bytealg]="b010"
-[internal/cpu]="b011"
-[internal/coverage/rtcov]="b012"
-[internal/goexperiment]="b013"
-[internal/goos]="b014"
-[runtime/internal/atomic]="b015"
-[runtime/internal/math]="b016"
-[runtime/internal/sys]="b017"
-[runtime/internal/syscall]="b018"
-[internal/fmtsort]="b019"
-[reflect]="b020"
-[internal/itoa]="b021"
-[math]="b022"
-[math/bits]="b023"
-[strconv]="b024"
-[unicode/utf8]="b025"
-[sync]="b026"
-[internal/race]="b027"
-[sync/atomic]="b028"
-[unicode]="b029"
-[sort]="b030"
-[io]="b031"
-[os]="b032"
-[internal/poll]="b033"
-[internal/syscall/unix]="b034"
-[syscall]="b035"
-[internal/oserror]="b036"
-[time]="b037"
-[internal/safefilepath]="b038"
-[internal/syscall/execenv]="b039"
-[internal/testlog]="b040"
-[io/fs]="b041"
-[path]="b042"
-
-)
+declare -A PKGS=()
 
 declare -A DEPENDS=(
 [main]="fmt runtime"
@@ -307,6 +264,15 @@ io/fs
 os
 fmt
 "
+
+PKGS[main]=1
+id=2
+
+for pkg in $std_pkgs
+do
+  PKGS[$pkg]=$id
+  id=$((id + 1))
+done
 
 for pkg in $std_pkgs
 do
