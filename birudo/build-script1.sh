@@ -3,7 +3,7 @@ set -eux
 
 export GOOS=linux
 export GOARCH=amd64
-WORK=/tmp/go-build/0607-1613
+WORK=/tmp/go-build/0607-2223
 OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=`go env GOROOT`

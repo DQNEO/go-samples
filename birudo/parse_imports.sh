@@ -2,7 +2,7 @@
 # Parse imports of given go files
 set -eu
 
-#TODO: handle multi times of import in a file
+#TODO: handle multi` times of import in a file
 function parseImportDecls() {
   set +e
   local file=$1
@@ -16,13 +16,19 @@ function parseImportDecls() {
   set -e
 }
 
-declare dir=$1
-shift;
+function parse_imports() {
+  declare dir=$1
+  shift;
 
-declare readonly files="$@"
-{
-for file in $files
-do
-  parseImportDecls "$dir/$file"
-done
-} | sort | uniq | tr '\n' ' ' | awk '{$1=$1;print}'
+  declare readonly files="$@"
+  {
+    for file in $files
+    do
+      parseImportDecls "$dir/$file"
+    done
+  } | sort | uniq | tr '\n' ' ' | awk '{$1=$1;print}'
+}
+
+parse_imports "$@"
+
+
