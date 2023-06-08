@@ -1,9 +1,9 @@
 #!/usr/local/bin/bash
-set -eu
+set -eux
 
 export GOOS=linux
 export GOARCH=amd64
-WORK=/tmp/go-build/0607-1531
+WORK=/tmp/go-build/0607-1613
 OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=`go env GOROOT`
@@ -26,6 +26,28 @@ function dump_depend_tree() {
       done
     done
     echo ""
+  done
+}
+
+# Sort packages topologically
+function sort_pkgs() {
+  infile=$1
+  local workfile=/tmp/work.txt
+
+  cp $infile $workfile
+
+  while true
+  do
+    leaves=$(cat $workfile | grep -e ': *$'| gsed -e 's/: *//g')
+    if [[ -z $leaves ]]; then
+      return
+    fi
+    for l in $leaves
+    do
+      cat $workfile | grep -v -e "^$l:" | gsed -E "s#\"$l\"##g" > /tmp/tmp.txt
+      cp /tmp/tmp.txt $workfile
+      echo $l
+    done
   done
 }
 
@@ -233,33 +255,35 @@ function get_std_pkg_dir() {
   local pkg=$1
   echo $GOROOT/src/$pkg
 }
+
 # main procedure
+function build() {
+  rm -f $OUT_FILE
 
-rm -f $OUT_FILE
+  PKGS[main]=1
+  id=2
 
+  resolve_dep_tree $(./find_files.sh .)
+  mkdir -p $WORK
+  dump_depend_tree > $WORK/depends.txt
+  sort_pkgs  $WORK/depends.txt > $WORK/sorted.txt
 
+  std_pkgs=`cat $WORK/sorted.txt | grep -v -e '^main$'`
+  for pkg in $std_pkgs
+  do
+    PKGS[$pkg]=$id
+    id=$((id + 1))
+  done
 
-PKGS[main]=1
-id=2
+  for pkg in $std_pkgs
+  do
+    dir=$(get_std_pkg_dir $pkg)
+    build_pkg 1 $pkg $(./find_files.sh $dir)
+  done
 
-resolve_dep_tree $(./find_files.sh .)
-mkdir -p $WORK
-dump_depend_tree > $WORK/depends.txt
-./tsort.sh  $WORK/depends.txt > $WORK/sorted.txt
+  cd $SRC_DIR
+  build_pkg 0 "main" $(./find_files.sh .)
+  do_link
+}
 
-std_pkgs=`cat $WORK/sorted.txt | grep -v -e '^main$'`
-for pkg in $std_pkgs
-do
-  PKGS[$pkg]=$id
-  id=$((id + 1))
-done
-
-for pkg in $std_pkgs
-do
-  dir=$(get_std_pkg_dir $pkg)
-  build_pkg 1 $pkg $(./find_files.sh $dir)
-done
-
-cd $SRC_DIR
-build_pkg 0 "main" $(./find_files.sh .)
-do_link
+build
