@@ -3,7 +3,7 @@ set -eux
 
 export GOOS=linux
 export GOARCH=amd64
-WORK=/tmp/go-build/0607-2223
+WORK=/tmp/go-build/0607-2230
 OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=`go env GOROOT`
@@ -13,6 +13,8 @@ B="-buildid $BLDID -goversion go1.20.4"
 
 declare -A PKGS=()
 declare -A DEPENDS=()
+
+debug="false" # true or false
 
 function dump_depend_tree() {
   for p in "${!DEPENDS[@]}"
@@ -211,13 +213,114 @@ $TOOL_DIR/buildid -w $wdir/exe/a.out # internal
 mv $wdir/exe/a.out $OUT_FILE
 }
 
+function log() {
+  if eval $debug ; then
+    echo "$@" >/dev/stderr
+  fi
+}
+
+function list_files_in_dir() {
+  local dir=$1
+  gfind $dir -maxdepth 1 -type f \( -name "*.go" -o -name "*.s" \) -printf "%f\n" \
+   | grep -v -E '_test.go' | sort
+}
+
+function exclude_arch() {
+  grep -v -E '_(android|ios|illumos|hurd|zos|darwin|plan9|windows|aix|dragonfly|freebsd|js|netbsd|openbsd|solaris)(\.|_)' \
+   | grep -v -E '_(386|arm|armbe|arm64|arm64be|loong64|mips|mipsle|mips64.*|ppc64|ppc64le|riscv64|ppc|riscv|s390|s390x|sparc.*|wasm)\.(go|s)'
+}
+
+function get_build_tag() {
+  local fullpath=$1
+  set +e
+  matched=`grep -m 1 --only-matching -E '^//go:build .+$' $fullpath`
+  set -e
+  matched=${matched##"//go:build "}
+  echo $matched
+}
+
+function match_arch() {
+  local matched=$1
+      log -n "[$f: '$matched' ]"
+      if [[ $matched = "ignore" ]]; then
+       # ignore
+       return 1
+      elif [[ -z $matched ]]; then
+        # empty
+         return 0
+      else
+      converted=$(echo $matched \
+      | gsed -E 's/(unix|linux|amd64)/@@@/g' \
+      | gsed -E 's/goexperiment\.(coverageredesign|regabiwrappers|regabiargs|unified)/@@@/' | gsed -E 's/goexperiment\.\w+/false/g' \
+      | gsed -E 's/\w+/false/g' | gsed -E 's/@@@/true/g' \
+      | gsed -e 's/!true/false/g' | gsed -e 's/!false/true/g' \
+      | gsed -e 's/^true ||.*/true/' | gsed -e 's/^true &&//g' | gsed -e 's/^false ||//g' | gsed -e 's/^false &&.*/false/g' \
+       )
+           log -n "=> '$converted'"
+        if eval $converted ; then
+           # do build
+           return 0
+        else
+          return 1
+       fi
+      fi
+
+}
+
+function find_files_in_dir() {
+  local dir=$1
+
+  local files=$(list_files_in_dir $dir | exclude_arch)
+  local gofiles=""
+  local sfiles=""
+
+  local buildfiles=""
+
+  for f in $files
+  do
+    local fullpath="$dir/$f"
+    local tag=$(get_build_tag $fullpath)
+    if match_arch "$tag" ; then
+         log " => ok"
+         buildfiles="$buildfiles $f"
+    else
+         log " => ng"
+    fi
+  done
+
+  for f in $buildfiles
+  do
+    if [[ $f == *.go ]] ; then
+      gofiles="$gofiles $f"
+    elif [[ $f == *.s ]] ; then
+      sfiles="$sfiles $f"
+    else
+      log ERROR
+      exit 1
+    fi
+  done
+
+  for s in $gofiles
+  do
+    echo -n " $s"
+  done
+
+  for s in $sfiles
+  do
+    echo -n " $s"
+  done
+
+  echo ''
+
+}
+
 function find_depends() {
   local pkg=$1
   if [ -v 'DEPENDS[$pkg]' ]; then
     return
   fi
   local dir=$(get_std_pkg_dir $pkg)
-  local files=$(./find_files.sh $dir)
+  local files=$(find_files_in_dir $dir)
   local _pkgs=$(./parse_imports.sh $dir $files )
   local pkgs=""
   for _pkg in $_pkgs
@@ -263,7 +366,7 @@ function build() {
   PKGS[main]=1
   id=2
 
-  resolve_dep_tree $(./find_files.sh .)
+  resolve_dep_tree $(find_files_in_dir .)
   mkdir -p $WORK
   dump_depend_tree > $WORK/depends.txt
   sort_pkgs  $WORK/depends.txt > $WORK/sorted.txt
@@ -278,11 +381,11 @@ function build() {
   for pkg in $std_pkgs
   do
     dir=$(get_std_pkg_dir $pkg)
-    build_pkg 1 $pkg $(./find_files.sh $dir)
+    build_pkg 1 $pkg $(find_files_in_dir $dir)
   done
 
   cd $SRC_DIR
-  build_pkg 0 "main" $(./find_files.sh .)
+  build_pkg 0 "main" $(find_files_in_dir .)
   do_link
 }
 
