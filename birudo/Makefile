@@ -20,4 +20,4 @@ run2: birudo2
 	docker run --rm -v `pwd`:/mnt/ -w /mnt ubuntu ./$<
 
 clean:
-	rm -f birudo birudo0 birudo1 birudo2
+	rm -f birudo birudo0 birudo1 birudo2 /tmp/go-build

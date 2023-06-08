@@ -3,7 +3,7 @@ set -eu
 
 export GOOS=linux
 export GOARCH=amd64
-WORK=/tmp/go-build-0607-0010
+WORK=/tmp/go-build/0607-1531
 OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=`go env GOROOT`
@@ -12,50 +12,22 @@ BLDID=abcdefghijklmnopqrst/abcdefghijklmnopqrst
 B="-buildid $BLDID -goversion go1.20.4"
 
 declare -A PKGS=()
-std_pkgs="
-internal/goarch
-internal/unsafeheader
-internal/abi
-internal/cpu
-internal/bytealg
-internal/coverage/rtcov
-internal/goexperiment
-internal/goos
-runtime/internal/atomic
-runtime/internal/math
-runtime/internal/sys
-runtime/internal/syscall
-runtime
-internal/reflectlite
-errors
-internal/itoa
-math/bits
-math
-unicode/utf8
-strconv
-internal/race
-sync/atomic
-sync
-unicode
-reflect
-sort
-internal/fmtsort
-io
-internal/oserror
-syscall
-internal/syscall/unix
-time
-internal/poll
-internal/safefilepath
-internal/syscall/execenv
-internal/testlog
-path
-io/fs
-os
-fmt
-"
-
 declare -A DEPENDS=()
+
+function dump_depend_tree() {
+  for p in "${!DEPENDS[@]}"
+  do
+    echo -n "$p:"
+    for v in ${DEPENDS[$p]}
+    do
+      for w in $v
+      do
+      echo -n "\"$w\" "
+      done
+    done
+    echo ""
+  done
+}
 
 function build_pkg() {
 std=$1
@@ -131,12 +103,13 @@ fi
 local otheropts=" $slang $sstd $sruntime $scomplete $asmopts "
 local pkgopts=$(get_package_opts $pkg)
 
+set -x
 $TOOL_DIR/compile -c=4 -nolocalimports -pack $pkgopts $otheropts $gofiles
 if [[ -n $afiles ]]; then
   append_asm $pkg $afiles
 fi
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
-
+set +x
 }
 
 function make_importcfg() {
@@ -214,7 +187,6 @@ cd .
 $TOOL_DIR/link -o $wdir/exe/a.out -importcfg $wdir/importcfg.link -buildmode=exe -buildid=yekYyg_HZMgX517VPpiO/aHxht5d7JGm1qJULUhhT/ct0PU8-vieH10gtMxGeC/yekYyg_HZMgX517VPpiO -extld=cc $wdir/_pkg_.a
 $TOOL_DIR/buildid -w $wdir/exe/a.out # internal
 mv $wdir/exe/a.out $OUT_FILE
-rm -r $wdir/
 }
 
 function find_depends() {
@@ -271,7 +243,11 @@ PKGS[main]=1
 id=2
 
 resolve_dep_tree $(./find_files.sh .)
+mkdir -p $WORK
+dump_depend_tree > $WORK/depends.txt
+./tsort.sh  $WORK/depends.txt > $WORK/sorted.txt
 
+std_pkgs=`cat $WORK/sorted.txt | grep -v -e '^main$'`
 for pkg in $std_pkgs
 do
   PKGS[$pkg]=$id
