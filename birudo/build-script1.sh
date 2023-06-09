@@ -16,6 +16,32 @@ declare -A DEPENDS=()
 
 debug="false" # true or false
 
+function parseImportDecls() {
+  set +e
+  local file=$1
+  pcregrep -M --only-matching  --no-filename '^\s*import\s+\([^\)]+]*\)' $file\
+   | grep -E --only-matching '\"[^\"]+\"' \
+   | tr -d '"'
+
+  pcregrep -M --only-matching  --no-filename '^\s*import.*"[^"]+"' $file\
+   | grep -E --only-matching '\"[^\"]+\"' \
+   | tr -d '"'
+  set -e
+}
+
+function parse_imports() {
+  declare dir=$1
+  shift;
+
+  declare readonly files="$@"
+  {
+    for file in $files
+    do
+      parseImportDecls "$dir/$file"
+    done
+  } | sort | uniq | tr '\n' ' ' | awk '{$1=$1;print}'
+}
+
 function dump_depend_tree() {
   for p in "${!DEPENDS[@]}"
   do
@@ -321,7 +347,7 @@ function find_depends() {
   fi
   local dir=$(get_std_pkg_dir $pkg)
   local files=$(find_files_in_dir $dir)
-  local _pkgs=$(./parse_imports.sh $dir $files )
+  local _pkgs=$(parse_imports $dir $files )
   local pkgs=""
   for _pkg in $_pkgs
   do
@@ -345,7 +371,7 @@ function find_depends() {
 
 function resolve_dep_tree() {
     local files="$@" # main files
-    local pkgs=$( ./parse_imports.sh . $files )
+    local pkgs=$( parse_imports . $files )
     DEPENDS[main]=$pkgs
 
     for pkg in $pkgs
