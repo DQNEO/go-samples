@@ -3,7 +3,7 @@ set -eux
 
 export GOOS=linux
 export GOARCH=amd64
-WORK=/tmp/go-build/0607-2230
+WORK=/tmp/go-build/0608-0920
 OUT_FILE=birudo2
 SRC_DIR=/Users/DQNEO/src/github.com/DQNEO/go-samples/birudo
 GORT=`go env GOROOT`
@@ -13,6 +13,7 @@ B="-buildid $BLDID -goversion go1.20.4"
 
 declare -A PKGS=()
 declare -A DEPENDS=()
+declare -A FILE_NAMES_CACHE=()
 
 debug="false" # true or false
 
@@ -347,6 +348,7 @@ function find_depends() {
   fi
   local dir=$(get_std_pkg_dir $pkg)
   local files=$(find_files_in_dir $dir)
+  FILE_NAMES_CACHE[$dir]="$files"
   local _pkgs=$(parse_imports $dir $files )
   local pkgs=""
   for _pkg in $_pkgs
@@ -391,8 +393,9 @@ function build() {
 
   PKGS[main]=1
   id=2
-
-  resolve_dep_tree $(find_files_in_dir .)
+  local main_files=$(find_files_in_dir .)
+  FILE_NAMES_CACHE["."]="$main_files"
+  resolve_dep_tree $main_files
   mkdir -p $WORK
   dump_depend_tree > $WORK/depends.txt
   sort_pkgs  $WORK/depends.txt > $WORK/sorted.txt
@@ -407,11 +410,11 @@ function build() {
   for pkg in $std_pkgs
   do
     dir=$(get_std_pkg_dir $pkg)
-    build_pkg 1 $pkg $(find_files_in_dir $dir)
+    build_pkg 1 $pkg ${FILE_NAMES_CACHE[$dir]}
   done
 
   cd $SRC_DIR
-  build_pkg 0 "main" $(find_files_in_dir .)
+  build_pkg 0 "main" ${FILE_NAMES_CACHE["."]}
   do_link
 }
 
