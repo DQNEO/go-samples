@@ -674,7 +674,7 @@ cat >$WORK/b001/importcfg << 'EOF' # internal
 packagefile fmt=$WORK/b002/_pkg_.a
 packagefile runtime=$WORK/b008/_pkg_.a
 EOF
-/usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -lang=go1.20 -complete -buildid NeXhbM1esEL5WwePk51M/NeXhbM1esEL5WwePk51M -goversion go1.20.4 -c=8 -nolocalimports -importcfg $WORK/b001/importcfg -pack ./main.go ./sum.go
+/usr/local/opt/go/libexec/pkg/tool/darwin_amd64/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -lang=go1.20 -complete -buildid Hn3PYV9gjlHeOz64viNt/Hn3PYV9gjlHeOz64viNt -goversion go1.20.4 -c=8 -nolocalimports -importcfg $WORK/b001/importcfg -pack ./main.go ./sum.go
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b001/_pkg_.a # internal
 cat >$WORK/b001/importcfg.link << 'EOF' # internal
 packagefile github.com/DQNEO/go-samples/birudo=$WORK/b001/_pkg_.a
@@ -718,10 +718,10 @@ packagefile unicode=$WORK/b029/_pkg_.a
 packagefile internal/race=$WORK/b027/_pkg_.a
 packagefile internal/oserror=$WORK/b036/_pkg_.a
 packagefile path=$WORK/b042/_pkg_.a
-modinfo "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\tgithub.com/DQNEO/go-samples/birudo\nmod\tgithub.com/DQNEO/go-samples/birudo\t(devel)\t\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\tCGO_ENABLED=0\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=fc68396528e1f14e234ea5cd053db0131715dafa\nbuild\tvcs.time=2023-06-05T10:38:32Z\nbuild\tvcs.modified=true\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2"
+modinfo "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\tgithub.com/DQNEO/go-samples/birudo\nmod\tgithub.com/DQNEO/go-samples/birudo\t(devel)\t\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\tCGO_ENABLED=0\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=abfa41c45dd70eb75f20ecb0706d1c120fabe0d5\nbuild\tvcs.time=2023-06-09T00:26:48Z\nbuild\tvcs.modified=true\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2"
 EOF
 mkdir -p $WORK/b001/exe/
 cd .
-/usr/local/opt/go/libexec/pkg/tool/darwin_amd64/link -o $WORK/b001/exe/a.out -importcfg $WORK/b001/importcfg.link -buildmode=exe -buildid=koMZpPtdI7zyZewm1EUH/NeXhbM1esEL5WwePk51M/NeXhbM1esEL5WwePk51M/koMZpPtdI7zyZewm1EUH -extld=cc $WORK/b001/_pkg_.a
+/usr/local/opt/go/libexec/pkg/tool/darwin_amd64/link -o $WORK/b001/exe/a.out -importcfg $WORK/b001/importcfg.link -buildmode=exe -buildid=69gywrFyw4VWB6LHQJVX/Hn3PYV9gjlHeOz64viNt/Hn3PYV9gjlHeOz64viNt/69gywrFyw4VWB6LHQJVX -extld=cc $WORK/b001/_pkg_.a
 /usr/local/opt/go/libexec/pkg/tool/darwin_amd64/buildid -w $WORK/b001/exe/a.out # internal
 mv $WORK/b001/exe/a.out birudo1
