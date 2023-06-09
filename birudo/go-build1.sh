@@ -382,7 +382,7 @@ function resolve_dep_tree() {
 
 function get_std_pkg_dir() {
   local pkg=$1
-  echo $GOROOT/src/$pkg
+  echo $GORT/src/$pkg
 }
 
 # main procedure
