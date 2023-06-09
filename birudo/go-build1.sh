@@ -1,5 +1,5 @@
 #!/usr/local/bin/bash
-set -eux
+set -eu
 
 export GOOS=linux
 export GOARCH=amd64
@@ -154,13 +154,11 @@ fi
 local otheropts=" $slang $sstd $sruntime $scomplete $asmopts "
 local pkgopts=$(get_package_opts $pkg)
 
-set -x
 $TOOL_DIR/compile -c=4 -nolocalimports -pack $pkgopts $otheropts $gofiles
 if [[ -n $afiles ]]; then
   append_asm $pkg $afiles
 fi
 $TOOL_DIR/buildid -w $wdir/_pkg_.a # internal
-set +x
 }
 
 function make_importcfg() {
