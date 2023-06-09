@@ -388,7 +388,7 @@ function get_std_pkg_dir() {
 }
 
 # main procedure
-function build() {
+function go_build() {
   rm -f $OUT_FILE
 
   PKGS[main]=1
@@ -418,4 +418,4 @@ function build() {
   do_link
 }
 
-build
+go_build
