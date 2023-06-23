@@ -15,18 +15,15 @@ $ ../docker-run
 In the docker container, build the "hello" binary
 
 ```
-# cat hello.go
+# cat >hello.go <<EOF
 package main
-
 import "fmt"
-
-func main() {
-        fmt.Print("Hello world\n")
-}
+func main() {fmt.Print("hello world\n")}
+EOF
 
 # go build -o hello hello.go
 # ./hello
-Hello world
+hello world
 ```
 
 Use strace
