@@ -3,7 +3,7 @@
 Get the docker image
 
 ```
-docker pull dqneo/ubuntu-build-essential:go
+docker pull dqneo/ubuntu-compiler-go
 ```
 
 Run a docker container
