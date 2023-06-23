@@ -9,9 +9,7 @@ else
   cmd="$@"
 fi
 
-docker run \
-    -it --rm\
-    -v `pwd`:/mnt -w /mnt \
+docker run -it --rm -v `pwd`:/mnt -w /mnt \
     --cap-add=SYS_PTRACE\
     --security-opt='seccomp=unconfined'\
     --tmpfs=/tmp/tmpfs:rw,size=500m,mode=1777\
