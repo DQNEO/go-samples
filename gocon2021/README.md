@@ -9,7 +9,7 @@ docker pull dqneo/ubuntu-build-essential:go
 Run a docker container
 
 ```
-$ ./docker-run
+$ ../docker-run
 ```
 
 In the docker container, build the "hello" binary
