@@ -10,12 +10,10 @@ else
 fi
 
 docker run \
-    -it\
-    --rm\
+    -it --rm\
+    -v `pwd`:/mnt -w /mnt \
     --cap-add=SYS_PTRACE\
     --security-opt='seccomp=unconfined'\
-    -w /mnt \
-    -v `pwd`:/mnt \
     --env PATH=/usr/lib/go-1.15/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\
     --env GOPATH=/root/go \
     --tmpfs=/tmp/tmpfs:rw,size=500m,mode=1777\
