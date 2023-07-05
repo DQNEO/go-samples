@@ -30,7 +30,12 @@ func main() {
 	var ifc2, ifc3 interface{}
 	ifc2, ifc3 = ifc.(int)
 	x1, x2 := ifc.(int)
-	fmt.Println(a, b, c, d, bol, ifc2, ifc3, x1, x2)
+	var ptr *int
+	ptr = nil
+	ifc = 1
+	a, b = 5,6
+	//a, b = (7,8) // cannot compile. https://go.dev/play/p/gkfk0gH58Nn
+	fmt.Println(a, b, c, d, bol, ifc2, ifc3, x1, x2, ptr)
 }`
 
 func main() {
