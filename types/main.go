@@ -21,9 +21,16 @@ var s = "abc"
 var ch = 'a' 
 
 func main() {
-	var i1 = 456
-	i2 := 789
-	fmt.Println(i1, i2)
+	var a = 1
+	var b int8 = 2
+	c := 'c'
+	var d byte = 'd'
+	var ifc interface{}
+	var bol bool
+	var ifc2, ifc3 interface{}
+	ifc2, ifc3 = ifc.(int)
+	x1, x2 := ifc.(int)
+	fmt.Println(a, b, c, d, bol, ifc2, ifc3, x1, x2)
 }`
 
 func main() {
@@ -45,7 +52,9 @@ func main() {
 	// Type-check the package containing only file f.
 	// Check returns a *types.Package.
 	info := types.Info{
+		Types:  make(map[ast.Expr]types.TypeAndValue),
 		Scopes: make(map[ast.Node]*types.Scope),
+		Defs:   make(map[*ast.Ident]types.Object),
 	}
 	pkg, err := conf.Check("pseudo", fset, []*ast.File{f}, &info)
 	if err != nil {
@@ -62,14 +71,43 @@ func main() {
 		fmt.Printf("  %d:  name=%s\n", i, name)
 		obj := pkg.Scope().Lookup(name)
 		objType := obj.Type()
-		fmt.Printf("    obj: kind=%T, type=%s, Underlying=%s, String()='%s' \n",
-			obj, objType.String(), objType.Underlying().String(), obj.String())
+		fmt.Printf("%s:    obj: kind=%T, type=%s, Underlying=%s, String()='%s' \n",
+			fset.Position(obj.Pos()), objType.String(), objType.Underlying().String(), obj.String())
 	}
 
-	fmt.Println("[Looking into local scopes]")
-	for node, scope := range info.Scopes {
-		if _, isFunc := node.(*ast.FuncType); isFunc {
-			fmt.Printf("%s: node=%T, scope=%s\n", node.Pos(), node, scope)
+	fmt.Println("[Defs]")
+	for ident, obj := range info.Defs {
+		if obj == nil {
+			continue // package declaration ?
 		}
+		fmt.Printf("%s  def:%s\n", fset.Position(obj.Pos()), ident)
+		fmt.Printf("    obj: kind=%T, String()='%s' \n",
+			obj, obj.String())
 	}
+
+	fmt.Println("[Inspecting local ast nodes]")
+	var inF bool
+	var inLocal bool
+	ast.Inspect(f, func(n ast.Node) bool {
+		if n == nil {
+			return true
+		}
+		if fdcl, isF := n.(*ast.FuncDecl); isF {
+			fmt.Println("FuncDecl found :", fdcl.Name.Name)
+			inF = true
+			return true
+		}
+		if _, isBlockStmt := n.(*ast.BlockStmt); inF && isBlockStmt {
+			inLocal = true
+			return true
+		}
+		if inLocal {
+			fmt.Printf("%s: node=%T %s\n", fset.Position(n.Pos()), n, n)
+			if expr, isExpr := n.(ast.Expr); isExpr {
+				tv := info.Types[expr]
+				fmt.Printf("    TypeAndValue:type=%T \"%s\", value=%s\n", tv.Type, tv.Type, tv.Value)
+			}
+		}
+		return true
+	})
 }
