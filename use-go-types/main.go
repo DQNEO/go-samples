@@ -13,29 +13,28 @@ import (
 const code = `package main
 import "fmt"
 
-type MyInt int
-type MyMyInt MyInt
-var i MyMyInt = 1
-var x = 123
-var s = "abc"
-var ch = 'a' 
-
 func main() {
 	var a = 1
 	var b int8 = 2
-	c := 'c'
-	var d byte = 'd'
-	var ifc interface{}
-	var bol bool
-	var ifc2, ifc3 interface{}
-	ifc2, ifc3 = ifc.(int)
-	x1, x2 := ifc.(int)
-	var ptr *int
-	ptr = nil
-	ifc = 1
-	a, b = 5,6
-	//a, b = (7,8) // cannot compile. https://go.dev/play/p/gkfk0gH58Nn
-	fmt.Println(a, b, c, d, bol, ifc2, ifc3, x1, x2, ptr)
+	_ = a
+	_ = b
+
+	fmt.Println(a, b)
+
+	//c := 'c'
+	//var d byte = 'd'
+	//var ifc interface{}
+	//var bol bool
+	//var ifc2, ifc3 interface{}
+	//ifc2, ifc3 = ifc.(int)
+	//x1, x2 := ifc.(int)
+	//var ptr *int
+	//ptr = nil
+	//ifc = 1
+	//a, b = 5,6
+	////a, b = (7,8) // cannot compile. https://go.dev/play/p/gkfk0gH58Nn
+	//fmt.Println(a, b, c, d, bol, ifc2, ifc3, x1, x2, ptr)
+
 }`
 
 func main() {
@@ -61,23 +60,10 @@ func main() {
 		Scopes: make(map[ast.Node]*types.Scope),
 		Defs:   make(map[*ast.Ident]types.Object),
 	}
-	pkg, err := conf.Check("pseudo", fset, []*ast.File{f}, &info)
+
+	_, err = conf.Check("pseudo", fset, []*ast.File{f}, &info)
 	if err != nil {
 		log.Fatal(err) // type error
-	}
-
-	fmt.Printf("Package.Path()  %q\n", pkg.Path())
-	fmt.Printf("Package.Name():    %s\n", pkg.Name())
-	fmt.Printf("Package.Imports(): %s\n", pkg.Imports())
-	fmt.Printf("Package,Scope():   %s\n", pkg.Scope())
-
-	fmt.Println("[Names in the package scope]")
-	for i, name := range pkg.Scope().Names() {
-		fmt.Printf("  %d:  name=%s\n", i, name)
-		obj := pkg.Scope().Lookup(name)
-		objType := obj.Type()
-		fmt.Printf("%s:    obj: kind=%T, type=%s, Underlying=%s, String()='%s' \n",
-			fset.Position(obj.Pos()), objType.String(), objType.Underlying().String(), obj.String())
 	}
 
 	fmt.Println("[Defs]")
