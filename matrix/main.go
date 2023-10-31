@@ -112,6 +112,11 @@ func MatrixAdd(a, b *Matrix) *Matrix {
 }
 
 func main() {
+	test()
+	doEnshu2()
+}
+
+func test() {
 	a := NewMatrix(3, 2, [][]int{{1, 2, 3}, {4, 5, 6}})
 	fmt.Printf("a = \n%s", a)
 	fmt.Printf("type of a = %s\n", a.Type())
@@ -139,4 +144,7 @@ func main() {
 	}
 
 	fmt.Printf("2 x a = \n%s", a.Scale(2))
+}
+func doEnshu2() {
+
 }
