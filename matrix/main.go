@@ -4,16 +4,16 @@ import "fmt"
 
 type Matrix struct {
 	//orig   any
-	nrows  int
-	ncols  int
-	values [][]int // matrix[row][col]
+	nrows      int
+	ncols      int
+	colVectors [][]int // list of column vectors
 }
 
 func NewMatrix(r, c int, v [][]int) *Matrix {
 	return &Matrix{
-		values: v,
-		nrows:  r,
-		ncols:  c,
+		colVectors: v,
+		nrows:      r,
+		ncols:      c,
 	}
 }
 
@@ -23,19 +23,19 @@ func NewBlankMatrix(r, c int) *Matrix {
 		v[c] = make([]int, r)
 	}
 	m := &Matrix{
-		nrows:  r,
-		ncols:  c,
-		values: v,
+		nrows:      r,
+		ncols:      c,
+		colVectors: v,
 	}
 	return m
 }
 
 func (m *Matrix) Elm(r, c int) int {
-	return m.values[c-1][r-1]
+	return m.colVectors[c-1][r-1]
 }
 
 func (m *Matrix) SetElm(r, c int, v int) {
-	m.values[c-1][r-1] = v
+	m.colVectors[c-1][r-1] = v
 }
 
 func (m *Matrix) Type() string {
