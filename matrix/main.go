@@ -4,60 +4,69 @@ import "fmt"
 
 type Matrix struct {
 	//orig   any
-	nrows      int
-	ncols      int
-	colVectors [][]int // list of column vectors
+	nrows int
+	ncols int
+	elms  []int
 }
 
-func NewMatrixFromSlice(r, c int, list []int) *Matrix {
-	if len(list) != (r * c) {
+func NewMatrixFromSlice(r, c int, elms []int) *Matrix {
+	if len(elms) != (r * c) {
 		panic(fmt.Sprintf("number of elements (%d) does not match the give type (%dx%d)",
-			len(list), r, c))
+			len(elms), r, c))
 	}
-	m := NewBlankMatrix(r, c)
-	for r := 1; r <= m.nrows; r++ {
-		for c := 1; c <= m.ncols; c++ {
-			i := (r-1)*m.ncols + (c - 1)
-			m.SetElm(r, c, list[i])
+
+	return &Matrix{
+		nrows: r,
+		ncols: c,
+		elms:  elms,
+	}
+
+}
+
+func NewMatrixFromSlices(nr, nc int, colVectors [][]int) *Matrix {
+	totalVecSize := len(colVectors) * len(colVectors[0])
+	if totalVecSize != (nr * nc) {
+		panic(fmt.Sprintf("number of elements (%d) does not match the give type (%dx%d)",
+			totalVecSize, nr, nc))
+	}
+
+	m := NewBlankMatrix(nr, nc)
+
+	for c := 1; c <= nc; c++ {
+		for r := 1; r <= nr; r++ {
+			val := colVectors[c-1][r-1]
+			m.SetElm(r, c, val)
 		}
 	}
 
 	return m
-
-}
-
-func NewMatrixFromSlices(r, c int, v [][]int) *Matrix {
-	totalCount := len(v) * len(v[0])
-	if totalCount != (r * c) {
-		panic(fmt.Sprintf("number of elements (%d) does not match the give type (%dx%d)",
-			totalCount, r, c))
-	}
-	return &Matrix{
-		colVectors: v,
-		nrows:      r,
-		ncols:      c,
-	}
 }
 
 func NewBlankMatrix(r, c int) *Matrix {
-	var v [][]int = make([][]int, c)
-	for c, _ := range v {
-		v[c] = make([]int, r)
-	}
 	m := &Matrix{
-		nrows:      r,
-		ncols:      c,
-		colVectors: v,
+		nrows: r,
+		ncols: c,
+		elms:  make([]int, r*c),
 	}
 	return m
 }
 
+func (m *Matrix) getIndex(r, c int) int {
+	if m.nrows < r || m.ncols < c {
+		panic("index (r,c) is out of range")
+	}
+
+	return (r-1)*m.ncols + (c - 1)
+}
+
 func (m *Matrix) Elm(r, c int) int {
-	return m.colVectors[c-1][r-1]
+	i := m.getIndex(r, c)
+	return m.elms[i]
 }
 
 func (m *Matrix) SetElm(r, c int, v int) {
-	m.colVectors[c-1][r-1] = v
+	i := m.getIndex(r, c)
+	m.elms[i] = v
 }
 
 func (m *Matrix) Type() string {
@@ -79,11 +88,8 @@ func (m *Matrix) String() string {
 
 func (m *Matrix) Scale(s int) *Matrix {
 	m2 := NewBlankMatrix(m.nrows, m.ncols)
-	for r := 1; r <= m.nrows; r++ {
-		for c := 1; c <= m.ncols; c++ {
-			v := m.Elm(r, c)
-			m2.SetElm(r, c, s*v)
-		}
+	for i := 0; i < len(m.elms); i++ {
+		m2.elms[i] = s * m.elms[i]
 	}
 	return m2
 }
@@ -120,15 +126,14 @@ func MatrixAdd(a, b *Matrix) *Matrix {
 	if a.Type() != b.Type() {
 		panic("type mismatch")
 	}
-
+	if len(a.elms) != len(b.elms) {
+		panic("internal error: length mismatch")
+	}
 	nrows := a.nrows
 	ncols := a.ncols
 	m := NewBlankMatrix(nrows, ncols)
-	for r := 1; r <= m.nrows; r++ {
-		for c := 1; c <= m.ncols; c++ {
-			elm := a.Elm(r, c) + b.Elm(r, c)
-			m.SetElm(r, c, elm)
-		}
+	for i := 0; i < len(m.elms); i++ {
+		m.elms[i] = a.elms[i] + b.elms[i]
 	}
 	return m
 }
@@ -139,9 +144,7 @@ func main() {
 }
 
 func test() {
-	//	a := NewMatrixFromSlices(3, 2, [][]int{{1, 3, 5}, {2, 4, 6}})
 	a := NewMatrixFromSlice(3, 2, []int{
-		//{1, 3, 5}, {2, 4, 6},
 		1, 2,
 		3, 4,
 		5, 6,
