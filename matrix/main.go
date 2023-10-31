@@ -9,7 +9,24 @@ type Matrix struct {
 	colVectors [][]int // list of column vectors
 }
 
-func NewMatrix(r, c int, v [][]int) *Matrix {
+func NewMatrixFromSlice(r, c int, list []int) *Matrix {
+	if len(list) != (r * c) {
+		panic(fmt.Sprintf("number of elements (%d) does not match the give type (%dx%d)",
+			len(list), r, c))
+	}
+	m := NewBlankMatrix(r, c)
+	for r := 1; r <= m.nrows; r++ {
+		for c := 1; c <= m.ncols; c++ {
+			i := (r-1)*m.ncols + (c - 1)
+			m.SetElm(r, c, list[i])
+		}
+	}
+
+	return m
+
+}
+
+func NewMatrixFromSlices(r, c int, v [][]int) *Matrix {
 	totalCount := len(v) * len(v[0])
 	if totalCount != (r * c) {
 		panic(fmt.Sprintf("number of elements (%d) does not match the give type (%dx%d)",
@@ -122,19 +139,25 @@ func main() {
 }
 
 func test() {
-	a := NewMatrix(3, 2, [][]int{{1, 3, 5}, {2, 4, 6}})
+	//	a := NewMatrixFromSlices(3, 2, [][]int{{1, 3, 5}, {2, 4, 6}})
+	a := NewMatrixFromSlice(3, 2, []int{
+		//{1, 3, 5}, {2, 4, 6},
+		1, 2,
+		3, 4,
+		5, 6,
+	})
 	fmt.Printf("a = \n%s", a)
 	fmt.Printf("type of a = %s\n", a.Type())
 	fmt.Printf("a[1][2] = %d\n", a.Elm(1, 2))
 
-	b := NewMatrix(3, 2, [][]int{{1, 1, 2}, {2, 3, 3}})
+	b := NewMatrixFromSlices(3, 2, [][]int{{1, 1, 2}, {2, 3, 3}})
 	fmt.Printf("b = \n%s", b)
 	fmt.Printf("type of b = %s\n", b.Type())
 	fmt.Printf("b[1][2] = %d\n", b.Elm(1, 2))
 
 	fmt.Printf("a + b = \n%s", MatrixAdd(a, b))
 
-	c := NewMatrix(2, 3, [][]int{{1, 4}, {2, 5}, {3, 6}})
+	c := NewMatrixFromSlices(2, 3, [][]int{{1, 4}, {2, 5}, {3, 6}})
 	fmt.Printf("c = \n%s", c)
 	fmt.Printf("type of c = %s\n", c.Type())
 	fmt.Printf("c[2][3] = %d\n", c.Elm(2, 3))
@@ -153,14 +176,14 @@ func test() {
 func doEnshu2() {
 	fmt.Println("=== Enshu 2.1")
 	fmt.Println("-- (1)")
-	a := NewMatrix(1, 2, [][]int{{1}, {2}})
-	b := NewMatrix(2, 1, [][]int{{3, 4}})
+	a := NewMatrixFromSlices(1, 2, [][]int{{1}, {2}})
+	b := NewMatrixFromSlices(2, 1, [][]int{{3, 4}})
 	c := MatrixMul(a, b)
 	fmt.Printf("a x b = \n%s", c)
 
 	fmt.Println("-- (2)")
-	a = NewMatrix(2, 1, [][]int{{3, 4}})
-	b = NewMatrix(1, 2, [][]int{{1}, {2}})
+	a = NewMatrixFromSlices(2, 1, [][]int{{3, 4}})
+	b = NewMatrixFromSlices(1, 2, [][]int{{1}, {2}})
 	c = MatrixMul(a, b)
 	fmt.Printf("a x b = \n%s", c)
 }
