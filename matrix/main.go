@@ -18,7 +18,32 @@ func NewMatrix(r, c int, v [][]int) *Matrix {
 }
 
 func MatrixMul(a *Matrix, b *Matrix) *Matrix {
-	return &Matrix{}
+	if a.ncols != b.nrows {
+		panic(fmt.Sprintf("type error: unable to multiply %s and %s", a.Type(), b.Type()))
+	}
+	// mxn * nxp = mxp
+	nrows := a.nrows
+	ncols := b.ncols
+	var v [][]int = make([][]int, ncols)
+	for _c, _ := range v {
+		v[_c] = make([]int, nrows)
+	}
+	for _c, _ := range v {
+		for _r, _ := range v[_c] {
+			c, r := _c+1, _r+1
+			var sum int
+			for k := 1; k <= a.ncols; k++ {
+				mul := a.Elm(r, k) * b.Elm(k, c)
+				sum += mul
+			}
+			v[_c][_r] = sum
+		}
+	}
+	return &Matrix{
+		nrows:  nrows,
+		ncols:  ncols,
+		values: v,
+	}
 }
 
 func (m *Matrix) String() string {
@@ -83,5 +108,8 @@ func main() {
 	fmt.Printf("c[2][3] = %d\n", c.Elm(2, 3))
 
 	d := MatrixMul(a, c)
-	fmt.Printf("a x c = %s\n", d)
+	fmt.Printf("a x c = \n%s", d)
+
+	e := MatrixMul(c, a)
+	fmt.Printf("c x a = \n%s", e)
 }
