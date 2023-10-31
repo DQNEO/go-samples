@@ -42,6 +42,17 @@ func (m *Matrix) Type() string {
 	return fmt.Sprintf("Matrix %dx%d", m.nrows, m.ncols)
 }
 
+func (m *Matrix) Scale(s int) *Matrix {
+	m2 := NewBlankMatrix(m.nrows, m.ncols)
+	for r := 1; r <= m.nrows; r++ {
+		for c := 1; c <= m.ncols; c++ {
+			v := m.Elm(r, c)
+			m2.SetElm(r, c, s*v)
+		}
+	}
+	return m2
+}
+
 func MatrixMul(a *Matrix, b *Matrix) *Matrix {
 	if a.ncols != b.nrows {
 		panic(fmt.Sprintf("type error: unable to multiply %s and %s", a.Type(), b.Type()))
@@ -121,4 +132,6 @@ func main() {
 	if e.Elm(2, 1) != 32 {
 		panic("ERROR")
 	}
+
+	fmt.Printf("2 x a = \n%s", a.Scale(2))
 }
