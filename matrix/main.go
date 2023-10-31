@@ -53,6 +53,11 @@ func (m *Matrix) Scale(s int) *Matrix {
 	return m2
 }
 
+// A*B
+func (m *Matrix) Apply(n *Matrix) *Matrix {
+	return MatrixMul(m, n)
+}
+
 func MatrixMul(a *Matrix, b *Matrix) *Matrix {
 	if a.ncols != b.nrows {
 		panic(fmt.Sprintf("type error: unable to multiply %s and %s", a.Type(), b.Type()))
@@ -124,10 +129,10 @@ func main() {
 	fmt.Printf("type of c = %s\n", c.Type())
 	fmt.Printf("c[2][3] = %d\n", c.Elm(2, 3))
 
-	d := MatrixMul(a, c)
+	d := a.Apply(c) // d = a * c
 	fmt.Printf("a x c = \n%s", d)
 
-	e := MatrixMul(c, a)
+	e := c.Apply(a) // e = c * a
 	fmt.Printf("c x a = \n%s", e)
 	if e.Elm(2, 1) != 32 {
 		panic("ERROR")
