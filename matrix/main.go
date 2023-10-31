@@ -42,6 +42,19 @@ func (m *Matrix) Type() string {
 	return fmt.Sprintf("Matrix %dx%d", m.nrows, m.ncols)
 }
 
+func (m *Matrix) String() string {
+	var ret string
+	for r := 1; r <= m.nrows; r++ {
+		ret += "  |"
+		for c := 1; c <= m.ncols; c++ {
+			ret += fmt.Sprintf("%2d ", m.Elm(r, c))
+		}
+		ret += "|"
+		ret += "\n"
+	}
+	return ret
+}
+
 func (m *Matrix) Scale(s int) *Matrix {
 	m2 := NewBlankMatrix(m.nrows, m.ncols)
 	for r := 1; r <= m.nrows; r++ {
@@ -79,19 +92,6 @@ func MatrixMul(a *Matrix, b *Matrix) *Matrix {
 		}
 	}
 	return m
-}
-
-func (m *Matrix) String() string {
-	var ret string
-	for r := 1; r <= m.nrows; r++ {
-		ret += "  |"
-		for c := 1; c <= m.ncols; c++ {
-			ret += fmt.Sprintf("%2d ", m.Elm(r, c))
-		}
-		ret += "|"
-		ret += "\n"
-	}
-	return ret
 }
 
 func MatrixAdd(a, b *Matrix) *Matrix {
