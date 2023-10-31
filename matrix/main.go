@@ -146,5 +146,16 @@ func test() {
 	fmt.Printf("2 x a = \n%s", a.Scale(2))
 }
 func doEnshu2() {
+	fmt.Println("=== Enshu 2.1")
+	fmt.Println("-- (1)")
+	a := NewMatrix(1, 2, [][]int{{1}, {2}})
+	b := NewMatrix(2, 1, [][]int{{3, 4}})
+	c := MatrixMul(a, b)
+	fmt.Printf("a x b = \n%s", c)
 
+	fmt.Println("-- (2)")
+	a = NewMatrix(2, 1, [][]int{{3, 4}})
+	b = NewMatrix(1, 2, [][]int{{1}, {2}})
+	c = MatrixMul(a, b)
+	fmt.Printf("a x b = \n%s", c)
 }
