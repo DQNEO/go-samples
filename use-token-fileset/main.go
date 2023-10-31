@@ -15,19 +15,24 @@ func main() {
 func test2() {
 	fmt.Println("===== test2")
 	fset := token.NewFileSet()
-	astFile, err := parser.ParseFile(fset, "./testdata/hello.go", nil, 0)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("astFile.Package:%d (position=%s)\n", astFile.Package, fset.Position(astFile.Package))
-	fmt.Printf("Scope:main=%#v\n", astFile.Scope.Objects["main"])
-	fmt.Println("Decls ---")
-	for _, decl := range astFile.Decls {
-		fmt.Printf("  %#v\n", decl)
-		funcDecl, isFunc := decl.(*ast.FuncDecl)
-		if isFunc {
-			for _, stmt := range funcDecl.Body.List {
-				fmt.Printf("  stmt:%#v (%s)\n", stmt, fset.Position(stmt.Pos()))
+
+	files := []string{"./testdata/hello.go", "./testdata/foo.go"}
+	for _, fname := range files {
+		astFile, err := parser.ParseFile(fset, fname, nil, 0)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println("----")
+		fmt.Printf("astFile.Package:%d (position=%s)\n", astFile.Package, fset.Position(astFile.Package))
+		fmt.Printf("Scope:%#v\n", astFile.Scope.Objects["main"])
+		fmt.Println("Decls ---")
+		for _, decl := range astFile.Decls {
+			fmt.Printf("  %#v\n", decl)
+			funcDecl, isFunc := decl.(*ast.FuncDecl)
+			if isFunc {
+				for _, stmt := range funcDecl.Body.List {
+					fmt.Printf("  stmt:%#v (%s)\n", stmt, fset.Position(stmt.Pos()))
+				}
 			}
 		}
 	}
