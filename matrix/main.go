@@ -10,6 +10,11 @@ type Matrix struct {
 }
 
 func NewMatrix(r, c int, v [][]int) *Matrix {
+	totalCount := len(v) * len(v[0])
+	if totalCount != (r * c) {
+		panic(fmt.Sprintf("number of elements (%d) does not match the give type (%dx%d)",
+			totalCount, r, c))
+	}
 	return &Matrix{
 		colVectors: v,
 		nrows:      r,
