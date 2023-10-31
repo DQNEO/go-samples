@@ -17,8 +17,25 @@ func NewMatrix(r, c int, v [][]int) *Matrix {
 	}
 }
 
+func NewBlankMatrix(r, c int) *Matrix {
+	var v [][]int = make([][]int, c)
+	for c, _ := range v {
+		v[c] = make([]int, r)
+	}
+	m := &Matrix{
+		nrows:  r,
+		ncols:  c,
+		values: v,
+	}
+	return m
+}
+
 func (m *Matrix) Elm(r, c int) int {
 	return m.values[c-1][r-1]
+}
+
+func (m *Matrix) SetElm(r, c int, v int) {
+	m.values[c-1][r-1] = v
 }
 
 func (m *Matrix) Type() string {
@@ -32,10 +49,8 @@ func MatrixMul(a *Matrix, b *Matrix) *Matrix {
 	// mxn * nxp = mxp
 	nrows := a.nrows
 	ncols := b.ncols
-	var v [][]int = make([][]int, ncols)
-	for _c, _ := range v {
-		v[_c] = make([]int, nrows)
-	}
+	m := NewBlankMatrix(nrows, ncols)
+	v := m.values
 	for _c, _ := range v {
 		for _r, _ := range v[_c] {
 			c, r := _c+1, _r+1
@@ -44,14 +59,10 @@ func MatrixMul(a *Matrix, b *Matrix) *Matrix {
 				mul := a.Elm(r, k) * b.Elm(k, c)
 				sum += mul
 			}
-			v[_c][_r] = sum
+			m.SetElm(r, c, sum)
 		}
 	}
-	return &Matrix{
-		nrows:  nrows,
-		ncols:  ncols,
-		values: v,
-	}
+	return m
 }
 
 func (m *Matrix) String() string {
@@ -71,22 +82,20 @@ func MatrixAdd(a, b *Matrix) *Matrix {
 	if a.Type() != b.Type() {
 		panic("type mismatch")
 	}
-	var v [][]int = make([][]int, a.ncols)
-	for c, _ := range v {
-		v[c] = make([]int, a.nrows)
-	}
 
+	nrows := a.nrows
+	ncols := a.ncols
+
+	m := NewBlankMatrix(nrows, ncols)
+	v := m.values
 	for _c, _ := range v {
 		for _r, _ := range v[_c] {
 			c, r := _c+1, _r+1
-			v[_c][_r] = a.Elm(r, c) + b.Elm(r, c)
+			elm := a.Elm(r, c) + b.Elm(r, c)
+			m.SetElm(r, c, elm)
 		}
 	}
-	return &Matrix{
-		values: v,
-		nrows:  a.nrows,
-		ncols:  a.ncols,
-	}
+	return m
 }
 
 func main() {
