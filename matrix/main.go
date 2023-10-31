@@ -17,6 +17,14 @@ func NewMatrix(r, c int, v [][]int) *Matrix {
 	}
 }
 
+func (m *Matrix) Elm(r, c int) int {
+	return m.values[c-1][r-1]
+}
+
+func (m *Matrix) Type() string {
+	return fmt.Sprintf("Matrix %dx%d", m.nrows, m.ncols)
+}
+
 func MatrixMul(a *Matrix, b *Matrix) *Matrix {
 	if a.ncols != b.nrows {
 		panic(fmt.Sprintf("type error: unable to multiply %s and %s", a.Type(), b.Type()))
@@ -57,14 +65,6 @@ func (m *Matrix) String() string {
 		ret += "\n"
 	}
 	return ret
-}
-
-func (m *Matrix) Elm(r, c int) int {
-	return m.values[c-1][r-1]
-}
-
-func (m *Matrix) Type() string {
-	return fmt.Sprintf("Matrix %dx%d", m.nrows, m.ncols)
 }
 
 func MatrixAdd(a, b *Matrix) *Matrix {
