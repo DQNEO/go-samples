@@ -117,7 +117,7 @@ func main() {
 }
 
 func test() {
-	a := NewMatrix(3, 2, [][]int{{1, 2, 3}, {4, 5, 6}})
+	a := NewMatrix(3, 2, [][]int{{1, 3, 5}, {2, 4, 6}})
 	fmt.Printf("a = \n%s", a)
 	fmt.Printf("type of a = %s\n", a.Type())
 	fmt.Printf("a[1][2] = %d\n", a.Elm(1, 2))
@@ -129,7 +129,7 @@ func test() {
 
 	fmt.Printf("a + b = \n%s", MatrixAdd(a, b))
 
-	c := NewMatrix(2, 3, [][]int{{1, 3}, {2, 4}, {5, 7}})
+	c := NewMatrix(2, 3, [][]int{{1, 4}, {2, 5}, {3, 6}})
 	fmt.Printf("c = \n%s", c)
 	fmt.Printf("type of c = %s\n", c.Type())
 	fmt.Printf("c[2][3] = %d\n", c.Elm(2, 3))
@@ -139,7 +139,7 @@ func test() {
 
 	e := c.Apply(a) // e = c * a
 	fmt.Printf("c x a = \n%s", e)
-	if e.Elm(2, 1) != 32 {
+	if e.Elm(2, 1) != 49 {
 		panic("ERROR")
 	}
 
