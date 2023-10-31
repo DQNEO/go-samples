@@ -50,12 +50,12 @@ func MatrixMul(a *Matrix, b *Matrix) *Matrix {
 	nrows := a.nrows
 	ncols := b.ncols
 	m := NewBlankMatrix(nrows, ncols)
-	v := m.values
-	for _c, _ := range v {
-		for _r, _ := range v[_c] {
-			c, r := _c+1, _r+1
+
+	nsum := a.ncols
+	for r := 1; r <= m.nrows; r++ {
+		for c := 1; c <= m.ncols; c++ {
 			var sum int
-			for k := 1; k <= a.ncols; k++ {
+			for k := 1; k <= nsum; k++ {
 				mul := a.Elm(r, k) * b.Elm(k, c)
 				sum += mul
 			}
@@ -85,12 +85,9 @@ func MatrixAdd(a, b *Matrix) *Matrix {
 
 	nrows := a.nrows
 	ncols := a.ncols
-
 	m := NewBlankMatrix(nrows, ncols)
-	v := m.values
-	for _c, _ := range v {
-		for _r, _ := range v[_c] {
-			c, r := _c+1, _r+1
+	for r := 1; r <= m.nrows; r++ {
+		for c := 1; c <= m.ncols; c++ {
 			elm := a.Elm(r, c) + b.Elm(r, c)
 			m.SetElm(r, c, elm)
 		}
