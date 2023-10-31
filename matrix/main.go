@@ -121,4 +121,7 @@ func main() {
 
 	e := MatrixMul(c, a)
 	fmt.Printf("c x a = \n%s", e)
+	if e.Elm(2, 1) != 32 {
+		panic("ERROR")
+	}
 }
