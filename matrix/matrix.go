@@ -25,7 +25,7 @@ func NewMatrix(r, c int, elms []int) *Matrix {
 	}
 }
 
-func MatrixOne(n int) *Matrix {
+func NewIdentyMatrix(n int) *Matrix {
 	m := NewZeroMatrix(n, n)
 	for rc := 1; rc <= n; rc++ {
 		m.SetElm(rc, rc, 1)
