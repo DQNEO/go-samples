@@ -54,6 +54,20 @@ func NewZeroMatrix(r, c int) *Matrix {
 	return m
 }
 
+func Eq(a *Matrix, b *Matrix) bool {
+	if a.Type() != b.Type() {
+		panic("error: type mismatch")
+	}
+
+	for i, av := range a.elms {
+		bv := b.elms[i]
+		if av != bv {
+			return false
+		}
+	}
+	return true
+}
+
 func (m *Matrix) getIndex(r, c int) int {
 	if m.nrows < r || m.ncols < c {
 		panic("index (r,c) is out of range")
