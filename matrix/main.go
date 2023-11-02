@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+const DlmOpen = "("
+const DlmClose = ")"
+
 type Matrix struct {
 	//orig   any
 	nrows int
@@ -76,11 +79,11 @@ func (m *Matrix) Type() string {
 func (m *Matrix) String() string {
 	var ret string
 	for r := 1; r <= m.nrows; r++ {
-		ret += "  |"
+		ret += "  " + DlmOpen
 		for c := 1; c <= m.ncols; c++ {
 			ret += fmt.Sprintf("%2d ", m.Elm(r, c))
 		}
-		ret += "|"
+		ret += DlmClose
 		ret += "\n"
 	}
 	return ret
