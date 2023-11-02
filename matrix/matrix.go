@@ -12,7 +12,7 @@ type Matrix struct {
 	elms  []int
 }
 
-func NewMatrixFromSlice(r, c int, elms []int) *Matrix {
+func NewMatrix(r, c int, elms []int) *Matrix {
 	if len(elms) != (r * c) {
 		panic(fmt.Sprintf("number of elements (%d) does not match the give type (%dx%d)",
 			len(elms), r, c))
@@ -33,7 +33,7 @@ func NewMatrixFromSlices(nr, nc int, colVectors [][]int) *Matrix {
 			totalVecSize, nr, nc))
 	}
 
-	m := NewBlankMatrix(nr, nc)
+	m := NewZeroMatrix(nr, nc)
 
 	for c := 1; c <= nc; c++ {
 		for r := 1; r <= nr; r++ {
@@ -45,7 +45,7 @@ func NewMatrixFromSlices(nr, nc int, colVectors [][]int) *Matrix {
 	return m
 }
 
-func NewBlankMatrix(r, c int) *Matrix {
+func NewZeroMatrix(r, c int) *Matrix {
 	m := &Matrix{
 		nrows: r,
 		ncols: c,
@@ -90,7 +90,7 @@ func (m *Matrix) String() string {
 }
 
 func (m *Matrix) Scale(s int) *Matrix {
-	m2 := NewBlankMatrix(m.nrows, m.ncols)
+	m2 := NewZeroMatrix(m.nrows, m.ncols)
 	for i := 0; i < len(m.elms); i++ {
 		m2.elms[i] = s * m.elms[i]
 	}
@@ -109,7 +109,7 @@ func MatrixMul(a *Matrix, b *Matrix) *Matrix {
 	// mxn * nxp = mxp
 	nrows := a.nrows
 	ncols := b.ncols
-	m := NewBlankMatrix(nrows, ncols)
+	m := NewZeroMatrix(nrows, ncols)
 
 	nsum := a.ncols
 	for r := 1; r <= m.nrows; r++ {
@@ -134,7 +134,7 @@ func MatrixAdd(a, b *Matrix) *Matrix {
 	}
 	nrows := a.nrows
 	ncols := a.ncols
-	m := NewBlankMatrix(nrows, ncols)
+	m := NewZeroMatrix(nrows, ncols)
 	for i := 0; i < len(m.elms); i++ {
 		m.elms[i] = a.elms[i] + b.elms[i]
 	}

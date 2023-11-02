@@ -12,7 +12,7 @@ func main() {
 }
 
 func test() {
-	a := matrix.NewMatrixFromSlice(3, 2, []int{
+	a := matrix.NewMatrix(3, 2, []int{
 		1, 2,
 		3, 4,
 		5, 6,
