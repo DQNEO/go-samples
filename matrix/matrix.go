@@ -158,3 +158,19 @@ func Add(a, b *Matrix) *Matrix {
 	}
 	return m
 }
+
+func (m *Matrix) indexToRC(i int) (r, c int) {
+	c = (i % m.ncols) + 1
+	r = (i / m.ncols) + 1
+	return
+}
+
+func (m *Matrix) Tr() *Matrix {
+	m2 := NewZeroMatrix(m.ncols, m.nrows)
+	for i := 0; i < len(m.elms); i++ {
+		r, c := m.indexToRC(i)
+		c2, r2 := r, c
+		m2.SetElm(r2, c2, m.elms[i])
+	}
+	return m2
+}

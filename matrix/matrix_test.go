@@ -71,3 +71,30 @@ func TestNewMatrix(t *testing.T) {
 		t.Errorf("error: got %s", typ)
 	}
 }
+
+func TestMatrix_Tr(t *testing.T) {
+	type fields struct {
+		nrows int
+		ncols int
+		elms  []int
+	}
+	tests := []struct {
+		name  string
+		input *Matrix
+		want  *Matrix
+	}{
+		{
+			name:  "1x2 -> 2x1",
+			input: NewMatrix(1, 2, []int{1, 2}),
+			want:  NewMatrix(2, 1, []int{1, 2}),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			m := tt.input
+			if got := m.Tr(); !Eq(got, tt.want) {
+				t.Errorf("got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
