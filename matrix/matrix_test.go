@@ -73,11 +73,6 @@ func TestNewMatrix(t *testing.T) {
 }
 
 func TestMatrix_Tr(t *testing.T) {
-	type fields struct {
-		nrows int
-		ncols int
-		elms  []int
-	}
 	tests := []struct {
 		name  string
 		input *Matrix
