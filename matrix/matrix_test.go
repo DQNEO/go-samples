@@ -102,3 +102,51 @@ func TestMatrix_Tr(t *testing.T) {
 		})
 	}
 }
+
+func TestMatrixOne(t *testing.T) {
+	tests := []struct {
+		name string
+		n    int // dimension
+		want *Matrix
+	}{
+		{
+			name: "1x1",
+			n:    1,
+			want: NewMatrix(1, 1, []int{1}),
+		},
+		{
+			name: "2x2",
+			n:    2,
+			want: NewMatrix(2, 2, []int{
+				1, 0,
+				0, 1,
+			}),
+		},
+		{
+			name: "3x3",
+			n:    3,
+			want: NewMatrix(3, 3, []int{
+				1, 0, 0,
+				0, 1, 0,
+				0, 0, 1,
+			}),
+		},
+		{
+			name: "4x4",
+			n:    4,
+			want: NewMatrix(4, 4, []int{
+				1, 0, 0, 0,
+				0, 1, 0, 0,
+				0, 0, 1, 0,
+				0, 0, 0, 1,
+			}),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := MatrixOne(tt.n); !Eq(got, tt.want) {
+				t.Errorf("MatrixOne() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

@@ -23,7 +23,14 @@ func NewMatrix(r, c int, elms []int) *Matrix {
 		ncols: c,
 		elms:  elms,
 	}
+}
 
+func MatrixOne(n int) *Matrix {
+	m := NewZeroMatrix(n, n)
+	for rc := 1; rc <= n; rc++ {
+		m.SetElm(rc, rc, 1)
+	}
+	return m
 }
 
 func NewMatrixFromSlices(nr, nc int, colVectors [][]int) *Matrix {
