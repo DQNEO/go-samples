@@ -1,6 +1,8 @@
 package matrix
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestEq(t *testing.T) {
 	type args struct {
@@ -47,5 +49,25 @@ func TestEq(t *testing.T) {
 				t.Errorf("Eq() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestNewMatrix(t *testing.T) {
+	m1 := NewMatrix(2, 3, []int{
+		1, 2,
+		3, 4,
+		5, 6,
+	})
+	r, c := m1.GetSize()
+	if r != 2 {
+		t.Errorf("error")
+	}
+	if c != 3 {
+		t.Errorf("error")
+	}
+
+	typ := m1.Type()
+	if typ != "Matrix 2x3" {
+		t.Errorf("error: got %s", typ)
 	}
 }

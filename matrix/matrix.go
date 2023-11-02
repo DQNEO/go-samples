@@ -116,6 +116,10 @@ func (m *Matrix) Apply(n *Matrix) *Matrix {
 	return MatrixMul(m, n)
 }
 
+func (m *Matrix) GetSize() (int, int) {
+	return m.nrows, m.ncols
+}
+
 func MatrixMul(a *Matrix, b *Matrix) *Matrix {
 	if a.ncols != b.nrows {
 		panic(fmt.Sprintf("type error: unable to multiply %s and %s", a.Type(), b.Type()))
