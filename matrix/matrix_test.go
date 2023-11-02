@@ -179,5 +179,14 @@ func TestAlgebricOperations(t *testing.T) {
 	if Eq(Mul(c, d), Mul(d, c)) {
 		t.Errorf("C x D must not equal to D x C")
 	}
+	e2x2 := MatrixOne(2)
+	// C x E = C
+	if !Eq(Mul(c, e2x2), c) {
+		t.Errorf("C x E should equal to C")
+	}
+	// E x C = C
+	if !Eq(Mul(e2x2, c), c) {
+		t.Errorf("E x C should equal to C")
+	}
 
 }
