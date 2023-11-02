@@ -165,6 +165,7 @@ func (m *Matrix) indexToRC(i int) (r, c int) {
 	return
 }
 
+// Tr transposes a matrix
 func (m *Matrix) Tr() *Matrix {
 	m2 := NewZeroMatrix(m.ncols, m.nrows)
 	for i := 0; i < len(m.elms); i++ {
