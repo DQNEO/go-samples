@@ -26,7 +26,7 @@ func test() {
 	fmt.Printf("type of b = %s\n", b.Type())
 	fmt.Printf("b[1][2] = %d\n", b.Elm(1, 2))
 
-	fmt.Printf("a + b = \n%s", matrix.MatrixAdd(a, b))
+	fmt.Printf("a + b = \n%s", matrix.Add(a, b))
 
 	c := matrix.NewMatrixFromSlices(2, 3, [][]int{{1, 4}, {2, 5}, {3, 6}})
 	fmt.Printf("c = \n%s", c)
@@ -49,12 +49,12 @@ func doEnshu2() {
 	fmt.Println("-- (1)")
 	a := matrix.NewMatrixFromSlices(1, 2, [][]int{{1}, {2}})
 	b := matrix.NewMatrixFromSlices(2, 1, [][]int{{3, 4}})
-	c := matrix.MatrixMul(a, b)
+	c := matrix.Mul(a, b)
 	fmt.Printf("a x b = \n%s", c)
 
 	fmt.Println("-- (2)")
 	a = matrix.NewMatrixFromSlices(2, 1, [][]int{{3, 4}})
 	b = matrix.NewMatrixFromSlices(1, 2, [][]int{{1}, {2}})
-	c = matrix.MatrixMul(a, b)
+	c = matrix.Mul(a, b)
 	fmt.Printf("a x b = \n%s", c)
 }
