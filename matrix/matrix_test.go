@@ -150,3 +150,34 @@ func TestMatrixOne(t *testing.T) {
 		})
 	}
 }
+
+func TestAlgebricOperations(t *testing.T) {
+	a := NewMatrix(3, 2, []int{
+		1, 2,
+		3, 4,
+		5, 6,
+	})
+
+	b := NewMatrix(3, 2, []int{
+		2, 4,
+		6, 8,
+		10, 12,
+	})
+	// A + B = B + A
+	if !Eq(Add(a, b), Add(b, a)) {
+		t.Errorf("Add is not interchangable")
+	}
+
+	c := NewMatrix(2, 2, []int{
+		1, 2,
+		3, 4,
+	})
+	d := NewMatrix(2, 2, []int{
+		1, 3,
+		5, 7,
+	})
+	if Eq(Mul(c, d), Mul(d, c)) {
+		t.Errorf("C x D must not equal to D x C")
+	}
+
+}
