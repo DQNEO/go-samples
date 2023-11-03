@@ -257,7 +257,7 @@ func TestMul(t *testing.T) {
 	}
 }
 
-func TestAlgebricOperations(t *testing.T) {
+func TestAlgebricOperations1(t *testing.T) {
 	a := NewMatrix(3, 2, []int{
 		1, 2,
 		3, 4,
@@ -273,27 +273,42 @@ func TestAlgebricOperations(t *testing.T) {
 	if !Eq(Add(a, b), Add(b, a)) {
 		t.Errorf("Add is not interchangable")
 	}
+}
 
-	c := NewMatrix(2, 2, []int{
+func TestAlgebricOperations2(t *testing.T) {
+	a := NewMatrix(3, 2, []int{
+		1, 2,
+		3, 4,
+		5, 6,
+	})
+
+	b := NewMatrix(2, 2, []int{
 		1, 2,
 		3, 4,
 	})
-	d := NewMatrix(2, 2, []int{
+	c := NewMatrix(2, 2, []int{
 		1, 3,
 		5, 7,
 	})
-	// C x D != D x C
-	if Eq(Mul(c, d), Mul(d, c)) {
-		t.Errorf("C x D must not equal to D x C")
+	// BC != CB
+	if Eq(Mul(b, c), Mul(c, b)) {
+		t.Errorf("BC != CB shoud hold true")
 	}
+
+	// (AB)C = A(BC)
+	if !Eq(Mul(Mul(a, b), c), Mul(a, Mul(b, c))) {
+		t.Errorf("(AB)C = A(BC) should hold true")
+	}
+
 	e2x2 := NewIdentityMatrix(2)
-	// C x E = C
-	if !Eq(Mul(c, e2x2), c) {
-		t.Errorf("C x E should equal to C")
+	// A x E = A
+	if !Eq(Mul(a, e2x2), a) {
+		t.Errorf("A x E = A should hold true")
 	}
-	// E x C = C
-	if !Eq(Mul(e2x2, c), c) {
-		t.Errorf("E x C should equal to C")
+	// E x A = A
+	e3x3 := NewIdentityMatrix(3)
+	if !Eq(Mul(e3x3, a), a) {
+		t.Errorf("E x A = A should hold true")
 	}
 
 	f := NewMatrix(2, 1, []int{
