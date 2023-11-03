@@ -5,7 +5,7 @@ import (
 )
 
 func TestNewMatrix(t *testing.T) {
-	m1 := NewMatrix(2, 3, []int{
+	m1 := NewMatrix(2, 3, []float64{
 		1, 2, 3,
 		4, 5, 6,
 	})
@@ -36,12 +36,12 @@ func TestEq(t *testing.T) {
 		{
 			name: "equal",
 			args: args{
-				a: NewMatrix(3, 2, []int{
+				a: NewMatrix(3, 2, []float64{
 					1, 2,
 					3, 4,
 					5, 6,
 				}),
-				b: NewMatrixFromSlices(3, 2, [][]int{
+				b: NewMatrixFromSlices(3, 2, [][]float64{
 					{1, 3, 5}, {2, 4, 6},
 				}),
 			},
@@ -50,12 +50,12 @@ func TestEq(t *testing.T) {
 		{
 			name: "not equal",
 			args: args{
-				a: NewMatrix(3, 2, []int{
+				a: NewMatrix(3, 2, []float64{
 					1, 2,
 					3, 4,
 					5, 6,
 				}),
-				b: NewMatrixFromSlices(3, 2, [][]int{
+				b: NewMatrixFromSlices(3, 2, [][]float64{
 					{1, 3, 5}, {2, 4, 999},
 				}),
 			},
@@ -79,15 +79,15 @@ func TestMatrix_Tr(t *testing.T) {
 	}{
 		{
 			name:  "1x2 -> 2x1",
-			input: NewMatrix(1, 2, []int{1, 2}),
-			want:  NewMatrix(2, 1, []int{1, 2}),
+			input: NewMatrix(1, 2, []float64{1, 2}),
+			want:  NewMatrix(2, 1, []float64{1, 2}),
 		},
 		{
 			name: "3x2 -> 2x3",
-			input: NewMatrixFromSlices(3, 2, [][]int{
+			input: NewMatrixFromSlices(3, 2, [][]float64{
 				{1, 3, 5}, {2, 4, 6},
 			}),
-			want: NewMatrixFromSlices(2, 3, [][]int{
+			want: NewMatrixFromSlices(2, 3, [][]float64{
 				{1, 2}, {3, 4}, {5, 6},
 			}),
 		},
@@ -101,7 +101,7 @@ func TestMatrix_Tr(t *testing.T) {
 		})
 	}
 
-	m := NewMatrixFromSlices(3, 2, [][]int{
+	m := NewMatrixFromSlices(3, 2, [][]float64{
 		{1, 3, 5}, {2, 4, 6},
 	})
 	ttm := m.Tr().Tr()
@@ -120,12 +120,12 @@ func TestMatrixOne(t *testing.T) {
 		{
 			name: "1x1",
 			n:    1,
-			want: NewMatrix(1, 1, []int{1}),
+			want: NewMatrix(1, 1, []float64{1}),
 		},
 		{
 			name: "2x2",
 			n:    2,
-			want: NewMatrix(2, 2, []int{
+			want: NewMatrix(2, 2, []float64{
 				1, 0,
 				0, 1,
 			}),
@@ -133,7 +133,7 @@ func TestMatrixOne(t *testing.T) {
 		{
 			name: "3x3",
 			n:    3,
-			want: NewMatrix(3, 3, []int{
+			want: NewMatrix(3, 3, []float64{
 				1, 0, 0,
 				0, 1, 0,
 				0, 0, 1,
@@ -142,7 +142,7 @@ func TestMatrixOne(t *testing.T) {
 		{
 			name: "4x4",
 			n:    4,
-			want: NewMatrix(4, 4, []int{
+			want: NewMatrix(4, 4, []float64{
 				1, 0, 0, 0,
 				0, 1, 0, 0,
 				0, 0, 1, 0,
@@ -160,12 +160,12 @@ func TestMatrixOne(t *testing.T) {
 }
 
 func TestMatrix_Scale(t *testing.T) {
-	a := NewMatrix(3, 2, []int{
+	a := NewMatrix(3, 2, []float64{
 		1, 2,
 		3, 4,
 		5, 6,
 	})
-	a3 := NewMatrix(3, 2, []int{
+	a3 := NewMatrix(3, 2, []float64{
 		3, 6,
 		9, 12,
 		15, 18,
@@ -174,7 +174,7 @@ func TestMatrix_Scale(t *testing.T) {
 
 	tests := []struct {
 		name   string
-		scalar int
+		scalar float64
 		m      *Matrix
 		want   *Matrix
 	}{
@@ -221,17 +221,17 @@ func TestMul(t *testing.T) {
 		{
 			name: "3x2 x 2x3 -> 3x3",
 			args: args{
-				left: NewMatrix(3, 2, []int{
+				left: NewMatrix(3, 2, []float64{
 					1, 2,
 					3, 4,
 					5, 6,
 				}),
-				right: NewMatrix(2, 3, []int{
+				right: NewMatrix(2, 3, []float64{
 					1, 2, 3,
 					4, 5, 6,
 				}),
 			},
-			want: NewMatrix(3, 3, []int{
+			want: NewMatrix(3, 3, []float64{
 				9, 12, 15,
 				19, 26, 33,
 				29, 40, 51,
@@ -240,17 +240,17 @@ func TestMul(t *testing.T) {
 		{
 			name: "2x3 x 3x2 -> 2x2",
 			args: args{
-				left: NewMatrix(2, 3, []int{
+				left: NewMatrix(2, 3, []float64{
 					1, 2, 3,
 					4, 5, 6,
 				}),
-				right: NewMatrix(3, 2, []int{
+				right: NewMatrix(3, 2, []float64{
 					1, 2,
 					3, 4,
 					5, 6,
 				}),
 			},
-			want: NewMatrix(2, 2, []int{
+			want: NewMatrix(2, 2, []float64{
 				22, 28,
 				49, 64,
 			}),
@@ -266,13 +266,13 @@ func TestMul(t *testing.T) {
 }
 
 func TestAlgebricOperations1(t *testing.T) {
-	a := NewMatrix(3, 2, []int{
+	a := NewMatrix(3, 2, []float64{
 		1, 2,
 		3, 4,
 		5, 6,
 	})
 
-	b := NewMatrix(3, 2, []int{
+	b := NewMatrix(3, 2, []float64{
 		2, 4,
 		6, 8,
 		10, 12,
@@ -284,17 +284,17 @@ func TestAlgebricOperations1(t *testing.T) {
 }
 
 func TestAlgebricOperations2(t *testing.T) {
-	a := NewMatrix(3, 2, []int{
+	a := NewMatrix(3, 2, []float64{
 		1, 2,
 		3, 4,
 		5, 6,
 	})
 
-	b := NewMatrix(2, 2, []int{
+	b := NewMatrix(2, 2, []float64{
 		1, 2,
 		3, 4,
 	})
-	c := NewMatrix(2, 2, []int{
+	c := NewMatrix(2, 2, []float64{
 		1, 3,
 		5, 7,
 	})
@@ -308,7 +308,7 @@ func TestAlgebricOperations2(t *testing.T) {
 		t.Errorf("(AB)C = A(BC) should hold true")
 	}
 
-	f := NewMatrix(2, 1, []int{
+	f := NewMatrix(2, 1, []float64{
 		1,
 		2,
 	})
@@ -333,7 +333,7 @@ func TestAlgebricOperations2(t *testing.T) {
 		t.Errorf("(B+C)F = BF+CF should hold true")
 	}
 
-	s := 10 // scalar
+	s := 10.0 // scalar
 	// (sA)B = A(sB)
 	if !Eq(Mul(Scale(s, a), b), Mul(a, Scale(s, b))) {
 		t.Errorf("(sA)B = A(sB) should hold true")

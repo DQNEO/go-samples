@@ -8,10 +8,10 @@ const DlmClose = ")"
 type Matrix struct {
 	r    int
 	c    int
-	elms []int
+	elms []float64
 }
 
-func NewMatrix(r, c int, elms []int) *Matrix {
+func NewMatrix(r, c int, elms []float64) *Matrix {
 	if len(elms) != (r * c) {
 		panic(fmt.Sprintf("number of elements (%d) does not match the give type (%dx%d)",
 			len(elms), r, c))
@@ -32,7 +32,7 @@ func NewIdentityMatrix(n int) *Matrix {
 	return m
 }
 
-func NewMatrixFromSlices(r, c int, colVectors [][]int) *Matrix {
+func NewMatrixFromSlices(r, c int, colVectors [][]float64) *Matrix {
 	totalVecSize := len(colVectors) * len(colVectors[0])
 	if totalVecSize != (r * c) {
 		panic(fmt.Sprintf("number of elements (%d) does not match the give type (%dx%d)",
@@ -55,7 +55,7 @@ func NewZeroMatrix(r, c int) *Matrix {
 	m := &Matrix{
 		r:    r,
 		c:    c,
-		elms: make([]int, r*c),
+		elms: make([]float64, r*c),
 	}
 	return m
 }
@@ -91,11 +91,11 @@ func (m *Matrix) index2ij(idx int) (i, j int) {
 	return
 }
 
-func (m *Matrix) GetElm(i, j int) int {
+func (m *Matrix) GetElm(i, j int) float64 {
 	return m.elms[m.ij2Index(i, j)]
 }
 
-func (m *Matrix) SetElm(r, c int, v int) {
+func (m *Matrix) SetElm(r, c int, v float64) {
 	m.elms[m.ij2Index(r, c)] = v
 }
 
@@ -108,7 +108,7 @@ func (m *Matrix) String() string {
 	for i := 1; i <= m.r; i++ {
 		ret += "  " + DlmOpen
 		for j := 1; j <= m.c; j++ {
-			ret += fmt.Sprintf("%2d ", m.GetElm(i, j))
+			ret += fmt.Sprintf("%2f ", m.GetElm(i, j))
 		}
 		ret += DlmClose
 		ret += "\n"
@@ -116,7 +116,7 @@ func (m *Matrix) String() string {
 	return ret
 }
 
-func Scale(s int, m *Matrix) *Matrix {
+func Scale(s float64, m *Matrix) *Matrix {
 	m2 := NewZeroMatrix(m.r, m.c)
 	for idx := 0; idx < len(m.elms); idx++ {
 		m2.elms[idx] = s * m.elms[idx]
@@ -140,7 +140,7 @@ func Mul(a *Matrix, b *Matrix) *Matrix {
 	nsum := a.c
 	for i := 1; i <= m.r; i++ {
 		for j := 1; j <= m.c; j++ {
-			var sum int
+			var sum float64
 			for k := 1; k <= nsum; k++ {
 				mul := a.GetElm(i, k) * b.GetElm(k, j)
 				sum += mul
@@ -178,13 +178,13 @@ func (m *Matrix) Tr() *Matrix {
 }
 
 func (m *Matrix) Clone() *Matrix {
-	elms2 := make([]int, len(m.elms))
+	elms2 := make([]float64, len(m.elms))
 	copy(elms2, m.elms)
 	return NewMatrix(m.r, m.c, elms2)
 }
 
-func (m *Matrix) ApplyRowBasicTransformAdd(srcI int, s int, trgtI int) *Matrix {
-	var row []int
+func (m *Matrix) ApplyRowBasicTransformAdd(srcI int, s float64, trgtI int) *Matrix {
+	var row []float64
 	for j := 1; j <= m.c; j++ {
 		row = append(row, m.GetElm(srcI, j)*s)
 	}
@@ -197,7 +197,7 @@ func (m *Matrix) ApplyRowBasicTransformAdd(srcI int, s int, trgtI int) *Matrix {
 	return m2
 }
 
-func (m *Matrix) ApplyRowBasicTransformMul(trgtI int, invs int) *Matrix {
+func (m *Matrix) ApplyRowBasicTransformMul(trgtI int, invs float64) *Matrix {
 	m2 := m.Clone()
 	for j := 1; j <= m2.c; j++ {
 		v := m2.GetElm(trgtI, j) / invs
