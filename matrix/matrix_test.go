@@ -204,3 +204,52 @@ func TestAlgebricOperations(t *testing.T) {
 		t.Errorf("wrong columns size")
 	}
 }
+
+func TestMatrix_Scale(t *testing.T) {
+	a := NewMatrix(3, 2, []int{
+		1, 2,
+		3, 4,
+		5, 6,
+	})
+	a3 := NewMatrix(3, 2, []int{
+		3, 6,
+		9, 12,
+		15, 18,
+	})
+	z := NewZeroMatrix(3, 2)
+
+	tests := []struct {
+		name   string
+		scalar int
+		m      *Matrix
+		want   *Matrix
+	}{
+		{
+			name:   "0 x A = A",
+			scalar: 0,
+			m:      a,
+			want:   NewZeroMatrix(3, 2),
+		},
+		{
+			name:   "3 x zeroMatrix = zeroMatrix",
+			scalar: 3,
+			m:      z,
+			want:   z,
+		},
+		{
+			name:   "3 x A = 3A",
+			scalar: 3,
+			m:      a,
+			want:   a3,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			m := tt.m
+			s := tt.scalar
+			if got := m.Scale(s); !Eq(got, tt.want) {
+				t.Errorf("Scale() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
