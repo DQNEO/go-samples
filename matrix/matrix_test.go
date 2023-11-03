@@ -144,8 +144,8 @@ func TestMatrixOne(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := NewIdentyMatrix(tt.n); !Eq(got, tt.want) {
-				t.Errorf("NewIdentyMatrix() = %v, want %v", got, tt.want)
+			if got := NewIdentityMatrix(tt.n); !Eq(got, tt.want) {
+				t.Errorf("NewIdentityMatrix() = %v, want %v", got, tt.want)
 			}
 		})
 	}
@@ -179,7 +179,7 @@ func TestAlgebricOperations(t *testing.T) {
 	if Eq(Mul(c, d), Mul(d, c)) {
 		t.Errorf("C x D must not equal to D x C")
 	}
-	e2x2 := NewIdentyMatrix(2)
+	e2x2 := NewIdentityMatrix(2)
 	// C x E = C
 	if !Eq(Mul(c, e2x2), c) {
 		t.Errorf("C x E should equal to C")
