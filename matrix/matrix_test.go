@@ -101,6 +101,15 @@ func TestMatrix_Tr(t *testing.T) {
 			}
 		})
 	}
+
+	m := NewMatrixFromSlices(3, 2, [][]int{
+		{1, 3, 5}, {2, 4, 6},
+	})
+	ttm := m.Tr().Tr()
+	if !Eq(m, ttm) {
+		t.Errorf("M = ttM should holds true")
+	}
+
 }
 
 func TestMatrixOne(t *testing.T) {
