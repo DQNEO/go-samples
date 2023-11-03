@@ -300,28 +300,17 @@ func TestAlgebricOperations2(t *testing.T) {
 		t.Errorf("(AB)C = A(BC) should hold true")
 	}
 
-	e2x2 := NewIdentityMatrix(2)
-	// A x E = A
-	if !Eq(Mul(a, e2x2), a) {
-		t.Errorf("A x E = A should hold true")
-	}
-	// E x A = A
-	e3x3 := NewIdentityMatrix(3)
-	if !Eq(Mul(e3x3, a), a) {
-		t.Errorf("E x A = A should hold true")
-	}
-
 	f := NewMatrix(2, 1, []int{
 		1,
 		2,
 	})
+
 	// (3x2) x (2x1) = 3x1
 	af := Mul(a, f)
 	af_r, af_c := af.GetSize()
 	if af_r != 3 {
 		t.Errorf("wrong rows size")
 	}
-
 	if af_c != 1 {
 		t.Errorf("wrong columns size")
 	}
@@ -346,4 +335,16 @@ func TestAlgebricOperations2(t *testing.T) {
 	if !Eq(Mul(Scale(s, a), b), Scale(s, Mul(a, b))) {
 		t.Errorf("A(sB) = s(AB) should hold true")
 	}
+
+	e2x2 := NewIdentityMatrix(2)
+	// A x E = A
+	if !Eq(Mul(a, e2x2), a) {
+		t.Errorf("A x E = A should hold true")
+	}
+	// E x A = A
+	e3x3 := NewIdentityMatrix(3)
+	if !Eq(Mul(e3x3, a), a) {
+		t.Errorf("E x A = A should hold true")
+	}
+
 }
