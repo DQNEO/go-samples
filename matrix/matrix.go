@@ -212,3 +212,14 @@ func (m *Matrix) ApplyRowBasicTransformDiv(trgtI int, scalar float64) *Matrix {
 	}
 	return m2
 }
+
+func (m *Matrix) ApplyRowBasicTransFormReplaceRow(i1 int, i2 int) *Matrix {
+	m2 := m.Clone()
+	for j := 1; j <= m2.C; j++ {
+		v1 := m2.GetElm(i1, j)
+		v2 := m2.GetElm(i2, j)
+		m2.SetElm(i1, j, v2)
+		m2.SetElm(i2, j, v1)
+	}
+	return m2
+}
