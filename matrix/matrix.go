@@ -183,7 +183,7 @@ func (m *Matrix) Clone() *Matrix {
 	return NewMatrix(m.nrows, m.ncols, elms2)
 }
 
-func (m *Matrix) ApplyRowBasicTransForm(srcI int, s int, trgtI int) *Matrix {
+func (m *Matrix) ApplyRowBasicTransformAdd(srcI int, s int, trgtI int) *Matrix {
 	start, end := m.getIndex(srcI, 1), m.getIndex(srcI, m.ncols)
 
 	var row []int
@@ -194,6 +194,15 @@ func (m *Matrix) ApplyRowBasicTransForm(srcI int, s int, trgtI int) *Matrix {
 	start, end = m2.getIndex(trgtI, 1), m2.getIndex(trgtI, m2.ncols)
 	for idx := start; idx <= end; idx++ {
 		m2.elms[idx] = m2.elms[idx] + row[idx-start]
+	}
+	return m2
+}
+
+func (m *Matrix) ApplyRowBasicTransformMul(trgtI int, invs int) *Matrix {
+	m2 := m.Clone()
+	start, end := m2.getIndex(trgtI, 1), m2.getIndex(trgtI, m2.ncols)
+	for idx := start; idx <= end; idx++ {
+		m2.elms[idx] = m2.elms[idx] / invs
 	}
 	return m2
 }

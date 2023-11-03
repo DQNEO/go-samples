@@ -67,7 +67,13 @@ func doHakidashi() {
 		3, 4, 5, 6,
 		7, 8, 6, 11,
 	})
-	a2 := a.ApplyRowBasicTransForm(1, -3, 2)
-	b := a2.ApplyRowBasicTransForm(1, -7, 3)
-	fmt.Printf("a = \n%s\na2 = \n%s", a, b)
+	a2 := a.ApplyRowBasicTransformAdd(1, -3, 2)
+	a3 := a2.ApplyRowBasicTransformAdd(1, -7, 3)
+	a4 := a3.ApplyRowBasicTransformMul(2, -2)
+	a5 := a4.ApplyRowBasicTransformAdd(2, 6, 3)
+	a6 := a5.ApplyRowBasicTransformMul(3, -3)
+	a7 := a6.ApplyRowBasicTransformAdd(3, -3, 1)
+	a8 := a7.ApplyRowBasicTransformAdd(3, -2, 2)
+	b := a8.ApplyRowBasicTransformAdd(2, -2, 1)
+	fmt.Printf("a = \n%s\nb = \n%s", a, b)
 }
