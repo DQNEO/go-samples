@@ -176,3 +176,24 @@ func (m *Matrix) Tr() *Matrix {
 	}
 	return m2
 }
+
+func (m *Matrix) Clone() *Matrix {
+	elms2 := make([]int, len(m.elms))
+	copy(elms2, m.elms)
+	return NewMatrix(m.nrows, m.ncols, elms2)
+}
+
+func (m *Matrix) ApplyRowBasicTransForm(srcI int, s int, trgtI int) *Matrix {
+	start, end := m.getIndex(srcI, 1), m.getIndex(srcI, m.ncols)
+
+	var row []int
+	for idx := start; idx <= end; idx++ {
+		row = append(row, m.elms[idx]*s)
+	}
+	m2 := m.Clone()
+	start, end = m2.getIndex(trgtI, 1), m2.getIndex(trgtI, m2.ncols)
+	for idx := start; idx <= end; idx++ {
+		m2.elms[idx] = m2.elms[idx] + row[idx-start]
+	}
+	return m2
+}

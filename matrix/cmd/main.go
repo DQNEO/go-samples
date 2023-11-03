@@ -7,6 +7,8 @@ import (
 )
 
 func main() {
+	doHakidashi()
+	return
 	test()
 	doEnshu2()
 }
@@ -57,4 +59,15 @@ func doEnshu2() {
 	b = matrix.NewMatrixFromSlices(1, 2, [][]int{{1}, {2}})
 	c = matrix.Mul(a, b)
 	fmt.Printf("a x b = \n%s", c)
+}
+
+func doHakidashi() {
+	a := matrix.NewMatrix(3, 4, []int{
+		1, 2, 3, 2,
+		3, 4, 5, 6,
+		7, 8, 6, 11,
+	})
+	a2 := a.ApplyRowBasicTransForm(1, -3, 2)
+	b := a2.ApplyRowBasicTransForm(1, -7, 3)
+	fmt.Printf("a = \n%s\na2 = \n%s", a, b)
 }
