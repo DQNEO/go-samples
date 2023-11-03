@@ -11,6 +11,10 @@ func main() {
 	doEnshu1_1()
 	fmt.Println("----- enshu 1.2")
 	doEnshu1_2()
+	fmt.Println("----- enshu 1.3")
+	doEnshu1_3()
+	fmt.Println("----- enshu 1.4")
+	doEnshu1_4()
 	return
 
 	fmt.Println("----- chapter 1: 1.1")
@@ -118,9 +122,19 @@ func DoRowReduction(m *matrix.Matrix) *matrix.Matrix {
 	// Making zero from right bottom
 	fmt.Println("Making zero from right bottom")
 	for srcI := a.R; srcI >= 1; srcI-- {
+		var srcJ int
+		for j := 1; j <= a.C; j++ {
+			if a.GetElm(srcI, j) == 1 {
+				srcJ = j
+				break
+			}
+		}
+		if srcJ == 0 {
+			continue
+		}
 		for trgtI := srcI - 1; trgtI >= 1; trgtI-- {
-			scalar := -1 * a.GetElm(trgtI, srcI)
-			fmt.Println("ApplyRowBasicTransformAdd")
+			scalar := -1 * a.GetElm(trgtI, srcJ)
+			fmt.Println("ApplyRowBasicTransformAdd", trgtI, srcJ, scalar)
 			a = a.ApplyRowBasicTransformAdd(srcI, scalar, trgtI)
 			fmt.Printf("a = \n%s", a)
 		}
@@ -181,6 +195,30 @@ func doEnshu1_2() {
 		1, 2, -1, 1,
 		1, 2, 1, 5,
 		1, 2, 2, 7,
+	})
+	fmt.Printf("a = \n%s", a)
+
+	b := DoRowReduction(a)
+	fmt.Printf("b = \n%s", b)
+}
+
+func doEnshu1_3() {
+	a := matrix.NewMatrix(4, 5, []float64{
+		1, 0, 3, 0, 2,
+		2, 1, 2, 1, 3,
+		2, 2, -2, 2, 2,
+		3, 2, 1, 2, 4,
+	})
+	fmt.Printf("a = \n%s", a)
+
+	b := DoRowReduction(a)
+	fmt.Printf("b = \n%s", b)
+}
+
+func doEnshu1_4() {
+	a := matrix.NewMatrix(2, 7, []float64{
+		0, 0, 1, 2, 2, 2, 4,
+		2, 2, 3, 3, 6, 6, 6,
 	})
 	fmt.Printf("a = \n%s", a)
 
