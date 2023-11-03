@@ -26,8 +26,8 @@ func NewMatrix(r, c int, elms []int) *Matrix {
 
 func NewIdentityMatrix(n int) *Matrix {
 	m := NewZeroMatrix(n, n)
-	for rc := 1; rc <= n; rc++ {
-		m.SetElm(rc, rc, 1)
+	for ij := 1; ij <= n; ij++ {
+		m.SetElm(ij, ij, 1)
 	}
 	return m
 }
@@ -41,10 +41,10 @@ func NewMatrixFromSlices(nr, nc int, colVectors [][]int) *Matrix {
 
 	m := NewZeroMatrix(nr, nc)
 
-	for c := 1; c <= nc; c++ {
-		for r := 1; r <= nr; r++ {
-			val := colVectors[c-1][r-1]
-			m.SetElm(r, c, val)
+	for j := 1; j <= nc; j++ {
+		for i := 1; i <= nr; i++ {
+			val := colVectors[j-1][i-1]
+			m.SetElm(i, j, val)
 		}
 	}
 
@@ -74,22 +74,22 @@ func Eq(a *Matrix, b *Matrix) bool {
 	return true
 }
 
-func (m *Matrix) getIndex(r, c int) int {
-	if m.nrows < r || m.ncols < c {
-		panic("index (r,c) is out of range")
+func (m *Matrix) getIndex(i, j int) int {
+	if m.nrows < i || m.ncols < j {
+		panic("index (i,j) is out of range")
 	}
 
-	return (r-1)*m.ncols + (c - 1)
+	return (i-1)*m.ncols + (j - 1)
 }
 
-func (m *Matrix) GetElm(r, c int) int {
-	i := m.getIndex(r, c)
-	return m.elms[i]
+func (m *Matrix) GetElm(i, j int) int {
+	idx := m.getIndex(i, j)
+	return m.elms[idx]
 }
 
 func (m *Matrix) SetElm(r, c int, v int) {
-	i := m.getIndex(r, c)
-	m.elms[i] = v
+	idx := m.getIndex(r, c)
+	m.elms[idx] = v
 }
 
 func (m *Matrix) Type() string {
@@ -98,10 +98,10 @@ func (m *Matrix) Type() string {
 
 func (m *Matrix) String() string {
 	var ret string
-	for r := 1; r <= m.nrows; r++ {
+	for i := 1; i <= m.nrows; i++ {
 		ret += "  " + DlmOpen
-		for c := 1; c <= m.ncols; c++ {
-			ret += fmt.Sprintf("%2d ", m.GetElm(r, c))
+		for j := 1; j <= m.ncols; j++ {
+			ret += fmt.Sprintf("%2d ", m.GetElm(i, j))
 		}
 		ret += DlmClose
 		ret += "\n"
@@ -111,8 +111,8 @@ func (m *Matrix) String() string {
 
 func Scale(s int, m *Matrix) *Matrix {
 	m2 := NewZeroMatrix(m.nrows, m.ncols)
-	for i := 0; i < len(m.elms); i++ {
-		m2.elms[i] = s * m.elms[i]
+	for idx := 0; idx < len(m.elms); idx++ {
+		m2.elms[idx] = s * m.elms[idx]
 	}
 	return m2
 }
@@ -131,14 +131,14 @@ func Mul(a *Matrix, b *Matrix) *Matrix {
 	m := NewZeroMatrix(nrows, ncols)
 
 	nsum := a.ncols
-	for r := 1; r <= m.nrows; r++ {
-		for c := 1; c <= m.ncols; c++ {
+	for i := 1; i <= m.nrows; i++ {
+		for j := 1; j <= m.ncols; j++ {
 			var sum int
 			for k := 1; k <= nsum; k++ {
-				mul := a.GetElm(r, k) * b.GetElm(k, c)
+				mul := a.GetElm(i, k) * b.GetElm(k, j)
 				sum += mul
 			}
-			m.SetElm(r, c, sum)
+			m.SetElm(i, j, sum)
 		}
 	}
 	return m
@@ -154,25 +154,24 @@ func Add(a, b *Matrix) *Matrix {
 	nrows := a.nrows
 	ncols := a.ncols
 	m := NewZeroMatrix(nrows, ncols)
-	for i := 0; i < len(m.elms); i++ {
-		m.elms[i] = a.elms[i] + b.elms[i]
+	for idx := 0; idx < len(m.elms); idx++ {
+		m.elms[idx] = a.elms[idx] + b.elms[idx]
 	}
 	return m
 }
 
-func (m *Matrix) indexToRC(i int) (r, c int) {
-	c = (i % m.ncols) + 1
-	r = (i / m.ncols) + 1
+func (m *Matrix) indexToRC(idx int) (i, j int) {
+	j = (idx % m.ncols) + 1
+	i = (idx / m.ncols) + 1
 	return
 }
 
 // Tr transposes a matrix
 func (m *Matrix) Tr() *Matrix {
 	m2 := NewZeroMatrix(m.ncols, m.nrows)
-	for i := 0; i < len(m.elms); i++ {
-		r, c := m.indexToRC(i)
-		c2, r2 := r, c
-		m2.SetElm(r2, c2, m.elms[i])
+	for idx := 0; idx < len(m.elms); idx++ {
+		i, j := m.indexToRC(idx)
+		m2.SetElm(j, i, m.elms[idx])
 	}
 	return m2
 }
