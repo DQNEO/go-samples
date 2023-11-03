@@ -109,17 +109,12 @@ func (m *Matrix) String() string {
 	return ret
 }
 
-func (m *Matrix) Scale(s int) *Matrix {
+func Scale(s int, m *Matrix) *Matrix {
 	m2 := NewZeroMatrix(m.nrows, m.ncols)
 	for i := 0; i < len(m.elms); i++ {
 		m2.elms[i] = s * m.elms[i]
 	}
 	return m2
-}
-
-// A*B
-func (m *Matrix) Apply(n *Matrix) *Matrix {
-	return Mul(m, n)
 }
 
 func (m *Matrix) GetSize() (int, int) {

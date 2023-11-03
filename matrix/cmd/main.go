@@ -33,16 +33,16 @@ func test() {
 	fmt.Printf("type of c = %s\n", c.Type())
 	fmt.Printf("c[2][3] = %d\n", c.GetElm(2, 3))
 
-	d := a.Apply(c) // d = a * c
+	d := matrix.Mul(a, c) // d = a * c
 	fmt.Printf("a x c = \n%s", d)
 
-	e := c.Apply(a) // e = c * a
+	e := matrix.Mul(c, a) // e = c * a
 	fmt.Printf("c x a = \n%s", e)
 	if e.GetElm(2, 1) != 49 {
 		panic("ERROR")
 	}
 
-	fmt.Printf("2 x a = \n%s", a.Scale(2))
+	fmt.Printf("2 x a = \n%s", matrix.Scale(2, a))
 }
 func doEnshu2() {
 	fmt.Println("=== Enshu 2.1")

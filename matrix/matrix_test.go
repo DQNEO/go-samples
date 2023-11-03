@@ -247,7 +247,7 @@ func TestMatrix_Scale(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			m := tt.m
 			s := tt.scalar
-			if got := m.Scale(s); !Eq(got, tt.want) {
+			if got := Scale(s, m); !Eq(got, tt.want) {
 				t.Errorf("Scale() = %v, want %v", got, tt.want)
 			}
 		})
