@@ -77,8 +77,11 @@ func Eq(a *Matrix, b *Matrix) bool {
 }
 
 func (m *Matrix) ij2Index(i, j int) int {
-	if m.R < i || m.C < j {
-		panic("index (i,j) is out of range")
+	if m.R < i {
+		panic(fmt.Sprintf("index i(%d) is out of R(%d)", i, m.R))
+	}
+	if m.C < j {
+		panic(fmt.Sprintf("index i(%d) is out of R(%d)", j, m.C))
 	}
 
 	return (i-1)*m.C + (j - 1)

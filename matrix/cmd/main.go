@@ -9,6 +9,8 @@ import (
 func main() {
 	fmt.Println("----- enshu 1.1")
 	doEnshu1_1()
+	fmt.Println("----- enshu 1.2")
+	doEnshu1_2()
 	return
 
 	fmt.Println("----- chapter 1: 1.1")
@@ -72,39 +74,53 @@ func doEnshu2() {
 }
 
 func DoRowReduction(m *matrix.Matrix) *matrix.Matrix {
+	fmt.Println("----- DoRowReduction start")
 	a := m.Clone()
-	for pivotPosition := 1; pivotPosition <= a.R; pivotPosition++ {
+	pivotColOffset := 0
+
+	for pivotPosition := 1; pivotPosition <= a.R && pivotPosition+pivotColOffset <= a.C; pivotPosition++ {
 		// make pivot value 1
-		divisor := a.GetElm(pivotPosition, pivotPosition)
+	LOOP_FIRST:
+		divisor := a.GetElm(pivotPosition, pivotPosition+pivotColOffset)
 		if divisor == 0 {
 			// look for non zero row and replace current row by that one
-			println("pivotPosition is 0...")
+			fmt.Println("pivotPosition is 0...")
 			for searchI := pivotPosition + 1; searchI <= a.R; searchI++ {
-				divisor = a.GetElm(searchI, pivotPosition)
+				divisor = a.GetElm(searchI, pivotPosition+pivotColOffset)
+				fmt.Println("found divisor", divisor)
 				if divisor != 0 {
+					fmt.Println("ApplyRowBasicTransFormReplaceRow")
 					a = a.ApplyRowBasicTransFormReplaceRow(pivotPosition, searchI)
 				}
 			}
 			if divisor == 0 {
-				return a
+				pivotColOffset++
+				if pivotPosition+pivotColOffset > a.C {
+					return a
+				}
+				goto LOOP_FIRST
 			}
 		}
+		fmt.Println("ApplyRowBasicTransformDiv", pivotPosition, divisor)
 		a = a.ApplyRowBasicTransformDiv(pivotPosition, divisor)
 		fmt.Printf("a = \n%s", a)
 
 		// fill zero below the pivot
 		for i := pivotPosition + 1; i <= a.R; i++ {
-			rowHead := a.GetElm(i, pivotPosition)
+			rowHead := a.GetElm(i, pivotPosition+pivotColOffset)
+			fmt.Println("ApplyRowBasicTransformAdd", -1*rowHead)
 			a = a.ApplyRowBasicTransformAdd(pivotPosition, -1*rowHead, i)
 			fmt.Printf("a = \n%s", a)
 		}
 	}
-	// Now left bottom elements are all zero.
+	// Now left bottom elements should be all zero.
 
 	// Making zero from right bottom
+	fmt.Println("Making zero from right bottom")
 	for srcI := a.R; srcI >= 1; srcI-- {
 		for trgtI := srcI - 1; trgtI >= 1; trgtI-- {
 			scalar := -1 * a.GetElm(trgtI, srcI)
+			fmt.Println("ApplyRowBasicTransformAdd")
 			a = a.ApplyRowBasicTransformAdd(srcI, scalar, trgtI)
 			fmt.Printf("a = \n%s", a)
 		}
@@ -153,6 +169,18 @@ func doEnshu1_1() {
 		1, 1, 0, 1, 1,
 		1, 0, 1, 1, 1,
 		0, 1, 1, 1, 1,
+	})
+	fmt.Printf("a = \n%s", a)
+
+	b := DoRowReduction(a)
+	fmt.Printf("b = \n%s", b)
+}
+
+func doEnshu1_2() {
+	a := matrix.NewMatrix(3, 4, []float64{
+		1, 2, -1, 1,
+		1, 2, 1, 5,
+		1, 2, 2, 7,
 	})
 	fmt.Printf("a = \n%s", a)
 
