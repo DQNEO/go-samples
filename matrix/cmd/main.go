@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	doHakidashi()
+	doRowReductionManually()
 	return
 	test()
 	doEnshu2()
@@ -61,7 +61,7 @@ func doEnshu2() {
 	fmt.Printf("a x b = \n%s", c)
 }
 
-func doHakidashi() {
+func doRowReductionManually() {
 	a := matrix.NewMatrix(3, 4, []float64{
 		1, 2, 3, 2,
 		3, 4, 5, 6,
@@ -75,7 +75,7 @@ func doHakidashi() {
 	fmt.Printf("a4 = \n%s", a4)
 	a5 := a4.ApplyRowBasicTransformAdd(2, 6, 3)
 	a6 := a5.ApplyRowBasicTransformDiv(3, -3)
-	fmt.Printf("a = \n%s", a6)
+	fmt.Printf("a6 = \n%s", a6)
 	a7 := a6.ApplyRowBasicTransformAdd(3, -3, 1)
 	a8 := a7.ApplyRowBasicTransformAdd(3, -2, 2)
 	b := a8.ApplyRowBasicTransformAdd(2, -2, 1)
