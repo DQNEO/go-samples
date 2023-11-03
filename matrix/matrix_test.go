@@ -253,3 +253,60 @@ func TestMatrix_Scale(t *testing.T) {
 		})
 	}
 }
+
+func TestMul(t *testing.T) {
+	type args struct {
+		left  *Matrix
+		right *Matrix
+	}
+	tests := []struct {
+		name string
+		args args
+		want *Matrix
+	}{
+		{
+			name: "3x2 x 2x3 -> 3x3",
+			args: args{
+				left: NewMatrix(3, 2, []int{
+					1, 2,
+					3, 4,
+					5, 6,
+				}),
+				right: NewMatrix(2, 3, []int{
+					1, 2, 3,
+					4, 5, 6,
+				}),
+			},
+			want: NewMatrix(3, 3, []int{
+				9, 12, 15,
+				19, 26, 33,
+				29, 40, 51,
+			}),
+		},
+		{
+			name: "2x3 x 3x2 -> 2x2",
+			args: args{
+				left: NewMatrix(2, 3, []int{
+					1, 2, 3,
+					4, 5, 6,
+				}),
+				right: NewMatrix(3, 2, []int{
+					1, 2,
+					3, 4,
+					5, 6,
+				}),
+			},
+			want: NewMatrix(2, 2, []int{
+				22, 28,
+				49, 64,
+			}),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Mul(tt.args.left, tt.args.right); !Eq(got, tt.want) {
+				t.Errorf("Mul() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
