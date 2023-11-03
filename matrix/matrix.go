@@ -1,6 +1,8 @@
 package matrix
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const DlmOpen = "("
 const DlmClose = ")"
@@ -108,7 +110,11 @@ func (m *Matrix) String() string {
 	for i := 1; i <= m.r; i++ {
 		ret += "  " + DlmOpen
 		for j := 1; j <= m.c; j++ {
-			ret += fmt.Sprintf("%2f ", m.GetElm(i, j))
+			f := m.GetElm(i, j)
+			if f == -0 {
+				f = 0
+			}
+			ret += fmt.Sprintf("% 3.10g ", f)
 		}
 		ret += DlmClose
 		ret += "\n"
