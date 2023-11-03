@@ -151,60 +151,6 @@ func TestMatrixOne(t *testing.T) {
 	}
 }
 
-func TestAlgebricOperations(t *testing.T) {
-	a := NewMatrix(3, 2, []int{
-		1, 2,
-		3, 4,
-		5, 6,
-	})
-
-	b := NewMatrix(3, 2, []int{
-		2, 4,
-		6, 8,
-		10, 12,
-	})
-	// A + B = B + A
-	if !Eq(Add(a, b), Add(b, a)) {
-		t.Errorf("Add is not interchangable")
-	}
-
-	c := NewMatrix(2, 2, []int{
-		1, 2,
-		3, 4,
-	})
-	d := NewMatrix(2, 2, []int{
-		1, 3,
-		5, 7,
-	})
-	if Eq(Mul(c, d), Mul(d, c)) {
-		t.Errorf("C x D must not equal to D x C")
-	}
-	e2x2 := NewIdentityMatrix(2)
-	// C x E = C
-	if !Eq(Mul(c, e2x2), c) {
-		t.Errorf("C x E should equal to C")
-	}
-	// E x C = C
-	if !Eq(Mul(e2x2, c), c) {
-		t.Errorf("E x C should equal to C")
-	}
-
-	f := NewMatrix(2, 1, []int{
-		1,
-		2,
-	})
-	// (3x2) x (2x1) = 3x1
-	af := Mul(a, f)
-	af_r, af_c := af.GetSize()
-	if af_r != 3 {
-		t.Errorf("wrong rows size")
-	}
-
-	if af_c != 1 {
-		t.Errorf("wrong columns size")
-	}
-}
-
 func TestMatrix_Scale(t *testing.T) {
 	a := NewMatrix(3, 2, []int{
 		1, 2,
@@ -308,5 +254,60 @@ func TestMul(t *testing.T) {
 				t.Errorf("Mul() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func TestAlgebricOperations(t *testing.T) {
+	a := NewMatrix(3, 2, []int{
+		1, 2,
+		3, 4,
+		5, 6,
+	})
+
+	b := NewMatrix(3, 2, []int{
+		2, 4,
+		6, 8,
+		10, 12,
+	})
+	// A + B = B + A
+	if !Eq(Add(a, b), Add(b, a)) {
+		t.Errorf("Add is not interchangable")
+	}
+
+	c := NewMatrix(2, 2, []int{
+		1, 2,
+		3, 4,
+	})
+	d := NewMatrix(2, 2, []int{
+		1, 3,
+		5, 7,
+	})
+	// C x D != D x C
+	if Eq(Mul(c, d), Mul(d, c)) {
+		t.Errorf("C x D must not equal to D x C")
+	}
+	e2x2 := NewIdentityMatrix(2)
+	// C x E = C
+	if !Eq(Mul(c, e2x2), c) {
+		t.Errorf("C x E should equal to C")
+	}
+	// E x C = C
+	if !Eq(Mul(e2x2, c), c) {
+		t.Errorf("E x C should equal to C")
+	}
+
+	f := NewMatrix(2, 1, []int{
+		1,
+		2,
+	})
+	// (3x2) x (2x1) = 3x1
+	af := Mul(a, f)
+	af_r, af_c := af.GetSize()
+	if af_r != 3 {
+		t.Errorf("wrong rows size")
+	}
+
+	if af_c != 1 {
+		t.Errorf("wrong columns size")
 	}
 }
