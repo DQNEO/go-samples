@@ -184,25 +184,24 @@ func (m *Matrix) Clone() *Matrix {
 }
 
 func (m *Matrix) ApplyRowBasicTransformAdd(srcI int, s int, trgtI int) *Matrix {
-	start, end := m.getIndex(srcI, 1), m.getIndex(srcI, m.ncols)
-
 	var row []int
-	for idx := start; idx <= end; idx++ {
-		row = append(row, m.elms[idx]*s)
+	for j := 1; j <= m.ncols; j++ {
+		row = append(row, m.GetElm(srcI, j)*s)
 	}
+
 	m2 := m.Clone()
-	start, end = m2.getIndex(trgtI, 1), m2.getIndex(trgtI, m2.ncols)
-	for idx := start; idx <= end; idx++ {
-		m2.elms[idx] = m2.elms[idx] + row[idx-start]
+	for j := 1; j <= m2.ncols; j++ {
+		v := m2.GetElm(trgtI, j) + row[j-1]
+		m2.SetElm(trgtI, j, v)
 	}
 	return m2
 }
 
 func (m *Matrix) ApplyRowBasicTransformMul(trgtI int, invs int) *Matrix {
 	m2 := m.Clone()
-	start, end := m2.getIndex(trgtI, 1), m2.getIndex(trgtI, m2.ncols)
-	for idx := start; idx <= end; idx++ {
-		m2.elms[idx] = m2.elms[idx] / invs
+	for j := 1; j <= m2.ncols; j++ {
+		v := m2.GetElm(trgtI, j) / invs
+		m2.SetElm(trgtI, j, v)
 	}
 	return m2
 }
