@@ -335,4 +335,15 @@ func TestAlgebricOperations2(t *testing.T) {
 	if !Eq(Mul(Add(b, c), f), Add(Mul(b, f), Mul(c, f))) {
 		t.Errorf("(B+C)F = BF+CF should hold true")
 	}
+
+	s := 10 // scalar
+	// (sA)B = A(sB)
+	if !Eq(Mul(Scale(s, a), b), Mul(a, Scale(s, b))) {
+		t.Errorf("(sA)B = A(sB) should hold true")
+	}
+
+	// A(sB) = s(AB)
+	if !Eq(Mul(Scale(s, a), b), Scale(s, Mul(a, b))) {
+		t.Errorf("A(sB) = s(AB) should hold true")
+	}
 }
