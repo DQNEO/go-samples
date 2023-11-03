@@ -193,7 +193,7 @@ func TestAlgebricOperations(t *testing.T) {
 		1,
 		2,
 	})
-	// (3x2)x(2x1)
+	// (3x2) x (2x1) = 3x1
 	af := Mul(a, f)
 	af_r, af_c := af.GetSize()
 	if af_r != 3 {
