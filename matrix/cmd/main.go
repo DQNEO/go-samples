@@ -7,10 +7,13 @@ import (
 )
 
 func main() {
-	doRowReductionManually1()
-	fmt.Println("-----")
-	doRowReductionManually2()
-	return
+	fmt.Println("----- chapter 1: 1.1")
+	doRowReduction1()
+	fmt.Println("----- chapter 1: 1.3")
+	doRowReduction2()
+	fmt.Println("----- chapter 1: 1.6")
+	doRowReduction3()
+
 	return
 	test()
 	doEnshu2()
@@ -94,7 +97,7 @@ func _doRowReduction(m *matrix.Matrix) *matrix.Matrix {
 	}
 	return a
 }
-func doRowReductionManually1() {
+func doRowReduction1() {
 	a := matrix.NewMatrix(3, 4, []float64{
 		1, 2, 3, 2,
 		3, 4, 5, 6,
@@ -107,11 +110,23 @@ func doRowReductionManually1() {
 	return
 }
 
-func doRowReductionManually2() {
+func doRowReduction2() {
 	a := matrix.NewMatrix(3, 4, []float64{
 		1, 2, 3, -1,
 		3, 4, 5, 1,
 		6, 7, 8, 4,
+	})
+	fmt.Printf("a = \n%s", a)
+
+	b := _doRowReduction(a)
+	fmt.Printf("b = \n%s", b)
+}
+
+func doRowReduction3() {
+	a := matrix.NewMatrix(3, 6, []float64{
+		1, 1, -1, 2, 1, 0,
+		0, 1, 1, 1, -3, 1,
+		0, 0, 0, 1, -1, 2,
 	})
 	fmt.Printf("a = \n%s", a)
 
