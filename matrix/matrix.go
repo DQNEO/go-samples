@@ -82,7 +82,7 @@ func (m *Matrix) getIndex(r, c int) int {
 	return (r-1)*m.ncols + (c - 1)
 }
 
-func (m *Matrix) Elm(r, c int) int {
+func (m *Matrix) GetElm(r, c int) int {
 	i := m.getIndex(r, c)
 	return m.elms[i]
 }
@@ -101,7 +101,7 @@ func (m *Matrix) String() string {
 	for r := 1; r <= m.nrows; r++ {
 		ret += "  " + DlmOpen
 		for c := 1; c <= m.ncols; c++ {
-			ret += fmt.Sprintf("%2d ", m.Elm(r, c))
+			ret += fmt.Sprintf("%2d ", m.GetElm(r, c))
 		}
 		ret += DlmClose
 		ret += "\n"
@@ -140,7 +140,7 @@ func Mul(a *Matrix, b *Matrix) *Matrix {
 		for c := 1; c <= m.ncols; c++ {
 			var sum int
 			for k := 1; k <= nsum; k++ {
-				mul := a.Elm(r, k) * b.Elm(k, c)
+				mul := a.GetElm(r, k) * b.GetElm(k, c)
 				sum += mul
 			}
 			m.SetElm(r, c, sum)
