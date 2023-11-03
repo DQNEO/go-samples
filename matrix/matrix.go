@@ -6,7 +6,6 @@ const DlmOpen = "("
 const DlmClose = ")"
 
 type Matrix struct {
-	//orig   any
 	nrows int
 	ncols int
 	elms  []int
