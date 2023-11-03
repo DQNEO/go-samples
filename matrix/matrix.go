@@ -197,11 +197,12 @@ func (m *Matrix) ApplyRowBasicTransformAdd(srcI int, s float64, trgtI int) *Matr
 	return m2
 }
 
-func (m *Matrix) ApplyRowBasicTransformMul(trgtI int, invs float64) *Matrix {
+func (m *Matrix) ApplyRowBasicTransformDiv(trgtI int, scalar float64) *Matrix {
 	m2 := m.Clone()
 	for j := 1; j <= m2.c; j++ {
-		v := m2.GetElm(trgtI, j) / invs
-		m2.SetElm(trgtI, j, v)
+		oldV := m2.GetElm(trgtI, j)
+		newV := oldV / scalar
+		m2.SetElm(trgtI, j, newV)
 	}
 	return m2
 }
