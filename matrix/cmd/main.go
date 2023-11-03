@@ -7,7 +7,10 @@ import (
 )
 
 func main() {
-	doRowReductionManually()
+	doRowReductionManually1()
+	fmt.Println("-----")
+	doRowReductionManually2()
+	return
 	return
 	test()
 	doEnshu2()
@@ -61,23 +64,57 @@ func doEnshu2() {
 	fmt.Printf("a x b = \n%s", c)
 }
 
-func doRowReductionManually() {
+func _doRowReduction(m *matrix.Matrix) *matrix.Matrix {
+	a := m.Clone()
+	for pivotPosition := 1; pivotPosition <= a.R; pivotPosition++ {
+		// make pivot value 1
+		divisor := a.GetElm(pivotPosition, pivotPosition)
+		if divisor == 0 {
+			break
+		}
+		a = a.ApplyRowBasicTransformDiv(pivotPosition, divisor)
+		//fmt.Printf("a = \n%s", a)
+
+		// fill zero below the pivot
+		for i := pivotPosition + 1; i <= a.R; i++ {
+			rowHead := a.GetElm(i, pivotPosition)
+			a = a.ApplyRowBasicTransformAdd(pivotPosition, -1*rowHead, i)
+			//fmt.Printf("a = \n%s", a)
+		}
+	}
+	// Now left bottom elements are all zero.
+
+	// Making zero from right bottom
+	for srcI := a.R; srcI >= 1; srcI-- {
+		for trgtI := srcI - 1; trgtI >= 1; trgtI-- {
+			scalar := -1 * a.GetElm(trgtI, srcI)
+			a = a.ApplyRowBasicTransformAdd(srcI, scalar, trgtI)
+			//fmt.Printf("a = \n%s", a)
+		}
+	}
+	return a
+}
+func doRowReductionManually1() {
 	a := matrix.NewMatrix(3, 4, []float64{
 		1, 2, 3, 2,
 		3, 4, 5, 6,
 		7, 8, 6, 11,
 	})
 	fmt.Printf("a = \n%s", a)
-	a2 := a.ApplyRowBasicTransformAdd(1, -3, 2)
-	a3 := a2.ApplyRowBasicTransformAdd(1, -7, 3)
-	fmt.Printf("a3 = \n%s", a3)
-	a4 := a3.ApplyRowBasicTransformDiv(2, -2)
-	fmt.Printf("a4 = \n%s", a4)
-	a5 := a4.ApplyRowBasicTransformAdd(2, 6, 3)
-	a6 := a5.ApplyRowBasicTransformDiv(3, -3)
-	fmt.Printf("a6 = \n%s", a6)
-	a7 := a6.ApplyRowBasicTransformAdd(3, -3, 1)
-	a8 := a7.ApplyRowBasicTransformAdd(3, -2, 2)
-	b := a8.ApplyRowBasicTransformAdd(2, -2, 1)
+
+	b := _doRowReduction(a)
+	fmt.Printf("b = \n%s", b)
+	return
+}
+
+func doRowReductionManually2() {
+	a := matrix.NewMatrix(3, 4, []float64{
+		1, 2, 3, -1,
+		3, 4, 5, 1,
+		6, 7, 8, 4,
+	})
+	fmt.Printf("a = \n%s", a)
+
+	b := _doRowReduction(a)
 	fmt.Printf("b = \n%s", b)
 }
