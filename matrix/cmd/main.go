@@ -88,13 +88,15 @@ func DoRowReduction(m *matrix.Matrix) *matrix.Matrix {
 		divisor := a.GetElm(pivotPosition, pivotPosition+pivotColOffset)
 		if divisor == 0 {
 			// look for non zero row and replace current row by that one
-			fmt.Println("pivotPosition is 0...")
+			fmt.Println("pivotPosition is 0. Looking for non zero row...")
 			for searchI := pivotPosition + 1; searchI <= a.R; searchI++ {
 				divisor = a.GetElm(searchI, pivotPosition+pivotColOffset)
-				fmt.Println("found divisor", divisor)
 				if divisor != 0 {
+					fmt.Println("found divisor", divisor, "at row", searchI)
 					fmt.Println("ApplyRowBasicTransFormReplaceRow")
 					a = a.ApplyRowBasicTransFormReplaceRow(pivotPosition, searchI)
+					fmt.Printf("a = \n%s", a)
+					goto LOOP_FIRST
 				}
 			}
 			if divisor == 0 {
