@@ -84,72 +84,6 @@ func doEnshu2() {
 	fmt.Printf("a x b = \n%s", c)
 }
 
-func DoRowReduction(m *matrix.Matrix) *matrix.Matrix {
-	//fmt.Println("----- DoRowReduction start")
-	a := m.Clone()
-	pivotColOffset := 0
-
-	for pivotPosition := 1; pivotPosition <= a.R && pivotPosition+pivotColOffset <= a.C; pivotPosition++ {
-		// make pivot value 1
-	LOOP_FIRST:
-		divisor := a.GetElm(pivotPosition, pivotPosition+pivotColOffset)
-		if divisor == 0 {
-			// look for non zero row and replace current row by that one
-			//fmt.Println("pivotPosition is 0. Looking for non zero row...")
-			for searchI := pivotPosition + 1; searchI <= a.R; searchI++ {
-				divisor = a.GetElm(searchI, pivotPosition+pivotColOffset)
-				if divisor != 0 {
-					//fmt.Println("found divisor", divisor, "at row", searchI)
-					//fmt.Println("ApplyRowBasicTransFormReplaceRow")
-					a = a.ApplyRowBasicTransFormReplaceRow(pivotPosition, searchI)
-					//fmt.Printf("a = \n%s", a)
-					goto LOOP_FIRST
-				}
-			}
-			if divisor == 0 {
-				pivotColOffset++
-				if pivotPosition+pivotColOffset > a.C {
-					return a
-				}
-				goto LOOP_FIRST
-			}
-		}
-		//		fmt.Println("ApplyRowBasicTransformDiv", pivotPosition, divisor)
-		a = a.ApplyRowBasicTransformDiv(pivotPosition, divisor)
-		//fmt.Printf("a = \n%s", a)
-
-		// fill zero below the pivot
-		for i := pivotPosition + 1; i <= a.R; i++ {
-			rowHead := a.GetElm(i, pivotPosition+pivotColOffset)
-			//fmt.Println("ApplyRowBasicTransformAdd", -1*rowHead)
-			a = a.ApplyRowBasicTransformAdd(pivotPosition, -1*rowHead, i)
-			//fmt.Printf("a = \n%s", a)
-		}
-	}
-	// Now left bottom elements should be all zero.
-
-	// Making zero from right bottom
-	//fmt.Println("Making zero from right bottom")
-	for srcI := a.R; srcI >= 1; srcI-- {
-		var srcJ int
-		for j := 1; j <= a.C; j++ {
-			if a.GetElm(srcI, j) == 1 {
-				srcJ = j
-				break
-			}
-		}
-		if srcJ == 0 {
-			continue
-		}
-		for trgtI := srcI - 1; trgtI >= 1; trgtI-- {
-			scalar := -1 * a.GetElm(trgtI, srcJ)
-			//fmt.Println("ApplyRowBasicTransformAdd", trgtI, srcJ, scalar)
-			a = a.ApplyRowBasicTransformAdd(srcI, scalar, trgtI)
-			//fmt.Printf("a = \n%s", a)
-		}
-	}
-	return a
-}
 func doRowReduction1() {
 	a := matrix.NewMatrix(3, 4, []float64{
 		1, 2, 3, 2,
@@ -158,7 +92,7 @@ func doRowReduction1() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := DoRowReduction(a)
+	b := matrix.DoRowReduction(a)
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -170,7 +104,7 @@ func doRowReduction2() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := DoRowReduction(a)
+	b := matrix.DoRowReduction(a)
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -182,7 +116,7 @@ func doRowReduction3() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := DoRowReduction(a)
+	b := matrix.DoRowReduction(a)
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -195,7 +129,7 @@ func doEnshu1_1() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := DoRowReduction(a)
+	b := matrix.DoRowReduction(a)
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -207,7 +141,7 @@ func doEnshu1_2() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := DoRowReduction(a)
+	b := matrix.DoRowReduction(a)
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -220,7 +154,7 @@ func doEnshu1_3() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := DoRowReduction(a)
+	b := matrix.DoRowReduction(a)
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -231,7 +165,7 @@ func doEnshu1_4() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := DoRowReduction(a)
+	b := matrix.DoRowReduction(a)
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -242,7 +176,7 @@ func doEnshu2_2() {
 		0.5, 1, 2,
 	})
 	fmt.Printf("a = \n%s", a)
-	c := CalcInversion(a)
+	c := matrix.Inv(a)
 	fmt.Printf("inversion:\n%s", c)
 }
 
@@ -253,7 +187,7 @@ func doEnshu2_4() {
 		0, 3, 2,
 	})
 	fmt.Printf("a = \n%s", a)
-	c := CalcInversion(a)
+	c := matrix.Inv(a)
 	fmt.Printf("inversion:\n%s", c)
 }
 
@@ -264,43 +198,6 @@ func doEnshu2_5() {
 		0, 2, 5,
 	})
 	fmt.Printf("a = \n%s", a)
-	c := CalcInversion(a)
+	c := matrix.Inv(a)
 	fmt.Printf("inversion:\n%s", c)
-}
-
-func CalcInversion(a *matrix.Matrix) *matrix.Matrix {
-	r, c := a.GetSize()
-	if r != c {
-		panic("Invalid type to calculate inversion")
-	}
-	b := a.Clone()
-	ident := matrix.NewIdentityMatrix(r)
-	m := JoinColVectors(b, ident)
-	m2 := DoRowReduction(m)
-
-	// Extract right half
-	m3 := matrix.NewZeroMatrix(a.R, a.C)
-	for i := 1; i <= a.R; i++ {
-		for j := 1; j <= a.C; j++ {
-			v := m2.GetElm(i, j+a.C)
-			m3.SetElm(i, j, v)
-		}
-	}
-	return m3
-}
-
-func JoinColVectors(a, b *matrix.Matrix) *matrix.Matrix {
-	c := matrix.NewZeroMatrix(a.R, a.C+b.C)
-	for i := 1; i <= a.R; i++ {
-		for j := 1; j <= c.C; j++ {
-			var v float64
-			if j <= a.C {
-				v = a.GetElm(i, j)
-			} else {
-				v = b.GetElm(i, j-a.C)
-			}
-			c.SetElm(i, j, v)
-		}
-	}
-	return c
 }
