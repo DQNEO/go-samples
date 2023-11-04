@@ -283,6 +283,19 @@ func TestAlgebricOperations1(t *testing.T) {
 	}
 }
 
+func TestSelfInversedMatrix(t *testing.T) {
+	m := NewMatrix(3, 3, []float64{
+		0, 2, 6,
+		-1, -3, -6,
+		0.5, 1, 2,
+	})
+	m2 := Mul(m, m)
+	e := NewIdentityMatrix(3)
+	if !Eq(m2, e) {
+		t.Errorf("M x M should be  E")
+	}
+}
+
 func TestAlgebricOperations2(t *testing.T) {
 	a := NewMatrix(3, 2, []float64{
 		1, 2,
