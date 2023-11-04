@@ -11,7 +11,9 @@ func main() {
 	doEnshu2_2()
 	fmt.Println("----- enshu 2.4")
 	doEnshu2_4()
-
+	fmt.Println("----- enshu 2.5")
+	doEnshu2_5()
+	return
 	fmt.Println("----- enshu 1.1")
 	doEnshu1_1()
 	fmt.Println("----- enshu 1.2")
@@ -249,6 +251,17 @@ func doEnshu2_4() {
 		0, 2, 1,
 		2, 0, 0,
 		0, 3, 2,
+	})
+	fmt.Printf("a = \n%s", a)
+	c := CalcInversion(a)
+	fmt.Printf("inversion:\n%s", c)
+}
+
+func doEnshu2_5() {
+	a := matrix.NewMatrix(3, 3, []float64{
+		2, 0, 4,
+		0, 1, 2,
+		0, 2, 5,
 	})
 	fmt.Printf("a = \n%s", a)
 	c := CalcInversion(a)
