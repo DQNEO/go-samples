@@ -227,7 +227,7 @@ func (m *Matrix) ApplyRowBasicTransFormReplaceRow(i1 int, i2 int) *Matrix {
 	return m2
 }
 
-func DoRowReduction(m *Matrix) *Matrix {
+func (m *Matrix) DoRowReduction() *Matrix {
 	//fmt.Println("----- DoRowReduction start")
 	a := m.Clone()
 	pivotColOffset := 0
@@ -302,17 +302,23 @@ func Inv(a *Matrix) *Matrix {
 	b := a.Clone()
 	ident := NewIdentityMatrix(r)
 	m := JoinColVectors(b, ident)
-	m2 := DoRowReduction(m)
+	m2 := m.DoRowReduction()
 
 	// Extract right half
-	m3 := NewZeroMatrix(a.R, a.C)
-	for i := 1; i <= a.R; i++ {
-		for j := 1; j <= a.C; j++ {
-			v := m2.GetElm(i, j+a.C)
-			m3.SetElm(i, j, v)
+	m3 := m2.SliceColVectors(a.C+1, m2.C)
+	return m3
+}
+
+func (m *Matrix) SliceColVectors(from int, to int) *Matrix {
+	m2 := NewZeroMatrix(m.R, to-from+1)
+	for i := 1; i <= m.R; i++ {
+		for j := from; j <= to; j++ {
+			v := m.GetElm(i, j)
+			m2.SetElm(i, j-from+1, v)
 		}
 	}
-	return m3
+	return m2
+
 }
 
 func JoinColVectors(a, b *Matrix) *Matrix {

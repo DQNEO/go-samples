@@ -92,7 +92,7 @@ func doRowReduction1() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := matrix.DoRowReduction(a)
+	b := a.DoRowReduction()
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -104,7 +104,7 @@ func doRowReduction2() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := matrix.DoRowReduction(a)
+	b := a.DoRowReduction()
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -116,7 +116,7 @@ func doRowReduction3() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := matrix.DoRowReduction(a)
+	b := a.DoRowReduction()
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -129,7 +129,7 @@ func doEnshu1_1() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := matrix.DoRowReduction(a)
+	b := a.DoRowReduction()
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -141,7 +141,7 @@ func doEnshu1_2() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := matrix.DoRowReduction(a)
+	b := a.DoRowReduction()
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -154,7 +154,7 @@ func doEnshu1_3() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := matrix.DoRowReduction(a)
+	b := a.DoRowReduction()
 	fmt.Printf("b = \n%s", b)
 }
 
@@ -165,7 +165,7 @@ func doEnshu1_4() {
 	})
 	fmt.Printf("a = \n%s", a)
 
-	b := matrix.DoRowReduction(a)
+	b := a.DoRowReduction()
 	fmt.Printf("b = \n%s", b)
 }
 
