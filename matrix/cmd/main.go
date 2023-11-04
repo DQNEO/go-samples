@@ -266,7 +266,6 @@ func CalcInversion(a *matrix.Matrix) *matrix.Matrix {
 	b := a.Clone()
 	ident := matrix.NewIdentityMatrix(r)
 	m := JoinColVectors(b, ident)
-	fmt.Printf("joined:\n%s", m)
 	m2 := DoRowReduction(m)
 
 	// Extract right half
