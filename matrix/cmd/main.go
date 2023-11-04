@@ -7,6 +7,10 @@ import (
 )
 
 func main() {
+	fmt.Println("----- enshu 2.4")
+	doEnshu2_4()
+	return
+
 	fmt.Println("----- enshu 1.1")
 	doEnshu1_1()
 	fmt.Println("----- enshu 1.2")
@@ -226,4 +230,56 @@ func doEnshu1_4() {
 
 	b := DoRowReduction(a)
 	fmt.Printf("b = \n%s", b)
+}
+
+func doEnshu2_4() {
+	a := matrix.NewMatrix(3, 3, []float64{
+		0, 2, 1,
+		2, 0, 0,
+		0, 3, 2,
+	})
+	fmt.Printf("a = \n%s", a)
+	b := DoRowReduction(a)
+	fmt.Printf("b = \n%s", b)
+	c := CalcInversion(a)
+	fmt.Printf("inversion:\n%s", c)
+
+}
+
+func CalcInversion(a *matrix.Matrix) *matrix.Matrix {
+	r, c := a.GetSize()
+	if r != c {
+		panic("Invalid type to calculate inversion")
+	}
+	b := a.Clone()
+	ident := matrix.NewIdentityMatrix(r)
+	m := JoinColVectors(b, ident)
+	fmt.Printf("joined:\n%s", m)
+	m2 := DoRowReduction(m)
+
+	// Extract right half
+	m3 := matrix.NewZeroMatrix(a.R, a.C)
+	for i := 1; i <= a.R; i++ {
+		for j := 1; j <= a.C; j++ {
+			v := m2.GetElm(i, j+a.C)
+			m3.SetElm(i, j, v)
+		}
+	}
+	return m3
+}
+
+func JoinColVectors(a, b *matrix.Matrix) *matrix.Matrix {
+	c := matrix.NewZeroMatrix(a.R, a.C+b.C)
+	for i := 1; i <= a.R; i++ {
+		for j := 1; j <= c.C; j++ {
+			var v float64
+			if j <= a.C {
+				v = a.GetElm(i, j)
+			} else {
+				v = b.GetElm(i, j-a.C)
+			}
+			c.SetElm(i, j, v)
+		}
+	}
+	return c
 }
