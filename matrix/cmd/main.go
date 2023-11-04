@@ -9,7 +9,6 @@ import (
 func main() {
 	fmt.Println("----- enshu 2.2")
 	doEnshu2_2()
-	return
 	fmt.Println("----- enshu 2.4")
 	doEnshu2_4()
 
@@ -84,7 +83,7 @@ func doEnshu2() {
 }
 
 func DoRowReduction(m *matrix.Matrix) *matrix.Matrix {
-	fmt.Println("----- DoRowReduction start")
+	//fmt.Println("----- DoRowReduction start")
 	a := m.Clone()
 	pivotColOffset := 0
 
@@ -94,14 +93,14 @@ func DoRowReduction(m *matrix.Matrix) *matrix.Matrix {
 		divisor := a.GetElm(pivotPosition, pivotPosition+pivotColOffset)
 		if divisor == 0 {
 			// look for non zero row and replace current row by that one
-			fmt.Println("pivotPosition is 0. Looking for non zero row...")
+			//fmt.Println("pivotPosition is 0. Looking for non zero row...")
 			for searchI := pivotPosition + 1; searchI <= a.R; searchI++ {
 				divisor = a.GetElm(searchI, pivotPosition+pivotColOffset)
 				if divisor != 0 {
-					fmt.Println("found divisor", divisor, "at row", searchI)
-					fmt.Println("ApplyRowBasicTransFormReplaceRow")
+					//fmt.Println("found divisor", divisor, "at row", searchI)
+					//fmt.Println("ApplyRowBasicTransFormReplaceRow")
 					a = a.ApplyRowBasicTransFormReplaceRow(pivotPosition, searchI)
-					fmt.Printf("a = \n%s", a)
+					//fmt.Printf("a = \n%s", a)
 					goto LOOP_FIRST
 				}
 			}
@@ -113,22 +112,22 @@ func DoRowReduction(m *matrix.Matrix) *matrix.Matrix {
 				goto LOOP_FIRST
 			}
 		}
-		fmt.Println("ApplyRowBasicTransformDiv", pivotPosition, divisor)
+		//		fmt.Println("ApplyRowBasicTransformDiv", pivotPosition, divisor)
 		a = a.ApplyRowBasicTransformDiv(pivotPosition, divisor)
-		fmt.Printf("a = \n%s", a)
+		//fmt.Printf("a = \n%s", a)
 
 		// fill zero below the pivot
 		for i := pivotPosition + 1; i <= a.R; i++ {
 			rowHead := a.GetElm(i, pivotPosition+pivotColOffset)
-			fmt.Println("ApplyRowBasicTransformAdd", -1*rowHead)
+			//fmt.Println("ApplyRowBasicTransformAdd", -1*rowHead)
 			a = a.ApplyRowBasicTransformAdd(pivotPosition, -1*rowHead, i)
-			fmt.Printf("a = \n%s", a)
+			//fmt.Printf("a = \n%s", a)
 		}
 	}
 	// Now left bottom elements should be all zero.
 
 	// Making zero from right bottom
-	fmt.Println("Making zero from right bottom")
+	//fmt.Println("Making zero from right bottom")
 	for srcI := a.R; srcI >= 1; srcI-- {
 		var srcJ int
 		for j := 1; j <= a.C; j++ {
@@ -142,9 +141,9 @@ func DoRowReduction(m *matrix.Matrix) *matrix.Matrix {
 		}
 		for trgtI := srcI - 1; trgtI >= 1; trgtI-- {
 			scalar := -1 * a.GetElm(trgtI, srcJ)
-			fmt.Println("ApplyRowBasicTransformAdd", trgtI, srcJ, scalar)
+			//fmt.Println("ApplyRowBasicTransformAdd", trgtI, srcJ, scalar)
 			a = a.ApplyRowBasicTransformAdd(srcI, scalar, trgtI)
-			fmt.Printf("a = \n%s", a)
+			//fmt.Printf("a = \n%s", a)
 		}
 	}
 	return a
@@ -252,8 +251,6 @@ func doEnshu2_4() {
 		0, 3, 2,
 	})
 	fmt.Printf("a = \n%s", a)
-	b := DoRowReduction(a)
-	fmt.Printf("b = \n%s", b)
 	c := CalcInversion(a)
 	fmt.Printf("inversion:\n%s", c)
 }
