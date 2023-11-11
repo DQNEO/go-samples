@@ -179,7 +179,7 @@ func TestMatrix_Scale(t *testing.T) {
 		want   *Matrix
 	}{
 		{
-			name:   "0 x A = A",
+			name:   "0 x A = 0",
 			scalar: 0,
 			m:      a,
 			want:   NewZeroMatrix(3, 2),
