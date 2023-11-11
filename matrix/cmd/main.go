@@ -6,7 +6,40 @@ import (
 	"github.com/DQNEO/go-samples/matrix"
 )
 
+func exclude(numbers []int, n int) []int {
+	var r []int
+	for _, n2 := range numbers {
+		if n2 != n {
+			r = append(r, n2)
+		}
+	}
+	return r
+}
+
+func GenPermGroup(numbers []int) [][]int {
+	if len(numbers) == 2 {
+		return [][]int{{numbers[0], numbers[1]}, {numbers[1], numbers[0]}}
+	}
+	if len(numbers) < 2 {
+		panic("Unexpected input")
+	}
+	var r [][]int
+	for _, n := range numbers {
+		numbers2 := exclude(numbers, n)
+		lists := GenPermGroup(numbers2)
+		for _, nums := range lists {
+			nums2 := append([]int{n}, nums...)
+			r = append(r, nums2)
+		}
+	}
+	return r
+}
+
 func main() {
+	numbers := []int{1, 2, 3, 4}
+	r := GenPermGroup(numbers)
+	fmt.Printf("numbers=%d\nlen=%d\nsymmetric group=%v\n", numbers, len(r), r)
+	return
 	fmt.Println("----- enshu 2.2")
 	doEnshu2_2()
 	fmt.Println("----- enshu 2.4")
