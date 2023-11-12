@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/DQNEO/go-samples/matrix"
 )
@@ -16,29 +17,73 @@ func exclude(numbers []int, n int) []int {
 	return r
 }
 
-func GenPermGroup(numbers []int) [][]int {
+type PermNumbers struct {
+	List         []int
+	NReplacement int
+}
+
+func GenPermGroup(numbers []int) []PermNumbers {
 	if len(numbers) == 2 {
-		return [][]int{{numbers[0], numbers[1]}, {numbers[1], numbers[0]}}
+		return []PermNumbers{
+			PermNumbers{
+				List:         []int{numbers[0], numbers[1]},
+				NReplacement: 0,
+			},
+			PermNumbers{
+				List:         []int{numbers[1], numbers[0]},
+				NReplacement: 1,
+			},
+		}
 	}
 	if len(numbers) < 2 {
 		panic("Unexpected input")
 	}
-	var r [][]int
+	var r []PermNumbers
+	var replacement int
 	for _, n := range numbers {
 		numbers2 := exclude(numbers, n)
-		lists := GenPermGroup(numbers2)
-		for _, nums := range lists {
-			nums2 := append([]int{n}, nums...)
-			r = append(r, nums2)
+		prmNumbers := GenPermGroup(numbers2)
+		for _, nums := range prmNumbers {
+			list := append([]int{n}, nums.List...)
+			pn := PermNumbers{
+				List:         list,
+				NReplacement: nums.NReplacement + replacement,
+			}
+			r = append(r, pn)
 		}
+		replacement++
 	}
 	return r
 }
 
+func ToDeterminantExpr(pn PermNumbers) string {
+	isEven := (pn.NReplacement % 2) == 0
+	var sign string
+	if isEven {
+		sign = "+"
+	} else {
+		sign = "-"
+	}
+	var elements []string
+	for i, n := range pn.List {
+		e := fmt.Sprintf("A%d%d", i+1, n)
+		elements = append(elements, e)
+	}
+	return fmt.Sprintf("%s%s", sign, strings.Join(elements, ""))
+}
+
 func main() {
 	numbers := []int{1, 2, 3, 4}
-	r := GenPermGroup(numbers)
-	fmt.Printf("numbers=%d\nlen=%d\nsymmetric group=%v\n", numbers, len(r), r)
+	permGroup := GenPermGroup(numbers)
+	fmt.Printf("numbers=%d\nlen=%d\n", numbers, len(permGroup))
+	fmt.Printf("symmetric group:\n")
+	for _, pg := range permGroup {
+		fmt.Printf("%d : %d\n", pg.List, pg.NReplacement)
+	}
+	for _, pg := range permGroup {
+		fmt.Printf("%s\n", ToDeterminantExpr(pg))
+	}
+
 	return
 	fmt.Println("----- enshu 2.2")
 	doEnshu2_2()
