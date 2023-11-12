@@ -7,32 +7,6 @@ import (
 )
 
 func main() {
-	a := matrix.NewMatrix(3, 3, []float64{
-		1, 2, 3,
-		2, 3, 4,
-		3, 4, 5,
-	})
-	det := a.Det()
-	fmt.Printf("det a =%g\n", det)
-
-	b := matrix.NewMatrix(4, 4, []float64{
-		0, 1, 1, 1,
-		1, 0, 1, 1,
-		1, 1, 0, 1,
-		1, 1, 1, 0,
-	})
-	detB := b.Det()
-	fmt.Printf("det b =%g\n", detB)
-	c := matrix.NewMatrix(5, 5, []float64{
-		0, 0, 4, 0, 3,
-		0, 0, 0, 6, 0,
-		2, 0, 0, 0, 0,
-		0, 0, 7, 0, 5,
-		0, 1, 0, 0, 0,
-	})
-	detC := c.Det()
-	fmt.Printf("det c =%g\n", detC)
-
 	numbers := []int{1, 2, 3, 4}
 	permGroup := matrix.GenPermGroup(numbers)
 	fmt.Printf("numbers=%d\nlen=%d\n", numbers, len(permGroup))
