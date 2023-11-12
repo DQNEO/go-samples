@@ -56,14 +56,7 @@ func GenPermGroup(numbers []int) []PermNumbers {
 	return r
 }
 
-func calcDeterminantMul(m *matrix.Matrix, pn PermNumbers) float64 {
-	isEven := (pn.NReplacement % 2) == 0
-	var sign float64
-	if isEven {
-		sign = 1.0
-	} else {
-		sign = -1.0
-	}
+func mulPermInstance(m *matrix.Matrix, pn PermNumbers) float64 {
 	var mul float64 = 1.0
 	for i, n := range pn.List {
 		from := i + 1
@@ -71,7 +64,14 @@ func calcDeterminantMul(m *matrix.Matrix, pn PermNumbers) float64 {
 		elm := m.GetElm(from, to)
 		mul *= elm
 	}
-	return sign * mul
+
+	isEven := (pn.NReplacement % 2) == 0
+	if isEven {
+		return mul
+	} else {
+		return -1 * mul
+	}
+
 }
 
 func ToDeterminantExpr(pn PermNumbers) string {
@@ -90,25 +90,18 @@ func ToDeterminantExpr(pn PermNumbers) string {
 	return fmt.Sprintf("%s%s", sign, strings.Join(elements, ""))
 }
 
-func calcDeterminant(m *matrix.Matrix) float64 {
+func Det(m *matrix.Matrix) float64 {
 	if m.R != m.C {
-		panic("input should be a sqaure matrix")
+		panic("input should be a square matrix")
 	}
 	var numbers []int
 	for i := 1; i <= m.R; i++ {
 		numbers = append(numbers, i)
 	}
-	fmt.Println(numbers)
 	permGroup := GenPermGroup(numbers)
-	fmt.Printf("numbers=%d\nlen=%d\n", numbers, len(permGroup))
-	fmt.Printf("symmetric group:\n")
-	for _, pg := range permGroup {
-		fmt.Printf("%d : %d\n", pg.List, pg.NReplacement)
-	}
 	var sum float64
 	for _, pg := range permGroup {
-		item := calcDeterminantMul(m, pg)
-		fmt.Printf("item=%g\n", item)
+		item := mulPermInstance(m, pg)
 		sum += item
 	}
 	return sum
@@ -120,7 +113,7 @@ func main() {
 		2, 3, 4,
 		3, 4, 5,
 	})
-	det := calcDeterminant(a)
+	det := Det(a)
 	fmt.Printf("det a =%g\n", det)
 
 	b := matrix.NewMatrix(4, 4, []float64{
@@ -129,7 +122,7 @@ func main() {
 		1, 1, 0, 1,
 		1, 1, 1, 0,
 	})
-	detB := calcDeterminant(b)
+	detB := Det(b)
 	fmt.Printf("det b =%g\n", detB)
 	c := matrix.NewMatrix(5, 5, []float64{
 		0, 0, 4, 0, 3,
@@ -138,7 +131,7 @@ func main() {
 		0, 0, 7, 0, 5,
 		0, 1, 0, 0, 0,
 	})
-	detC := calcDeterminant(c)
+	detC := Det(c)
 	fmt.Printf("det c =%g\n", detC)
 	return
 	numbers := []int{1, 2, 3, 4}
