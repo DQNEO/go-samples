@@ -56,6 +56,24 @@ func GenPermGroup(numbers []int) []PermNumbers {
 	return r
 }
 
+func calcDeterminantMul(m *matrix.Matrix, pn PermNumbers) float64 {
+	isEven := (pn.NReplacement % 2) == 0
+	var sign float64
+	if isEven {
+		sign = 1.0
+	} else {
+		sign = -1.0
+	}
+	var mul float64 = 1.0
+	for i, n := range pn.List {
+		from := i + 1
+		to := n
+		elm := m.GetElm(from, to)
+		mul *= elm
+	}
+	return sign * mul
+}
+
 func ToDeterminantExpr(pn PermNumbers) string {
 	isEven := (pn.NReplacement % 2) == 0
 	var sign string
@@ -72,7 +90,57 @@ func ToDeterminantExpr(pn PermNumbers) string {
 	return fmt.Sprintf("%s%s", sign, strings.Join(elements, ""))
 }
 
+func calcDeterminant(m *matrix.Matrix) float64 {
+	if m.R != m.C {
+		panic("input should be a sqaure matrix")
+	}
+	var numbers []int
+	for i := 1; i <= m.R; i++ {
+		numbers = append(numbers, i)
+	}
+	fmt.Println(numbers)
+	permGroup := GenPermGroup(numbers)
+	fmt.Printf("numbers=%d\nlen=%d\n", numbers, len(permGroup))
+	fmt.Printf("symmetric group:\n")
+	for _, pg := range permGroup {
+		fmt.Printf("%d : %d\n", pg.List, pg.NReplacement)
+	}
+	var sum float64
+	for _, pg := range permGroup {
+		item := calcDeterminantMul(m, pg)
+		fmt.Printf("item=%g\n", item)
+		sum += item
+	}
+	return sum
+}
+
 func main() {
+	a := matrix.NewMatrix(3, 3, []float64{
+		1, 2, 3,
+		2, 3, 4,
+		3, 4, 5,
+	})
+	det := calcDeterminant(a)
+	fmt.Printf("det a =%g\n", det)
+
+	b := matrix.NewMatrix(4, 4, []float64{
+		0, 1, 1, 1,
+		1, 0, 1, 1,
+		1, 1, 0, 1,
+		1, 1, 1, 0,
+	})
+	detB := calcDeterminant(b)
+	fmt.Printf("det b =%g\n", detB)
+	c := matrix.NewMatrix(5, 5, []float64{
+		0, 0, 4, 0, 3,
+		0, 0, 0, 6, 0,
+		2, 0, 0, 0, 0,
+		0, 0, 7, 0, 5,
+		0, 1, 0, 0, 0,
+	})
+	detC := calcDeterminant(c)
+	fmt.Printf("det c =%g\n", detC)
+	return
 	numbers := []int{1, 2, 3, 4}
 	permGroup := GenPermGroup(numbers)
 	fmt.Printf("numbers=%d\nlen=%d\n", numbers, len(permGroup))
