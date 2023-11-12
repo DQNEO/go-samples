@@ -368,3 +368,50 @@ func TestAlgebricOperations2(t *testing.T) {
 		t.Errorf("E x A = A should hold true")
 	}
 }
+
+func TestMatrix_Det(t *testing.T) {
+	tests := []struct {
+		name  string
+		input *Matrix
+		want  float64
+	}{
+		{
+			name: "det of 3x3",
+			input: NewMatrix(3, 3, []float64{
+				1, 2, 3,
+				2, 3, 4,
+				3, 4, 5,
+			}),
+			want: 0,
+		},
+		{
+			name: "det of 4x4",
+			input: NewMatrix(4, 4, []float64{
+				0, 1, 1, 1,
+				1, 0, 1, 1,
+				1, 1, 0, 1,
+				1, 1, 1, 0,
+			}),
+			want: -3,
+		},
+		{
+			name: "det of 5x5",
+			input: NewMatrix(5, 5, []float64{
+				0, 0, 4, 0, 3,
+				0, 0, 0, 6, 0,
+				2, 0, 0, 0, 0,
+				0, 0, 7, 0, 5,
+				0, 1, 0, 0, 0,
+			}),
+			want: 12,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			m := tt.input
+			if got := m.Det(); got != tt.want {
+				t.Errorf("Det() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
